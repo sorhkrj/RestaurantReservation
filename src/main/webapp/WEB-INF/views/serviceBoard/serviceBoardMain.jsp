@@ -13,6 +13,7 @@
 </style>
 </head>
 <body>
+<c:import url="/WEB-INF/views/top.jsp"/>
 	<table border="1">
 		<tr>
 			<th colspan="6">음식점 이름</th>
@@ -48,6 +49,7 @@
 			</td>
 		</tr>
 	</table>
+	<hr>
 	<table border="1">
 		<tr>
 			<td><input type="button" value="previous"></td>
@@ -55,5 +57,6 @@
 			<td><input type="button" value="next"></td>
 		</tr>
 	</table>
+<c:import url="/WEB-INF/views/footer.jsp"/>
 </body>
 </html>
