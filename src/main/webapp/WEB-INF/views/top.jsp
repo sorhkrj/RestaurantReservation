@@ -12,9 +12,9 @@
 		<tr height="50">
 			<td align="left" width="100">
 				<div class="w3-dropdown-hover">
-					<button class="w3-button w3-gray">메뉴</button>
+					<div class="w3-button w3-gray">메뉴</div>
 					<div class="w3-dropdown-content w3-bar-block w3-border">
-						<a href="#" class="w3-bar-item w3-button">로그인/로그아웃</a> <!-- 회원, 기업, 관리자 -->
+						<a href="login" class="w3-bar-item w3-button">로그인/로그아웃</a> <!-- 회원, 기업, 관리자 -->
 						<a href="#" class="w3-bar-item w3-button">내정보</a> <!-- 회원, 관리자 -->
 						<a href="#" class="w3-bar-item w3-button">예약정보</a> <!-- 회원 -->
 						<a href="#" class="w3-bar-item w3-button">지점관리</a> <!-- 기업 -->
@@ -25,11 +25,22 @@
 					</div>
 				</div>
 			</td>
-			<td width="300">
-				<input class="w3-input w3-border" type="text" placeholder="검색">
-			</td>
+				<td width="300">
+				<form action="searchResult" method="get">
+					<table>
+						<tr>
+							<td width="250">
+								<input type="text" placeholder="검색할 내용" class="w3-input w3-border"/>
+							</td>
+							<td width="50">
+								<input type="submit" value="검색" class="w3-input w3-border"/>
+							</td>
+						</tr>
+					</table>
+				</form>
+				</td>
 			<td align="right" width="100">
-				<button class="w3-button w3-gray">홈</button>
+				<a href="/" class="w3-button w3-gray">홈</a>
 			</td>
 	</table>
 </body>

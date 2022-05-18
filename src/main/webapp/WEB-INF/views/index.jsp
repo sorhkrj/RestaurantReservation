@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,25 +8,14 @@
 <title>Index</title>
 </head>
 <body>
-<%
-	String center = "searchResult.jsp";
-%>
+	<c:import url="/WEB-INF/views/top.jsp"/>
 	<table border="1">
-		<tr height="50">
-			<td width="500">
-				<jsp:include page="top.jsp"/>
-			</td>
-		</tr>
 		<tr height="700">
 			<td width="500">
-				<jsp:include page="<%=center%>"/>
-			</td>
-		</tr>
-		<tr height="60">
-			<td width="500">
-				<jsp:include page="footer.jsp"/>
+				<!-- Main Page -->
 			</td>
 		</tr>
 	</table>
+	<c:import url="/WEB-INF/views/footer.jsp"/>
 </body>
 </html>
