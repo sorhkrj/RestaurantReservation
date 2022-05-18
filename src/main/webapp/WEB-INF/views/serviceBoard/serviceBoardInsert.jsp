@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>serviceBoardMain</title>
+<title>serviceBoardInsert</title>
 <style type="text/css">
 	table{
 		border-collapse: collapse;
@@ -13,6 +13,7 @@
 </style>
 </head>
 <body>
+<c:import url="/WEB-INF/views/top.jsp"/>
 	<form action="serviceBoardInsertPro" method="post">
 		<table border="1">
 			<tr>
@@ -39,5 +40,6 @@
 			</tr>
 		</table>
 	</form>
+<c:import url="/WEB-INF/views/footer.jsp"/>
 </body>
 </html>
