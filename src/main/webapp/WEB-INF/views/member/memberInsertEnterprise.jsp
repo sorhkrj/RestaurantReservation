@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri = "http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,76 +32,78 @@
      <title>지점장회원가입</title>
 </head>
 <body>
+<c:import url="/WEB-INF/views/top.jsp"/>
 <div class="container mt-3 p-3" id="form">
   <div class="row">
    <h2 class="text-center">지점장회원가입</h2>
     <div class="input-group mb-3">
       <span class="input-group-text col-3 text-center">아이디</span>
-      <input type="text" class="form-control">
+      <input type="text" id="id" class="form-control">
     </div>
      <div class="input-group mb-3">
       <span class="input-group-text col-3 text-center">비밀번호</span>
-      <input type="password" class="form-control">
+      <input type="password" id="password" class="form-control">
     </div>
      <div class="input-group mb-3">
       <span class="input-group-text col-3 text-center">이름</span>
-      <input type="text" class="form-control">
+      <input type="text" id="name" class="form-control">
     </div>
      <div class="input-group mb-3">
       <span class="input-group-text col-3 text-center">전화번호</span>
-      <input type="text" class="form-control">
+      <input type="text" id="phone" class="form-control">
     </div>
      <div class="input-group mb-3">
       <span class="input-group-text col-3 text-center">별명</span>
-      <input type="text" class="form-control">
+      <input type="text" id="nickname" class="form-control">
     </div>
      <div class="input-group mb-3">
       <span class="input-group-text col-3 text-center">음식점사진</span>
-      <input type="text" class="form-control">
+      <input type="text" id="photo" class="form-control">
     </div>
      <div class="input-group mb-3">
       <span class="input-group-text col-3 text-center">음식점위치</span>
-      <input type="text" class="form-control">
+      <input type="text" id="location" class="form-control">
     </div>
      <div class="input-group mb-3">
       <span class="input-group-text col-3 text-center">음식점분류</span>
-      <input type="text" class="form-control">
+      <input type="text" id="category" class="form-control">
     </div>
      <div class="input-group mb-3">
       <span class="input-group-text col-3 text-center">음식점전화번호</span>
-      <input type="text" class="form-control">
+      <input type="text" id="store_phone" class="form-control">
     </div>
      <div class="input-group mb-3">
       <span class="input-group-text col-3 text-center">음식점주차여부</span>
-      <input type="text" class="form-control">
+      <input type="text" id="parking" class="form-control">
     </div>
      <div class="input-group mb-3">
       <span class="input-group-text col-3 text-center">음식점휴일일</span>&nbsp;
-      <input type="radio" id="월" name="drone" value="월"  checked="checked" > 
+      <input type="radio" id="holyday" name="drone" value="월"  checked="checked" > 
        <label for="월"><h2>월</h2></label>&nbsp;
-         <input type="radio" id="화" name="drone" value="화"  checked="checked" > 
+         <input type="radio" id="holyday" name="drone" value="화"  checked="checked" > 
        <label for="화"><h2>화</h2></label>&nbsp;
-         <input type="radio" id="수" name="drone" value="수"  checked="checked" > 
+         <input type="radio" id="holyday" name="drone" value="수"  checked="checked" > 
        <label for="수"><h2>수</h2></label>&nbsp;
-         <input type="radio" id="목" name="drone" value="목"  checked="checked" > 
+         <input type="radio" id="holyday" name="drone" value="목"  checked="checked" > 
        <label for="목"><h2>목</h2></label>&nbsp;
-         <input type="radio" id="금" name="drone" value="금"  checked="checked" > 
+         <input type="radio" id="holyday" name="drone" value="금"  checked="checked" > 
        <label for="금"><h2>금</h2></label>
     </div>
      <div class="input-group mb-3">
       <span class="input-group-text col-3 text-center">음식점소개</span>
-      <input type="text" class="form-control">
+      <input type="text" id="introduce" class="form-control">
     </div>
      <div class="input-group mb-3">
       <span class="input-group-text col-3 text-center">음식점공지사항</span>
-      <input type="text" class="form-control">
+      <input type="text" id="notice" class="form-control">
     </div>
      <div class="row text-center">
     <div class="container mt-3">
-      <a href="#"   type="button" class="btn btn-primary">확인</a>
-      <a href="#" type="button" class="btn btn-primary">취소</a>
+      <a href="center"   type="button" class="btn btn-primary">확인</a>
+      <a href="memberInsertEnterprise" type="button" class="btn btn-primary">취소</a>
     </div>
   </div>
+<c:import url="/WEB-INF/views/footer.jsp"/>
 </body>
 
 
