@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri = "http://java.sun.com/jsp/jstl/core" %>	
+<%@ taglib prefix="c" uri = "http://java.sun.com/jsp/jstl/core" %>
+	
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +9,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<script	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
 <style>
 html, body {
 	height: 100%; /*높이 조절*/
@@ -29,14 +31,14 @@ body {
 </style>
 
 
-<title>예약상세정보</title>
+<title>예약확인</title>
 </head>
 <body>
 <c:import url="/WEB-INF/views/top.jsp"/>
-	<form class="container" action="reservationUpdate" method="post">
+	<form class="container" action="reservationCheck" method="post">
 		<div class="container mt-3 p-3" id="form">
 			<div class="row">
-				<h2 class="text-center">예약상세정보</h2>
+				<h2 class="text-center">예약확인</h2>
 				<div class="input-group mb-3">
 					<span class="input-group-text col-3 text-center">음식점이름</span> 
 					<input type="text" class="form-control" name="storename" disabled>
@@ -62,11 +64,12 @@ body {
 					<input type="text" class="form-control" name="visitPhone" disabled>
 				</div>
 			</div>
+			<h3 class="text-center">위 내용으로 예약합니다</h3>
 			<div class="row text-center">
 				<div class="container mt-3">
-					<input type="submit" class="btn btn-primary" value="수정하기"> 
-					<a href="javascript:window.history.go(-1);" type="button" class="btn btn-primary">돌아가기</a> 
-     			</div>
+					<input type="submit" class="btn btn-primary" value="확인"></a> 
+					<a href="javascript:window.history.go(-1);" type="button" class="btn btn-primary">취소</a>
+				</div>
 			</div>
 		</div>
 	</form>
