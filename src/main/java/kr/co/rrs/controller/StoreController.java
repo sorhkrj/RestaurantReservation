@@ -1,24 +1,33 @@
 package kr.co.rrs.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import kr.co.rss.VO.StoreVO;
+import kr.co.rss.service.store.StoreService;
 
 @Controller
 public class StoreController {
+	
+	@Autowired
+	private StoreService storeService;
 
 	@GetMapping("/storeUpdate")
-	public String storeUpdate() {
+	public String storeUpdate(StoreVO storeVO) {
 		return "/store/storeUpdate";
 	}
 
 	@GetMapping("/myStore")
-	public String myStore() {
+	public String myStore(Model model) {
+		model.addAttribute("svo", storeService.select("nigael"));
 		return "/store/myStore";
 	}
-	
+
 	@GetMapping("/storeUpdatePro")
 	public String storeUpdatePro() {
-		return "/store/myStore";
+		return "/myStore";
 	}
 
 	@GetMapping("/storeReservation")
