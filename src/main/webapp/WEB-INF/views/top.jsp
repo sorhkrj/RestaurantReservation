@@ -16,12 +16,12 @@
 					<div class="w3-dropdown-content w3-bar-block w3-border">
 						<a href="login" class="w3-bar-item w3-button">로그인/로그아웃</a> <!-- 회원, 기업, 관리자 -->
 						<a href="#" class="w3-bar-item w3-button">내정보</a> <!-- 회원, 관리자 -->
-						<a href="#" class="w3-bar-item w3-button">예약정보</a> <!-- 회원 -->
-						<a href="#" class="w3-bar-item w3-button">지점관리</a> <!-- 기업 -->
+						<a href="myReservationList" class="w3-bar-item w3-button">예약정보</a> <!-- 회원 -->
+						<a href="myStore" class="w3-bar-item w3-button">지점관리</a> <!-- 기업 -->
 						<a href="#" class="w3-bar-item w3-button">분석현황</a> <!-- 기업 -->
-						<a href="#" class="w3-bar-item w3-button">고객센터</a> <!-- 회원, 기업, 관리자 -->
-						<a href="#" class="w3-bar-item w3-button">전체회원관리</a> <!-- 관리자 -->
-						<a href="#" class="w3-bar-item w3-button">전체지점관리</a> <!-- 관리자 -->
+						<a href="serviceBoardMain" class="w3-bar-item w3-button">고객센터</a> <!-- 회원, 기업, 관리자 -->
+						<a href="searchMember" class="w3-bar-item w3-button">전체회원관리</a> <!-- 관리자 -->
+						<a href="searchStore" class="w3-bar-item w3-button">전체지점관리</a> <!-- 관리자 -->
 					</div>
 				</div>
 			</td>

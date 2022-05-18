@@ -13,7 +13,7 @@ public class ReservationController {
 		return "reservation/reservationCheck";
 	}
 	
-	@PostMapping("/myReservationList")
+	@GetMapping("/myReservationList")
 	public String listmyReservation() {
 		return "reservation/myReservationList";
 	}
