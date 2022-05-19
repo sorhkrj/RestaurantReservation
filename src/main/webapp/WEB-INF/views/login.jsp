@@ -9,7 +9,7 @@
 </head>
 <body>
 	<c:import url="/WEB-INF/views/top.jsp"/>
-	<form action="#" class="w3-container">
+	<form action="loginPro" method="post" class="w3-container">
 		<table border="1">
 			<tr>
 				<td align="right" width="50">
@@ -17,8 +17,8 @@
 					<p><label>PASSWORD</label></p>
 				</td>
 				<td align="left" width="250">
-					<p><input class="w3-input" type="text"></p>
-					<p><input class="w3-input" type="text"></p>
+					<p><input type="text" name="id" class="w3-input"></p>
+					<p><input type="password" name="password" class="w3-input"></p>
 				</td>
 				<td width="150">
 					<input type="submit" value="로그인" class="w3-button w3-white w3-border w3-border-blue w3-round-large"/>
@@ -26,12 +26,12 @@
 			</tr>
 			<tr>
 				<td align="center" colspan="3">
-					<button onclick="#" class="w3-button w3-white w3-border w3-border-blue w3-round-large">일반 회원가입</button>
+					<button onclick="memberInsert" class="w3-button w3-white w3-border w3-border-blue w3-round-large">일반 회원가입</button>
 				</td>
 			</tr>
 			<tr>
 				<td align="center" colspan="3">
-					<button onclick="#" class="w3-button w3-white w3-border w3-border-blue w3-round-large">기업 회원가입</button>
+					<button onclick="memberInsertEnterprise" class="w3-button w3-white w3-border w3-border-blue w3-round-large">기업 회원가입</button>
 				</td>
 			</tr>
 		</table>
