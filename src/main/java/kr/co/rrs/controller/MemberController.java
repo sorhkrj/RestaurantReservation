@@ -1,54 +1,81 @@
 package kr.co.rrs.controller;
 
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-@Controller
-	public class MemberController {
-		//È¸¿ø°¡ÀÔ
-		@GetMapping("/memberInsert") 
-		public String memberInsert() {
-			return "member/memberInsert";
-		}
-		//ÁöÁ¡Àå È¸¿ø°¡ÀÔ
-		@GetMapping("/memberInsertEnterprise")
-		public String memberInsertEnterprise() {
-			return "member/memberInsertEnterprise";
-		}
-		//È¸¿ø°Ë»ö°á°ú
-		@GetMapping("/resultMember")
-		public String resultMember() {
-			return "member/resultMember";
-		}
-		//ÁöÁ¡°Ë»ö°á°ú
-		@GetMapping("/resultStore")
-		public String resultStore() {
-			return "member/resultStore";
-		}
-		//È¸¿ø°Ë»ö
-		@GetMapping("/searchMember")
-		public String seachMember() {
-			return "member/searchMember";
-		}
-		//ÁöÁ¡°Ë»ö
-		@GetMapping("/searchStore")
-		public String searchStore() {
-			return "member/searchStore";
-		}
-		//³»Á¤º¸
-		@GetMapping("/memberSelect")
-		public String memberSelect() {
-			return "member/memberSelect";
-		}
-		//È¸¿øÅ»Åð
-		@GetMapping("/memberDeleteCheck")
-		public String memberDeleteCheck() {
-			return "member/memberDeleteCheck";
-		}
-		//È¸¿ø¼öÁ¤
-		@GetMapping("/memberUpdateCheck")
-		public String memberUpdateCheck() {
-			return "member/memberUpdateCheck";
-		}
+import kr.co.rrs.service.MemberService;
+import kr.co.rrs.vo.MemberVO;
 
+@Controller
+public class MemberController {
+
+	@Autowired
+	MemberService memberService;
+
+	// È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	@GetMapping("/memberInsert")
+	public String memberInsert() {
+		return "member/memberInsert";
 	}
+	
+	@GetMapping("/memberSelect")
+	public String memberSelect(Model model) {
+		model.addAttribute("memberVO", memberService.selectOne("yoon"));
+		return "member/memberSelect";
+	}
+
+	@GetMapping("/memberInsertPro")
+	public String memberInsertPro(MemberVO memberVO) {
+		memberService.insert(memberVO);
+		return "forward:memberSelect";
+	}
+
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	@GetMapping("/memberInsertEnterprise")
+	public String memberInsertEnterprise() {
+		return "member/memberInsertEnterprise";
+	}
+
+	// È¸ï¿½ï¿½ï¿½Ë»ï¿½ï¿½ï¿½ï¿½
+	@GetMapping("/resultMember")
+	public String resultMember() {
+		return "member/resultMember";
+	}
+
+	// ï¿½ï¿½ï¿½ï¿½ï¿½Ë»ï¿½ï¿½ï¿½ï¿½
+	@GetMapping("/resultStore")
+	public String resultStore() {
+		return "member/resultStore";
+	}
+
+	// È¸ï¿½ï¿½ï¿½Ë»ï¿½
+	@GetMapping("/searchMember")
+	public String seachMember() {
+		return "member/searchMember";
+	}
+
+	// ï¿½ï¿½ï¿½ï¿½ï¿½Ë»ï¿½
+	@GetMapping("/searchStore")
+	public String searchStore() {
+		return "member/searchStore";
+	}
+
+	
+
+	// È¸ï¿½ï¿½Å»ï¿½ï¿½
+	@GetMapping("/memberDeleteCheck")
+	public String memberDeleteCheck() {
+		return "member/memberDeleteCheck";
+	}
+
+	// È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	@GetMapping("/memberUpdateCheck")
+	public String memberUpdateCheck() {
+		return "member/memberUpdateCheck";
+	}
+
+}
