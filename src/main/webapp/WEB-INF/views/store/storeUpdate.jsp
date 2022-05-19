@@ -12,8 +12,8 @@
 <body>
 <c:import url="/WEB-INF/views/top.jsp"/>
 
-	<%-- <form:form modelAttribute = "storeVO" action ="storeUpdatePro">
-		<td>${day} </td>
+	<form:form modelAttribute = "storeVO" action ="storeUpdatePro">
+		<td><form:input path = "storeName" /></td>
 		<td><form:input path = "photo" /></td>
 		<td><form:input path = "location" /></td>
 		<td><form:input path = "category" /></td>
@@ -23,7 +23,7 @@
 		<td><form:input path = "introduce" /></td>
 		<td><form:input path = "notice" /></td>
 		<form:button>수정하기</form:button>
-	</form:form> --%>
+	</form:form>
 	<c:import url="/WEB-INF/views/footer.jsp"/>
 </body>
 </html>
