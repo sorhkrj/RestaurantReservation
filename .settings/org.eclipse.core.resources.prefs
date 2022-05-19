@@ -1,4 +1,11 @@
 eclipse.preferences.version=1
+encoding//src/main/java/kr/co/rrs/controller/MemberController.java=UTF-8
 encoding//src/main/java/kr/co/rrs/controller/ServiceBoardController.java=UTF-8
+encoding//src/main/java/kr/co/rrs/controller/StoreCapacityController.java=UTF-8
 encoding//src/main/java/kr/co/rrs/controller/StoreController.java=UTF-8
+encoding//src/main/java/kr/co/rrs/controller/StoreReservationController.java=UTF-8
+encoding//src/main/java/kr/co/rrs/mapper/ReservationMapper.java=UTF-8
+encoding//src/main/java/kr/co/rrs/service/ServiceBoardService.java=UTF-8
+encoding//src/main/java/kr/co/rrs/service/impl/ReservationServiceImpl.java=UTF-8
+encoding//src/main/java/kr/co/rrs/service/impl/ServiceBoardServiceImpl.java=UTF-8
 encoding/<project>=UTF-8
