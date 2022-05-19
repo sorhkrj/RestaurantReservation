@@ -1,8 +1,8 @@
-package kr.co.rss.service;
+package kr.co.rrs.service;
 
 import java.util.List;
 
-import kr.co.rss.VO.ServiceBoardVO;
+import kr.co.rrs.VO.ServiceBoardVO;
 
 public interface ServiceBoardService {
 	// 문의글 전체 목록 보기

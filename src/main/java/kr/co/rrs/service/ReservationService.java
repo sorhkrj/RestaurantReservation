@@ -1,10 +1,10 @@
-package kr.co.rss.service;
+package kr.co.rrs.service;
 
 
 
 import java.util.ArrayList;
 
-import kr.co.rss.VO.ReservationVO;
+import kr.co.rrs.VO.ReservationVO;
 
 public interface ReservationService {
 

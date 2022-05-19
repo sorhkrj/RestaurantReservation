@@ -1,13 +1,13 @@
-package kr.co.rss.service.impl;
+package kr.co.rrs.service.impl;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import kr.co.rrs.VO.ReservePossibleVO;
 import kr.co.rrs.mapper.StoreCapacityMapper;
-import kr.co.rss.VO.ReservePossibleVO;
-import kr.co.rss.service.StoreCapacityService;
+import kr.co.rrs.service.StoreCapacityService;
 
 @Service
 public class StoreCapacityServiceImpl implements StoreCapacityService {

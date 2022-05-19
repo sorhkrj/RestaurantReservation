@@ -7,8 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import kr.co.rss.VO.ReservePossibleVO;
-import kr.co.rss.service.StoreCapacityService;
+import kr.co.rrs.VO.ReservePossibleVO;
+import kr.co.rrs.service.StoreCapacityService;
 
 @Controller
 public class StoreCapacityController {

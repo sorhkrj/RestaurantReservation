@@ -19,7 +19,7 @@
 		location="/resources/properties/db.properties"/>
 	
 	<context:component-scan base-package="kr.co.rrs.controller"/>
-	<context:component-scan base-package="kr.co.rss.service"/>
+	<context:component-scan base-package="kr.co.rrs.service"/>
 	<context:component-scan base-package="kr.co.rrs.advisor"/>
 	<mybatis-spring:scan base-package="kr.co.rrs.mapper"/>
 		

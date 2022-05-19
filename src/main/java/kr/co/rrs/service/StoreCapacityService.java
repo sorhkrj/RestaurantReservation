@@ -1,8 +1,8 @@
-package kr.co.rss.service;
+package kr.co.rrs.service;
 
 import java.util.List;
 
-import kr.co.rss.VO.ReservePossibleVO;
+import kr.co.rrs.VO.ReservePossibleVO;
 
 public interface StoreCapacityService {
 
