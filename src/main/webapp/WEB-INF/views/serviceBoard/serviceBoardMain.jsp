@@ -27,15 +27,15 @@
 			<th>작성일</th>
 			<th>답변여부</th>
 		</tr>
-		<c:if test="${serviceBoardList != null }">
-			<c:forEach var="serviceBoardList" items="${serviceBoardList}">
+		<c:if test="${selectList != null }">
+			<c:forEach var="selectList" items="${selectList}">
 			<tr>
-				<td>${serviceBoardList.serviceNo }</td>
-				<td>${serviceBoardList.id }</td>
-				<td><a href="serviceBoardDetail">${serviceBoardList.title }</a></td>
-				<td>${serviceBoardList.content }</td>
-				<td>${serviceBoardList.views }</td>
-				<td>${serviceBoardList.regDate }</td>
+				<td>${selectList.serviceNo }</td>
+				<td>${selectList.id }</td>
+				<td><a href="serviceBoardDetail?serviceNo=${selectList.serviceNo }&views=${selectList.views }">${selectList.title }</a></td>
+				<td>${selectList.content }</td>
+				<td>${selectList.views }</td>
+				<td>${selectList.regDate }</td>
 			</tr>			
 			</c:forEach>
 		</c:if>
