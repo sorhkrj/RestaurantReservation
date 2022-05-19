@@ -64,7 +64,7 @@
     <div class="container mt-3">
       <a href="memberUpdateCheck"   type="button" class="btn btn-primary">수정하기</a>
       <a href="memberDeleteCheck" type="button" class="btn btn-primary">회원탈퇴</a>
-       <a href="/" type="button" class="btn btn-primary">돌아가기</a>
+       <a href="/RestaurantReservation" type="button" class="btn btn-primary">돌아가기</a>
     </div>
   </div>
 </div>

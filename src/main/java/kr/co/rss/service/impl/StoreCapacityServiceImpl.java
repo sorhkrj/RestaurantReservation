@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import kr.co.rrs.mapper.StoreCapacityMapper;
 import kr.co.rss.VO.ReservePossibleVO;
-import kr.co.rss.service.store.StoreCapacityService;
+import kr.co.rss.service.StoreCapacityService;
 
 @Service
 public class StoreCapacityServiceImpl implements StoreCapacityService {
