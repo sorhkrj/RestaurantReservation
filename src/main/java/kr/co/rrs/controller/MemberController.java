@@ -5,47 +5,47 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 	public class MemberController {
-		//È¸¿ø°¡ÀÔ
+		//íšŒì›ê°€ì…
 		@GetMapping("/memberInsert") 
 		public String memberInsert() {
 			return "member/memberInsert";
 		}
-		//ÁöÁ¡Àå È¸¿ø°¡ÀÔ
+		//ì§€ì ì¥ íšŒì›ê°€ì…
 		@GetMapping("/memberInsertEnterprise")
 		public String memberInsertEnterprise() {
 			return "member/memberInsertEnterprise";
 		}
-		//È¸¿ø°Ë»ö°á°ú
+		//íšŒì›ê²€ìƒ‰ê²°ê³¼
 		@GetMapping("/resultMember")
 		public String resultMember() {
 			return "member/resultMember";
 		}
-		//ÁöÁ¡°Ë»ö°á°ú
+		//ì§€ì ê²€ìƒ‰ê²°ê³¼
 		@GetMapping("/resultStore")
 		public String resultStore() {
 			return "member/resultStore";
 		}
-		//È¸¿ø°Ë»ö
+		//íšŒì›ê²€ìƒ‰
 		@GetMapping("/searchMember")
 		public String seachMember() {
 			return "member/searchMember";
 		}
-		//ÁöÁ¡°Ë»ö
+		//ì§€ì ê²€ìƒ‰
 		@GetMapping("/searchStore")
 		public String searchStore() {
 			return "member/searchStore";
 		}
-		//³»Á¤º¸
+		//ë‚´ì •ë³´
 		@GetMapping("/memberSelect")
 		public String memberSelect() {
 			return "member/memberSelect";
 		}
-		//È¸¿øÅ»Åğ
+		//íšŒì›íƒˆí‡´
 		@GetMapping("/memberDeleteCheck")
 		public String memberDeleteCheck() {
 			return "member/memberDeleteCheck";
 		}
-		//È¸¿ø¼öÁ¤
+		//íšŒì›ìˆ˜ì •
 		@GetMapping("/memberUpdateCheck")
 		public String memberUpdateCheck() {
 			return "member/memberUpdateCheck";
