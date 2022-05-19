@@ -1,54 +1,71 @@
 package kr.co.rrs.controller;
 
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import kr.co.rrs.service.MemberService;
+import kr.co.rrs.vo.MemberVO;
 
 @Controller
 	public class MemberController {
-		//È¸¿ø°¡ÀÔ
-		@GetMapping("/memberInsert") 
-		public String memberInsert() {
-			return "member/memberInsert";
-		}
-		//ÁöÁ¡Àå È¸¿ø°¡ÀÔ
-		@GetMapping("/memberInsertEnterprise")
-		public String memberInsertEnterprise() {
-			return "member/memberInsertEnterprise";
-		}
-		//È¸¿ø°Ë»ö°á°ú
-		@GetMapping("/resultMember")
-		public String resultMember() {
-			return "member/resultMember";
-		}
-		//ÁöÁ¡°Ë»ö°á°ú
-		@GetMapping("/resultStore")
-		public String resultStore() {
-			return "member/resultStore";
-		}
-		//È¸¿ø°Ë»ö
-		@GetMapping("/searchMember")
-		public String seachMember() {
-			return "member/searchMember";
-		}
-		//ÁöÁ¡°Ë»ö
-		@GetMapping("/searchStore")
-		public String searchStore() {
-			return "member/searchStore";
-		}
-		//³»Á¤º¸
-		@GetMapping("/memberSelect")
-		public String memberSelect() {
-			return "member/memberSelect";
-		}
-		//È¸¿øÅ»Åğ
-		@GetMapping("/memberDeleteCheck")
-		public String memberDeleteCheck() {
-			return "member/memberDeleteCheck";
-		}
-		//È¸¿ø¼öÁ¤
-		@GetMapping("/memberUpdateCheck")
-		public String memberUpdateCheck() {
-			return "member/memberUpdateCheck";
-		}
 
+	@Autowired
+	MemberService memberService;
+	
+	//íšŒì›ê°€ì…
+	@GetMapping("/memberInsert") 
+	public String memberInsert() {
+		return "member/memberInsert";
 	}
+	//ë‚´ì •ë³´
+	@GetMapping("/memberSelect")
+	public String memberSelect(Model model) {
+		model.addAttribute("memberVO", memberService.selectOne("yoon"));
+		return "member/memberSelect";
+	}
+	@GetMapping("/memberInsertPro")
+	public String memberInsertPro(MemberVO memberVO) {
+		memberService.insert(memberVO);
+		return "forward:memberSelect";
+	}
+	//ì§€ì ì¥ íšŒì›ê°€ì…
+	@GetMapping("/memberInsertEnterprise")
+	public String memberInsertEnterprise() {
+		return "member/memberInsertEnterprise";
+	}
+	//íšŒì›ê²€ìƒ‰ê²°ê³¼
+	@GetMapping("/resultMember")
+	public String resultMember() {
+		return "member/resultMember";
+	}
+	//ì§€ì ê²€ìƒ‰ê²°ê³¼
+	@GetMapping("/resultStore")
+	public String resultStore() {
+		return "member/resultStore";
+	}
+	//íšŒì›ê²€ìƒ‰
+	@GetMapping("/searchMember")
+	public String seachMember() {
+		return "member/searchMember";
+	}
+	//ì§€ì ê²€ìƒ‰
+	@GetMapping("/searchStore")
+	public String searchStore() {
+		return "member/searchStore";
+	}
+	//íšŒì›íƒˆí‡´
+	@GetMapping("/memberDeleteCheck")
+	public String memberDeleteCheck() {
+		return "member/memberDeleteCheck";
+	}
+	//íšŒì›ìˆ˜ì •
+	@GetMapping("/memberUpdateCheck")
+	public String memberUpdateCheck() {
+		return "member/memberUpdateCheck";
+	}
+
+}
