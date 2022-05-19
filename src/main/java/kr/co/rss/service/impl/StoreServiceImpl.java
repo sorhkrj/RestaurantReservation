@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 
 import kr.co.rrs.mapper.StoreMapper;
 import kr.co.rss.VO.StoreVO;
-import kr.co.rss.service.store.StoreService;
+import kr.co.rss.service.StoreService;
 
 @Service
 public class StoreServiceImpl implements StoreService {

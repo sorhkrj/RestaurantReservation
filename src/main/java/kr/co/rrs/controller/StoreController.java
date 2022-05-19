@@ -8,11 +8,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import kr.co.rss.VO.StoreVO;
-import kr.co.rss.service.store.StoreService;
+import kr.co.rss.service.StoreService;
 
 @Controller
 public class StoreController {
-	/*	지점정보관리 기능
+	/*	吏��젏�젙蹂닿�由� 湲곕뒫
 	 *  
 	 * 	
 	 */

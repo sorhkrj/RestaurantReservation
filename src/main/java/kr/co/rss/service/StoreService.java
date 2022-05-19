@@ -1,6 +1,4 @@
-package kr.co.rss.service.store;
-
-import java.util.List;
+package kr.co.rss.service;
 
 import kr.co.rss.VO.StoreVO;
 
