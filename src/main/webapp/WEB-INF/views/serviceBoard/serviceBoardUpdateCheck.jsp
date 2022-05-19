@@ -17,7 +17,10 @@
 	<form action="serviceBoardUpdate" method="post">
 		<table border="1">
 			<tr>
-				<th colspan="2">제목 글을 지웁니다</th>
+				<th colspan="2">비밀번호를 입력</th>
+			</tr>
+			<tr>
+				<th colspan="2">${serviceNo}</th>
 			</tr>
 			<tr>
 				<th>비밀번호</th>
@@ -25,6 +28,7 @@
 			</tr>
 			<tr>
 				<td colspan="2">
+					<input type="hidden" value="${serviceNo}"/>
 					<input type="submit" value="확인"/>
 					<input type="reset" value="취소"/> 
 				</td>

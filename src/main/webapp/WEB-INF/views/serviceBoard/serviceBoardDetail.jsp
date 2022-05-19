@@ -20,35 +20,33 @@
 		</tr>
 		<tr>
 			<th>번호</th>
-			<td>번호</td>
+			<td>${selectDetail.serviceNo }</td>
 			<th>작성자</th>
-			<td>작성자</td>
+			<td>${selectDetail.id }</td>
 		</tr>
 		<tr>
 			<th>제목</th>
-			<td>제목</td>
-			<th>등록일</th>
-			<td>등록일</td>
+			<td>${selectDetail.title }</td>
+			<th>작성일</th>
+			<td>${selectDetail.regDate }</td>
 		</tr>
 		<tr>
-			<th colspan="2">조회수</th>
-			<td colspan="2">조회수</td>
+			<th>조회수</th>
+			<td>${selectDetail.views }</td>
+			<th>답변여부</th>
+			<td>답변여부</td>
 		</tr>
 		<tr>
 			<th colspan="4">내용</th>
 		</tr>
 		<tr>
-			<td colspan="4">내용</td>
+			<td colspan="4">${selectDetail.content }</td>
 		</tr>
 		<tr>
 			<td colspan="4">
-				<form action="serviceBoardUpdateCheck" method="post">
-					<input type="submit" value="수정하기">
-				</form>
-				<form action="serviceBoardDeleteCheck" method="post">
-					<input type="submit" value="삭제하기">
-				</form>
-				<input type="button" value="뒤로가기" onclick="location.href='serviceBoardMain'"/>
+				<a href="serviceBoardUpdateCheck?serviceNo=${selectDetail.serviceNo }&id=${selectDetail.id }">수정하기</a>
+				<a href="serviceBoardDeleteCheck?serviceNo=${selectDetail.serviceNo }">삭제하기</a>
+				<a href="serviceBoardMain">뒤로가기</a>
 			</td>
 		</tr>
 	</table>
