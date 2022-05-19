@@ -17,12 +17,12 @@ public interface StoreCapacityMapper {
 	@Update("update reservepossible values(#{storeNo}, #{day}, #{time}, #{capacity}, #{seat})")
 	void update(ReservePossibleVO reservePossibleVO);
 	
-	@Select("select * from store where storeno = #{storeno} and day >= SYSDATE")
-	List<ReservePossibleVO> selectList(int storeNo);
+	@Select("select * from store where storeNo = #{storeNo} and day >= SYSDATE")
+	List<ReservePossibleVO> selectList();
 	
-	@Select("select * from store where storeno = #{storeno} and day =#{day}")
+	@Select("select * from store where storeNo = #{storeNo} and day =#{day}")
 	ReservePossibleVO select(String day, int storeno);
 	
-	@Delete("delete from store where shoreno = #{storeno} and day = #{day}")
+	@Delete("delete from store where storeNo = #{storeNo} and day = #{day}")
 	void delete(String day, int storeno);
 }
