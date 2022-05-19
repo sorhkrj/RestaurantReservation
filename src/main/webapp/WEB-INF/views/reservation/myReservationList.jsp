@@ -34,6 +34,7 @@ body {
 <title>예약확인</title>
 </head>
 <body>
+<div class="container">
 <c:import url="/WEB-INF/views/top.jsp"/>
 
 	<div class="container" id="mytable">
@@ -55,5 +56,6 @@ body {
 		</div>
 	</div>
 	<c:import url="/WEB-INF/views/footer.jsp"/>
+	</div>
 </body>
 </html>
