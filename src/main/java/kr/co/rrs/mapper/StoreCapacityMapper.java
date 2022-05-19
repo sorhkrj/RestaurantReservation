@@ -18,7 +18,7 @@ public interface StoreCapacityMapper {
 	void update(ReservePossibleVO reservePossibleVO);
 	
 	@Select("select * from store where storeno = #{storeno} and day >= SYSDATE")
-	List<ReservePossibleVO> selectList(String id);
+	List<ReservePossibleVO> selectList(int storeNo);
 	
 	@Select("select * from store where storeno = #{storeno} and day =#{day}")
 	ReservePossibleVO select(String day, int storeno);
