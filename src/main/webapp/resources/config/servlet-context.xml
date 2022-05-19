@@ -14,11 +14,13 @@
 	<mvc:resources location="/resources/" mapping="/**"/>
 	
 	<context:component-scan base-package="kr.co.rrs.controller"/>
-	<context:component-scan base-package="kr.co.rrs.dao"/>
+	<context:component-scan base-package="kr.co.rss.service"/>
+	
+	<mybatis-spring:scan base-package="kr.co.rrs.mapper"/>
+	
 	<context:property-placeholder
 		location="/resources/properties/db.properties"/>
 		
-	<mybatis-spring:scan base-package="kr.co.rrs.mapper"/>
 	
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">

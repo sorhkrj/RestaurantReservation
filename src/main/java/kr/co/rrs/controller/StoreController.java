@@ -1,24 +1,42 @@
 package kr.co.rrs.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import kr.co.rss.VO.StoreVO;
+import kr.co.rss.service.store.StoreService;
 
 @Controller
 public class StoreController {
+	/*	지점정보관리 기능
+	 *  
+	 * 	
+	 */
+	
+	@Autowired
+	private StoreService storeService;
 
 	@GetMapping("/storeUpdate")
-	public String storeUpdate() {
+	public String storeUpdate(@ModelAttribute StoreVO storeVO, Model model) {
+		storeVO = storeService.select("nigael");
+		model.addAttribute("storeVO", storeVO);
 		return "/store/storeUpdate";
 	}
 
-	@GetMapping("/myStore")
-	public String myStore() {
+	@RequestMapping("/myStore")
+	public String myStore(Model model) {
+		model.addAttribute("storeVO", storeService.select("nigael"));
 		return "/store/myStore";
 	}
-	
+
 	@GetMapping("/storeUpdatePro")
-	public String storeUpdatePro() {
-		return "/store/myStore";
+	public String storeUpdatePro(StoreVO storeVO) {
+		storeService.update(storeVO);
+		return "/myStore";
 	}
 
 	@GetMapping("/storeReservation")
@@ -26,6 +44,12 @@ public class StoreController {
 		return "/store/storeReservation";
 	}
 
+	@GetMapping("/storeCapacityInsert")
+	public String storeCapacityInsert() {
+		
+		return "/storeCapacitySelect";
+	}
+	
 	@GetMapping("/storeCapacitySelect")
 	public String storeCapacitySelect() {
 		return "/store/storeCapacitySelect";

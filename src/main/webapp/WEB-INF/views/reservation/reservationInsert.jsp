@@ -21,7 +21,8 @@ body {
 	align-items: center;
 	padding-top: 40px;
 	padding-bottom: 40px;
-	background-color: ;
+	background-color:#f5f5f5;
+	
 }
 
 #form {
@@ -36,10 +37,13 @@ body {
 <body>
 
 	 <div class="container">
+	
+	 
 		<c:import url="/WEB-INF/views/top.jsp"/>
 	
-			<form class="container" action="reservationCheck" method="post">
-				<div class="container mt-3 p-3" id="form">
+	 
+			<form class="container" action="reservationInsertCheck" method="post">
+				<div class="container p-3" id="form">
 					<div class="row">
 						<h2 class="text-center">예약</h2>
 						<div class="input-group mb-3">
@@ -57,10 +61,12 @@ body {
 		
 						<h2 class="text-center">방문인정보</h2>
 						
-						<div class="input-group mb-3 text-center">
-							<input type="checkbox" class="form-check-input ms-2 mt-2 me-3" checked>
-							<span class="input-group-text col-3 text-center">주문자와 동일인</span> 
-						</div>
+					    					
+    					 <div class="form-check mb-3 text-center">
+      						<label class="form-check-label">
+        					<input class="form-check-input" type="checkbox" name="remember"> 주문자와 동일인</label>
+    					</div>
+						
 						<div class="input-group mb-3">
 							<span class="input-group-text col-3 text-center">방문인이름</span> 
 							<input type="text" class="form-control" name="visitName">
