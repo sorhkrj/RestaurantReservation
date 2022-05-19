@@ -16,35 +16,35 @@ public class StoreCapacityController {
 	 *  
 	 * 	
 	 */
-//	
-//	@Autowired
-//	private StoreCapacityService storeCapacityService;
-//
-//	@GetMapping("/storeCapacityInsert")
-//	public String storeCapacityInsert() {
-//		
-//		return "/storeCapacitySelect";
-//	}
-//	
-//	@GetMapping("/storeCapacitySelect")
-//	public String storeCapacitySelect(int storeNo, Model model) {
-//		model.addAttribute("storeCapacityVO", storeCapacityService.selectList(2));
-//		return "/store/storeCapacitySelect";
-//	}
-//
-//	@GetMapping("/storeCapacityUpdate")
-//	public String storeCapacityUpdate() {
-//		return "/store/storeCapacityUpdate";
-//	}
-//
-//	@GetMapping("/storeCapacityDeletePro")
-//	public String storeCapacityDeletePro() {
-//		return "/store/storeCapacitySelect";
-//	}
-//
-//	@GetMapping("/storeCapacityUpdatePro")
-//	public String storeCapacityUpdatePro() {
-//		return "/store/storeCapacitySelect";
-//	}
+	
+	@Autowired
+	private StoreCapacityService storeCapacityService;
+
+	@GetMapping("/storeCapacityInsert")
+	public String storeCapacityInsert() {
+		
+		return "/storeCapacitySelect";
+	}
+	
+	@GetMapping("/storeCapacitySelect")
+	public String storeCapacitySelect(int storeNo, Model model) {
+		model.addAttribute("storeCapacityVO", storeCapacityService.selectList());
+		return "/store/storeCapacitySelect";
+	}
+	
+	@GetMapping("/storeCapacityUpdate")
+	public String storeCapacityUpdate() {
+		return "/store/storeCapacityUpdate";
+	}
+
+	@GetMapping("/storeCapacityDeletePro")
+	public String storeCapacityDeletePro() {
+		return "/store/storeCapacitySelect";
+	}
+
+	@GetMapping("/storeCapacityUpdatePro")
+	public String storeCapacityUpdatePro() {
+		return "/store/storeCapacitySelect";
+	}
 
 }

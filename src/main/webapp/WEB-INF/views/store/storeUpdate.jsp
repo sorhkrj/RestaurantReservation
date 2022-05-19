@@ -11,18 +11,18 @@
 </head>
 <body>
 <c:import url="/WEB-INF/views/top.jsp"/>
-
 	<form:form modelAttribute = "storeVO" action ="storeUpdatePro">
-		<td><form:input path = "storeName" /></td>
-		<td><form:input path = "photo" /></td>
-		<td><form:input path = "location" /></td>
-		<td><form:input path = "category" /></td>
-		<td><form:input path = "store_phone" /></td>
-		<td><form:input path = "parking" /></td>
-		<td><form:input path = "holyday" /></td>
-		<td><form:input path = "introduce" /></td>
-		<td><form:input path = "notice" /></td>
+		음식점 : <td><form:input path = "storeName" /></td><br>
+		사  진 : <td><form:input path = "photo" /></td><br>
+		위  치 : <td><form:input path = "location" /></td><br>
+		분  류 : <td><form:input path = "category" /></td><br>
+		연락처 : <td><form:input path = "store_phone" /></td><br>
+		주차장 : <td><form:input path = "parking" /></td><br>
+		휴무일 : <td><form:input path = "holyday" /></td><br>
+		소  개 : <td><form:input path = "introduce" /></td><br>
+		공  지 : <td><form:input path = "notice" /></td><br><br>
 		<form:button>수정하기</form:button>
+		<input type ="reset" value ="취소">
 	</form:form>
 	<c:import url="/WEB-INF/views/footer.jsp"/>
 </body>
