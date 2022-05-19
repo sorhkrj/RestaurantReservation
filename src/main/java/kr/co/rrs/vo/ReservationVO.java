@@ -1,4 +1,4 @@
-package kr.co.rrs.VO;
+package kr.co.rrs.vo;
 
 public class ReservationVO {
 	private int reserveNo;

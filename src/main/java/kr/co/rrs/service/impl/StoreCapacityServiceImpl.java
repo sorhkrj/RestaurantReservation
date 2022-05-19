@@ -5,9 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import kr.co.rrs.VO.ReservePossibleVO;
 import kr.co.rrs.mapper.StoreCapacityMapper;
 import kr.co.rrs.service.StoreCapacityService;
+import kr.co.rrs.vo.ReservePossibleVO;
 
 @Service
 public class StoreCapacityServiceImpl implements StoreCapacityService {

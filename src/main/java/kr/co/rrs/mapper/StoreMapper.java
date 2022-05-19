@@ -3,7 +3,7 @@ package kr.co.rrs.mapper;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
-import kr.co.rrs.VO.StoreVO;
+import kr.co.rrs.vo.StoreVO;
 
 public interface StoreMapper {
 

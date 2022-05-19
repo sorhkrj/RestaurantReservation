@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
-import kr.co.rrs.VO.ReservePossibleVO;
+import kr.co.rrs.vo.ReservePossibleVO;
 
 public interface StoreCapacityMapper {
 	

@@ -5,9 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import kr.co.rrs.VO.ServiceBoardVO;
 import kr.co.rrs.mapper.ServiceBoardMapper;
 import kr.co.rrs.service.ServiceBoardService;
+import kr.co.rrs.vo.ServiceBoardVO;
 @Service
 public class ServiceBoardServiceImpl implements ServiceBoardService {
 	@Autowired

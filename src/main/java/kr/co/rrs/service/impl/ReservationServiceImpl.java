@@ -5,9 +5,9 @@ import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import kr.co.rrs.VO.ReservationVO;
 import kr.co.rrs.mapper.ReservationMapper;
 import kr.co.rrs.service.ReservationService;
+import kr.co.rrs.vo.ReservationVO;
 
 @Service
 public class ReservationServiceImpl implements ReservationService {

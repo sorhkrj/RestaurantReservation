@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Select;
 
-import kr.co.rrs.VO.MemberVO;
+import kr.co.rrs.vo.MemberVO;
 
 public interface LogMapper {
 

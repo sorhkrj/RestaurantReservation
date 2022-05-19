@@ -5,7 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 
-import kr.co.rrs.VO.ServiceBoardVO;
+import kr.co.rrs.vo.ServiceBoardVO;
 
 public interface ServiceBoardMapper {
 	@Select("select * from serviceBoard order by serviceNo desc")

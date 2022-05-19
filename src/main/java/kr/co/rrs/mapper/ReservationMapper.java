@@ -8,7 +8,7 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
-import kr.co.rrs.VO.ReservationVO;
+import kr.co.rrs.vo.ReservationVO;
 
 public interface ReservationMapper  {
 	

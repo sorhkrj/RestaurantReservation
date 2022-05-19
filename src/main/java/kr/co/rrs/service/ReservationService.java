@@ -4,7 +4,7 @@ package kr.co.rrs.service;
 
 import java.util.ArrayList;
 
-import kr.co.rrs.VO.ReservationVO;
+import kr.co.rrs.vo.ReservationVO;
 
 public interface ReservationService {
 

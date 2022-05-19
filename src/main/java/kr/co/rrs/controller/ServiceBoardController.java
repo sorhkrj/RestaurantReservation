@@ -8,8 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import kr.co.rrs.VO.ServiceBoardVO;
 import kr.co.rrs.service.ServiceBoardService;
+import kr.co.rrs.vo.ServiceBoardVO;
 
 @Controller
 public class ServiceBoardController {

@@ -2,7 +2,7 @@ package kr.co.rrs.service;
 
 import java.util.List;
 
-import kr.co.rrs.VO.ServiceBoardVO;
+import kr.co.rrs.vo.ServiceBoardVO;
 
 public interface ServiceBoardService {
 	// 문의글 전체 목록 보기
