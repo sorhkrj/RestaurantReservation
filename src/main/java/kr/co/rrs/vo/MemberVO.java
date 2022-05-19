@@ -1,8 +1,9 @@
-package kr.co.rss.VO;
+package kr.co.rrs.vo;
 
 public class MemberVO {
 	private String id;
 	private String name;
+	private String phone;
 	private String password;
 	private String nickname;
 	private String memberLevel;
@@ -20,9 +21,18 @@ public class MemberVO {
 		return name;
 	}
 
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
 
 	public String getPassword() {
 		return password;

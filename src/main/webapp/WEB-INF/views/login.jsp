@@ -21,7 +21,7 @@
 					<p><input class="w3-input" type="text"></p>
 				</td>
 				<td width="150">
-					<button class="w3-button w3-white w3-border w3-border-blue w3-round-large">로그인</button>
+					<input type="submit" value="로그인" class="w3-button w3-white w3-border w3-border-blue w3-round-large"/>
 				</td>
 			</tr>
 			<tr>

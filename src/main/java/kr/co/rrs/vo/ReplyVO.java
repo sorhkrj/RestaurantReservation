@@ -1,4 +1,4 @@
-package kr.co.rss.VO;
+package kr.co.rrs.vo;
 
 public class ReplyVO {
 	private int replyNo;

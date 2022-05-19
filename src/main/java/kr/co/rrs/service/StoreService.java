@@ -1,8 +1,8 @@
-package kr.co.rss.service.store;
+package kr.co.rrs.service;
 
 import java.util.List;
 
-import kr.co.rss.VO.StoreVO;
+import kr.co.rrs.vo.StoreVO;
 
 public interface StoreService {
 

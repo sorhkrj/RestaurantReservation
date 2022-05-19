@@ -1,4 +1,4 @@
-package kr.co.rss.service.impl;
+package kr.co.rrs.service.impl;
 
 import java.util.List;
 
@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.co.rrs.mapper.StoreCapacityMapper;
-import kr.co.rss.VO.ReservePossibleVO;
-import kr.co.rss.service.store.StoreCapacityService;
+import kr.co.rrs.service.StoreCapacityService;
+import kr.co.rrs.vo.ReservePossibleVO;
 
 @Service
 public class StoreCapacityServiceImpl implements StoreCapacityService {
@@ -26,7 +26,7 @@ public class StoreCapacityServiceImpl implements StoreCapacityService {
 	}
 
 	@Override
-	public List<ReservePossibleVO> selectList(String storeNo) {
+	public List<ReservePossibleVO> selectList(int storeNo) {
 		return storeCapacityMapper.selectList(storeNo);
 	}
 

@@ -1,29 +1,41 @@
 package kr.co.rrs.controller;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+
+import kr.co.rrs.service.ServiceBoardService;
+import kr.co.rrs.vo.ServiceBoardVO;
 
 @Controller
 public class ServiceBoardController {
+	@Autowired
+	ServiceBoardService serviceBoardService;
 	
 	// 고객센터 목록 리스트
-	@RequestMapping(value =  "/serviceBoardMain", method = {RequestMethod.GET, RequestMethod.POST})
-	public String serviceBoardMain() {
+	@GetMapping("/serviceBoardMain")
+	public String serviceBoardMain(Model model) {
+		List<ServiceBoardVO> list = serviceBoardService.selectList();
+		model.addAttribute("serviceBoardList", list);
+		
 		return "serviceBoard/serviceBoardMain";
 	}
 
 	// 글 쓰기
-	@PostMapping("/serviceBoardInsert")
-	public String serviceBoardInsert() {
+	@GetMapping("/serviceBoardInsert")
+	public String serviceBoardInsert(ServiceBoardVO serviceBoardVO) {
 		return "serviceBoard/serviceBoardInsert";
 	}
 
 	// 글 쓰기 처리
 	@PostMapping("/serviceBoardInsertPro")
-	public String serviceBoardInsertPro() {
+	public String serviceBoardInsertPro(ServiceBoardVO serviceBoardVO) {
+		serviceBoardService.insert(serviceBoardVO);
+		
 		return "redirect:/serviceBoardMain";
 	}
 

@@ -1,11 +1,11 @@
-package kr.co.rss.service.impl;
+package kr.co.rrs.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.co.rrs.mapper.StoreMapper;
-import kr.co.rss.VO.StoreVO;
-import kr.co.rss.service.store.StoreService;
+import kr.co.rrs.service.StoreService;
+import kr.co.rrs.vo.StoreVO;
 
 @Service
 public class StoreServiceImpl implements StoreService {

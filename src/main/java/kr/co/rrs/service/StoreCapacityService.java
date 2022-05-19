@@ -1,12 +1,12 @@
-package kr.co.rss.service.store;
+package kr.co.rrs.service;
 
 import java.util.List;
 
-import kr.co.rss.VO.ReservePossibleVO;
+import kr.co.rrs.vo.ReservePossibleVO;
 
 public interface StoreCapacityService {
 
-	List<ReservePossibleVO> selectList(String storeNo);
+	List<ReservePossibleVO> selectList(int storeNo);
 	ReservePossibleVO selectOne(String storeNo, int day);
 	void insert(ReservePossibleVO reservePossibleVO);
 	void update(ReservePossibleVO reservePossibleVO);
