@@ -6,7 +6,7 @@ import kr.co.rss.VO.ReservePossibleVO;
 
 public interface StoreCapacityService {
 
-	List<ReservePossibleVO> selectList(String storeNo);
+	List<ReservePossibleVO> selectList(int storeNo);
 	ReservePossibleVO selectOne(String storeNo, int day);
 	void insert(ReservePossibleVO reservePossibleVO);
 	void update(ReservePossibleVO reservePossibleVO);

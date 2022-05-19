@@ -26,7 +26,7 @@ public class StoreCapacityServiceImpl implements StoreCapacityService {
 	}
 
 	@Override
-	public List<ReservePossibleVO> selectList(String storeNo) {
+	public List<ReservePossibleVO> selectList(int storeNo) {
 		return storeCapacityMapper.selectList(storeNo);
 	}
 
