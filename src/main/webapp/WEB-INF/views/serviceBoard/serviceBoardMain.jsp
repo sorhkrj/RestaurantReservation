@@ -16,36 +16,32 @@
 <c:import url="/WEB-INF/views/top.jsp"/>
 	<table border="1">
 		<tr>
-			<th colspan="6">음식점 이름</th>
+			<th colspan="6">문의글 전체 목록</th>
 		</tr>
 		<tr>
 			<th>번호</th>
-			<th>제목</th>
 			<th>작성자</th>
-			<th>등록일</th>
+			<th>제목</th>
+			<th>내용</th>
 			<th>조회수</th>
+			<th>작성일</th>
 			<th>답변여부</th>
 		</tr>
-		<tr>
-			<td colspan="6"><a href="serviceBoardDetail">DetailTest</a></td>
-		</tr>
-		<tr>
-			<c:if test="${boardServiceList != null }">
-				<c:forEach var="boardServiceList" items="${boardServiceList}">
-					<td>${boardServiceList.serviceNo }</td>
-					<td>${boardServiceList.id }</td>
-					<td>${boardServiceList.title }</td>
-					<td>${boardServiceList.content }</td>
-					<td>${boardServiceList.views }</td>
-					<td>${boardServiceList.regDate }</td>
-				</c:forEach>
-			</c:if>
-		</tr>
+		<c:if test="${serviceBoardList != null }">
+			<c:forEach var="serviceBoardList" items="${serviceBoardList}">
+			<tr>
+				<td>${serviceBoardList.serviceNo }</td>
+				<td>${serviceBoardList.id }</td>
+				<td><a href="serviceBoardDetail">${serviceBoardList.title }</a></td>
+				<td>${serviceBoardList.content }</td>
+				<td>${serviceBoardList.views }</td>
+				<td>${serviceBoardList.regDate }</td>
+			</tr>			
+			</c:forEach>
+		</c:if>
 		<tr>
 			<td colspan="6">
-				<form action="serviceBoardInsert" method="post">
-					<input type="submit" value="문의글 쓰기">
-				</form>
+				<input type="button" value="문의글 쓰기" onclick="location.href='serviceBoardInsert'"/>
 			</td>
 		</tr>
 	</table>
