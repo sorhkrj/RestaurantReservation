@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import kr.co.rrs.mapper.StoreCapacityMapper;
 import kr.co.rss.VO.ReservePossibleVO;
-import kr.co.rss.service.store.StoreCapacityService;
+import kr.co.rss.service.StoreCapacityService;
 
 @Service
 public class StoreCapacityServiceImpl implements StoreCapacityService {
@@ -26,7 +26,7 @@ public class StoreCapacityServiceImpl implements StoreCapacityService {
 	}
 
 	@Override
-	public List<ReservePossibleVO> selectList(String storeNo) {
+	public List<ReservePossibleVO> selectList(int storeNo) {
 		return storeCapacityMapper.selectList(storeNo);
 	}
 

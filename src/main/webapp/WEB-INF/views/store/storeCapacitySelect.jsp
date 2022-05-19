@@ -10,7 +10,7 @@
 </head>
 <body>
 <c:import url="/WEB-INF/views/top.jsp"/>
-
+	
 	<table>
 		<tr>
 			<td>날짜</td>
@@ -18,15 +18,16 @@
 			<td>예약 건수</td>
 			<td>좌석 수</td>
 		</tr>
-		<%-- <tr>
+		<tr>
 			<form:form modelAttribute = "storeCapacityVO">
-				<td><form:input items = "${storeCapacityList}" path = "DAY" /></td>
-				<td><form:input items = "${storeCapacityList}" path = "TIME" /></td>
-				<td><form:input items = "${storeCapacityList}" path = "CAPACITY" /></td>
-				<td><form:input items = "${storeCapacityList}" path = "SEAT" /></td>
+				<td><form:input items = "${storeCapacityVO}" path = "DAY" /></td>
+				<td><form:input items = "${storeCapacityVO}" path = "TIME" /></td>
+				<td><form:input items = "${storeCapacityVO}" path = "CAPACITY" /></td>
+				<td><form:input items = "${storeCapacityVO}" path = "SEAT" /></td>
 			</form:form>
-		</tr> --%>
+		</tr>
 	</table>
+		<a href = "storeCapacityInsert">등록</a>
 		<a href = "storeCapacityUpdate">수정</a>
 		<a href = "storeCapacityDeletePro">삭제</a>
 	

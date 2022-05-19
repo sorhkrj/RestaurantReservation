@@ -14,11 +14,11 @@ public interface StoreCapacityMapper {
 	@Insert("insert into reservepossible values(#{storeNo}, #{day}, #{time}, #{capacity}, #{seat})")
 	void insert(ReservePossibleVO reservePossibleVO);
 	
-	@Update("update reservepossible values(#{storeNo}, #{day}, #{time}, #{capacity}, #{seat})")
+	@Update("update reservepossible set storeNo = #{storeNo}, time = #{time}, capacity = #{capacity}, seat = #{seat} where day = #{day}")
 	void update(ReservePossibleVO reservePossibleVO);
 	
 	@Select("select * from store where storeno = #{storeno} and day >= SYSDATE")
-	List<ReservePossibleVO> selectList(String id);
+	List<ReservePossibleVO> selectList(int storeNo);
 	
 	@Select("select * from store where storeno = #{storeno} and day =#{day}")
 	ReservePossibleVO select(String day, int storeno);
