@@ -1,13 +1,13 @@
-package kr.co.rss.service.impl;
+package kr.co.rrs.service.impl;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import kr.co.rrs.VO.ServiceBoardVO;
 import kr.co.rrs.mapper.ServiceBoardMapper;
-import kr.co.rss.VO.ServiceBoardVO;
-import kr.co.rss.service.ServiceBoardService;
+import kr.co.rrs.service.ServiceBoardService;
 @Service
 public class ServiceBoardServiceImpl implements ServiceBoardService {
 	@Autowired

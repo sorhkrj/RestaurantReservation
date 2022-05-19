@@ -1,13 +1,13 @@
-package kr.co.rss.service.impl;
+package kr.co.rrs.service.impl;
 
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import kr.co.rss.service.ReservationService;
+import kr.co.rrs.VO.ReservationVO;
 import kr.co.rrs.mapper.ReservationMapper;
-import kr.co.rss.VO.ReservationVO;
+import kr.co.rrs.service.ReservationService;
 
 @Service
 public class ReservationServiceImpl implements ReservationService {

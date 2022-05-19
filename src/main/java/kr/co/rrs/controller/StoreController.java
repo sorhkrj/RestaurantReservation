@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import kr.co.rss.VO.ReservePossibleVO;
-import kr.co.rss.VO.StoreVO;
-import kr.co.rss.service.StoreService;
+import kr.co.rrs.VO.ReservePossibleVO;
+import kr.co.rrs.VO.StoreVO;
+import kr.co.rrs.service.StoreService;
 
 @Controller
 @SessionAttributes("storeVO")
