@@ -16,7 +16,7 @@ public class MemberController {
 	@Autowired
 	MemberService memberService;
 
-	// ȸ������
+
 	@GetMapping("/memberInsert")
 	public String memberInsert() {
 		return "member/memberInsert";
@@ -34,31 +34,31 @@ public class MemberController {
 		return "forward:memberSelect";
 	}
 
-	// ������ ȸ������
+
 	@GetMapping("/memberInsertEnterprise")
 	public String memberInsertEnterprise() {
 		return "member/memberInsertEnterprise";
 	}
 
-	// ȸ���˻����
+
 	@GetMapping("/resultMember")
 	public String resultMember() {
 		return "member/resultMember";
 	}
 
-	// �����˻����
+	
 	@GetMapping("/resultStore")
 	public String resultStore() {
 		return "member/resultStore";
 	}
 
-	// ȸ���˻�
+	
 	@GetMapping("/searchMember")
 	public String seachMember() {
 		return "member/searchMember";
 	}
 
-	// �����˻�
+
 	@GetMapping("/searchStore")
 	public String searchStore() {
 		return "member/searchStore";
@@ -66,13 +66,13 @@ public class MemberController {
 
 	
 
-	// ȸ��Ż��
+	
 	@GetMapping("/memberDeleteCheck")
 	public String memberDeleteCheck() {
 		return "member/memberDeleteCheck";
 	}
 
-	// ȸ������
+	
 	@GetMapping("/memberUpdateCheck")
 	public String memberUpdateCheck() {
 		return "member/memberUpdateCheck";
