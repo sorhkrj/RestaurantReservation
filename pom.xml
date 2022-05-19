@@ -36,6 +36,7 @@
 		<org.mybatis-version>2.0.6</org.mybatis-version>
 		<com.fasterxml.jackson.core-version>2.12.1</com.fasterxml.jackson.core-version>
 		<com.oracle.database.jdbc-version>11.2.0.4</com.oracle.database.jdbc-version>
+		<org.aspectj-version>1.9.6</org.aspectj-version>
 	</properties>
 	<repositories>
 		<repository>
@@ -161,6 +162,17 @@
 		    <groupId>org.hibernate</groupId>
 		    <artifactId>hibernate-validator</artifactId>
 		    <version>6.2.1.Final</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.aspectj/aspectjweaver -->
+		<dependency>
+                    <groupId>org.aspectj</groupId>
+                    <artifactId>aspectjrt</artifactId>
+                    <version>${org.aspectj-version}</version>
+		</dependency>
+		<dependency>
+                    <groupId>org.aspectj</groupId>
+                    <artifactId>aspectjweaver</artifactId>
+                    <version>${org.aspectj-version}</version>
 		</dependency>
 	</dependencies>
 </project>
