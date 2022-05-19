@@ -40,7 +40,7 @@ body {
 					<h2 class="text-center">예약상세정보</h2>
 					<div class="input-group mb-3">
 						<span class="input-group-text col-3 text-center">음식점이름</span> 
-						<input type="text" class="form-control" name="storename" disabled>
+						<input type="text" class="form-control" name="storename" value="${requestScope.storeNo }"disabled>
 					</div>
 					<div class="input-group mb-3">
 						<span class="input-group-text col-3 text-center">예약인원</span> 

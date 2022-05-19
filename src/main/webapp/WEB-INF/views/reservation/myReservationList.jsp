@@ -43,12 +43,30 @@ body {
 			<table class="table table-striped">
 				<thead>
 					<tr>
-						<th class="col">음식점</th>
-						<th class="col">방문일</th>
+						<th class="col">이름</th>
+						<th class="col">가게명</th>
+						<th class="col">방문인원</th>
+						<th class="col">방문일자</th>
 						<th class="col">방문시간</th>
+						<th class="col">방문자이름</th>
+						<th class="col">방문자전화번호</th>
+						<th class="col">등록시간</th>
 					</tr>
 				</thead>
 				<tbody>
+			 
+							<c:forEach var="reservation" items="${list}"> 
+						<tr>
+						 		<th scope="row">${reservation.id}</th>
+								<td>${reservation.storeNo}</td>
+								<td>${reservation.people}</td>
+								<td>${reservation.visitDay}</td>
+								<td>${reservation.visitTime}</td>
+								<td>${reservation.visitName}</td>
+								<td>${reservation.visitPhone}</td>
+								<td><a href="/reservationSelect?reservation="${reservation.reserveNo }>${reservation.regDate}</a></td>
+						</tr>
+					</c:forEach>
 
 				</tbody>
 			</table>
