@@ -27,8 +27,8 @@ public class ReservationServiceImpl implements ReservationService {
 	}
     //
 	@Override
-	public void deleteRes(ReservationVO rvo) {
-		mapper.mapperdeleteRes(rvo);
+	public void deleteRes(int rno) {
+		mapper.mapperdeleteRes(rno);
 	}
 	//
 	@Override
@@ -37,8 +37,8 @@ public class ReservationServiceImpl implements ReservationService {
 	}
 
 	@Override
-	public ReservationVO selectRes(ReservationVO rvo) {
-		return mapper.mapperSelectRes(rvo);
+	public ReservationVO selectRes(int rno) {
+		return mapper.mapperSelectRes(rno);
 	}
 
 	@Override

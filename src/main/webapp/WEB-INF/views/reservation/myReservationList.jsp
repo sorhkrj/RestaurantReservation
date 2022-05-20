@@ -28,6 +28,8 @@ body {
 	width: 1000px; /*가로 조절*/
 	border: 1px solid black;
 }
+
+ 
 </style>
 
 
@@ -51,26 +53,30 @@ body {
 						<th class="col">방문자이름</th>
 						<th class="col">방문자전화번호</th>
 						<th class="col">등록시간</th>
+						<th class="col">삭제</th>
+						
 					</tr>
 				</thead>
 				<tbody>
 			 
-							<c:forEach var="reservation" items="${list}"> 
+					<c:forEach var="reservation" items="${list}"> 
 						<tr>
-						 		<th scope="row">${reservation.id}</th>
+			
+						 		<td><a href="reservationSelect?reserveNo=${reservation.reserveNo}">${reservation.id}</a></td>
 								<td>${reservation.storeNo}</td>
 								<td>${reservation.people}</td>
 								<td>${reservation.visitDay}</td>
 								<td>${reservation.visitTime}</td>
 								<td>${reservation.visitName}</td>
 								<td>${reservation.visitPhone}</td>
-								<td><a href="/reservationSelect?reservation="${reservation.reserveNo }>${reservation.regDate}</a></td>
-						</tr>
+								<td>${reservation.regDate}</td>
+								<td><a href=""type="button" class="btn btn-sm btn-primary m-0" onclick="delete();">삭제</a></td>
+						</tr> 
 					</c:forEach>
 
 				</tbody>
 			</table>
-			<button type="button" class="btn btn-primary btn-sm">세부정보</button>
+			
 		</div>
 	</div>
 	<c:import url="/WEB-INF/views/footer.jsp"/>

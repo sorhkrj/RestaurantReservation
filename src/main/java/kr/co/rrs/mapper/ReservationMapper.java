@@ -31,8 +31,8 @@ public interface ReservationMapper  {
 	void mapperUpdateSeatDecrease(ReservationVO rvo);
 	
 	//예약취소
-	@Delete("delete from reservation where id=#{id} and visitDay=#{visitDay} and visitTime=#{visitTime}")
-	void mapperdeleteRes(ReservationVO rvo);
+	@Delete("delete from reservation where reserveno=#{rno}")
+	void mapperdeleteRes(int rno);
 
  // @Delete("delete from reservation where id=#{id} and visitDay=#{visitDay} and visitTime=#{visitTime}")
  //	void delete(@Param("id") String id, @Param("visitDay") String visitDay, @Param("visitTime") String visitTime );
@@ -42,8 +42,8 @@ public interface ReservationMapper  {
 	ArrayList<ReservationVO> mapperListRes(String id);
 	
 	//예약상세
-	@Select("select * from reservation where id=#{id} and visitDay=#{visitDay} and visitTime=#{visitTime}")
-	ReservationVO mapperSelectRes(ReservationVO rvo);
+	@Select("select * from reservation where reserveno=#{rno}")
+	ReservationVO mapperSelectRes(int rno);
 	
 //	@Select("select * from reservation where id=${id} and visitDay=${visitDay} and visitTime=${visitTime}")
 //	ReservationVO select(@Param("id") String id, @Param("visitDay") String visitDay, @Param("visitTime") String visitTime);
