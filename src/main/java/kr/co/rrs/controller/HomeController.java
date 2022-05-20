@@ -1,21 +1,25 @@
 package kr.co.rrs.controller;
 
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.context.request.WebRequest;
 
-import kr.co.rrs.service.SessionService;
+import kr.co.rrs.service.HomeService;
 import kr.co.rrs.vo.MemberVO;
+import kr.co.rrs.vo.StoreVO;
 
 @Controller
 public class HomeController {
 	
 	@Autowired
-	SessionService sessionService;
+	HomeService homeService;
 	
 	@GetMapping("/")
 	public String home(HttpSession session) {
@@ -31,26 +35,32 @@ public class HomeController {
 	}
 	
 	@PostMapping("/loginPro")
-	public String loginPro(HttpSession session, WebRequest request) {
+	public String loginPro(HttpServletRequest request, HttpSession session) {
 		String id = request.getParameter("id");
 		String password = request.getParameter("password");
-		MemberVO member = sessionService.loginCheck(id);
+		MemberVO member = homeService.loginCheck(id);
 		if (password.equals(member.getPassword())) {
-			session.setAttribute("id", member.getId()); //테스트 코드
-			session.setAttribute("nickName", member.getNickname()); //테스트 코드
-			session.setAttribute("memberLevel", member.getMemberLevel()); //테스트 코드
-			session.setMaxInactiveInterval(1);
+			session.setAttribute("id", member.getId());
+			session.setAttribute("nickName", member.getNickname());
+			session.setAttribute("memberLevel", member.getMemberLevel());
+			session.setMaxInactiveInterval(60);
 		}
 		return "redirect:/";
 	}
 	
-	@PostMapping("/logout")
-	public String logout() {
+	@GetMapping("/logout")
+	public String logout(HttpSession session) {
+		session.setAttribute("id", null);
+		session.setAttribute("nickName", null);
+		session.setAttribute("memberLevel", null);
+		session.setMaxInactiveInterval(0);
 		return "redirect:/";
 	}
 	
 	@GetMapping("/searchResult")
-	public String searchResult() {
+	public String searchResult(Model model, HttpServletRequest request) {
+		List<StoreVO> storeList = homeService.searchResultList();
+		model.addAttribute("storeList", storeList);
 		return "searchResult";
 	}
 }
