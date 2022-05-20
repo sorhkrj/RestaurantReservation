@@ -28,27 +28,23 @@
 			<th>답변여부</th>
 		</tr>
 		<c:if test="${selectList != null }">
-			<c:forEach var="selectList" items="${selectList}">
-			<tr>
-				<td>${selectList.serviceNo }</td>
-				<td>${selectList.id }</td>
-				<td><a href="serviceBoardDetail?serviceNo=${selectList.serviceNo }&views=${selectList.views }">${selectList.title }</a></td>
-				<td>${selectList.content }</td>
-				<td>${selectList.views }</td>
-				<td>${selectList.regDate }</td>
-				<c:if test="${replyList != null}">
-					<c:forEach var="replyList" items="${replyList }">
-						<c:choose>
-							<c:when test="${selectList.serviceNo != replyList.serviceNo}">
-								<td>N</td>
-							</c:when>
-							<c:otherwise>
-								<td>Y</td>
-							</c:otherwise>
-						</c:choose>
-					</c:forEach>					
-				</c:if> 
-			</tr>			
+			<c:forEach var="i" begin="0" end="${selectList.size()-1 }">
+				<tr>
+					<td>${selectList.get(i).serviceNo }</td>
+					<td>${selectList.get(i).id }</td>
+					<td><a href="serviceBoardDetail?serviceNo=${selectList.get(i).serviceNo }&views=${selectList.get(i).views }">${selectList.get(i).title }</a></td>
+					<td>${selectList.get(i).content }</td>
+					<td>${selectList.get(i).views }</td>
+					<td>${selectList.get(i).regDate }</td>
+					<c:if test="${replyList.get(i) != null }">
+						<c:if test="${not empty replyList.get(i)}">
+							<td>Y</td>					
+						</c:if>
+					</c:if>
+					<c:if test="${replyList.get(i) == null}">
+						<td>N</td>					
+					</c:if> 
+				</tr>			
 			</c:forEach>
 		</c:if>
 		<tr>

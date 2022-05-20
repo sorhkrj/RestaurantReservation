@@ -18,7 +18,7 @@ public interface ServiceBoardMapper {
 	List<ServiceBoardVO> selectList();
 	
 	@Select("select * from reply where serviceNo = #{serviceNo}")
-	List<ReplyVO> selectReply(@Param("serviceNo") int serviceNo);
+	ReplyVO selectReply(@Param("serviceNo") int serviceNo);
 	
 	@Select("select * from serviceBoard where serviceNo = #{serviceNo}")
 	ServiceBoardVO selectDetail(@Param("serviceNo") int serviceNo);

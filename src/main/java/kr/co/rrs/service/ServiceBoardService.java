@@ -18,9 +18,9 @@ public interface ServiceBoardService {
 	ServiceBoardVO selectDetail(int serviceNo);
 	
 	// 문의글 번호에 해당하는 답변 불러오기
-	List<ReplyVO> selectReply(@Param("serviceNo") int serviceNo);
+	ReplyVO selectReply(int serviceNo);
 	
 	// 조회수 업데이트
-	void updateViews(@Param("views") int views, @Param("serviceNo") int serviceNo);
+	void updateViews(int views, int serviceNo);
 	
 }
