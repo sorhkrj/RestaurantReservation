@@ -16,7 +16,7 @@ public class StoreCapacityServiceImpl implements StoreCapacityService {
 	private StoreCapacityMapper storeCapacityMapper;
 
 	@Override
-	public void delete(String storeNo, int day) {
+	public void delete(int storeNo, String day) {
 		storeCapacityMapper.delete(storeNo, day);
 	}
 
@@ -26,12 +26,12 @@ public class StoreCapacityServiceImpl implements StoreCapacityService {
 	}
 
 	@Override
-	public List<ReservePossibleVO> selectList() {
-		return storeCapacityMapper.selectList();
+	public List<ReservePossibleVO> selectList(int storeNo) {
+		return storeCapacityMapper.selectList(storeNo);
 	}
 
 	@Override
-	public ReservePossibleVO selectOne(String storeNo, int day) {
+	public ReservePossibleVO selectOne(int storeNo, String day) {
 		return storeCapacityMapper.select(storeNo, day);
 	}
 

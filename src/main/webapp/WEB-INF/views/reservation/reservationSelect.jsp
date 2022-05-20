@@ -28,6 +28,16 @@ body {
 }
 </style>
 
+ <script>
+    function drop() 
+    {
+	 	if (confirm("삭제하시겠습니까?")) {
+	    	location.href="reservationDelete?reserveNo=${reservation.reserveNo}";    
+	    } else {
+	    	location.href="myReservationList";    
+	    }
+    }
+  </script>
 
 <title>예약상세정보</title>
 </head>
@@ -40,33 +50,34 @@ body {
 					<h2 class="text-center">예약상세정보</h2>
 					<div class="input-group mb-3">
 						<span class="input-group-text col-3 text-center">음식점이름</span> 
-						<input type="text" class="form-control" name="storename" value="${requestScope.storeNo }"disabled>
+						<input type="text" class="form-control" name="storename" value="${reservation.storeNo }" disabled>
 					</div>
 					<div class="input-group mb-3">
 						<span class="input-group-text col-3 text-center">예약인원</span> 
-						<input type="text" class="form-control" name="people" disabled>
+						<input type="text" class="form-control" name="people" value="${reservation.people }" disabled>
 					</div>
 					<div class="input-group mb-3">
 						<span class="input-group-text col-3 text-center">방문일자</span> 
-						<input type="text" class="form-control" name="visitDay" disabled>
+						<input type="text" class="form-control" name="visitDay" value="${reservation.visitDay }" disabled>
 					</div>
 					<div class="input-group mb-3">
 						<span class="input-group-text col-3 text-center">방문시간</span> 
-						<input type="text" class="form-control" name="visitTime" disabled>
+						<input type="text" class="form-control" name="visitTime" value="${reservation.visitTime }" disabled>
 					</div>
 					<div class="input-group mb-3">
 						<span class="input-group-text col-3 text-center">방문인이름</span> 
-						<input type="text" class="form-control" name="visitName" disabled>
+						<input type="text" class="form-control" name="visitName" value="${reservation.visitName }" disabled>
 					</div>
 					<div class="input-group mb-3">
 						<span class="input-group-text col-3 text-center">방문인 전화번호</span> 
-						<input type="text" class="form-control" name="visitPhone" disabled>
+						<input type="text" class="form-control" name="visitPhone" value="${reservation.visitPhone }" disabled>
 					</div>
 				</div>
 				<div class="row text-center">
 					<div class="container mt-3">
-						<input type="submit" class="btn btn-primary" value="수정하기"> 
-						<a href="javascript:window.history.go(-1);" type="button" class="btn btn-primary">돌아가기</a> 
+						<input type="submit" class="btn btn-primary" value="수정"> 
+						<a type="button" class="btn btn-primary" onclick="delete();">삭제</a> 
+						<a href="javascript:window.history.go(-1);" type="button" class="btn btn-primary">취소</a> 
 	     			</div>
 				</div>
 			</div>

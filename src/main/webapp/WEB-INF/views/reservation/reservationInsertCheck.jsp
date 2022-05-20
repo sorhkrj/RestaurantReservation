@@ -36,7 +36,7 @@ body {
 <body>
 <div class="container">
 	<c:import url="/WEB-INF/views/top.jsp"/>
-		<form class="container" action="myReservationList" method="get">
+		<form class="container" action="reservationInsert" method="post">
 			<div class="container mt-3 p-3" id="form">
 				<div class="row">
 					<h2 class="text-center">예약확인</h2>

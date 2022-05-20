@@ -12,9 +12,9 @@ public interface ReservationService {
 	void updateRes(ReservationVO rvo);
 	void updateSeatIns(ReservationVO rvo);
 	void updateSeatdes(ReservationVO rvo);
-	void deleteRes(ReservationVO rvoe);
+	void deleteRes(int rno);
 	ArrayList<ReservationVO> listRes(String id);
-	ReservationVO selectRes(ReservationVO rvo);
+	ReservationVO selectRes(int rno);
 	String memberPhone(String id);
 	
 }

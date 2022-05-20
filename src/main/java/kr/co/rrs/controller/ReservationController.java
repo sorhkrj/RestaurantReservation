@@ -22,10 +22,18 @@ public class ReservationController {
 	@Autowired
 	ReservationService service;
 	
-	@PostMapping("/reservationCheck")
-	public String checkReservation() {
+	@PostMapping("/reservationInsertCheck")
+	public String checkReservation(ReservationVO rvo, Model model) {
 		
-		return "reservation/reservationCheck";
+		model.addAttribute("rvo",rvo);
+				
+		return "reservation/reservationInsertCheck";
+	}
+	
+	@PostMapping("/reservationInsert")
+	public String insertReservation(ReservationVO rvo) {
+		
+		return "reservation/reservationInsert";
 	}
 	
 	@GetMapping("/myReservationList")
@@ -43,14 +51,21 @@ public class ReservationController {
 		return "reservation/reservationUpdate";
 	}
 	
-	@PostMapping("/reservationInsert")
-	public String insertReservation() {
-		return "reservation/reservationInsert";
+	
+	@GetMapping("/reservationDelete")
+	public String deleteReservation(HttpServletRequest request, Model model) {
+		int rno = Integer.valueOf(request.getParameter("reserveNo"));
+		service.selectRes(rno);
+		
+		ArrayList<ReservationVO> list = service.listRes("a");
+		model.addAttribute("list", list);
+		return "reservation/reservationList";
 	}
 	
 	@GetMapping("/reservationSelect")
-	public String selectReservation(ReservationVO rvo, Model model) {
-		ReservationVO reservation = service.selectRes(rvo);
+	public String selectReservation(HttpServletRequest request, Model model) {
+		int rno = Integer.valueOf(request.getParameter("reserveNo"));
+		ReservationVO reservation = service.selectRes(rno);
 		model.addAttribute("reservation", reservation);
 		return "reservation/reservationSelect";
 	}
