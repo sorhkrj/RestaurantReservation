@@ -53,11 +53,11 @@
     </div>
     <div class="input-group mb-3">
       <span class="input-group-text col-3 text-center">전화번호</span>
-  
+   &nbsp; ${memberVO.phone}
     </div>
     <div class="input-group mb-3">
       <span class="input-group-text col-3 text-center">별명</span>
-   
+    &nbsp; ${memberVO.nickname}
     </div>
   </div>
   <div class="row text-center">

@@ -21,16 +21,18 @@ import kr.co.rrs.vo.MemberVO;
 	public String memberInsert() {
 		return "member/memberInsert";
 	}
-	//내정보
-	@GetMapping("/memberSelect")
-	public String memberSelect(Model model) {
-		model.addAttribute("memberVO", memberService.selectOne("yoon"));
-		return "member/memberSelect";
-	}
 	@GetMapping("/memberInsertPro")
 	public String memberInsertPro(MemberVO memberVO) {
 		memberService.insert(memberVO);
 		return "forward:memberSelect";
+	}
+	//내정보
+	@GetMapping("/memberSelect")
+	public String memberSelect(Model model, HttpSession session) {
+		String id = (String) session.getAttribute("id");
+		MemberVO memberVO = memberService.selectOne("yoon");
+		model.addAttribute("memberVO", memberVO);
+		return "member/memberSelect";
 	}
 	//지점장 회원가입
 	@GetMapping("/memberInsertEnterprise")
