@@ -26,7 +26,7 @@
 			</tr>
 			<tr>
 				<td align="center" colspan="3">
-					<button onclick="memberInsert" class="w3-button w3-white w3-border w3-border-blue w3-round-large">일반 회원가입</button>
+					<input type = "submit" value ="일반회원가입" formaction = "memberInsert" class="w3-button w3-white w3-border w3-border-blue w3-round-large">
 				</td>
 			</tr>
 			<tr>
