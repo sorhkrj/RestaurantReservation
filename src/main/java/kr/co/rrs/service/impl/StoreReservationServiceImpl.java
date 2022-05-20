@@ -18,9 +18,8 @@ public class StoreReservationServiceImpl implements StoreReservationService {
 	@Override
 	public List<ReservationVO> selectAll(int storeNo) {
 		return mapper.selectAll(storeNo);
-
 	}
-
+	
 	@Override
 	public void delete(int reserveNo) {
 		mapper.delete(reserveNo);

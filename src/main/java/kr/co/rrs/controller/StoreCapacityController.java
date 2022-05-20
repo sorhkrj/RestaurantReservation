@@ -8,11 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.co.rrs.service.StoreCapacityService;
-import kr.co.rrs.service.StoreReservationService;
 import kr.co.rrs.vo.ReservePossibleVO;
 
 @Controller
@@ -46,33 +43,35 @@ public class StoreCapacityController {
 		for (int i = 0; i < lsc.size(); i++) {
 			StringTokenizer st = new StringTokenizer(lsc.get(i).getTime(), ",");
 			String[] aStrings = new String[st.countTokens()];
+			
 			int j = 0;
 			while (st.hasMoreTokens()) {
+				//System.out.println(st.nextToken());
 				aStrings[j] = st.nextToken();
-				j = j + 1;
+				j++;
 			}
 			timeList.add(aStrings);
 		}
-		System.out.println(timeList.get(0).length);
-		System.out.println(timeList.get(0).length);
-		
 		model.addAttribute("timeList", timeList);
 		model.addAttribute("capaList", storeCapacityService.selectList(storeNo));
 		return "/store/storeCapacitySelect";
 	}
 
 	@GetMapping("/storeCapacityUpdate")
-	public String storeCapacityUpdate() {
-		return "/store/storeCapacityUpdate";
+	public String storeCapacityUpdate(ReservePossibleVO reservePossibleVO, int storeNo, String day, Model model) {
+		model.addAttribute("reservePossibleVO", storeCapacityService.selectOne(storeNo, day));
+		return "forward:/storeCapacityInsert";
 	}
 
 	@GetMapping("/storeCapacityDeletePro")
 	public String storeCapacityDeletePro() {
+		
 		return "/store/storeCapacitySelect";
 	}
 
 	@GetMapping("/storeCapacityUpdatePro")
-	public String storeCapacityUpdatePro() {
+	public String storeCapacityUpdatePro(ReservePossibleVO reservePossibleVO) {
+		storeCapacityService.update(reservePossibleVO);
 		return "/store/storeCapacitySelect";
 	}
 

@@ -11,8 +11,7 @@
 </head>
 <body>
 <c:import url="/WEB-INF/views/top.jsp"/>
-<!-- 이 페이지는 전면수정 필요  -->
-	<table>
+	<table border ='1'>
 		<tr>
 			<td>날짜</td>
 			<td>예약 가능시간</td>
@@ -24,42 +23,27 @@
 			<tr>
 				<td>${i.day } </td>
 				<td>
-				<table>
+				<table border ='1'>
 					<tr>
 						<td>오전</td><td>1시</td><td>2시</td><td>3시</td><td>4시</td><td>5시</td><td>6시</td>
 									<td>7시</td><td>8시</td><td>9시</td><td>10시</td><td>11시</td><td>12시</td>
 					</tr>
 					<tr>
 						<td>오전</td>
-						<c:forEach var = "j" varStatus="no2" begin="1" end="12"> 
-							<td>
-								<c:forEach varStatus = "no3" begin = "1" end = "${fn:length(timeList[no.index]) }">
-									<c:set var = "check" value = "${timeList[no.index][no3.index] }"/>  
-									<c:choose>
-										<c:when test="${fn:contains(check, no2.count)}">o</c:when>
-										<c:otherwise>x</c:otherwise>
-									</c:choose>
-								</c:forEach>
-							</td>
-						</c:forEach>
+							<c:set var="check" value="${timeList[no.index][0] }"/>
+							<c:forEach var = "j" varStatus="no2" begin="1" end="12">
+								<td>
+								<c:choose> 
+								<c:when test="${check eq no2.count}">o</c:when>
+								</c:choose>	
+								</td>
+							</c:forEach>
 					</tr>
 					<tr>
 						<td>오후</td><td>1시</td><td>2시</td><td>3시</td><td>4시</td><td>5시</td><td>6시</td>
 									<td>7시</td><td>8시</td><td>9시</td><td>10시</td><td>11시</td><td>12시</td>
 					</tr>
 					<tr>
-						<td>오후</td>
-						<c:forEach var = "j" varStatus="no2" begin="1" end="12">
-							<td>
-								<c:forEach varStatus = "no3" begin = "1" end = "${fn:length(timeList[no.index])  }">
-									<c:set var = "check" value = "${timeList[no.index][no3.index] }"/>  
-									<c:choose>
-										 <c:when test="${fn:contains(check, no2.count+12)}"><td>o</td></c:when>
-										 	<c:otherwise><td>x</td></c:otherwise>
-									</c:choose>
-								</c:forEach>
-							</td>
-						</c:forEach>
 					</tr>
 				</table>
 				</td>
