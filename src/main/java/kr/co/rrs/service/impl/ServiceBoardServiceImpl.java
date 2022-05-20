@@ -37,7 +37,7 @@ public class ServiceBoardServiceImpl implements ServiceBoardService {
 	}
 
 	@Override
-	public List<ReplyVO> selectReply(int serviceNo) {
+	public ReplyVO selectReply(int serviceNo) {
 		return serviceBoardMapper.selectReply(serviceNo); // 문의글 번호에 해당하는 답변 불러오기
 	}
 
