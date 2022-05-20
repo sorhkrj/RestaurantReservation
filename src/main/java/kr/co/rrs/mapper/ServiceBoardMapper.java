@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
+import kr.co.rrs.vo.ReplyVO;
 import kr.co.rrs.vo.ServiceBoardVO;
 
 public interface ServiceBoardMapper {
@@ -15,6 +16,9 @@ public interface ServiceBoardMapper {
 	
 	@Select("select * from serviceBoard order by serviceNo desc")
 	List<ServiceBoardVO> selectList();
+	
+	@Select("select * from reply where serviceNo = #{serviceNo}")
+	List<ReplyVO> selectReply(@Param("serviceNo") int serviceNo);
 	
 	@Select("select * from serviceBoard where serviceNo = #{serviceNo}")
 	ServiceBoardVO selectDetail(@Param("serviceNo") int serviceNo);

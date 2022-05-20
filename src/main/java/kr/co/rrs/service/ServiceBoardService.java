@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
+import kr.co.rrs.vo.ReplyVO;
 import kr.co.rrs.vo.ServiceBoardVO;
 
 public interface ServiceBoardService {
@@ -15,6 +16,9 @@ public interface ServiceBoardService {
 	
 	// 문의글 상세보기
 	ServiceBoardVO selectDetail(int serviceNo);
+	
+	// 문의글 번호에 해당하는 답변 불러오기
+	List<ReplyVO> selectReply(@Param("serviceNo") int serviceNo);
 	
 	// 조회수 업데이트
 	void updateViews(@Param("views") int views, @Param("serviceNo") int serviceNo);

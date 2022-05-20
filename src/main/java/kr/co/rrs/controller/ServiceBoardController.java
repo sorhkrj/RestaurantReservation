@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.co.rrs.service.ServiceBoardService;
+import kr.co.rrs.vo.ReplyVO;
 import kr.co.rrs.vo.ServiceBoardVO;
 
 @Controller
@@ -23,7 +24,16 @@ public class ServiceBoardController {
 	@GetMapping("/serviceBoardMain")
 	public String serviceBoardMain(Model model) {
 		List<ServiceBoardVO> list = serviceBoardService.selectList();
+		List<ReplyVO> list2 = null;
+		if(list != null) {
+			for(int i=0; i<list.size(); i++) {
+				list2 = serviceBoardService.selectReply(list.get(i).getServiceNo());
+				
+			}
+		}
+		
 		model.addAttribute("selectList", list);
+		model.addAttribute("replyList", list2);
 		
 		return "serviceBoard/serviceBoardMain";
 	}

@@ -36,6 +36,18 @@
 				<td>${selectList.content }</td>
 				<td>${selectList.views }</td>
 				<td>${selectList.regDate }</td>
+				<c:if test="${replyList != null}">
+					<c:forEach var="replyList" items="${replyList }">
+						<c:choose>
+							<c:when test="${selectList.serviceNo != replyList.serviceNo}">
+								<td>N</td>
+							</c:when>
+							<c:otherwise>
+								<td>Y</td>
+							</c:otherwise>
+						</c:choose>
+					</c:forEach>					
+				</c:if> 
 			</tr>			
 			</c:forEach>
 		</c:if>
