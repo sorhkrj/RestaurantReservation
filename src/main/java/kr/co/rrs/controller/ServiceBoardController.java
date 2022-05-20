@@ -1,5 +1,6 @@
 package kr.co.rrs.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -26,9 +27,9 @@ public class ServiceBoardController {
 		List<ServiceBoardVO> list = serviceBoardService.selectList();
 		List<ReplyVO> list2 = null;
 		if(list != null) {
+			list2 = new ArrayList<ReplyVO>();
 			for(int i=0; i<list.size(); i++) {
-				list2 = serviceBoardService.selectReply(list.get(i).getServiceNo());
-				
+				list2.add(serviceBoardService.selectReply(list.get(i).getServiceNo()));
 			}
 		}
 		
