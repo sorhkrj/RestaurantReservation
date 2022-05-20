@@ -44,33 +44,33 @@ body {
 <body>
 <div class="container">
 	<c:import url="/WEB-INF/views/top.jsp"/>
-		<form class="container" action="reservationUpdate" method="get">
+		<form class="container" action="reservationUpdate" method="post">
 			<div class="container mt-3 p-3" id="form">
 				<div class="row">
 					<h2 class="text-center">예약상세정보</h2>
 					<div class="input-group mb-3">
 						<span class="input-group-text col-3 text-center">음식점이름</span> 
-						<input type="text" class="form-control" name="storename" value="${reservation.storeNo }" disabled>
+						<input type="text" class="form-control" name="storeNo" value="${reservation.storeNo }" readonly>
 					</div>
 					<div class="input-group mb-3">
 						<span class="input-group-text col-3 text-center">예약인원</span> 
-						<input type="text" class="form-control" name="people" value="${reservation.people }" disabled>
+						<input type="text" class="form-control" name="people" value="${reservation.people }" readonly>
 					</div>
 					<div class="input-group mb-3">
 						<span class="input-group-text col-3 text-center">방문일자</span> 
-						<input type="text" class="form-control" name="visitDay" value="${reservation.visitDay }" disabled>
+						<input type="text" class="form-control" name="visitDay" value="${reservation.visitDay }" readonly>
 					</div>
 					<div class="input-group mb-3">
 						<span class="input-group-text col-3 text-center">방문시간</span> 
-						<input type="text" class="form-control" name="visitTime" value="${reservation.visitTime }" disabled>
+						<input type="text" class="form-control" name="visitTime" value="${reservation.visitTime }" readonly>
 					</div>
 					<div class="input-group mb-3">
 						<span class="input-group-text col-3 text-center">방문인이름</span> 
-						<input type="text" class="form-control" name="visitName" value="${reservation.visitName }" disabled>
+						<input type="text" class="form-control" name="visitName" value="${reservation.visitName }" readonly>
 					</div>
 					<div class="input-group mb-3">
 						<span class="input-group-text col-3 text-center">방문인 전화번호</span> 
-						<input type="text" class="form-control" name="visitPhone" value="${reservation.visitPhone }" disabled>
+						<input type="text" class="form-control" name="visitPhone" value="${reservation.visitPhone }" readonly>
 					</div>
 				</div>
 				<div class="row text-center">

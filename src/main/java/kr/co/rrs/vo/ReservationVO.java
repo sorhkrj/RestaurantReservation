@@ -1,5 +1,7 @@
 package kr.co.rrs.vo;
 
+import java.sql.Date;
+
 public class ReservationVO {
 	private int reserveNo;
 	private String id;
@@ -10,6 +12,9 @@ public class ReservationVO {
 	private String visitName;
 	private String visitPhone;
 	private String regDate;
+
+	
+	
 
 	public int getReserveNo() {
 		return reserveNo;
