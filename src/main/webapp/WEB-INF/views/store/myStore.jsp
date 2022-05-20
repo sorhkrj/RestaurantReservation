@@ -21,8 +21,8 @@
 	공지사항 : ${storeVO.notice}<br>
 
 		<a href = "storeUpdate">수정하기</a><br>
-		<a href = "storeReservation">예약현황</a><br>
-		<a href = "storeCapacitySelect">예약가능시간 확인</a><br>
+		<a href = "storeReservation?storeNo=${storeVO.storeNo }">예약현황</a><br>
+		<a href = "storeCapacitySelect?storeNo=${storeVO.storeNo }"">예약가능시간 확인</a><br>
 
 <c:import url="/WEB-INF/views/footer.jsp"/>
 </body>

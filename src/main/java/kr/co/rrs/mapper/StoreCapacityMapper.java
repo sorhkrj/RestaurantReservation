@@ -10,19 +10,19 @@ import org.apache.ibatis.annotations.Update;
 import kr.co.rrs.vo.ReservePossibleVO;
 
 public interface StoreCapacityMapper {
-	
+
 	@Insert("insert into reservepossible values(#{storeNo}, #{day}, #{time}, #{capacity}, #{seat})")
 	void insert(ReservePossibleVO reservePossibleVO);
-	
+
 	@Update("update reservepossible values(#{storeNo}, #{day}, #{time}, #{capacity}, #{seat})")
 	void update(ReservePossibleVO reservePossibleVO);
-	
-	@Select("select * from store where storeNo = #{storeNo} and day >= SYSDATE")
-	List<ReservePossibleVO> selectList();
-	
-	@Select("select * from store where storeNo = #{storeNo} and day =#{day}")
-	ReservePossibleVO select(String day, int storeno);
-	
+
+	@Select("select * from reservepossible where storeNo = #{storeNo} and day >= SYSDATE")
+	List<ReservePossibleVO> selectList(int storeNo);
+
+	@Select("select * from reservepossible where storeNo = #{storeNo} and day =#{day}")
+	ReservePossibleVO select(int storeNo, String day);
+
 	@Delete("delete from store where storeNo = #{storeNo} and day = #{day}")
-	void delete(String day, int storeno);
+	void delete(int storeNo, String day);
 }
