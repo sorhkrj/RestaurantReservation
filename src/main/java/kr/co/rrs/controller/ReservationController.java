@@ -23,18 +23,38 @@ public class ReservationController {
 	ReservationService service;
 	
 	@PostMapping("/reservationInsertCheck")
-	public String checkReservation(ReservationVO rvo, Model model) {
+	public String insertCheckReservation(ReservationVO rvo, Model model) {
 		
 		model.addAttribute("rvo",rvo);
-				
+		
 		return "reservation/reservationInsertCheck";
 	}
 	
-	@PostMapping("/reservationInsert")
+	@PostMapping("/reservationInsertPro")
 	public String insertReservation(ReservationVO rvo) {
 		
-		return "reservation/reservationInsert";
+		return "redirect:myReservationList";
 	}
+	
+	@PostMapping("/reservationUpdate")
+	public String updateReservation(ReservationVO rvo, Model model) {
+				
+		model.addAttribute("rvo",rvo);
+		return "reservation/reservationUpdate";
+	}
+	
+	@PostMapping("/reservationUpdateCheck")
+	public String updateCheckReservation(ReservationVO rvo, Model model) {
+		model.addAttribute("rvo",rvo);
+		return "reservation/reservationUpdateCheck";
+	}
+
+	@PostMapping("/reservationUpdatePro")
+	public String updateCheckReservationPro(ReservationVO rvo, Model model) {
+		service.updateRes(rvo);
+		return "redirect:myReservationList";
+	}
+
 	
 	@GetMapping("/myReservationList")
 	public String listmyReservation(Model model) {
@@ -45,13 +65,7 @@ public class ReservationController {
 				
 		return "reservation/myReservationList";
 	}
-	
-	@PostMapping("/reservationUpdate")
-	public String updateReservation() {
-		return "reservation/reservationUpdate";
-	}
-	
-	
+		
 	@GetMapping("/reservationDelete")
 	public String deleteReservation(HttpServletRequest request, Model model) {
 		int rno = Integer.valueOf(request.getParameter("reserveNo"));
@@ -69,6 +83,5 @@ public class ReservationController {
 		model.addAttribute("reservation", reservation);
 		return "reservation/reservationSelect";
 	}
-	
 
 }

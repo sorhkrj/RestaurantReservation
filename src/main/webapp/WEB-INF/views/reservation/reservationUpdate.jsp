@@ -47,15 +47,15 @@ body {
 					<h2 class="text-center">예약수정</h2>
 					<div class="input-group mb-3">
 						<span class="input-group-text col-3 text-center">예약인원</span> 
-						<input type="text" class="form-control" name="people">
+						<input type="text" class="form-control" name="people" value="${rvo.people}">
 					</div>
 					<div class="input-group mb-3">
 						<span class="input-group-text col-3 text-center">방문일자</span> 
-						<input type="date" class="form-control" name="visitDay">
+						<input type="date" class="form-control" name="visitDay" value="${rvo.visitDay}">
 					</div>
 					<div class="input-group mb-3">
 						<span class="input-group-text col-3 text-center">방문시간</span> 
-						<input type="time" class="form-control" name="visitTime">
+						<input type="time" class="form-control" name="visitTime" value="${rvo.visitTime}">
 					</div>
 	
 					<h2 class="text-center">방문인정보</h2>
@@ -65,11 +65,11 @@ body {
    					</div>
 					<div class="input-group mb-3">
 						<span class="input-group-text col-3 text-center">방문인이름</span> 
-						<input type="text" class="form-control" name="visitName">
+						<input type="text" class="form-control" name="visitName" value="${rvo.visitName}" >
 					</div>
 					<div class="input-group mb-3">
 						<span class="input-group-text col-3 text-center">방문인 전화번호</span> 
-						<input type="text" class="form-control" name="visitPhone">
+						<input type="text" class="form-control" name="visitPhone" value="${rvo.visitPhone}">
 					</div>
 				</div>
 				<div class="row text-center">

@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
@@ -19,7 +18,7 @@ public interface ReservationMapper  {
 	
 	//예약수정
 	@Update("update reservation set people=#{people}, visitDay=#{visitDay}, visitTime=#{visitTime}, visitName=#{visitName},"
-			+ "visitPhone=#{visitPhone} where id=#{id}")
+			+ "visitPhone=#{visitPhone} where reserveno=#{reserveNo}")
 	void mapperUpdateRes(ReservationVO rvo);
 	
 	//가게자리증가

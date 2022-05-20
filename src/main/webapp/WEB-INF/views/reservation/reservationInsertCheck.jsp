@@ -36,33 +36,33 @@ body {
 <body>
 <div class="container">
 	<c:import url="/WEB-INF/views/top.jsp"/>
-		<form class="container" action="reservationInsert" method="post">
+		<form class="container" action="reservationInsertCheck" method="post">
 			<div class="container mt-3 p-3" id="form">
 				<div class="row">
 					<h2 class="text-center">예약확인</h2>
 					<div class="input-group mb-3">
 						<span class="input-group-text col-3 text-center">음식점이름</span> 
-						<input type="text" class="form-control" name="storename" disabled>
+						<input type="text" class="form-control" name="storeNo"  value="${rvo.storeNo}" readonly>
 					</div>
 					<div class="input-group mb-3">
 						<span class="input-group-text col-3 text-center">예약인원</span> 
-						<input type="text" class="form-control" name="people" disabled>
+						<input type="text" class="form-control" name="people" value="${rvo.people}" readonly>
 					</div>
 					<div class="input-group mb-3">
 						<span class="input-group-text col-3 text-center">방문일자</span> 
-						<input type="text" class="form-control" name="visitDay" disabled>
+						<input type="text" class="form-control" name="visitDay" value="${rvo.visitDay}" readonly>
 					</div>
 					<div class="input-group mb-3">
 						<span class="input-group-text col-3 text-center">방문시간</span> 
-						<input type="text" class="form-control" name="visitTime" disabled>
+						<input type="text" class="form-control" name="visitTime" value="${rvo.visitTime}" readonly>
 					</div>
 					<div class="input-group mb-3">
 						<span class="input-group-text col-3 text-center">방문인이름</span> 
-						<input type="text" class="form-control" name="visitName" disabled>
+						<input type="text" class="form-control" name="visitName" value="${rvo.visitName}" readonly>
 					</div>
 					<div class="input-group mb-3">
 						<span class="input-group-text col-3 text-center">방문인 전화번호</span> 
-						<input type="text" class="form-control" name="visitPhone" disabled>
+						<input type="text" class="form-control" name="visitPhone" value="${rvo.visitPhone}" readonly>
 					</div>
 				</div>
 				<h3 class="text-center">위 내용으로 예약합니다</h3>
