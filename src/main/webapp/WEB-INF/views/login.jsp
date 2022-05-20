@@ -24,14 +24,18 @@
 					<input type="submit" value="로그인" class="w3-button w3-white w3-border w3-border-blue w3-round-large"/>
 				</td>
 			</tr>
+		</table>
+	</form>
+	<form method="get" class="w3-container">
+		<table border="1">
 			<tr>
-				<td align="center" colspan="3">
-					<input type = "submit" value ="일반회원가입" formaction = "memberInsert" class="w3-button w3-white w3-border w3-border-blue w3-round-large">
+				<td align="center" width="500" colspan="3">
+					<input type="submit" value="일반 회원가입" formaction="memberInsert" class="w3-button w3-white w3-border w3-border-blue w3-round-large"/>
 				</td>
 			</tr>
 			<tr>
-				<td align="center" colspan="3">
-					<button onclick="memberInsertEnterprise" class="w3-button w3-white w3-border w3-border-blue w3-round-large">기업 회원가입</button>
+				<td align="center" width="500" colspan="3">
+					<input type="submit" value="기업 회원가입" formaction="memberInsertEnterprise" class="w3-button w3-white w3-border w3-border-blue w3-round-large"/>
 				</td>
 			</tr>
 		</table>
