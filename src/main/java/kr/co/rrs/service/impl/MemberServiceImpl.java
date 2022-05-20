@@ -22,6 +22,11 @@ public class MemberServiceImpl implements MemberService {
 	public MemberVO selectOne(String id) {
 		return memberMapper.selectOne(id);
 	}
+	@Override
+	public void delete(MemberVO memberVO) {
+		
+		
+	}
 
 
 }

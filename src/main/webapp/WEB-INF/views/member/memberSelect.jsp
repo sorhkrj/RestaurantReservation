@@ -41,15 +41,15 @@
    <h2 class="text-center">내정보</h2>
     <div class="input-group mb-3">
       <span class="input-group-text col-3 text-center">아이디</span>
-       ${memberVO.id}
+       &nbsp; ${memberVO.id}
     </div>
     <div class="input-group mb-3">
       <span  class="input-group-text col-3 text-center">비밀번호</span>
-     ${memberVO.password}
+     &nbsp; ${memberVO.password}
     </div>
     <div class="input-group mb-3">
       <span class="input-group-text col-3 text-center">이름</span>
-    ${memberVO.name}
+    &nbsp; ${memberVO.name}
     </div>
     <div class="input-group mb-3">
       <span class="input-group-text col-3 text-center">전화번호</span>

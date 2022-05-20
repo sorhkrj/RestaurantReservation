@@ -62,6 +62,13 @@ import kr.co.rrs.vo.MemberVO;
 	public String memberDeleteCheck() {
 		return "member/memberDeleteCheck";
 	}
+	
+	@GetMapping("/memberDelete")
+	public String memberDelete(MemberVO password) {
+		memberService.delete(password);
+		return "redirect:/";
+	}
+	
 	//회원수정
 	@GetMapping("/memberUpdateCheck")
 	public String memberUpdateCheck() {
