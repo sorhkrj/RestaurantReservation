@@ -9,6 +9,9 @@
 </head>
 <body>
 <c:import url="/WEB-INF/views/top.jsp"/>
+기간 선택
+
+분석 결과
 
 <c:import url="/WEB-INF/views/footer.jsp"/>
 </body>
