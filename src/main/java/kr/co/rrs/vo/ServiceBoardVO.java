@@ -3,6 +3,7 @@ package kr.co.rrs.vo;
 public class ServiceBoardVO {
 	private int serviceNo;
 	private String id;
+	private String nickName;
 	private String title;
 	private String content;
 	private int views;
@@ -22,6 +23,14 @@ public class ServiceBoardVO {
 
 	public void setId(String id) {
 		this.id = id;
+	}
+	
+	public String getNickName() {
+		return nickName;
+	}
+
+	public void setNickName(String nickName) {
+		this.nickName = nickName;
 	}
 
 	public String getTitle() {

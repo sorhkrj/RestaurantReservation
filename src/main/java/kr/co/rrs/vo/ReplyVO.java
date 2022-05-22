@@ -4,7 +4,8 @@ public class ReplyVO {
 	private int replyNo;
 	private int serviceNo;
 	private String id;
-	private String Answer;
+	private String nickName;
+	private String answer;
 	private String date;
 
 	public int getReplyNo() {
@@ -31,12 +32,20 @@ public class ReplyVO {
 		this.id = id;
 	}
 
+	public String getNickName() {
+		return nickName;
+	}
+
+	public void setNickName(String nickName) {
+		this.nickName = nickName;
+	}
+
 	public String getAnswer() {
-		return Answer;
+		return answer;
 	}
 
 	public void setAnswer(String answer) {
-		Answer = answer;
+		this.answer = answer;
 	}
 
 	public String getDate() {

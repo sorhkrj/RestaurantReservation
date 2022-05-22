@@ -21,21 +21,21 @@
 				<th colspan="2">문의글 입력</th>
 			</tr>
 			<tr>
-				<th>문의글 작성자</th><td>작성자</td>
+				<th>문의글 작성자</th><td>${sessionScope.nickName }</td>
 			</tr>
 			<tr>
-				<th>문의글 제목</th><td><form:input path="title" type="text"/></td>
+				<th>문의글 제목</th><td><form:input path="title" type="text" required="required" autofocus="autofocus"/></td>
 			</tr>
 			<tr>
 				<th colspan="2">문의글 내용</th>
 			</tr>
 			<tr>
-				<td colspan="2"><form:textarea path="content"/></td>
+				<td colspan="2"><form:textarea path="content" cols="32" rows="5" required="required"/></td>
 			</tr>
 			<tr>
 				<td colspan="2">
 					<form:button>문의글 작성 완료</form:button>
-					<input type="submit" value="취소"/>
+					<input type="reset" value="취소"/>
 					<input type="button" value="돌아가기" onclick="location.href='serviceBoardMain'"/>
 				</td>
 			</tr>
