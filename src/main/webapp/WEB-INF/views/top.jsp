@@ -19,9 +19,9 @@
 						<c:when test="${empty sessionScope.id}">
 							<a href="login" class="w3-bar-item w3-button">로그인</a> <!-- 회원, 기업, 관리자 -->
 						</c:when>
-						<c:when test="${not empty sessionScope.id}">
+						<c:otherwise>
 							<a href="logout" class="w3-bar-item w3-button">로그아웃</a> <!-- 회원, 기업, 관리자 -->
-						</c:when>
+						</c:otherwise>
 					</c:choose>
 					<c:if test="${not empty sessionScope.memberLevel and sessionScope.memberLevel != 2}">
 						<a href="memberSelect" class="w3-bar-item w3-button">내정보</a> <!-- 회원, 관리자 -->
@@ -42,18 +42,18 @@
 				</div>
 			</td>
 				<td width="300">
-				<form action="searchResult" method="get">
-					<table>
-						<tr>
-							<td width="250">
-								<input type="text" name="search" placeholder="검색할 내용" class="w3-input w3-border"/>
-							</td>
-							<td width="50">
-								<input type="submit" value="검색" class="w3-input w3-border"/>
-							</td>
-						</tr>
-					</table>
-				</form>
+					<form action="searchResult" method="get">
+						<table>
+							<tr>
+								<td width="250">
+									<input type="text" name="search" placeholder="검색할 내용" class="w3-input w3-border"/>
+								</td>
+								<td width="50">
+									<input type="submit" value="검색" class="w3-input w3-border"/>
+								</td>
+							</tr>
+						</table>
+					</form>
 				</td>
 			<td align="right" width="100">
 				<a href="/RestaurantReservation" class="w3-button w3-gray">홈</a>
