@@ -1,5 +1,7 @@
 package kr.co.rrs.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,15 +26,15 @@ public class StoreController {
 	private StoreService storeService;
 
 	@GetMapping("/storeUpdate")
-	public String storeUpdate(StoreVO storeVO, Model model) {
-		storeVO = storeService.select("nigael");
+	public String storeUpdate(StoreVO storeVO, Model model, HttpSession session) {
+		storeVO = storeService.select((String) session.getAttribute("id"));
 		model.addAttribute("storeVO", storeVO);
 		return "/store/storeUpdate";
 	}
 
 	@RequestMapping("/myStore")
-	public String myStore(Model model) {
-		model.addAttribute("storeVO", storeService.select("nigael"));
+	public String myStore(Model model, HttpSession session) {
+		model.addAttribute("storeVO", storeService.select((String) session.getAttribute("id")));
 		return "/store/myStore";
 	}
 
