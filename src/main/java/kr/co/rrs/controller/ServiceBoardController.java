@@ -1,18 +1,29 @@
 package kr.co.rrs.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import kr.co.rrs.mapper.HomeMapper;
+import kr.co.rrs.mapper.MemberMapper;
+import kr.co.rrs.service.HomeService;
 import kr.co.rrs.service.ServiceBoardService;
+import kr.co.rrs.vo.MemberVO;
 import kr.co.rrs.vo.ReplyVO;
 import kr.co.rrs.vo.ServiceBoardVO;
 
@@ -20,10 +31,27 @@ import kr.co.rrs.vo.ServiceBoardVO;
 public class ServiceBoardController {
 	@Autowired
 	ServiceBoardService serviceBoardService;
+	@Autowired
+	HomeService homeService;
 	
 	// 고객센터 목록 리스트
 	@GetMapping("/serviceBoardMain")
-	public String serviceBoardMain(Model model) {
+	public String serviceBoardMain(Model model, HttpSession session, HttpServletResponse response) {
+		String id = (String) session.getAttribute("id");
+		
+		if(id == null) {
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = null;
+			try {
+				out = response.getWriter();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			out.println("<script>alert('로그인 해주세요.'); </script>");
+			out.flush();
+			return "login";
+		}
+		
 		List<ServiceBoardVO> list = serviceBoardService.selectList();
 		List<ReplyVO> list2 = null;
 		if(list != null) {
@@ -47,38 +75,53 @@ public class ServiceBoardController {
 
 	// 글 쓰기 처리
 	@PostMapping("/serviceBoardInsertPro")
-	public String serviceBoardInsertPro(ServiceBoardVO serviceBoardVO) {
-		serviceBoardService.insert(serviceBoardVO);
+	public String serviceBoardInsertPro(ServiceBoardVO serviceBoardVO, HttpSession session) {
+		serviceBoardService.insert(serviceBoardVO, session);
 		
 		return "redirect:/serviceBoardMain";
 	}
 
 	// 글 상세 보기
-	@GetMapping("/serviceBoardDetail")
-	public String serviceBoardDetail(HttpServletRequest request) {
-		// Detail jsp 에서 문의글 번호 받아오기
-		int serviceNo = Integer.parseInt(request.getParameter("serviceNo"));
-		
-		// Detail jsp 에서 문의글 번호 받아오기
-		int views = Integer.parseInt(request.getParameter("views"));
-		
+	@RequestMapping(value = "/serviceBoardDetail", method = {RequestMethod.GET, RequestMethod.POST})
+	public String serviceBoardDetail(@RequestParam("serviceNo") int serviceNo, HttpSession session, Model model) {
 		// 상세보기할때 조회수 증가하기
-		serviceBoardService.updateViews(views, serviceNo);
-		
+		String id = (String) session.getAttribute("id");
+		MemberVO memberVO = homeService.loginCheck(id);
+
+		serviceBoardService.updateViews(serviceNo, id);
+				
 		// 문의글 상세 보기 서비스 실행
 		ServiceBoardVO serviceBoardVO = serviceBoardService.selectDetail(serviceNo);
+		ReplyVO replyVO = serviceBoardService.selectReply(serviceNo);
 		
 		// Detail jsp에서 데이터 표시를 위한 코드
-		request.setAttribute("selectDetail", serviceBoardVO);
+		model.addAttribute("serviceBoardVO", serviceBoardVO);
+		model.addAttribute("replyVO", replyVO);
+		model.addAttribute("memberVO", memberVO);
 			
 		return "serviceBoard/serviceBoardDetail";
 	}
 
 	// 글 수정 비밀번호 확인
-	@GetMapping("/serviceBoardUpdateCheck")
-	public String serviceBoardUpdateCheck(@RequestParam("serviceNo") int serviceNo, @RequestParam("id") String id, Model model) {
+	@RequestMapping(value = "/serviceBoardUpdateCheck", method = {RequestMethod.GET, RequestMethod.POST})
+	public String serviceBoardUpdateCheck(@Param("serviceNo") int serviceNo, HttpSession session, HttpServletResponse response, Model model) {
+		ServiceBoardVO serviceBoardVO = serviceBoardService.selectDetail(serviceNo);
+		String id = (String) session.getAttribute("id");
+		
+		if(!serviceBoardVO.getId().equals(id)) {
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = null;
+			try {
+				out = response.getWriter();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			out.println("<script>alert('본인의 글만 수정할 수 있습니다.'); </script>");
+			out.flush();
+			
+			return "forward:/serviceBoardDetail?serviceNo="+serviceNo;
+		}
 		model.addAttribute("serviceNo", serviceNo);
-		model.addAttribute("id", id);
 		
 		// 디테일에서 아이디, 문의글 번호 받고, 로그인 한 session id 를 받아서 
 		// 문의글 작성자 id 와 비교후 같은 아이디일 경우 password까지 체크 하고 맞으면 업데이트로 넘기고
@@ -89,25 +132,86 @@ public class ServiceBoardController {
 		
 	// 글 수정 내용 입력
 	@PostMapping("/serviceBoardUpdate")
-	public String serviceBoardUpdate() {
-		return "serviceBoard/serviceBoardUpdate";
+	public String serviceBoardUpdate(@RequestParam("serviceNo") int serviceNo, @RequestParam("password") String password, HttpServletResponse response, Model model) {
+		ServiceBoardVO serviceBoardVO = serviceBoardService.selectDetail(serviceNo);
+		MemberVO memberVO = homeService.loginCheck(serviceBoardVO.getId());
+		if(password.equals(memberVO.getPassword())) { // 문의글 번호에 대한 아이디로 회원 정보 검색 후 패스워드 비교하여 패스워드가 같을때
+			model.addAttribute("serviceBoardVO", serviceBoardVO);
+			return "serviceBoard/serviceBoardUpdate";
+		}
+		else { // 패스워드가 틀릴 경우
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = null;
+			try {
+				out = response.getWriter();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			out.println("<script>alert('비밀번호가 틀립니다. 수정할 수 없습니다.'); </script>");
+			out.flush();
+			
+			return "forward:/serviceBoardUpdateCheck?serviceNo=" + serviceNo;
+		}
+		
 	}
 	
 	// 글 수정 처리
 	@PostMapping("/serviceBoardUpdatePro")
-	public String serviceBoardUpdatePro() {
-		return "serviceBoard/serviceBoardDetail";
+	public String serviceBoardUpdatePro(@Param("serviceNo") int serviceNo, ServiceBoardVO serviceBoardVO) {
+		serviceBoardService.update(serviceNo, serviceBoardVO.getTitle(), serviceBoardVO.getContent());
+		
+		return "redirect:/serviceBoardDetail?serviceNo=" + serviceNo;
 	}
 	
 	// 글 삭제 비밀번호 확인
-	@PostMapping("/serviceBoardDeleteCheck")
-	public String serviceBoardDeleteCheck() {
+	@RequestMapping(value = "/serviceBoardDeleteCheck", method = {RequestMethod.GET, RequestMethod.POST})
+	public String serviceBoardDeleteCheck(HttpServletResponse response, HttpSession session, @Param("serviceNo") int serviceNo, Model model) {
+		ServiceBoardVO serviceBoardVO = serviceBoardService.selectDetail(serviceNo);
+		String id = (String) session.getAttribute("id");
+		
+		if(!serviceBoardVO.getId().equals(id)) {
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = null;
+			try {
+				out = response.getWriter();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			out.println("<script>alert('본인의 글만 삭제할 수 있습니다.'); </script>");
+			out.flush();
+			
+			return "forward:/serviceBoardDetail?serviceNo="+serviceNo;
+		}
+		
+		model.addAttribute("serviceBoardVO", serviceBoardVO);
+		
 		return "serviceBoard/serviceBoardDeleteCheck";
 	}
 	
 	// 글 삭제 처리
 	@PostMapping("/serviceBoardDeletePro")
-	public String serviceBoardDeletePro() {
-		return "redirect:/serviceBoardMain";
+	public String serviceBoardDeletePro(@Param("serviceNo") int serviceNo, @Param("password") String password, HttpServletResponse response) {
+		ServiceBoardVO serviceBoardVO = serviceBoardService.selectDetail(serviceNo);
+		MemberVO memberVO = homeService.loginCheck(serviceBoardVO.getId());
+		
+		if(password.equals(memberVO.getPassword())) { // 문의글 번호에 대한 아이디로 회원 정보 검색 후 패스워드 비교하여 패스워드가 같을때
+			serviceBoardService.delete(serviceNo);
+			
+			return "redirect:/serviceBoardMain";
+		}
+		else { // 패스워드가 틀릴 경우
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = null;
+			try {
+				out = response.getWriter();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			out.println("<script>alert('비밀번호가 틀립니다. 삭제할 수 없습니다.'); </script>");
+			out.flush();
+			
+			return "forward:/serviceBoardDeleteCheck?serviceNo=" + serviceNo;
+		}
 	}
+	
 }

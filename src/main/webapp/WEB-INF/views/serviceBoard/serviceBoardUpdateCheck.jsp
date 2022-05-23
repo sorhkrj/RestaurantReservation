@@ -20,17 +20,15 @@
 				<th colspan="2">비밀번호를 입력</th>
 			</tr>
 			<tr>
-				<th colspan="2">${serviceNo}</th>
-			</tr>
-			<tr>
 				<th>비밀번호</th>
-				<td><input type="password"/></td>
+				<td><input type="password" name="password"/></td>
 			</tr>
 			<tr>
 				<td colspan="2">
-					<input type="hidden" value="${serviceNo}"/>
+					<input type="hidden" name="serviceNo" value="${serviceNo}"/>
 					<input type="submit" value="확인"/>
 					<input type="reset" value="취소"/> 
+					<input type="button" value="돌아가기" onclick="location.href='serviceBoardDetail?serviceNo=${serviceNo}'"/>
 				</td>
 			</tr>
 		</table>

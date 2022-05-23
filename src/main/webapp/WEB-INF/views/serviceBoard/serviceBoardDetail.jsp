@@ -20,37 +20,95 @@
 		</tr>
 		<tr>
 			<th>번호</th>
-			<td>${selectDetail.serviceNo }</td>
+			<td>${serviceBoardVO.serviceNo }</td>
 			<th>작성자</th>
-			<td>${selectDetail.id }</td>
+			<td>${serviceBoardVO.nickName }</td>
 		</tr>
 		<tr>
 			<th>제목</th>
-			<td>${selectDetail.title }</td>
+			<td>${serviceBoardVO.title }</td>
 			<th>작성일</th>
-			<td>${selectDetail.regDate }</td>
+			<td>${serviceBoardVO.regDate }</td>
 		</tr>
 		<tr>
 			<th>조회수</th>
-			<td>${selectDetail.views }</td>
+			<td>${serviceBoardVO.views }</td>
 			<th>답변여부</th>
-			<td>답변여부</td>
+			<td>
+				<c:if test="${replyVO != null }">
+					Y
+				</c:if>
+				<c:if test="${replyVO == null }">
+					N
+				</c:if>
+			</td>
 		</tr>
 		<tr>
 			<th colspan="4">내용</th>
 		</tr>
 		<tr>
-			<td colspan="4">${selectDetail.content }</td>
+			<td colspan="4">${serviceBoardVO.content }</td>
 		</tr>
 		<tr>
 			<td colspan="4">
-				<a href="serviceBoardUpdateCheck?serviceNo=${selectDetail.serviceNo }&id=${selectDetail.id }">수정하기</a>
-				<a href="serviceBoardDeleteCheck?serviceNo=${selectDetail.serviceNo }">삭제하기</a>
+				<c:if test="${!(memberVO.memberLevel == 3) }">
+					<a href="serviceBoardUpdateCheck?serviceNo=${serviceBoardVO.serviceNo }">수정하기</a>
+					<a href="serviceBoardDeleteCheck?serviceNo=${serviceBoardVO.serviceNo }">삭제하기</a>
+				</c:if>
 				<a href="serviceBoardMain">뒤로가기</a>
 			</td>
 		</tr>
 	</table>
 	<hr>
+	<c:if test="${memberVO.memberLevel == 3 && replyVO == null}">
+		<form action="replyInsertPro" method="post">
+			<table border="1">
+				<tr>
+					<th colspan="2">관리자 답변</th>
+				</tr>
+				<tr>
+					<th>${memberVO.nickname }</th><td><textarea name="answer" cols="32" rows="5" required="required" autofocus="autofocus"></textarea></td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<input type="hidden" name="serviceNo" value="${serviceBoardVO.serviceNo }">
+						<input type="hidden" name="id" value="${memberVO.id }">
+						<input type="hidden" name="nickName" value="${memberVO.nickname }">
+						<input type="submit" value="답변 등록"/>
+						<input type="reset" value="취소"/>
+					</td>
+				</tr>
+			</table>
+		</form>
+	</c:if>
+	<c:if test="${replyVO != null}">
+		<form action="replyUpdatePro" method="post">
+			<table border="1">
+				<tr>
+					<th colspan="2">관리자 답변</th>
+				</tr>
+				<tr>
+					<th>${replyVO.nickName }</th>
+					<c:if test="${memberVO.memberLevel != 3 }">
+						<td>${replyVO.answer }</td>
+					</c:if>
+					<c:if test="${memberVO.memberLevel == 3 }">
+						<td><textarea name="answer" cols="32" rows="5" required="required" autofocus="autofocus">${replyVO.answer }</textarea></td>
+					</c:if>
+				</tr>
+				<c:if test="${memberVO.memberLevel == 3 }">
+					<tr>
+						<td colspan="2">
+							<input type="hidden" name="replyNo" value="${replyVO.replyNo }"/>
+							<input type="hidden" name="serviceNo" value="${replyVO.serviceNo }"/>
+							<input type="submit" value="답변수정"/>
+							<input type="submit" formaction="replyDeletePro" value="답변삭제"/>
+						</td>
+					</tr>
+				</c:if>
+			</table>
+		</form>
+	</c:if>
 <c:import url="/WEB-INF/views/footer.jsp"/>
 </body>
 </html>
