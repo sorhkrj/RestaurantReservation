@@ -49,11 +49,11 @@ body {
 					<div class="row">
 						<h2 class="text-center">예약</h2>
 						
-						<input type="hidden" class="form-control" name="storeNo" value="${requestScope.storeNo }">
+						<input type="hidden" class="form-control" name="storeNo" value="${storevo.storeNo }">
 						
 						<div class="input-group mb-3">
 							<span class="input-group-text col-3 text-center">예약음식점</span> 
-							<input type="hidden" class="form-control" name="storeName" value="${requestScope.storeName }" readonly>
+							<input type="text" class="form-control" name="storeName" value="${storevo.storeName }" readonly>
 						</div>
 						
 						<div class="input-group mb-3">
@@ -104,17 +104,17 @@ body {
 											    					
     					<div class="form-check mb-3 text-center">
       						<label class="form-check-label">
-        					<input class="form-check-input" type="checkbox" name="remember"> 주문자와 동일인</label>
+        					<input class="form-check-input" type="checkbox" name="memberCheckbox"> 주문자와 동일인</label>
     					</div>
     					
 						<div class="input-group mb-3">
 							<span class="input-group-text col-3 text-center">방문인이름</span> 
-							<input type="text" class="form-control" name="visitName">
+							<input type="text" class="form-control" id="visitName" name="visitName" value="">
 						</div>
 						
 						<div class="input-group mb-3">
 							<span class="input-group-text col-3 text-center">방문인 전화번호</span> 
-							<input type="text" class="form-control" name="visitPhone">
+							<input type="text" class="form-control" id="visitPhone" name="visitPhone" value="">
 						</div>
 					
 						<div class="row text-center">
@@ -128,5 +128,24 @@ body {
 			</form>
 		<c:import url="/WEB-INF/views/footer.jsp"/>
 	</div>
+	
+	<script type="text/javascript">
+ 	  let name = '${mvo.name}';
+ 	  let phone = '${mvo.phone}';
+           
+      memberCheckbox.addEventListener("change", function() {
+        if(this.checked) {
+   
+          document.querySelector("#visitName").value=name;
+          document.querySelector("#visitPhone").value=phone;
+        }else {
+          document.querySelector("#visitName").value="";
+          document.querySelector("#visitPhone").value="";
+        }
+      })
+    </script>
+	
+	
+	
 </body>
 </html>

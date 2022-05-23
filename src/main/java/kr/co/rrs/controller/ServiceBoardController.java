@@ -36,7 +36,18 @@ public class ServiceBoardController {
 	
 	// 고객센터 목록 리스트
 	@GetMapping("/serviceBoardMain")
-	public String serviceBoardMain(Model model, HttpSession session, HttpServletResponse response) {
+	public String serviceBoardMain(ServiceBoardVO serviceBoardVO, Model model, HttpSession session, HttpServletResponse response) {
+		// 전체 문의글 개수
+		int total = serviceBoardService.selectServiceBoardTotal();
+		serviceBoardVO.setTotal(total);
+
+		// 전체 필요한 페이지
+		int totalPage = (int) Math.ceil((double)total/10); 
+		serviceBoardVO.setTotalPage(totalPage);
+		
+		// 현재 페이지
+		int nowPage = serviceBoardVO.getNowPage();
+		
 		String id = (String) session.getAttribute("id");
 		
 		if(id == null) {
@@ -63,6 +74,8 @@ public class ServiceBoardController {
 		
 		model.addAttribute("selectList", list);
 		model.addAttribute("replyList", list2);
+		model.addAttribute("total", total);
+		model.addAttribute("totalPage", totalPage);
 		
 		return "serviceBoard/serviceBoardMain";
 	}
@@ -104,8 +117,8 @@ public class ServiceBoardController {
 
 	// 글 수정 비밀번호 확인
 	@RequestMapping(value = "/serviceBoardUpdateCheck", method = {RequestMethod.GET, RequestMethod.POST})
-	public String serviceBoardUpdateCheck(@Param("serviceNo") int serviceNo, HttpSession session, HttpServletResponse response, Model model) {
-		ServiceBoardVO serviceBoardVO = serviceBoardService.selectDetail(serviceNo);
+	public String serviceBoardUpdateCheck(ServiceBoardVO serviceBoardVO, HttpSession session, HttpServletResponse response, Model model) {
+		serviceBoardVO = serviceBoardService.selectDetail(serviceBoardVO.getServiceNo());
 		String id = (String) session.getAttribute("id");
 		
 		if(!serviceBoardVO.getId().equals(id)) {
@@ -119,9 +132,9 @@ public class ServiceBoardController {
 			out.println("<script>alert('본인의 글만 수정할 수 있습니다.'); </script>");
 			out.flush();
 			
-			return "forward:/serviceBoardDetail?serviceNo="+serviceNo;
+			return "forward:/serviceBoardDetail?serviceNo="+serviceBoardVO.getServiceNo();
 		}
-		model.addAttribute("serviceNo", serviceNo);
+		model.addAttribute("serviceNo", serviceBoardVO.getServiceNo());
 		
 		// 디테일에서 아이디, 문의글 번호 받고, 로그인 한 session id 를 받아서 
 		// 문의글 작성자 id 와 비교후 같은 아이디일 경우 password까지 체크 하고 맞으면 업데이트로 넘기고
@@ -132,10 +145,13 @@ public class ServiceBoardController {
 		
 	// 글 수정 내용 입력
 	@PostMapping("/serviceBoardUpdate")
-	public String serviceBoardUpdate(@RequestParam("serviceNo") int serviceNo, @RequestParam("password") String password, HttpServletResponse response, Model model) {
-		ServiceBoardVO serviceBoardVO = serviceBoardService.selectDetail(serviceNo);
+	public String serviceBoardUpdate(ServiceBoardVO serviceBoardVO, @RequestParam("password") String password, HttpServletResponse response, Model model) {
+		serviceBoardVO = serviceBoardService.selectDetail(serviceBoardVO.getServiceNo());
 		MemberVO memberVO = homeService.loginCheck(serviceBoardVO.getId());
 		if(password.equals(memberVO.getPassword())) { // 문의글 번호에 대한 아이디로 회원 정보 검색 후 패스워드 비교하여 패스워드가 같을때
+			System.out.println(serviceBoardVO.getServiceNo());
+			System.out.println(serviceBoardVO.getTitle());
+			System.out.println(serviceBoardVO.getContent());
 			model.addAttribute("serviceBoardVO", serviceBoardVO);
 			return "serviceBoard/serviceBoardUpdate";
 		}
@@ -150,7 +166,7 @@ public class ServiceBoardController {
 			out.println("<script>alert('비밀번호가 틀립니다. 수정할 수 없습니다.'); </script>");
 			out.flush();
 			
-			return "forward:/serviceBoardUpdateCheck?serviceNo=" + serviceNo;
+			return "forward:/serviceBoardUpdateCheck?serviceNo=" + serviceBoardVO.getServiceNo();
 		}
 		
 	}

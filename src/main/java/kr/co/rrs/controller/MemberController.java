@@ -3,6 +3,8 @@ package kr.co.rrs.controller;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,8 +15,12 @@ import kr.co.rrs.vo.MemberVO;
 @Controller
 	public class MemberController {
 
+	private final MemberService memberService;
+	
 	@Autowired
-	MemberService memberService;
+	public MemberController(MemberService memberService) {
+		this.memberService = memberService;
+	}
 	
 	//회원가입
 	@GetMapping("/memberInsert") 
@@ -30,7 +36,7 @@ import kr.co.rrs.vo.MemberVO;
 	@GetMapping("/memberSelect")
 	public String memberSelect(Model model, HttpSession session) {
 		String id = (String) session.getAttribute("id");
-		MemberVO memberVO = memberService.selectOne("yoon");
+		MemberVO memberVO = memberService.selectOne(id);
 		model.addAttribute("memberVO", memberVO);
 		return "member/memberSelect";
 	}

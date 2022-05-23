@@ -36,13 +36,13 @@
 </head>
 <body>
 <c:import url="/WEB-INF/views/top.jsp"/>
-   <form action="memberInsertPro" method ="get">
+   <form action="memberUpdateCheckPro" method ="get">
 	  <div class="container mt-3 p-3" id="form">
 	  <div class="row">
 	   <h2 class="text-center">내정보수정</h2>
 	    <div class="input-group mb-3">
 	      <span class="input-group-text col-3 text-center">아이디</span>
-	      <input type="text" class="form-control" name="id">
+	      <input type="text" class="form-control" name="id" value="${memberVO.id}">
 	    </div>
 	    <div class="input-group mb-3">
 	      <span  class="input-group-text col-3 text-center">비밀번호</span>
@@ -50,15 +50,15 @@
 	    </div>
 	    <div class="input-group mb-3">
 	      <span class="input-group-text col-3 text-center">이름</span>
-	      <input type="text" class="form-control" name="name">
+	      <input type="text" class="form-control" name="name" value="${memberVO.name}">
 	    </div>
 	    <div class="input-group mb-3">
 	      <span class="input-group-text col-3 text-center">전화번호</span>
-	      <input type="text" class="form-control" name="phone">
+	      <input type="text" class="form-control" name="phone" value="${memberVO.phone}">
 	    </div>
 	    <div class="input-group mb-3">
 	      <span class="input-group-text col-3 text-center">별명</span>
-	      <input type="text" class="form-control" name="nickname">
+	      <input type="text" class="form-control" name="nickname" value="${memberVO.nickname}">
 	    </div>
 	  </div>
 	  <div class="row text-center">

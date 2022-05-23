@@ -56,6 +56,11 @@ public class ServiceBoardServiceImpl implements ServiceBoardService {
 		serviceBoardMapper.delete(serviceNo);
 	}
 
+	@Override
+	public int selectServiceBoardTotal() {
+		return serviceBoardMapper.selectServiceBoardTotal();
+	}
+
 	
 
 }

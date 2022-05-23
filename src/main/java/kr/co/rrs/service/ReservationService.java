@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import kr.co.rrs.vo.ReservationVO;
 import kr.co.rrs.vo.ReservePossibleVO;
+import kr.co.rrs.vo.StoreVO;
 import kr.co.rrs.vo.MemberVO;
 
 public interface ReservationService {
@@ -14,7 +15,8 @@ public interface ReservationService {
 	ArrayList<ReservationVO> listRes(String id);
 	ReservationVO selectRes(int rno);
 	MemberVO checkMember(String id);
-	ArrayList<ReservePossibleVO> checkPossibility(int storeNo);
+	ArrayList<ReservePossibleVO> checkPossibility(ReservationVO rvo);
+	public StoreVO checkStore(int storeNo);
 	
 	
 }

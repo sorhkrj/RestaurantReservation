@@ -21,14 +21,17 @@ public interface ServiceBoardMapper {
 	@Select("select * from serviceBoard a left outer join member b on a.id = b.id order by a.serviceNo desc")
 	List<ServiceBoardVO> selectList();
 	
-//	@Select("select * from serviceBoard order by serviceNo desc")
-//	List<ServiceBoardVO> selectList();
-	
-	@Select("select * from reply where serviceNo = #{serviceNo}")
+	@Select("select * from reply a left outer join member b on a.id = b.id where serviceNo = #{serviceNo}")
 	ReplyVO selectReply(@Param("serviceNo") int serviceNo);
 	
-	@Select("select * from serviceBoard where serviceNo = #{serviceNo}")
+//	@Select("select * from reply where serviceNo = #{serviceNo}")
+//	ReplyVO selectReply(@Param("serviceNo") int serviceNo);
+	
+	@Select("select * from serviceBoard a left outer join member b on a.id = b.id where a.serviceNo = #{serviceNo}")
 	ServiceBoardVO selectDetail(@Param("serviceNo") int serviceNo);
+	
+//	@Select("select * from serviceBoard where serviceNo = #{serviceNo}")
+//	ServiceBoardVO selectDetail(@Param("serviceNo") int serviceNo);
 	
 	@Update("update serviceBoard set views = views + 1 where serviceNo = #{serviceNo} and id != #{id}")
 	void updateViews(@Param("serviceNo") int serviceNo, @Param("id") String id);
@@ -38,4 +41,8 @@ public interface ServiceBoardMapper {
 	
 	@Delete("delete from serviceBoard where serviceNo = #{serviceNo}")
 	void delete(@Param("serviceNo") int serviceNo);
+	
+	// 문의글 전체 개수 구하기
+	@Select("select count(*) from serviceBoard")
+	int selectServiceBoardTotal();
 }

@@ -14,5 +14,4 @@ public interface StoreMapper {
 	@Select("select * from store where id = #{id}")
 	StoreVO select(String id);
 	
-	
 }
