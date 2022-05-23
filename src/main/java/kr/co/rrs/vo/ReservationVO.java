@@ -13,9 +13,6 @@ public class ReservationVO {
 	private String visitPhone;
 	private String regDate;
 
-	
-	
-
 	public int getReserveNo() {
 		return reserveNo;
 	}
@@ -55,7 +52,7 @@ public class ReservationVO {
 	public void setVisitDay(String visitDay) {
 		this.visitDay = visitDay;
 	}
-	
+
 	public String getVisitTime() {
 		return visitTime;
 	}
@@ -63,6 +60,7 @@ public class ReservationVO {
 	public void setVisitTime(String visitTime) {
 		this.visitTime = visitTime;
 	}
+
 	public String getVisitName() {
 		return visitName;
 	}

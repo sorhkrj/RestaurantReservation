@@ -25,32 +25,53 @@
 				<td>
 				<table border ='1'>
 					<tr>
-						<td>오전</td><td>1시</td><td>2시</td><td>3시</td><td>4시</td><td>5시</td><td>6시</td>
-									<td>7시</td><td>8시</td><td>9시</td><td>10시</td><td>11시</td><td>12시</td>
+						<td>오전</td>
+						<c:forEach varStatus="time" begin="1" end="12">
+							<td>
+								${time.count}시
+							</td>
+						</c:forEach>
 					</tr>
 					<tr>
-						<td>오전</td>
-							<c:set var="check" value="${timeList[no.index][0] }"/>
+						<td>구분</td>
 							<c:forEach var = "j" varStatus="no2" begin="1" end="12">
 								<td>
-								<c:choose> 
-								<c:when test="${check eq no2.count}">o</c:when>
-								</c:choose>	
+									<c:forEach varStatus = "timeListLength" begin="0" end ="${fn:length(timeList[no.index]) }">
+										<c:set var="check" value="${timeList[no.index][timeListLength.index] }"/>
+										<c:choose> 
+											<c:when test="${check eq no2.count}">오픈</c:when>
+										</c:choose>	
+									</c:forEach>
 								</td>
 							</c:forEach>
 					</tr>
 					<tr>
-						<td>오후</td><td>1시</td><td>2시</td><td>3시</td><td>4시</td><td>5시</td><td>6시</td>
-									<td>7시</td><td>8시</td><td>9시</td><td>10시</td><td>11시</td><td>12시</td>
+						<td>오후</td>
+						<c:forEach varStatus="time" begin="1" end="12">
+							<td>
+								${time.count}시
+							</td>
+						</c:forEach>
 					</tr>
 					<tr>
+						<td>구분</td>
+							<c:forEach var = "j" varStatus="no2" begin="13" end="24">
+								<td>
+									<c:forEach varStatus = "timeListLength" begin="0" end ="${fn:length(timeList[no.index]) }">
+										<c:set var="check" value="${timeList[no.index][timeListLength.index] }"/>
+										<c:choose> 
+											<c:when test="${check eq no2.current}">오픈</c:when>
+										</c:choose>	
+									</c:forEach>
+								</td>
+							</c:forEach>
 					</tr>
 				</table>
 				</td>
 				<td>${i.capacity}</td>
 				<td>${i.seat}</td>
 				<td><a href="storeCapacityUpdate?day=${i.day }&storeNo=${i.storeNo}">수정하기</a></td>
-				<td><a href="storeCapacityUpdatePro?day=${i.day }&storeNo=${i.storeNo}">삭제하기</a></td>
+				<td><a href="storeCapacityDeletePro?day=${i.day }&storeNo=${i.storeNo}">삭제하기</a></td>
 			</tr>
 		</c:forEach> 
 	</table>	

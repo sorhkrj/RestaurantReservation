@@ -6,7 +6,8 @@ public class ReservePossibleVO {
 	private String time;
 	private int capacity;
 	private int seat;
-
+	private String[] timeList; //배열-문자열 전환 과정에서 필요.
+	
 	public int getStoreNo() {
 		return storeNo;
 	}
@@ -47,4 +48,12 @@ public class ReservePossibleVO {
 		this.seat = seat;
 	}
 
+	public String[] getTimeList() {
+		return timeList;
+	}
+
+	public void setTimeList(String[] timeList) {
+		this.timeList = timeList;
+	}
+	
 }

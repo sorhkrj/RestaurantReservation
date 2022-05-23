@@ -11,4 +11,9 @@ public interface StoreCapacityService {
 	void insert(ReservePossibleVO reservePossibleVO);
 	void update(ReservePossibleVO reservePossibleVO);
 	void delete(int storeNo, String day);
+	
+	//여기서부터
+	List<String[]> toArray_Times(List<ReservePossibleVO> lsc);
+	String[] toArray_Time(ReservePossibleVO reservePossibleVO);
+	//여기까지는 AOP로 이전되어야하는 기능
 }
