@@ -51,7 +51,7 @@
 		</tr>
 		<tr>
 			<td colspan="4">
-				<c:if test="${!(memberVO.memberLevel == 3) }">
+				<c:if test="${!(memberVO.memberLevel == 3) && memberVO.id == serviceBoardVO.id}">
 					<a href="serviceBoardUpdateCheck?serviceNo=${serviceBoardVO.serviceNo }">수정하기</a>
 					<a href="serviceBoardDeleteCheck?serviceNo=${serviceBoardVO.serviceNo }">삭제하기</a>
 				</c:if>

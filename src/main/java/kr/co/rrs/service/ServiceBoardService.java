@@ -32,4 +32,6 @@ public interface ServiceBoardService {
 	// 문의글 삭제
 	void delete(int serviceNo);
 	
+	// 문의글 전체 개수
+	int selectServiceBoardTotal();
 }
