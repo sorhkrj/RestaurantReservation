@@ -3,6 +3,7 @@ package kr.co.rrs.mapper;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import kr.co.rrs.vo.MemberVO;
 
@@ -16,6 +17,9 @@ public interface MemberMapper {
 	//회원탈퇴
 	@Delete("delete from member where id=#{id}")
 	void delete(MemberVO memberVO);
+	//회원수정
+	@Update("UPdate from member whree values(#{id}, #{name}, #{phone}, #{password},#{nickname},#{memberLevel}, SYSDATE)")
+	void Update(MemberVO memberVO);
 
 	
 } 
