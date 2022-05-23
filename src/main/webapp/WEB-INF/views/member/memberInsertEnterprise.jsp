@@ -33,6 +33,7 @@
 </head>
 <body>
 <c:import url="/WEB-INF/views/top.jsp"/>
+<form action="myStore" method="get">
 <div class="container mt-3 p-3" id="form">
   <div class="row">
    <h2 class="text-center">지점장회원가입</h2>
@@ -103,6 +104,7 @@
       <a href="memberInsertEnterprise" type="button" class="btn btn-primary">취소</a>
     </div>
   </div>
+  </form>
 <c:import url="/WEB-INF/views/footer.jsp"/>
 </body>
 
