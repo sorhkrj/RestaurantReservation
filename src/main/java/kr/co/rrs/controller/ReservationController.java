@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import kr.co.rrs.vo.MemberVO;
 import kr.co.rrs.vo.ReservationVO;
 import kr.co.rrs.vo.ReservePossibleVO;
+import kr.co.rrs.vo.StoreVO;
 import kr.co.rrs.service.ReservationService;
 
 @Controller
@@ -25,12 +26,19 @@ public class ReservationController {
 	/////////////////////////insert//////////////////////////////
 	
 	@GetMapping("/reservationInsert")
-	public String insertReservation(ReservationVO rvo, Model model) {
+	public String insertReservation(StoreVO svo, HttpServletRequest request, Model model) {
 		
-		int storeNo = rvo.getStoreNo();
-		ArrayList<ReservePossibleVO> list = service.checkPossibility(storeNo);
-		model.addAttribute("list", list);
-		model.addAttribute("rvo",rvo);
+		int storeNo = svo.getStoreNo();
+		StoreVO storevo = service.checkStore(storeNo);
+		HttpSession session = request.getSession();
+		String id = (String)session.getAttribute("id");
+		MemberVO mvo = service.checkMember(id);
+		System.out.println(mvo.getName());
+		System.out.println(mvo.getPhone());
+		model.addAttribute("mvo", mvo);
+	//	ArrayList<ReservePossibleVO> list = service.checkPossibility(ReservationVO rvo );
+	//	model.addAttribute("list", list);
+		model.addAttribute("storevo", storevo);
 		return "reservation/reservationInsert";
 	}
 	
@@ -58,9 +66,9 @@ public class ReservationController {
 	@PostMapping("/reservationUpdate")
 	public String updateReservation(ReservationVO rvo, HttpServletRequest request, Model model) {
 		
-//		int storeNo = rvo.getStoreNo();
-//		ArrayList<ReservePossibleVO> list = service.checkPossibility(storeNo);
-//		model.addAttribute("list", list);
+		
+		ArrayList<ReservePossibleVO> list = service.checkPossibility(rvo);
+		model.addAttribute("list", list);
 		
 		HttpSession session = request.getSession();
 		String id = (String)session.getAttribute("id");
