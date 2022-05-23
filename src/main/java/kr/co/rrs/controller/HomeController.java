@@ -22,7 +22,7 @@ public class HomeController {
 	// @Autowired // Singleton
 	// Service service;
 	
-	//@Mapping("/command") //GET or POST
+	//@RequestMapping("/command") //GET or POST
 	//public String function() {
 		// 변수 생성 및 값 받기
 		// 명령 실행
