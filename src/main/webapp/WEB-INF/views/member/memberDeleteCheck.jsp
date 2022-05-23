@@ -42,7 +42,7 @@ body {
 <body>
 	<c:import url="/WEB-INF/views/top.jsp" />
 
-	<form action="memberDelet" method="get">
+	<form action="memberDelete" method="get">
 		<div class="container mt-3 p-3" id="form">
 			<div class="row">
 				<h2 class="text-center">회원탈퇴</h2>
@@ -50,7 +50,8 @@ body {
 
 					<div class="input-group mb-3">
 						<span class="input-group-text col-3 text-center">비밀번호</span> <input
-							type="password" class="form-control" name="password">
+							type="password" class="form-control" name="password"><input
+							type="hidden" class="form-control" name="id" value="${id}">
 					</div>
 
 
@@ -58,9 +59,8 @@ body {
 				</div>
 				<div class="row text-center">
 					<div class="container mt-3">
-					
-						<input type="submit" value="확인" class="btn btn-primary" onclick=javascript:window.location="" > <input
-							type="button" value="취소" class="btn btn-primary" onclick=javascript:window.location='memberSelect'>
+						<input type="submit" value="확인" class="btn btn-primary"  > <input
+							type="reset" value="취소" class="btn btn-primary">
 					</div>
 				</div>
 			</div>

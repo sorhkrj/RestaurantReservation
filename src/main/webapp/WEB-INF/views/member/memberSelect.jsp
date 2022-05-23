@@ -35,6 +35,7 @@
   <title>내정보</title>
 </head>
 <body>
+<form action="memberSelect" method="get">
 <c:import url="/WEB-INF/views/top.jsp"/>
   <div class="container mt-3 p-3" id="form">
   <div class="row">
@@ -62,11 +63,12 @@
   </div>
   <div class="row text-center">
     <div class="container mt-3">
-      <a href="memberUpdateCheck"   type="button" class="btn btn-primary">수정하기</a>
-      <a href="memberDeleteCheck" type="button" class="btn btn-primary">회원탈퇴</a>
+      <a href="memberUpdateCheck?id=${memberVO.id}"   type="button" class="btn btn-primary">수정하기</a>
+      <a href="memberDeleteCheck?id=${memberVO.id}" type="button" class="btn btn-primary">회원탈퇴</a>
        <a href="/RestaurantReservation" type="button" class="btn btn-primary">돌아가기</a>
     </div>
   </div>
 </div>
 <c:import url="/WEB-INF/views/footer.jsp"/>
+</form>
 </body>
