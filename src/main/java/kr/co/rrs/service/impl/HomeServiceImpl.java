@@ -12,20 +12,31 @@ import kr.co.rrs.vo.StoreVO;
 
 @Service
 public class HomeServiceImpl implements HomeService {
+
+	/* ServiceImpl 사용법 */
+	// @Autowired // Singleton
+	// Mapper mapper;
+	
+	//@Override // Service에 있는 함수
+	//public 반환값 function(SQL value) { // #{value}에 들어갈 변수
+		// 반환값 result = mapper.crud(value);
+		// return result;
+	//}
+	
 	@Autowired
-	HomeMapper homeMapper;
+	HomeMapper mapper;
 
 	//로그인 확인
 	@Override
 	public MemberVO loginCheck(String id) {
-		MemberVO member = homeMapper.loginCheck(id);
+		MemberVO member = mapper.selectMember(id);
 		return member;
 	}
 
 	//검색 결과 예약 페이지
 	@Override
-	public List<StoreVO> searchResultList() {
-		List<StoreVO> reservationList = homeMapper.searchResultList();
-		return reservationList;
+	public List<StoreVO> searchResultList(String search) {
+		List<StoreVO> StoreList = mapper.selectStore(search);
+		return StoreList;
 	}
 }
