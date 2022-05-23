@@ -29,7 +29,7 @@
 										</td>
 										<td align="right" width="50">
 											<div class="w3-right-align">
-												<button onclick="reservationSelect" class="w3-button w3-white w3-border w3-border-blue w3-round-large">예약하기</button>
+												<button onclick="reservationInsert" class="w3-button w3-white w3-border w3-border-blue w3-round-large">예약하기</button>
 											</div>
 										</td>
 									</tr>

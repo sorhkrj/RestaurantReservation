@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Update;
 import kr.co.rrs.vo.ReplyVO;
 
 public interface ReplyMapper {
-	@Insert("insert into reply values(replyNo_seq.nextVal, #{serviceNo}, #{id}, #{nickName}, #{answer}, sysdate)")
+	@Insert("insert into reply values(replyNo_seq.nextVal, #{serviceNo}, #{id}, #{answer}, sysdate)")
 	void insertReply(ReplyVO replyVO);
 	
 	@Update("update reply set answer = #{answer} where replyNo = #{replyNo}")

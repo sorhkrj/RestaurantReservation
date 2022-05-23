@@ -29,11 +29,13 @@ body {
 	border: 1px solid black;
 }
 
- 
+#myDialog {
+	border: 1px solid black;
+}	
+
 </style>
 
-
-<title>예약확인</title>
+<title>나의 예약 목록</title>
 </head>
 <body>
 <div class="container">
@@ -46,7 +48,7 @@ body {
 				<thead>
 					<tr>
 						<th class="col">이름</th>
-						<th class="col">가게명</th>
+						<th class="col">음식점명</th>
 						<th class="col">방문인원</th>
 						<th class="col">방문일자</th>
 						<th class="col">방문시간</th>
@@ -60,26 +62,59 @@ body {
 				<tbody>
 			 
 					<c:forEach var="reservation" items="${list}"> 
-						<tr>
-			
-						 		<td><a href="reservationSelect?reserveNo=${reservation.reserveNo}">${reservation.id}</a></td>
-								<td>${reservation.storeNo}</td>
+						<tr>	
+								<td><a href="reservationSelect?reserveNo=${reservation.reserveNo}">${reservation.id}</a></td>
+								<td>${reservation.storeName}</td>
 								<td>${reservation.people}</td>
 								<td>${reservation.visitDay}</td>
 								<td>${reservation.visitTime}</td>
 								<td>${reservation.visitName}</td>
 								<td>${reservation.visitPhone}</td>
 								<td>${reservation.regDate}</td>
-								<td><a href=""type="button" class="btn btn-sm btn-primary m-0" onclick="delete();">삭제</a></td>
+								<td><button class="btn btn-primary btn-sm" onclick="myFunction(`${reservation.reserveNo}`,`${reservation.visitTime}`,`${reservation.visitDay}`,`${reservation.visitTime}`)">삭제</button></td>
 						</tr> 
 					</c:forEach>
 
 				</tbody>
 			</table>
-			
 		</div>
 	</div>
 	<c:import url="/WEB-INF/views/footer.jsp"/>
 	</div>
+	
+
+
+
+<dialog id="myDialog">
+  <div id="a">
+          <h5 class="text-center">예약삭제</h5>
+          <form action="reservationDelete" method="post">
+              <input type="hidden" class="form-control my-3" id="reserveNo" name="reserveNo">
+              <input type="hidden" class="form-control my-3" id="people" name="people">
+              <input type="hidden" class="form-control my-3" id="visitDay" name="visitDay">
+              <input type="hidden" class="form-control my-3" id="visitTime" name="visitTime">
+            <div class="form-group">
+              <input type="password" class="form-control my-3" id="message-text" name="password" placeholder="비밀번호">
+            </div>
+            <div class="text-center">
+              <input type="submit" class="btn btn-primary btn-sm" value="삭제">
+              <a href="myReservationList"type="button" class="btn btn-primary btn-sm">취소</a>
+            </div>
+          </form>
+  </div>       
+<dialog>
+
+<script>
+function myFunction(rno,people,day,time) { 
+  document.querySelector("#myDialog").showModal();
+  document.querySelector("#reserveNo").value = rno;
+  document.querySelector("#people").value = people;
+  document.querySelector("#visitDay").value = day;
+  document.querySelector("#visitTime").value = time;
+} 
+	
+</script>
+
+	
 </body>
 </html>

@@ -36,13 +36,16 @@ body {
 <body>
 <div class="container">
 	<c:import url="/WEB-INF/views/top.jsp"/>
-		<form class="container" action="reservationInsertCheck" method="post">
+		<form class="container" action="reservationInsertPro" method="post">
 			<div class="container mt-3 p-3" id="form">
 				<div class="row">
 					<h2 class="text-center">예약확인</h2>
+					
+					<input type="hidden" class="form-control" name="storeNo" value="${rvo.storeNo }">
+					
 					<div class="input-group mb-3">
 						<span class="input-group-text col-3 text-center">음식점이름</span> 
-						<input type="text" class="form-control" name="storeNo"  value="${rvo.storeNo}" readonly>
+						<input type="text" class="form-control" name="storeName"  value="${rvo.storeName}" readonly>
 					</div>
 					<div class="input-group mb-3">
 						<span class="input-group-text col-3 text-center">예약인원</span> 

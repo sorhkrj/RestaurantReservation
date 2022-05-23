@@ -31,7 +31,7 @@
 					</c:if>
 					<c:if test="${sessionScope.memberLevel == 2}">
 						<a href="myStore" class="w3-bar-item w3-button">지점관리</a> <!-- 기업 -->
-						<a href="#" class="w3-bar-item w3-button">분석현황</a> <!-- 기업 -->
+						<a href="storeAnalysis" class="w3-bar-item w3-button">분석현황</a> <!-- 기업 -->
 					</c:if>
 					<a href="serviceBoardMain" class="w3-bar-item w3-button">고객센터</a> <!-- 회원, 기업, 관리자 -->
 					<c:if test="${sessionScope.memberLevel == 3}">

@@ -15,11 +15,14 @@ import kr.co.rrs.vo.ReplyVO;
 import kr.co.rrs.vo.ServiceBoardVO;
 
 public interface ServiceBoardMapper {
-	@Insert("insert into serviceBoard values(serviceNo_SEQ.nextVal, #{id}, #{nickName}, #{title}, #{content}, #{views}, sysdate)")
+	@Insert("insert into serviceBoard values(serviceNo_SEQ.nextVal, #{id}, #{title}, #{content}, #{views}, sysdate)")
 	void insert(ServiceBoardVO serviceBoardVO);
 	
-	@Select("select * from serviceBoard order by serviceNo desc")
+	@Select("select * from serviceBoard a left outer join member b on a.id = b.id order by a.serviceNo desc")
 	List<ServiceBoardVO> selectList();
+	
+//	@Select("select * from serviceBoard order by serviceNo desc")
+//	List<ServiceBoardVO> selectList();
 	
 	@Select("select * from reply where serviceNo = #{serviceNo}")
 	ReplyVO selectReply(@Param("serviceNo") int serviceNo);
