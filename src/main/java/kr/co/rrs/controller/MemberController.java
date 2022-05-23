@@ -73,7 +73,7 @@ import kr.co.rrs.vo.MemberVO;
 	
 	//회원수정
 	@GetMapping("/memberUpdateCheck")
-	public String memberUpdateCheck() {
+	public String memberUpdateCheck(MemberVO member) {
 		return "member/memberUpdateCheck";
 	}
 

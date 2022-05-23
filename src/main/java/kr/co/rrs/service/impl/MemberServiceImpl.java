@@ -24,7 +24,9 @@ public class MemberServiceImpl implements MemberService {
 	}
 	@Override
 	public void delete(MemberVO memberVO) {
-		
+	}
+	@Override
+	public void Update(MemberVO memberVO) {
 		
 	}
 
