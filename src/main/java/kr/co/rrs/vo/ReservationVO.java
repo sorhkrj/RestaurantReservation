@@ -1,11 +1,11 @@
 package kr.co.rrs.vo;
 
-import java.sql.Date;
 
 public class ReservationVO {
 	private int reserveNo;
 	private String id;
 	private int storeNo;
+	private String storeName;
 	private int people;
 	private String visitDay;
 	private String visitTime;
@@ -39,7 +39,15 @@ public class ReservationVO {
 	public void setStoreNo(int storeNo) {
 		this.storeNo = storeNo;
 	}
+	
+	public String getStoreName() {
+		return storeName;
+	}
 
+	public void setStoreName(String storeName) {
+		this.storeName = storeName;
+	}
+	
 	public int getPeople() {
 		return people;
 	}

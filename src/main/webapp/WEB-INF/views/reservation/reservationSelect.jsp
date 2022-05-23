@@ -72,11 +72,12 @@ body {
 						<span class="input-group-text col-3 text-center">방문인 전화번호</span> 
 						<input type="text" class="form-control" name="visitPhone" value="${reservation.visitPhone }" readonly>
 					</div>
+						<input type="hidden" class="form-control" name="reserveNo" value="${reservation.reserveNo }" readonly>
 				</div>
 				<div class="row text-center">
 					<div class="container mt-3">
 						<input type="submit" class="btn btn-primary" value="수정"> 
-						<a type="button" class="btn btn-primary" onclick="delete();">삭제</a> 
+						<a type="button" class="btn btn-primary" onclick="drop()">삭제</a> 
 						<a href="javascript:window.history.go(-1);" type="button" class="btn btn-primary">취소</a> 
 	     			</div>
 				</div>

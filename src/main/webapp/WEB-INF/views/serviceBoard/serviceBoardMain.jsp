@@ -27,12 +27,12 @@
 			<th>작성일</th>
 			<th>답변여부</th>
 		</tr>
-		<c:if test="${selectList != null }">
+		<c:if test="${selectList.size() != 0}">
 			<c:forEach var="i" begin="0" end="${selectList.size()-1 }">
 				<tr>
 					<td>${selectList.get(i).serviceNo }</td>
-					<td>${selectList.get(i).id }</td>
-					<td><a href="serviceBoardDetail?serviceNo=${selectList.get(i).serviceNo }&views=${selectList.get(i).views }">${selectList.get(i).title }</a></td>
+					<td>${selectList.get(i).nickName }</td>
+					<td><a href="serviceBoardDetail?serviceNo=${selectList.get(i).serviceNo }">${selectList.get(i).title }</a></td>
 					<td>${selectList.get(i).content }</td>
 					<td>${selectList.get(i).views }</td>
 					<td>${selectList.get(i).regDate }</td>

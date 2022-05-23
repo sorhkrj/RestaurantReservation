@@ -9,5 +9,6 @@ public interface MemberService {
 	MemberVO selectOne(String id);
 	//회원탈퇴
 	void delete(MemberVO memberVO);
-	
+	//회원수정
+	void Update(MemberVO memberVO);
 }

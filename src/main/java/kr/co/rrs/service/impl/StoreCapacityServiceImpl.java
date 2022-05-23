@@ -1,6 +1,8 @@
 package kr.co.rrs.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.StringTokenizer;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,7 +34,10 @@ public class StoreCapacityServiceImpl implements StoreCapacityService {
 
 	@Override
 	public ReservePossibleVO selectOne(int storeNo, String day) {
-		return storeCapacityMapper.select(storeNo, day);
+		System.out.println("select원 서비스시작");
+		ReservePossibleVO rvo = storeCapacityMapper.selectOne(storeNo, day);
+		System.out.println("sql selectOne 결과물:" + rvo.getDay());
+		return rvo;
 	}
 
 	@Override
@@ -40,4 +45,33 @@ public class StoreCapacityServiceImpl implements StoreCapacityService {
 		storeCapacityMapper.update(reservePossibleVO);
 	}
 
+	@Override
+	public List<String[]> toArray_Times(List<ReservePossibleVO> lsc) {
+		List<String[]> timeList = new ArrayList<String[]>();
+		for (int i = 0; i < lsc.size(); i++) {
+			StringTokenizer st = new StringTokenizer(lsc.get(i).getTime(), ",");
+			String[] aStrings = new String[st.countTokens()];
+
+			int j = 0;
+			while (st.hasMoreTokens()) {
+				// System.out.println(st.nextToken());
+				aStrings[j] = st.nextToken();
+				j++;
+			}
+			timeList.add(aStrings);
+		}
+		return timeList;
+	}
+
+	@Override
+	public String[] toArray_Time(ReservePossibleVO reservePossibleVO) {
+		StringTokenizer st = new StringTokenizer(reservePossibleVO.getTime(), ",");
+		String[] timeList = new String[st.countTokens()];
+		int i = 0;
+		while (st.hasMoreTokens()) {
+			timeList[i] = st.nextToken();
+			i++;
+		}
+		return timeList;
+	}
 }

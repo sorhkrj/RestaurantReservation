@@ -9,30 +9,29 @@
 <title>index</title>
 </head>
 <body>
-<c:import url="/WEB-INF/views/top.jsp"/>
-
-	날짜출력
-	예약가능시간
-	시간당 예약 건수
-	예약당 좌석 수
-	
-	<table>
-		<tr>
-			<td>날짜</td>
-			<td>예약 가능시간</td>
-			<td>예약 건수</td>
-			<td>좌석 수</td>
-		</tr>
-<%-- 		<tr>
-			<form:form modelAttribute = "storeCapacityVO" action ="storeCapacityUpdatePro">
-				<td>${day} </td>
-				<td><form:input path = "TIME" /></td>
-				<td><form:input path = "CAPACITY" /></td>
-				<td><form:input path = "SEAT" /></td>
-				<form:button>수정하기</form:button>
+<c:import url="/WEB-INF/views/top.jsp"/>	
+	<form:form modelAttribute = "reservePossibleVO" action ="storeCapacityUpdatePro" method = "get">
+		<table>
+	 		<tr>
+	 			<td>날짜</td>
+				<td>${reservePossibleVO.day} </td>
+			</tr>		
+			<tr>
+				<td>시간</td>
+				<td><form:checkboxes items="${timeCheck}" path = "timeList" title="time"/></td>
+			</tr>
+			<tr>
+				<td>시간당 예약건 수</td>
+				<td><form:input path = "capacity" /></td>
+			</tr>
+			<tr>
+				<td>좌석 수 (예약인원)</td>
+				<td><form:input path = "seat" /></td>
+			</tr>
+			<tr>
+				<td colspan = "2"><form:button>수정하기</form:button></td>
+		</table>
 			</form:form>
-		</tr> --%>
-	</table>
 	<c:import url="/WEB-INF/views/footer.jsp"/>
 </body>
 </html>
