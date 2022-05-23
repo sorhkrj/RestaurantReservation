@@ -95,11 +95,11 @@ body {
    					</div>
 					<div class="input-group mb-3">
 						<span class="input-group-text col-3 text-center">방문인이름</span> 
-						<input type="text" class="form-control" id="visitName" name="visitName" value="${mvo.name }" >
+						<input type="text" class="form-control" id="visitName" name="visitName" value="" >
 					</div>
 					<div class="input-group mb-3">
 						<span class="input-group-text col-3 text-center">방문인 전화번호</span> 
-						<input type="text" class="form-control" id="visitPhone" name="visitPhone" value="${mvo.phone }">
+						<input type="text" class="form-control" id="visitPhone" name="visitPhone" value="">
 					</div>
 						<input type="hidden" class="form-control" name="reserveNo" value="${rvo.reserveNo}" >
 				</div>
@@ -114,15 +114,18 @@ body {
 		<c:import url="/WEB-INF/views/footer.jsp"/>
 	</div>	
 		
-	  <script type="text/javascript">
-      let checkbox = document.querySelector('#memberCheckbox');
-      checkbox.addEventListener('change', function("${mvo.name}", "${mvo.phone}") {
+	<script type="text/javascript">
+ 	  let name = '${rvo.visitName}';
+      let phone = '${rvo.visitPhone}';
+           
+      memberCheckbox.addEventListener("change", function() {
         if(this.checked) {
-          document.querySelector('#visitName').value=name;
-          document.querySelector('#visitPhone').value=phone;
+   
+          document.querySelector("#visitName").value=name;
+          document.querySelector("#visitPhone").value=phone;
         }else {
-          document.querySelector('#visitName').value="";
-          document.querySelector('#visitPhone').value="";
+          document.querySelector("#visitName").value="";
+          document.querySelector("#visitPhone").value="";
         }
       })
     </script>

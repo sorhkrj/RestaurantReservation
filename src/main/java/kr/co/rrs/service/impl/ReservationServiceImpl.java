@@ -23,37 +23,46 @@ public class ReservationServiceImpl implements ReservationService {
 	public void insertRes(ReservationVO rvo) {
 		mapper.mapperInsertRes(rvo);
 	}
+	
 	//예약수정하기
 	@Override
 	public void updateRes(ReservationVO rvo) {
 		mapper.mapperUpdateRes(rvo);
 	}
+	
     //예약취소
 	@Override
 	public void deleteRes(int rno) {
 		mapper.mapperdeleteRes(rno);
 	}
+	
 	//나의예약리스트
 	@Override
 	public ArrayList<ReservationVO> listRes(String id) {
 		return mapper.mapperListRes(id);
 	}
+	
 	//예약상세정보
 	@Override
 	public ReservationVO selectRes(int rno) {
 		return mapper.mapperSelectRes(rno);
 	}
+	
 	//비밀번호체크
 	@Override
 	public MemberVO checkMember(String id) {
-		
 		return mapper.mapperMember(id);
 	}
 	
+	//예약가능날짜시간
 	@Override
-	public ArrayList<ReservePossibleVO> checkPossibility(int storeNo) {
-		
-		return mapper.mapperPossibility(storeNo);
+	public ArrayList<ReservePossibleVO> checkPossibility(ReservationVO rvo ) {
+		return mapper.mapperPossibility(rvo);
 	}
 	
-}
+	//음식점이름
+	@Override
+	public StoreVO checkStore(int storeNo) {
+		return mapper.mapperStore(storeNo);
+	}
+}	

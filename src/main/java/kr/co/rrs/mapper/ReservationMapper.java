@@ -9,6 +9,7 @@ import org.apache.ibatis.annotations.Update;
 
 import kr.co.rrs.vo.ReservationVO;
 import kr.co.rrs.vo.ReservePossibleVO;
+import kr.co.rrs.vo.StoreVO;
 import kr.co.rrs.vo.MemberVO;
 
 public interface ReservationMapper  {
@@ -40,8 +41,11 @@ public interface ReservationMapper  {
 	MemberVO mapperMember(String id);
 	
 	//예약가능날짜시간좌석
-	@Select("select * from reservepossible where storeNo=#{storeNo}")
-	ArrayList<ReservePossibleVO> mapperPossibility(int storeNo);
+	@Select("select * from reservepossible where storeNo=#{storeNo} and capacity > (select count(*) from reservation where storeNO = #{storeNo} and visitTime = #{visitTime} and visitday =#{visitDay})")
+	ArrayList<ReservePossibleVO> mapperPossibility(ReservationVO rvo);
 	
-
+	//음식점
+	@Select("select * from store where storeNo=#{storeNo}")
+	StoreVO mapperStore(int storeNo);
+	
 }
