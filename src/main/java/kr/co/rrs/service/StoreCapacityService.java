@@ -15,5 +15,5 @@ public interface StoreCapacityService {
 	//여기서부터
 	List<String[]> toArray_Times(List<ReservePossibleVO> lsc);
 	String[] toArray_Time(ReservePossibleVO reservePossibleVO);
-	//여기까지는 AOP로 이전되어야하는 기능
+	//여기까지는 AOP로 이전되어야하는 기능2fdsaf
 }
