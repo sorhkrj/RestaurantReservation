@@ -12,7 +12,7 @@ import kr.co.rrs.vo.ServiceBoardVO;
 
 public interface ServiceBoardService {
 	// 문의글 전체 목록 보기
-	List<ServiceBoardVO> selectList();
+	List<ServiceBoardVO> selectList(int startBoard, int endBoard);
 	
 	// 문의글 등록하기
 	void insert(ServiceBoardVO serviceBoardVO, HttpSession session);

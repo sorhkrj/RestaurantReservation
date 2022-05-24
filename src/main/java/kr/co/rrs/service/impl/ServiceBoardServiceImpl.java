@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,8 +28,8 @@ public class ServiceBoardServiceImpl implements ServiceBoardService {
 	}
 
 	@Override
-	public List<ServiceBoardVO> selectList() {
-		return serviceBoardMapper.selectList(); // 전체 문의글 목록
+	public List<ServiceBoardVO> selectList(int startBoard, int endBoard) {
+		return serviceBoardMapper.selectList(startBoard, endBoard); // 전체 문의글 목록
 	}
 
 	@Override

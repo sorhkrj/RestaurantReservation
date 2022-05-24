@@ -40,13 +40,38 @@ public class ServiceBoardController {
 		// 전체 문의글 개수
 		int total = serviceBoardService.selectServiceBoardTotal();
 		serviceBoardVO.setTotal(total);
-
 		// 전체 필요한 페이지
-		int totalPage = (int) Math.ceil((double)total/10); 
-		serviceBoardVO.setTotalPage(totalPage);
-		
+		int totalPage = (int) Math.ceil((double)total/10);
 		// 현재 페이지
 		int nowPage = serviceBoardVO.getNowPage();
+		// previous btn interlock - page = cPage-10
+		if(nowPage < 1){
+			nowPage = 1; 
+		}
+		// next btn interlock - page = cPage+10
+		if(nowPage > totalPage && totalPage != 0){
+			nowPage = totalPage;
+		}
+		// 페이지 개수 계산
+		int index = nowPage % 10 == 0 ? nowPage/10 : nowPage/10 + 1; // 페이지의 번호 확인 후 밑에 보여질 페이지 숫자를 결정
+		int startPage = 1 + ((index-1) * 10); // 페이지 10개씩
+		int endPage = startPage + 9;
+		// endPage interlock 전체 페이지가 끝 페이지보다 작을 경우
+		if(endPage > totalPage){
+			endPage = totalPage;
+		}
+		// nowPage로 게시물 계산
+		int startBoard = 1 + ((nowPage-1)*10); // 목록 10개씩
+		int endBoard = startBoard + 9;
+
+		System.out.println(total);
+		System.out.println(totalPage);
+		System.out.println(nowPage);
+		System.out.println(index);
+		System.out.println(startPage);
+		System.out.println(endPage);
+		System.out.println(startBoard);
+		System.out.println(endBoard);
 		
 		String id = (String) session.getAttribute("id");
 		
@@ -63,7 +88,7 @@ public class ServiceBoardController {
 			return "login";
 		}
 		
-		List<ServiceBoardVO> list = serviceBoardService.selectList();
+		List<ServiceBoardVO> list = serviceBoardService.selectList(startBoard, endBoard);
 		List<ReplyVO> list2 = null;
 		if(list != null) {
 			list2 = new ArrayList<ReplyVO>();
@@ -76,6 +101,8 @@ public class ServiceBoardController {
 		model.addAttribute("replyList", list2);
 		model.addAttribute("total", total);
 		model.addAttribute("totalPage", totalPage);
+		model.addAttribute("startPage", startPage);
+		model.addAttribute("endPage", endPage);
 		
 		return "serviceBoard/serviceBoardMain";
 	}

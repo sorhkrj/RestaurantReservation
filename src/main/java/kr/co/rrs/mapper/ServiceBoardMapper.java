@@ -18,8 +18,13 @@ public interface ServiceBoardMapper {
 	@Insert("insert into serviceBoard values(serviceNo_SEQ.nextVal, #{id}, #{title}, #{content}, #{views}, sysdate)")
 	void insert(ServiceBoardVO serviceBoardVO);
 	
-	@Select("select * from serviceBoard a left outer join member b on a.id = b.id order by a.serviceNo desc")
-	List<ServiceBoardVO> selectList();
+	//// 수정
+	@Select("select * from (select rownum as rnum, c.* from (select * from serviceBoard a left outer join member b on a.id = b.id order by a.serviceNo desc) c)\r\n"
+			+ "where rnum >= #{startBoard} and rnum <= #{endBoard}")
+	List<ServiceBoardVO> selectList(@Param("startBoard") int startBoard, @Param("endBoard") int endBoard);
+	
+//	@Select("select * from serviceBoard a left outer join member b on a.id = b.id order by a.serviceNo desc")
+//	List<ServiceBoardVO> selectList(@Param("startBoard") int startBoard, @Param("endBoard") int endBoard);
 	
 	@Select("select * from reply a left outer join member b on a.id = b.id where serviceNo = #{serviceNo}")
 	ReplyVO selectReply(@Param("serviceNo") int serviceNo);
