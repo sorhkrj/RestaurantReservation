@@ -14,7 +14,7 @@
 </head>
 <body>
 <c:import url="/WEB-INF/views/top.jsp"/>
-	<table border="1">
+	<table border="1" width="600">
 		<tr>
 			<th colspan="7">문의글 전체 목록 / 문의글 개수: ${total }</th>
 		</tr>
@@ -52,12 +52,15 @@
 				<input type="button" value="문의글 쓰기" onclick="location.href='serviceBoardInsert'"/>
 			</td>
 		</tr>
+	</table>
+	<hr>
+	<table>
 		<tr>
-			<td>이전</td>
-				<c:forEach var="i" begin="1" end="${totalPage }">
-					<td align="center"><a href="serviceBoardMain?nowPage=${i }">${i }</a></td>
+			<td width="50"><a href="serviceBoardMain?nowPage=${i-10 }">이전</a></td>
+				<c:forEach var="i" begin="${startPage }" end="${endPage }">
+					<td width="50" align="center"><a href="serviceBoardMain?nowPage=${i }">${i }</a></td>
 				</c:forEach>
-			<td>다음</td>
+			<td width="50"><a href="serviceBoardMain?nowPage=${i+10 }">다음</a></td>
 		</tr>
 	</table>
 <c:import url="/WEB-INF/views/footer.jsp"/>
