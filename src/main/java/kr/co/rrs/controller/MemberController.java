@@ -3,17 +3,16 @@ package kr.co.rrs.controller;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import kr.co.rrs.service.MemberService;
+import kr.co.rrs.vo.EnterpriseVO;
 import kr.co.rrs.vo.MemberVO;
 
 @Controller
-	public class MemberController {
+public class MemberController {
 
 	private final MemberService memberService;
 	
@@ -30,7 +29,7 @@ import kr.co.rrs.vo.MemberVO;
 	@GetMapping("/memberInsertPro")
 	public String memberInsertPro(MemberVO memberVO) {
 		memberService.insert(memberVO);
-		return "forward:memberSelect";
+		return "forward:/";
 	}
 	//내정보
 	@GetMapping("/memberSelect")
@@ -44,6 +43,11 @@ import kr.co.rrs.vo.MemberVO;
 	@GetMapping("/memberInsertEnterprise")
 	public String memberInsertEnterprise() {
 		return "member/memberInsertEnterprise";
+	}
+	@GetMapping("/memberInsertEnterprisePro")
+	public String memberInsertEnterprisePro(EnterpriseVO enterpriseVO) {
+		memberService.insertEnterprise(enterpriseVO);
+		return "forward:/";
 	}
 	//회원검색결과
 	@GetMapping("/resultMember")
@@ -72,15 +76,23 @@ import kr.co.rrs.vo.MemberVO;
 	}
 	
 	@GetMapping("/memberDelete")
-	public String memberDelete(MemberVO password) {
-		memberService.delete(password);
+	public String memberDelete(HttpSession session, String password) {
+		String id = (String) session.getAttribute("id");
+		System.out.println(id);
+		memberService.delete(id, password);		
 		return "redirect:/";
 	}
 	
 	//회원수정
 	@GetMapping("/memberUpdateCheck")
-	public String memberUpdateCheck(MemberVO member) {
+	public String memberUpdateCheck(String id, Model model) {//
+		MemberVO membervo = memberService.selectOne(id);
+		model.addAttribute("memberVO", membervo);
 		return "member/memberUpdateCheck";
 	}
-
+	@GetMapping("memberUpdateCheckPro")
+	public String memberUpdateCheckPro(MemberVO membervo) {//
+		memberService.Update(membervo);
+		return "redirect:/memberSelect";
+	}
 }

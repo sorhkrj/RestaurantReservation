@@ -42,7 +42,7 @@
 	   <h2 class="text-center">내정보수정</h2>
 	    <div class="input-group mb-3">
 	      <span class="input-group-text col-3 text-center">아이디</span>
-	      <input type="text" class="form-control" name="id" value="${memberVO.id}">
+	      ${memberVO.id}
 	    </div>
 	    <div class="input-group mb-3">
 	      <span  class="input-group-text col-3 text-center">비밀번호</span>
@@ -63,6 +63,7 @@
 	  </div>
 	  <div class="row text-center">
 	    <div class="container mt-3">
+	      <input type = "hidden" class="form-control" name="id" value="${memberVO.id}">
 	      <input type = "submit" value="수정" class="btn btn-primary">
 	      <input type = "reset" value = "취소" class="btn btn-primary" onclick=javascript:window.location='memberSelect'>
 	    </div>
