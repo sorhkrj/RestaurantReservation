@@ -33,61 +33,61 @@
 </head>
 <body>
 <c:import url="/WEB-INF/views/top.jsp"/>
-<form action="myStore" method="get">
+<form action="memberInsertEnterprisePro" method="get">
 <div class="container mt-3 p-3" id="form">
   <div class="row">
    <h2 class="text-center">지점장회원가입</h2>
     <div class="input-group mb-3">
       <span class="input-group-text col-3 text-center">아이디</span>
-      <input type="text" id="id" class="form-control">
+      <input type="text" name="id" class="form-control">
     </div>
      <div class="input-group mb-3">
       <span class="input-group-text col-3 text-center">비밀번호</span>
-      <input type="password" id="password" class="form-control">
+      <input type="password" name="password" class="form-control">
     </div>
      <div class="input-group mb-3">
       <span class="input-group-text col-3 text-center">이름</span>
-      <input type="text" id="name" class="form-control">
+      <input type="text" name="name" class="form-control">
     </div>
      <div class="input-group mb-3">
       <span class="input-group-text col-3 text-center">전화번호</span>
-      <input type="text" id="phone" class="form-control">
+      <input type="text" name="phone" class="form-control">
     </div>
      <div class="input-group mb-3">
       <span class="input-group-text col-3 text-center">별명</span>
-      <input type="text" id="nickname" class="form-control">
+      <input type="text" name="nickName" class="form-control">
     </div>
      <div class="input-group mb-3">
       <span class="input-group-text col-3 text-center">음식점사진</span>
-      <input type="text" id="photo" class="form-control">
+      <input type="text" name="photo" class="form-control">
     </div>
      <div class="input-group mb-3">
       <span class="input-group-text col-3 text-center">음식점위치</span>
-      <input type="text" id="location" class="form-control">
+      <input type="text" name="location" class="form-control">
     </div>
      <div class="input-group mb-3">
       <span class="input-group-text col-3 text-center">음식점분류</span>
-      <input type="text" id="category" class="form-control">
+      <input type="text" name="category" class="form-control">
     </div>
      <div class="input-group mb-3">
       <span class="input-group-text col-3 text-center">음식점전화번호</span>
-      <input type="text" id="store_phone" class="form-control">
+      <input type="text" name="store_phone" class="form-control">
     </div>
      <div class="input-group mb-3">
       <span class="input-group-text col-3 text-center">음식점주차여부</span>
-      <input type="text" id="parking" class="form-control">
+      <input type="text" name="parking" class="form-control">
     </div>
      <div class="input-group mb-3">
       <span class="input-group-text col-3 text-center">음식점휴일일</span>&nbsp;
-      <input type="radio" id="holyday" name="drone" value="월"  checked="checked" > 
+      <input type="radio" name="holyday" value="월"  checked="checked" > 
        <label for="월"><h2>월</h2></label>&nbsp;
-         <input type="radio" id="holyday" name="drone" value="화"  checked="checked" > 
+         <input type="radio" name="holyday"  value="화"  checked="checked" > 
        <label for="화"><h2>화</h2></label>&nbsp;
-         <input type="radio" id="holyday" name="drone" value="수"  checked="checked" > 
+         <input type="radio" name="holyday"  value="수"  checked="checked" > 
        <label for="수"><h2>수</h2></label>&nbsp;
-         <input type="radio" id="holyday" name="drone" value="목"  checked="checked" > 
+         <input type="radio" name="holyday"  value="목"  checked="checked" > 
        <label for="목"><h2>목</h2></label>&nbsp;
-         <input type="radio" id="holyday" name="drone" value="금"  checked="checked" > 
+         <input type="radio" name="holyday"  value="금"  checked="checked" > 
        <label for="금"><h2>금</h2></label>
     </div>
      <div class="input-group mb-3">
@@ -100,8 +100,7 @@
     </div>
      <div class="row text-center">
     <div class="container mt-3">
-      <a href="center"   type="button" class="btn btn-primary">확인</a>
-      <a href="memberInsertEnterprise" type="button" class="btn btn-primary">취소</a>
+      <input type = "submit" value="확인" class="btn btn-primary">
     </div>
   </div>
   </form>
