@@ -10,6 +10,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script> <!-- js cdn -->
+
 
 <style>
 html, body {
@@ -36,6 +38,7 @@ body {
 </style>
 
 <title>나의 예약 목록</title>
+<button id="b">에이작스</button>
 </head>
 <body>
 <div class="container">
@@ -114,6 +117,43 @@ function myFunction(rno,people,day,time) {
 } 
 	
 </script>
+
+
+
+	
+	<script type="text/javascript">
+	
+	$('#b').click(function(){
+
+		$.ajax({
+			url:'aaaa',
+			data : 'id=yoon',
+			type:'GET',
+			dataType:'json',
+			success:function(mvo){
+				alert(mvo.password);
+			},error:function(a,b,c){
+				alert("error");
+			}
+		});
+	    <!-- AAA -->
+	  });
+	
+	
+	</script>
+	
+
+
+
+
+
+
+
+
+
+
+
+
 
 	
 </body>

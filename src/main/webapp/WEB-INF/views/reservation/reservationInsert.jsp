@@ -11,6 +11,8 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <script	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
+
+
 <style>
 html, body {
 	height: 100%; /*높이 조절*/
@@ -78,7 +80,7 @@ body {
 									<tbody>
 										<c:forEach var="reservation" items="${list}"> 
 											<tr>	
-													<td>${reservation.day}</td>
+													<td><input type = "date" name = "visitDay" mindate ="0"></td>
 													<td>${reservation.time}</td>
 													<td>${reservation.capacity}</td>
 											</tr> 
@@ -96,7 +98,7 @@ body {
 						
 						<div class="input-group mb-3">
 							<span class="input-group-text col-3 text-center">방문시간</span> 
-							<input type="time" class="form-control" name="visitTime">
+							<input type="number" class="form-control" name="visitTime">
 						</div>
 		
 		
@@ -144,6 +146,10 @@ body {
         }
       })
     </script>
+	
+
+	
+	
 	
 	
 	

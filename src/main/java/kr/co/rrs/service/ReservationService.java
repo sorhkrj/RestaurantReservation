@@ -17,6 +17,7 @@ public interface ReservationService {
 	MemberVO checkMember(String id);
 	ArrayList<ReservePossibleVO> checkPossibility(ReservationVO rvo);
 	public StoreVO checkStore(int storeNo);
+	ArrayList<ReservePossibleVO> storeCheckPossibility(StoreVO storevo);
 	
 	
 }
