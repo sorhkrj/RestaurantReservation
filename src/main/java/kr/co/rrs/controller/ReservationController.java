@@ -10,12 +10,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import kr.co.rrs.service.ReservationService;
 import kr.co.rrs.vo.MemberVO;
 import kr.co.rrs.vo.ReservationVO;
 import kr.co.rrs.vo.ReservePossibleVO;
 import kr.co.rrs.vo.StoreVO;
-import kr.co.rrs.service.ReservationService;
 
 @Controller
 public class ReservationController {
@@ -36,8 +38,9 @@ public class ReservationController {
 		System.out.println(mvo.getName());
 		System.out.println(mvo.getPhone());
 		model.addAttribute("mvo", mvo);
+		ArrayList<ReservePossibleVO> list = service.storeCheckPossibility(storevo);
 	//	ArrayList<ReservePossibleVO> list = service.checkPossibility(ReservationVO rvo );
-	//	model.addAttribute("list", list);
+		model.addAttribute("list", list);
 		model.addAttribute("storevo", storevo);
 		return "reservation/reservationInsert";
 	}
@@ -125,5 +128,18 @@ public class ReservationController {
 			service.deleteRes(rvo.getReserveNo());
 		}
 		return "redirect:/myReservationList";
+	}
+	
+	//////////////////////ajax실습////////////////////////
+	
+	@RequestMapping("/aaaa")
+	@ResponseBody
+	public Object deleteReservation(String id) {
+		
+		
+		MemberVO mvo = service.checkMember(id);
+		
+		
+		return mvo;
 	}
 }
