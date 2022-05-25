@@ -65,4 +65,9 @@ public class ReservationServiceImpl implements ReservationService {
 	public StoreVO checkStore(int storeNo) {
 		return mapper.mapperStore(storeNo);
 	}
+
+	@Override
+	public ArrayList<ReservePossibleVO> storeCheckPossibility(StoreVO storevo) {
+		return mapper.mapperStorePossibility(storevo);
+	}
 }	

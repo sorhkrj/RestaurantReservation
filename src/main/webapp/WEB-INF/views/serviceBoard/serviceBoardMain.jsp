@@ -8,13 +8,14 @@
 <title>serviceBoardMain</title>
 <style type="text/css">
 	table{
+		width: 600px;
 		border-collapse: collapse;
 	}
 </style>
 </head>
 <body>
 <c:import url="/WEB-INF/views/top.jsp"/>
-	<table border="1" width="600">
+	<table border="1">
 		<tr>
 			<th colspan="7">문의글 전체 목록 / 문의글 개수: ${total }</th>
 		</tr>
@@ -50,6 +51,11 @@
 		<tr>
 			<td colspan="6">
 				<input type="button" value="문의글 쓰기" onclick="location.href='serviceBoardInsert'"/>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="6">
+				<input type="button" value="리뷰페이지" onclick="location.href='storeDetailReviewMain'"/>
 			</td>
 		</tr>
 	</table>

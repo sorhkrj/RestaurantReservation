@@ -5,7 +5,6 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -19,8 +18,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import kr.co.rrs.mapper.HomeMapper;
-import kr.co.rrs.mapper.MemberMapper;
 import kr.co.rrs.service.HomeService;
 import kr.co.rrs.service.ServiceBoardService;
 import kr.co.rrs.vo.MemberVO;
@@ -64,14 +61,14 @@ public class ServiceBoardController {
 		int startBoard = 1 + ((nowPage-1)*10); // 목록 10개씩
 		int endBoard = startBoard + 9;
 
-		System.out.println(total);
-		System.out.println(totalPage);
-		System.out.println(nowPage);
-		System.out.println(index);
-		System.out.println(startPage);
-		System.out.println(endPage);
-		System.out.println(startBoard);
-		System.out.println(endBoard);
+//		System.out.println(total);
+//		System.out.println(totalPage);
+//		System.out.println(nowPage);
+//		System.out.println(index);
+//		System.out.println(startPage);
+//		System.out.println(endPage);
+//		System.out.println(startBoard);
+//		System.out.println(endBoard);
 		
 		String id = (String) session.getAttribute("id");
 		

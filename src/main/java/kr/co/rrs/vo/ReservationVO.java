@@ -8,7 +8,7 @@ public class ReservationVO {
 	private String storeName;
 	private int people;
 	private String visitDay;
-	private int visitTime;
+	private String visitTime;
 	private String visitName;
 	private String visitPhone;
 	private String regDate;
@@ -64,11 +64,11 @@ public class ReservationVO {
 		this.visitDay = visitDay;
 	}
 	
-	public int getVisitTime() {
+	public String getVisitTime() {
 		return visitTime;
 	}
 
-	public void setVisitTime(int visitTime) {
+	public void setVisitTime(String visitTime) {
 		this.visitTime = visitTime;
 	}
 	public String getVisitName() {
