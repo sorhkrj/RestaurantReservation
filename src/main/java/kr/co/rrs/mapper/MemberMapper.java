@@ -13,10 +13,10 @@ public interface MemberMapper {
 	//회원가입
 	@Insert("insert into member values(#{id}, #{name}, #{phone}, #{password},#{nickname},#{memberLevel}, SYSDATE)")
 	void insert(MemberVO memberVO);
-	@Insert("insert into member values(#{id}, #{name}, #{phone}, #{password},#{nickname},#{memberLevel}, SYSDATE)")
+	@Insert("insert into member values(#{id}, #{name}, #{phone}, #{password},#{nickname}, 2, SYSDATE)")
 	void insert2(EnterpriseVO enterpriseVO);
 	//엔터프라이즈 가입
-	@Insert("insert into Store values(storeno_seq.nextval, #{id}, #{storeName}, #{photo}, #{location}, #{category}, #{store_phone}, #{parking}, #{holyday}, #{introduce}, #{notice}")
+	@Insert("insert into store values(storeno_seq.nextval, #{id}, #{storeName}, #{photo}, #{location}, #{category}, #{store_phone}, #{parking}, #{holyday}, #{introduce}, #{notice})")
 	void insertEnterprise(EnterpriseVO enterpriseVO);
 	//회원정보
 	@Select("select * from member where id = #{id}")
