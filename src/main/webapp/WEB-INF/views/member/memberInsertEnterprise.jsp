@@ -55,11 +55,15 @@
     </div>
      <div class="input-group mb-3">
       <span class="input-group-text col-3 text-center">별명</span>
-      <input type="text" name="nickName" class="form-control">
+      <input type="text" name="nickname" class="form-control">
     </div>
      <div class="input-group mb-3">
       <span class="input-group-text col-3 text-center">음식점사진</span>
       <input type="text" name="photo" class="form-control">
+    </div>
+     <div class="input-group mb-3">
+      <span class="input-group-text col-3 text-center">음식점이름</span>
+      <input type="text" name="storeName" class="form-control">
     </div>
      <div class="input-group mb-3">
       <span class="input-group-text col-3 text-center">음식점위치</span>
@@ -92,11 +96,11 @@
     </div>
      <div class="input-group mb-3">
       <span class="input-group-text col-3 text-center">음식점소개</span>
-      <input type="text" id="introduce" class="form-control">
+      <input type="text" name="introduce" class="form-control">
     </div>
      <div class="input-group mb-3">
       <span class="input-group-text col-3 text-center">음식점공지사항</span>
-      <input type="text" id="notice" class="form-control">
+      <input type="text" name="notice" class="form-control">
     </div>
      <div class="row text-center">
     <div class="container mt-3">

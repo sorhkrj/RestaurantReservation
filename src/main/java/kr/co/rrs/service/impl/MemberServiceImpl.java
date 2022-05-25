@@ -41,6 +41,20 @@ public class MemberServiceImpl implements MemberService {
 		System.out.println(enterpriseVO.getId());
 		System.out.println(enterpriseVO.getCategory());
 		System.out.println(enterpriseVO.getHolyday());
+		System.out.println(enterpriseVO.getIntroduce());
+		System.out.println(enterpriseVO.getLocation());
+		System.out.println(enterpriseVO.getMemberLevel());//
+		System.out.println(enterpriseVO.getName());
+		System.out.println(enterpriseVO.getNickname());
+		System.out.println(enterpriseVO.getNotice());
+		System.out.println(enterpriseVO.getParking());
+		System.out.println(enterpriseVO.getPassword());
+		System.out.println(enterpriseVO.getPhone());//
+		System.out.println(enterpriseVO.getPhoto());
+		System.out.println(enterpriseVO.getRegDate());//
+		System.out.println(enterpriseVO.getStore_phone());
+		System.out.println(enterpriseVO.getStoreName());
+		System.out.println(enterpriseVO.getStoreNo());//
 		memberMapper.insert2(enterpriseVO);
 		memberMapper.insertEnterprise(enterpriseVO);
 	}
