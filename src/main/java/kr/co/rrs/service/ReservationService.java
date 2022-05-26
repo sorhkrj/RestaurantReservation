@@ -15,9 +15,11 @@ public interface ReservationService {
 	ArrayList<ReservationVO> listRes(String id);
 	ReservationVO selectRes(int rno);
 	MemberVO checkMember(String id);
-	ArrayList<ReservePossibleVO> checkPossibility(ReservationVO rvo);
+	ArrayList<ReservePossibleVO> checkPossibility(int storeNo);
 	public StoreVO checkStore(int storeNo);
 	ArrayList<ReservePossibleVO> storeCheckPossibility(StoreVO storevo);
+	//test
+	ReservePossibleVO test(String day);
 	
 	
 }

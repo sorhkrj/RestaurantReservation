@@ -10,31 +10,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script> <!-- js cdn -->
 
-<style>
-html, body {
-	height: 100%; /*높이 조절*/
-}
 
-body {
-	display: flex;
-	align-items: center;
-	padding-top: 40px;
-	padding-bottom: 40px;
-	background-color: #f5f5f5;
-}
-
-#form{
-	width: 600px; /*가로 조절*/
-	border: 1px solid black;
-}
-
-#mytable {
-	width: 1000px; /*가로 조절*/
-	border: 1px solid black;
-}
-
-</style>
 
 
 <title>예약수정</title>
@@ -43,8 +21,9 @@ body {
 <body>
 	
 	<div class="container">
+	<div class="bg-primary">
 		<c:import url="/WEB-INF/views/top.jsp"/>
-	
+	</div>
 		<form action="reservationUpdateCheck" method="post" id="form">
 			<div class="container p-3" >
 				<div class="row">
@@ -81,11 +60,11 @@ body {
 					
 					<div class="input-group mb-3">
 						<span class="input-group-text col-3 text-center">방문일자</span> 
-						<input type="date" class="form-control" name="visitDay" value="${rvo.visitDay}">
+						<input type="date" class="form-control" name="visitDay" id="visitDay" onchange="visit()" value="${rvo.visitDay}">
 					</div>
 					<div class="input-group mb-3">
 						<span class="input-group-text col-3 text-center">방문시간</span> 
-						<input type="number" class="form-control" name="visitTime" value="${rvo.visitTime}">
+						<input type="number" class="form-control" name="visitTime" id="visitTime" value="${rvo.visitTime}">
 					</div>
 	
 					<h2 class="text-center">방문인정보</h2>
@@ -129,6 +108,43 @@ body {
         }
       })
     </script>
+	
+<script type="text/javascript">
+
+function visit(){
+
+
+	let splitTime=0;
+	
+   	$('#visitDay').change(function(){
+
+		$.ajax({
+			url:'aaaa',
+			data : {'day': $("#visitDay").val()},
+			type:'get',
+			async: false,
+			dataType:'json',
+		    timeout: 3000,
+			success:function(rpvo){
+			
+				splitTime = rpvo.time.split(',');
+				console.log(splitTime);
+				return false;
+			},error:function(a,b,c){
+				alert('error');
+			}
+		});
+	    <!-- AAAA -->
+   	});
+   
+
+}	
+
+</script>
+	
+	
+	
+	
 	
 	
 	
