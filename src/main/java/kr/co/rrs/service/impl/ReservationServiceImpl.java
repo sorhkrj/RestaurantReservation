@@ -56,8 +56,8 @@ public class ReservationServiceImpl implements ReservationService {
 	
 	//예약가능날짜시간
 	@Override
-	public ArrayList<ReservePossibleVO> checkPossibility(ReservationVO rvo ) {
-		return mapper.mapperPossibility(rvo);
+	public ArrayList<ReservePossibleVO> checkPossibility(int storeNo ) {
+		return mapper.mapperPossibility(storeNo);
 	}
 	
 	//음식점이름
@@ -70,4 +70,20 @@ public class ReservationServiceImpl implements ReservationService {
 	public ArrayList<ReservePossibleVO> storeCheckPossibility(StoreVO storevo) {
 		return mapper.mapperStorePossibility(storevo);
 	}
+	
+	//test
+	@Override
+	public ReservePossibleVO test(String day) {
+			return mapper.mappertest(day);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }	

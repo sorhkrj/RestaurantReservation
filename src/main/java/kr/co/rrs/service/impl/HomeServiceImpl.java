@@ -28,9 +28,12 @@ public class HomeServiceImpl implements HomeService {
 
 	//로그인 확인
 	@Override
-	public MemberVO loginCheck(String id) {
+	public MemberVO loginCheck(String id, String password) {
 		MemberVO member = mapper.selectMember(id);
-		return member;
+		if (password.equals(member.getPassword())) {
+			return member;
+		}
+		return null;
 	}
 
 	//검색 결과 예약 페이지

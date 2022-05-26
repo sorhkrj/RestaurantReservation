@@ -41,17 +41,20 @@ public interface ReservationMapper  {
 	MemberVO mapperMember(String id);
 	
 	//예약가능날짜시간좌석
-	@Select("select * from reservepossible where storeNo=#{storeNo} and capacity > (select count(*) from reservation where storeNo = #{storeNo} and visitTime = #{visitTime} and visitday = substr(#{visitDay}, 1, 10))")
-	ArrayList<ReservePossibleVO> mapperPossibility(ReservationVO rvo);
+	@Select("select * from reservepossible where storeNo=#{storeNo}")
+	ArrayList<ReservePossibleVO> mapperPossibility(int storeNo);
 	
 	//음식점
 	@Select("select * from store where storeNo=#{storeNo}")
 	StoreVO mapperStore(int storeNo);
 	
 	//예약가능날짜
-	
-		@Select("select day, time from reservepossible where storeNo = 555")
-		ArrayList<ReservePossibleVO> mapperStorePossibility(StoreVO svo);
+	@Select("select day, time from reservepossible where storeNo = #{storeNo}")
+	ArrayList<ReservePossibleVO> mapperStorePossibility(StoreVO svo);
+
+	//테스트
+	@Select("select time from reservepossible where day = #{day}")
+	ReservePossibleVO mappertest(String day);
 	
 //		@Select("select * from reservepossible where storeNo=${storeNo} and capacity > "
 //				+ " (select count(*) from reservation where storeNo = #{storeNo} and "
