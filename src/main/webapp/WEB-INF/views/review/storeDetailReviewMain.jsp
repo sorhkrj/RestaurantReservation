@@ -28,30 +28,29 @@
 	<tr>
 		<th colspan="2">리뷰</th>
 	</tr>
-	<c:if test="${likeVO != null }">
-		<tr>
-			<td width="203">♥ ${likeCnt }</td>
-			<th width="203">
-				<form action="like" method="post">
-					<c:if test="${likeVO.sw == 0 }">
-						<input type="hidden" name="sw" value="1"/>
-						<input type="hidden" name="id_like" value="${likeVO.id_like }"/>
-						<input type="hidden" name="likeCnt" value="${likeVO.likeCnt }"/>
-						<input type="submit" value="좋아요"/>
-					</c:if>
-					<c:if test="${likeVO.sw == 1 }">
-						<input type="hidden" name="sw" value="0"/>
-						<input type="hidden" name="id_like" value="${likeVO.id_like }"/>
-						<input type="hidden" name="likeCnt" value="${likeVO.likeCnt }"/>
-						<input type="submit" value="좋아요 취소" style="color: white; background-color: blue;"/>
-					</c:if>
-				</form>
-			</th>
-		</tr>
-	</c:if>
 	<tr>
-		<td colspan="2">리뷰쓰기</td>
+		<td>좋아요♥ 개수: ${reviewLikeCnt }</td>
+		<td width="203">
+			<form action="storeDetailReviewMain" method="post">
+				<c:if test="${reviewLikeVO.sw == 0 }">
+					<input type="hidden" name="sw" value="1"/>
+					<input type="hidden" name="id" value="${sessionScope.id }"/>
+					<input type="hidden" name="storeNo" value="${storeVO.storeNo }"/>
+					<input type="submit" value="좋아요"/>
+				</c:if>
+				<c:if test="${reviewLikeVO.sw == 1 }">
+					<input type="hidden" name="sw" value="0"/>
+					<input type="hidden" name="id" value="${sessionScope.id }"/>
+					<input type="hidden" name="storeNo" value="${storeVO.storeNo }"/>
+					<input type="submit" value="좋아요 취소" style="color: white; background-color: blue;"/>
+				</c:if>
+			</form>
+		</td>
 	</tr>
+	<tr>
+		<td>♥ ${sessionScope.nickName }</td><td>리뷰쓰기</td>
+	</tr>
+	
 	<!-- 리뷰리스트 사이즈 받아와서 출력 -->
 	 <c:if test="reviewList">
 	 	<c:forEach var="i" begin="0" end="">
