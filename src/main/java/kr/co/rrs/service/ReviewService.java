@@ -1,7 +1,11 @@
 package kr.co.rrs.service;
 
+import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 
+import kr.co.rrs.vo.ReviewVO;
 import kr.co.rrs.vo.StoreVO;
 
 public interface ReviewService {
@@ -9,5 +13,18 @@ public interface ReviewService {
 	StoreVO selectOne(int storeNo);
 	
 	// 지점에 대한 좋아요 수
-	int selectReivewLikeCnt(int storeNo);
+	int selectReviewLikeCnt(int storeNo);
+	
+	// 로그인 id에 대한 좋아요 체크
+	int selectReviewLikeStatus(int storeNo, String id);
+	
+	// 좋아요 누름 insert
+	void insertReviewLike(int storeNo, String id);
+	
+	// 좋아요 취소 delete
+	@Delete("delete from reviewLike where id = #{id}")
+	void deleteReviewLike(int storeNo, String id);
+	
+	// 리뷰 insert
+	void insertReview(ReviewVO reviewVO);
 }

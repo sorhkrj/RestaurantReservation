@@ -23,15 +23,14 @@ public class HomeController {
 	// Service service;
 	
 	//@RequestMapping("/command") //GET or POST
-	//public String function() {
+	//public String function(HttpServletRequest request, Model model) {
 		// 변수 생성 및 값 받기
-		// 명령 실행
-		// Attribute("변수", 변수); // "JSP에서 사용할 ${변수}"
+		// 서비스 실행
+		// model.addAttribute("변수", 변수); // "JSP에서 사용할 ${변수}"
 		// return "실행할 페이지";
+	// 실행만 하고 다음 화면으로 넘기고 싶을 때: return "redirect:/", 
+	// 기존의 정보를 가지고 다음 화면을 띄우고 싶을 때: return "forward:/"
 	//}
-	
-	// page.jsp
-	// <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 	
 	@Autowired // Singleton
 	HomeService service; // Service
@@ -48,45 +47,41 @@ public class HomeController {
 	}
 	
 	@GetMapping("/login")
-	public String login(Model model, HttpServletRequest request) {
+	public String login(HttpServletRequest request, Model model) {
 		String loginFail = request.getParameter("loginFail");
+		
 		model.addAttribute("loginFail", loginFail);
+		
 		return "login";
 	}
 	
 	@PostMapping("/loginPro")
-	public String loginPro(HttpServletRequest request, HttpSession session, Model model) {
+	public String loginPro(HttpServletRequest request, Model model) {
 		String id = request.getParameter("id");
 		String password = request.getParameter("password");
 		
-		MemberVO member = service.loginCheck(id);
-		if (member != null) {
-			if (password.equals(member.getPassword())) {
-				session.setAttribute("id", member.getId());
-				session.setAttribute("nickName", member.getNickname());
-				session.setAttribute("memberLevel", member.getMemberLevel());
-				session.setMaxInactiveInterval(60);
-			} else {
-				return "redirect:login?loginFail=1";
-			}
-		} else {
+		MemberVO member = service.loginCheck(id, password);
+		if (member == null) {
 			return "redirect:login?loginFail=1";
 		}
+		
+		HttpSession session = request.getSession();
+		session.setAttribute("id", member.getId());
+		session.setAttribute("nickName", member.getNickname());
+		session.setAttribute("memberLevel", member.getMemberLevel());
+		session.setMaxInactiveInterval(300);
 		
 		return "redirect:/";
 	}
 	
 	@GetMapping("/logout")
-	public String logout(HttpSession session) {
-		session.setAttribute("id", null);
-		session.setAttribute("nickName", null);
-		session.setAttribute("memberLevel", null);
-		session.setMaxInactiveInterval(0);
+	public String logout(HttpServletRequest request) {
+		request.getSession().invalidate();
 		return "redirect:/";
 	}
 	
 	@GetMapping("/searchResult")
-	public String searchResult(Model model, HttpServletRequest request) {
+	public String searchResult(HttpServletRequest request, Model model) {
 		String search = request.getParameter("search");
 		
 		List<StoreVO> storeList = service.searchResultList(search);

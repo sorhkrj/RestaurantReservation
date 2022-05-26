@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import kr.co.rrs.service.HomeService;
+import kr.co.rrs.service.MemberService;
 import kr.co.rrs.service.ServiceBoardService;
 import kr.co.rrs.vo.MemberVO;
 import kr.co.rrs.vo.ReplyVO;
@@ -29,7 +29,7 @@ public class ServiceBoardController {
 	@Autowired
 	ServiceBoardService serviceBoardService;
 	@Autowired
-	HomeService homeService;
+	MemberService memberService;
 	
 	// 고객센터 목록 리스트
 	@GetMapping("/serviceBoardMain")
@@ -123,7 +123,7 @@ public class ServiceBoardController {
 	public String serviceBoardDetail(@RequestParam("serviceNo") int serviceNo, HttpSession session, Model model) {
 		// 상세보기할때 조회수 증가하기
 		String id = (String) session.getAttribute("id");
-		MemberVO memberVO = homeService.loginCheck(id);
+		MemberVO memberVO = memberService.selectOne(id);
 
 		serviceBoardService.updateViews(serviceNo, id);
 				
@@ -171,11 +171,8 @@ public class ServiceBoardController {
 	@PostMapping("/serviceBoardUpdate")
 	public String serviceBoardUpdate(ServiceBoardVO serviceBoardVO, @RequestParam("password") String password, HttpServletResponse response, Model model) {
 		serviceBoardVO = serviceBoardService.selectDetail(serviceBoardVO.getServiceNo());
-		MemberVO memberVO = homeService.loginCheck(serviceBoardVO.getId());
+		MemberVO memberVO = memberService.selectOne(serviceBoardVO.getId());
 		if(password.equals(memberVO.getPassword())) { // 문의글 번호에 대한 아이디로 회원 정보 검색 후 패스워드 비교하여 패스워드가 같을때
-			System.out.println(serviceBoardVO.getServiceNo());
-			System.out.println(serviceBoardVO.getTitle());
-			System.out.println(serviceBoardVO.getContent());
 			model.addAttribute("serviceBoardVO", serviceBoardVO);
 			return "serviceBoard/serviceBoardUpdate";
 		}
@@ -232,7 +229,7 @@ public class ServiceBoardController {
 	@PostMapping("/serviceBoardDeletePro")
 	public String serviceBoardDeletePro(@Param("serviceNo") int serviceNo, @Param("password") String password, HttpServletResponse response) {
 		ServiceBoardVO serviceBoardVO = serviceBoardService.selectDetail(serviceNo);
-		MemberVO memberVO = homeService.loginCheck(serviceBoardVO.getId());
+		MemberVO memberVO = memberService.selectOne(serviceBoardVO.getId());
 		
 		if(password.equals(memberVO.getPassword())) { // 문의글 번호에 대한 아이디로 회원 정보 검색 후 패스워드 비교하여 패스워드가 같을때
 			serviceBoardService.delete(serviceNo);

@@ -6,22 +6,25 @@
 <head>
 <meta charset="UTF-8">
 <title>serviceBoardDeleteCheck</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <style type="text/css">
 	table{
-		border-collapse: collapse;
+		border: 1px solid black;
 	}
 </style>
 </head>
 <body>
+<div class="container">
 <c:import url="/WEB-INF/views/top.jsp"/>
 	<form action="serviceBoardDeletePro" method="post">
-		<table border="1">
+		<table class="table table-striped">
 			<tr>
 				<th colspan="2">${serviceBoardVO.title } 글을 지웁니다<br>비밀번호를 입력해주세요</th>
 			</tr>
 			<tr>
 				<th>비밀번호</th>
-				<td><input type="password" name="password"/></td>
+				<td><input type="password" name="password" required="required"/></td>
 			</tr>
 			<tr>
 				<td colspan="2">
@@ -35,5 +38,6 @@
 	</form>
 	<hr>
 <c:import url="/WEB-INF/views/footer.jsp"/>
+</div>
 </body>
 </html>
