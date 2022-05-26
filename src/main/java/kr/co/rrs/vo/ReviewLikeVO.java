@@ -5,7 +5,8 @@ public class ReviewLikeVO {
 	private int storeNo;
 	private String id;
 	private int sw = 0;
-	private int reivewLikeCnt = 0;
+	private int reviewLikeCnt = 0;
+	private int likeStatus;
 	
 	
 	public int getReviewLikeNo() {
@@ -32,11 +33,17 @@ public class ReviewLikeVO {
 	public void setSw(int sw) {
 		this.sw = sw;
 	}
-	public int getReivewLikeCnt() {
-		return reivewLikeCnt;
+	public int getReviewLikeCnt() {
+		return reviewLikeCnt;
 	}
-	public void setReivewLikeCnt(int reivewLikeCnt) {
-		this.reivewLikeCnt = reivewLikeCnt;
+	public void setReviewLikeCnt(int reviewLikeCnt) {
+		this.reviewLikeCnt = reviewLikeCnt;
+	}
+	public int getLikeStatus() {
+		return likeStatus;
+	}
+	public void setLikeStatus(int likeStatus) {
+		this.likeStatus = likeStatus;
 	}
 	
 }

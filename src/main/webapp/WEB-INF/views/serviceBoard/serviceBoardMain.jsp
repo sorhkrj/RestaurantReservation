@@ -5,17 +5,18 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>serviceBoardMain</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <style type="text/css">
 	table{
-		width: 600px;
-		border-collapse: collapse;
+		border: 1px solid black;
 	}
 </style>
 </head>
 <body>
+<div class="container">
 <c:import url="/WEB-INF/views/top.jsp"/>
-	<table border="1">
+	<table class="table table-striped">
 		<tr>
 			<th colspan="7">문의글 전체 목록 / 문의글 개수: ${total }</th>
 		</tr>
@@ -55,20 +56,21 @@
 		</tr>
 		<tr>
 			<td colspan="6">
-				<input type="button" value="리뷰페이지" onclick="location.href='storeDetailReviewMain?storeNo=1'"/>
+				<input type="button" value="리뷰페이지" onclick="location.href='storeDetailReviewMain?storeNo=555'"/>
 			</td>
 		</tr>
 	</table>
 	<hr>
-	<table>
+	<table class="table table-striped">
 		<tr>
-			<td width="50"><a href="serviceBoardMain?nowPage=${i-10 }">이전</a></td>
+			<td><a href="serviceBoardMain?nowPage=${i-10 }">이전</a></td>
 				<c:forEach var="i" begin="${startPage }" end="${endPage }">
 					<td width="50" align="center"><a href="serviceBoardMain?nowPage=${i }">${i }</a></td>
 				</c:forEach>
-			<td width="50"><a href="serviceBoardMain?nowPage=${i+10 }">다음</a></td>
+			<td><a href="serviceBoardMain?nowPage=${i+10 }">다음</a></td>
 		</tr>
 	</table>
 <c:import url="/WEB-INF/views/footer.jsp"/>
+</div>
 </body>
 </html>

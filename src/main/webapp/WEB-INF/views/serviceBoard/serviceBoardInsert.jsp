@@ -7,16 +7,19 @@
 <head>
 <meta charset="UTF-8">
 <title>serviceBoardInsert</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <style type="text/css">
 	table{
-		border-collapse: collapse;
+		border: 1px solid black;
 	}
 </style>
 </head>
 <body>
+<div class="container">
 <c:import url="/WEB-INF/views/top.jsp"/>
 	<form:form action="serviceBoardInsertPro" modelAttribute="serviceBoardVO">
-		<table border="1">
+		<table class="table table-striped">
 			<tr>
 				<th colspan="2">문의글 입력</th>
 			</tr>
@@ -42,5 +45,6 @@
 		</table>
 	</form:form>
 <c:import url="/WEB-INF/views/footer.jsp"/>
+</div>
 </body>
 </html>

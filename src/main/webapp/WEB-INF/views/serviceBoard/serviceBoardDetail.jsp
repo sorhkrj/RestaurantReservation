@@ -6,15 +6,18 @@
 <head>
 <meta charset="UTF-8">
 <title>serviceBoardDetail</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <style type="text/css">
 	table{
-		border-collapse: collapse;
+		border: 1px solid black;
 	}
 </style>
 </head>
 <body>
+<div class="container">
 <c:import url="/WEB-INF/views/top.jsp"/>
-	<table border="1">
+	<table class="table table-striped">
 		<tr>
 			<th colspan="4">상세 보기</th>
 		</tr>
@@ -62,7 +65,7 @@
 	<hr>
 	<c:if test="${memberVO.memberLevel == 3 && replyVO == null}">
 		<form action="replyInsertPro" method="post">
-			<table border="1">
+			<table class="table table-striped">
 				<tr>
 					<th colspan="2">관리자 답변</th>
 				</tr>
@@ -83,7 +86,7 @@
 	</c:if>
 	<c:if test="${replyVO != null}">
 		<form action="replyUpdatePro" method="post">
-			<table border="1">
+			<table class="table table-striped">
 				<tr>
 					<th colspan="2">관리자 답변</th>
 				</tr>
@@ -93,7 +96,7 @@
 						<td>${replyVO.answer }</td>
 					</c:if>
 					<c:if test="${memberVO.memberLevel == 3 }">
-						<td><textarea name="answer" cols="32" rows="5" required="required" autofocus="autofocus">${replyVO.answer }</textarea></td>
+						<td><textarea name="answer" cols="32" rows="5" required autofocus>${replyVO.answer }</textarea></td>
 					</c:if>
 				</tr>
 				<c:if test="${memberVO.memberLevel == 3 }">
@@ -110,5 +113,6 @@
 		</form>
 	</c:if>
 <c:import url="/WEB-INF/views/footer.jsp"/>
+</div>
 </body>
 </html>
