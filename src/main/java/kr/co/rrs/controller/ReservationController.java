@@ -35,11 +35,9 @@ public class ReservationController {
 		HttpSession session = request.getSession();
 		String id = (String)session.getAttribute("id");
 		MemberVO mvo = service.checkMember(id);
-		System.out.println(mvo.getName());
-		System.out.println(mvo.getPhone());
+		
 		model.addAttribute("mvo", mvo);
-		ArrayList<ReservePossibleVO> list = service.storeCheckPossibility(storevo);
-	//	ArrayList<ReservePossibleVO> list = service.checkPossibility(ReservationVO rvo );
+		ArrayList<ReservePossibleVO> list = service.checkPossibility(storeNo);
 		model.addAttribute("list", list);
 		model.addAttribute("storevo", storevo);
 		return "reservation/reservationInsert";
@@ -69,8 +67,8 @@ public class ReservationController {
 	@PostMapping("/reservationUpdate")
 	public String updateReservation(ReservationVO rvo, HttpServletRequest request, Model model) {
 		
-		
-		ArrayList<ReservePossibleVO> list = service.checkPossibility(rvo);
+		int storeNo = rvo.getStoreNo();
+		ArrayList<ReservePossibleVO> list = service.checkPossibility(storeNo);
 		model.addAttribute("list", list);
 		
 		HttpSession session = request.getSession();
@@ -134,12 +132,12 @@ public class ReservationController {
 	
 	@RequestMapping("/aaaa")
 	@ResponseBody
-	public Object deleteReservation(String id) {
+	public Object deleteReservation(String day) {
+		System.out.println(day);
+		System.out.println(day.getClass().getName());
+		ReservePossibleVO rpvo = service.test(day);
+		System.out.println(rpvo);
 		
-		
-		MemberVO mvo = service.checkMember(id);
-		
-		
-		return mvo;
+		return rpvo;
 	}
 }

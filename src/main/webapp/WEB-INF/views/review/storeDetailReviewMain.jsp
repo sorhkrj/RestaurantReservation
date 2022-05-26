@@ -24,13 +24,12 @@
 		<a href = "storeReservation?storeNo=${storeVO.storeNo }">예약현황</a><br>
 		<a href = "storeCapacitySelect?storeNo=${storeVO.storeNo }">예약가능시간 확인</a><br>
 <hr>
-<table border="1" style="width: 506px;">
-	<tr>
-		<th colspan="2">리뷰</th>
-	</tr>
+	<h2 class="text-center">
+	</h2>
+	<table class="table table-striped">
 	<tr>
 		<td>좋아요♥ 개수: ${reviewLikeCnt }</td>
-		<td width="203">
+		<td>
 			<form action="storeDetailReviewMain" method="post">
 				<c:if test="${reviewLikeVO.sw == 0 }">
 					<input type="hidden" name="sw" value="1"/>
