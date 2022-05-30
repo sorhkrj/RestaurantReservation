@@ -32,13 +32,15 @@
 		<a href = "storeReservation?storeNo=${storeVO.storeNo }">예약현황</a><br>
 		<a href = "storeCapacitySelect?storeNo=${storeVO.storeNo }">예약가능시간 확인</a><br>
 <hr>
+<h4>리뷰정보</h4>
 <table class="table table-striped">
 	<tr>
 		<th colspan="6">리뷰</th>
 	</tr>
 	<tr>
-		<td colspan="3">좋아요♥ 개수: ${reviewLikeVO.reviewLikeCnt }</td>
-		<td colspan="3">
+		<td colspan="2">좋아요♥ 개수: ${reviewLikeVO.reviewLikeCnt }</td>
+		<td colspan="2">평점: ${avg }</td>
+		<td colspan="2">
 			<form action="storeDetailReviewMain" method="post">
 				<c:if test="${reviewLikeVO.likeStatus == 0 }">
 					<input type="hidden" name="sw" value="2"/>
@@ -54,27 +56,72 @@
 		</td>
 	</tr>
 	</table>
-	<form action="reviewInsertPro" method="post">
+	<hr>
+	<h4>리뷰작성</h4>
+	<form action="reviewInsertPro" method="post" enctype="multipart/form-data">
+		<table class="table table-striped">
+		<tr>
+			<th>평점</th>
+			<th>닉네임</th>
+			<th>파일</th>
+			<th>리뷰내용</th>
+			<th></th>
+			<th></th>
+			<th></th>
+		</tr>
+		<tr>
+			<td>
+				<select name="rating">
+					<option value="1">★1</option>
+					<option value="2">★2</option>
+					<option value="3">★3</option>
+					<option value="4">★4</option>
+					<option value="5" selected>★5</option>
+				</select>
+			</td>
+			<td>${sessionScope.nickName }<input type="hidden" name="id" value="${sessionScope.id }"/></td>
+			<td><input type="file" name="file"/></td>
+			<td colspan="3">
+				<textarea rows="3" cols="20" maxlength="30" required name="reviewContent"></textarea>
+			</td>
+			<td>
+				<input type="hidden" name="storeNo" value="${storeVO.storeNo }"/>
+				<input type="submit" value="리뷰쓰기"/>
+			</td>
+		</tr>
+		</table>
+	</form>
+	<hr>
+	<h4>리뷰목록</h4>
+	<form action="reviewCommentInsertPro" method="post">
 		<table class="table table-striped">
 			<tr>
-				<th>리뷰번호</th>
-				<td>
-					<select name="rating">
-						<option value="1">★1</option>
-						<option value="2">★2</option>
-						<option value="3">★3</option>
-						<option value="4">★4</option>
-						<option value="5" selected>★5</option>
-					</select>
-				</td>
-				<td>${sessionScope.nickName }</td>
-				<td>photo</td>
-				<td>
-					내용 <input type="text" name=""  required/>
-					<input type="submit" value="작성"/>
-				</td>
-				
+				<th>작성자</th>
+				<th>평점</th>
+				<th>사진</th>
+				<th>내용</th>
+				<th>작성일</th>
 			</tr>
+			<c:if test="${reviewList.size() != 0 }">
+				<c:forEach var="i" begin="0" end="${reviewList.size()-1 }">
+				<tr>
+					<td>${reviewListNick.get(i).nickName }</td>
+					<td>${reviewListNick.get(i).rating }</td>
+					<td width="200" height="100">
+						<c:if test="${reviewList.get(i).reviewPhoto != null }">
+							<img alt="d" src="imgUpload/${reviewList.get(i).reviewPhoto }" width="200" height="100">
+						</c:if>	
+					</td>
+					<td>${reviewList.get(i).reviewContent }</td>
+					<td>
+						${reviewList.get(i).reviewRDate }
+						<c:if test="${reviewList.get(i).id == sessionScope.id }">
+							<input type="button" value="지우기" onclick="location.href='reviewDeletePro?storeNo=${reviewList.get(i).storeNo }&reviewNo=${reviewList.get(i).reviewNo}'"/>
+						</c:if>
+					</td>
+				</tr>
+				</c:forEach>
+			</c:if>
 		</table>
 	</form>
 <c:import url="/WEB-INF/views/footer.jsp"/>

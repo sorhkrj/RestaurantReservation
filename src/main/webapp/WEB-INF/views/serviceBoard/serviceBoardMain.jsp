@@ -56,7 +56,7 @@
 		</tr>
 		<tr>
 			<td colspan="6">
-				<input type="button" value="리뷰페이지" onclick="location.href='storeDetailReviewMain?storeNo=555'"/>
+				<input type="button" value="리뷰페이지" onclick="location.href='storeDetailReviewMain?storeNo=1'"/>
 			</td>
 		</tr>
 	</table>
