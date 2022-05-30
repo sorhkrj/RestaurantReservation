@@ -5,16 +5,30 @@
 <html>
 <head>
 <meta charset="UTF-8">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<script	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <title>index</title>
 </head>
 <body>
+<div class="container">
+
 <c:import url="/WEB-INF/views/top.jsp"/>
-	기간 : ${firstDay } 부터 ${lastDay }까지의 음식점 예약 분석 결과입니다.<br>
-	총 예약 건수 : ${storeAnalysis.count }<br>
-	총 예약 인원 : ${storeAnalysis.people }<br>
-	일 평균 예약 건수 : ${storeAnalysis.dayAvg }<br>
-	<br>
-	날짜별 예약 건수(미구현)
+	<h1>${firstDay } 부터 ${lastDay }까지의 음식점 예약 분석 결과입니다.</h1>
+	<table class="table table-striped">
+		<tr>
+			<th>기간</th>
+			<th>총 예약건수 </th>
+			<th>총 예약인원 </th>
+			<th>일 평균 예약 건수 </th>
+		</tr>
+		<tr>
+			<td> ${storeAnalysis.count } 건</td>
+			<td> ${storeAnalysis.people } 명</td>
+			<td> ${storeAnalysis.dayAvg } 건</td>
+		</tr>
+	</table>
+		
 <c:import url="/WEB-INF/views/footer.jsp"/>
+</div>
 </body>
 </html>

@@ -10,30 +10,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-  <style>
-	   html,
-	    body {
-	      height: 100%;  /*높이 조절*/
-	    }
-	
-	      body {
-	      display: flex;
-	      align-items: center;
-	      padding-top: 40px;
-	      padding-bottom: 40px;
-	      background-color: #f5f5f5;
-	      }
-	
-	      #form {
-	        width: 500px; /*가로 조절*/
-	        border: 1px solid black;
-	      }
-     </style>
      <title>지점장회원가입</title>
 </head>
 <body>
 <c:import url="/WEB-INF/views/top.jsp"/>
-<form action="memberInsertEnterprisePro" method="get">
+<form action="memberInsertEnterprisePro?${_csrf.parameterName}=${_csrf.token}" method="post" enctype="multipart/form-data">
 <div class="container mt-3 p-3" id="form">
   <div class="row">
    <h2 class="text-center">지점장회원가입</h2>
@@ -59,7 +40,7 @@
     </div>
      <div class="input-group mb-3">
       <span class="input-group-text col-3 text-center">음식점사진</span>
-      <input type="text" name="photo" class="form-control">
+      <input type = "file" name = "file" class="form-control">
     </div>
      <div class="input-group mb-3">
       <span class="input-group-text col-3 text-center">음식점이름</span>
@@ -102,13 +83,17 @@
       <span class="input-group-text col-3 text-center">음식점공지사항</span>
       <input type="text" name="notice" class="form-control">
     </div>
-     <div class="row text-center">
+    <div class="row text-center">
     <div class="container mt-3">
-      <input type = "submit" value="확인" class="btn btn-primary">
+    	<input type = "submit" value="확인" class="btn btn-primary">
     </div>
+    </div>
+   </div>
   </div>
   </form>
 <c:import url="/WEB-INF/views/footer.jsp"/>
+
+
 </body>
 
 

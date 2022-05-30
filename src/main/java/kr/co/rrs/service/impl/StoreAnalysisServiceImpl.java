@@ -1,5 +1,7 @@
 package kr.co.rrs.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,11 +16,14 @@ public class StoreAnalysisServiceImpl implements StoreAnalysisService {
 	StoreAnalysisMapper mapper;
 
 	@Override
-	public AnalysisVO getAnalysis(int storeNo, String firstDay, String lastDay) {
-		AnalysisVO avo =  mapper.countReservation(storeNo, firstDay, lastDay);
-		System.out.println(avo.getCount());
-		System.out.println(avo.getDayAvg());
-		System.out.println(avo.getPeople());
+	public AnalysisVO getAnalysis(String id, String firstDay, String lastDay) {
+		AnalysisVO avo =  mapper.countReservation(id, firstDay, lastDay);
 		return avo;
+	}
+	
+	@Override
+	public List<AnalysisVO> getTrend(String id, String firstDay, String lastDay) {
+		List<AnalysisVO> avoList = mapper.getTrend(id, firstDay, lastDay);
+		return avoList;
 	}
 }

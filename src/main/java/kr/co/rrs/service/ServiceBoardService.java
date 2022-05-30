@@ -15,7 +15,7 @@ public interface ServiceBoardService {
 	List<ServiceBoardVO> selectList(int startBoard, int endBoard);
 	
 	// 문의글 등록하기
-	void insert(ServiceBoardVO serviceBoardVO, HttpSession session);
+	void insert(ServiceBoardVO serviceBoardVO, HttpSession session, String id);
 	
 	// 문의글 상세보기
 	ServiceBoardVO selectDetail(int serviceNo);

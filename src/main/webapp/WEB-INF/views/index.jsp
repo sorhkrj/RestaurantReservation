@@ -12,10 +12,8 @@
 </head>
 <body>
 	<div class="container">
-	<div class="bg-primary">
 		<c:import url="/WEB-INF/views/top.jsp"/>
 		<c:import url="/WEB-INF/views/footer.jsp"/>
-	</div>
 	</div>
 </body>
 </html>

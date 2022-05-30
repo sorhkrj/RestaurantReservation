@@ -1,5 +1,6 @@
 package kr.co.rrs.controller;
 
+import java.security.Principal;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
@@ -20,6 +21,7 @@ import kr.co.rrs.vo.ReservePossibleVO;
 import kr.co.rrs.vo.StoreVO;
 
 @Controller
+@RequestMapping("/reservation")
 public class ReservationController {
 	
 	@Autowired
@@ -28,12 +30,11 @@ public class ReservationController {
 	/////////////////////////insert//////////////////////////////
 	
 	@GetMapping("/reservationInsert")
-	public String insertReservation(StoreVO svo, HttpServletRequest request, Model model) {
+	public String insertReservation(StoreVO svo, Principal principal, Model model) {
 		
 		int storeNo = svo.getStoreNo();
 		StoreVO storevo = service.checkStore(storeNo);
-		HttpSession session = request.getSession();
-		String id = (String)session.getAttribute("id");
+		String id = principal.getName();
 		MemberVO mvo = service.checkMember(id);
 		
 		model.addAttribute("mvo", mvo);
@@ -53,26 +54,24 @@ public class ReservationController {
 	}
 	
 	@PostMapping("/reservationInsertPro")
-	public String insertReservation(ReservationVO rvo, HttpServletRequest request) {
+	public String insertReservation(ReservationVO rvo, Principal principal) {
 		
-		HttpSession session = request.getSession();
-		rvo.setId((String)session.getAttribute("id"));
+		rvo.setId(principal.getName());
 				
 		service.insertRes(rvo);
-		return "redirect:/myReservationList";
+		return "redirect:myReservationList";
 	}
 	
 	////////////////////////////////update/////////////////////////////////////
 	
 	@PostMapping("/reservationUpdate")
-	public String updateReservation(ReservationVO rvo, HttpServletRequest request, Model model) {
+	public String updateReservation(ReservationVO rvo, Principal principal, Model model) {
 		
 		int storeNo = rvo.getStoreNo();
 		ArrayList<ReservePossibleVO> list = service.checkPossibility(storeNo);
 		model.addAttribute("list", list);
 		
-		HttpSession session = request.getSession();
-		String id = (String)session.getAttribute("id");
+		String id = principal.getName();
 		MemberVO mvo = service.checkMember(id);
 		
 		model.addAttribute("rvo",rvo);
@@ -89,16 +88,15 @@ public class ReservationController {
 	@PostMapping("/reservationUpdatePro")
 	public String updateCheckReservationPro(ReservationVO rvo) {
 		service.updateRes(rvo);
-		return "redirect:/myReservationList";
+		return "redirect:myReservationList";
 	}
 
 	////////////////////////////////List//////////////////////////////////
 	
 	@GetMapping("/myReservationList")
-	public String listmyReservation(HttpServletRequest request, Model model) {
+	public String listmyReservation(Principal principal, Model model) {
 		
-		HttpSession session = request.getSession();
-		String id = (String)session.getAttribute("id");
+		String id = principal.getName();
 		ArrayList<ReservationVO> list = service.listRes(id);
 		model.addAttribute("list", list);
 		return "reservation/myReservationList";
@@ -115,17 +113,16 @@ public class ReservationController {
 	////////////////////////////////delete///////////////////////////////////////
 	
 	@PostMapping("/reservationDelete")
-	public String deleteReservation(ReservationVO rvo, HttpServletRequest request, Model model) {
+	public String deleteReservation(ReservationVO rvo, HttpServletRequest request, Principal principal, Model model) {
 		
-		HttpSession session = request.getSession();
-		String id = (String)session.getAttribute("id");
+		String id = principal.getName();
 		String password = request.getParameter("password");
 		MemberVO mvo = service.checkMember(id);
 		if(mvo.getPassword().equals(password))
 		{
 			service.deleteRes(rvo.getReserveNo());
 		}
-		return "redirect:/myReservationList";
+		return "redirect:myReservationList";
 	}
 	
 	//////////////////////ajax실습////////////////////////

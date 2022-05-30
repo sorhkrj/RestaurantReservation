@@ -7,11 +7,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<script	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <title>index</title>
 </head>
 <body>
 <c:import url="/WEB-INF/views/top.jsp"/>
-	<table border ='1'>
+	<table class="table table-striped">
 		<tr>
 			<td>날짜</td>
 			<td>예약 가능시간</td>
@@ -23,7 +25,7 @@
 			<tr>
 				<td>${i.day } </td>
 				<td>
-				<table border ='1'>
+				<table class="table table-bordered">
 					<tr>
 						<td>오전</td>
 						<c:forEach varStatus="time" begin="1" end="12">

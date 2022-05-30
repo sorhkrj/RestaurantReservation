@@ -35,6 +35,11 @@ public class HomeServiceImpl implements HomeService {
 		}
 		return null;
 	}
+	
+	@Override
+	public String selectNickname(String id) {
+		return mapper.selectNickname(id);
+	}
 
 	//검색 결과 예약 페이지
 	@Override

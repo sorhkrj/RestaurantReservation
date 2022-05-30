@@ -25,7 +25,7 @@
 					<div class="w3-left-align">${store.introduce}</div>
 					<div class="w3-right-align">
 					<c:if test="${not empty sessionScope.id}">
-						<a href="reservationInsert?storeNo=${store.storeNo}" type="button"class="w3-button w3-white w3-border w3-border-blue w3-round-large">예약하기</a>
+						<a href="review/storeDetailReviewMain?storeNo=${store.storeNo}" type="button"class="w3-button w3-white w3-border w3-border-blue w3-round-large">지점보기</a>
 					</c:if>
 					</div>
 					</div>

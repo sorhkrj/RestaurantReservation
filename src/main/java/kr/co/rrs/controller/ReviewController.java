@@ -1,7 +1,7 @@
 package kr.co.rrs.controller;
 
 import java.io.File;
-import java.io.IOException;
+import java.security.Principal;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
@@ -13,13 +13,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import kr.co.rrs.service.MemberService;
 import kr.co.rrs.service.ReviewService;
-import kr.co.rrs.vo.MemberVO;
 import kr.co.rrs.vo.ReviewCommentVO;
 import kr.co.rrs.vo.ReviewJoinMemberVO;
 import kr.co.rrs.vo.ReviewLikeVO;
@@ -27,14 +23,15 @@ import kr.co.rrs.vo.ReviewVO;
 import kr.co.rrs.vo.StoreVO;
 
 @Controller
+@RequestMapping("/review")
 public class ReviewController {
 	@Autowired
 	ReviewService reviewService;
 	
 	@RequestMapping("/storeDetailReviewMain")
-	public String storeDetailReviewMain(StoreVO storeVO, ReviewLikeVO reviewLikeVO, Model model, HttpSession session) {
+	public String storeDetailReviewMain(StoreVO storeVO, ReviewLikeVO reviewLikeVO, Principal principal, Model model, HttpSession session) {
 		storeVO = reviewService.selectOne(storeVO.getStoreNo()); // 지점 정보 검색
-		String id = (String) session.getAttribute("id"); // 로그인 id 검색
+		String id = principal.getName(); // 로그인 id 검색
 		
 		// ----------------------------------------------------------------------좋아요 기능
 		if(id != null) {

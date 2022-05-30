@@ -6,12 +6,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<script	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <title>index</title>
 </head>
 <body>
 <c:import url="/WEB-INF/views/top.jsp"/>	
 	<form:form modelAttribute = "reservePossibleVO" action ="storeCapacityUpdatePro" method = "get">
-		<table>
+		<table class="table table-striped">
 	 		<tr>
 	 			<td>날짜</td>
 				<td>${reservePossibleVO.day} </td>
@@ -31,7 +33,7 @@
 			<tr>
 				<td colspan = "2"><form:button>수정하기</form:button></td>
 		</table>
-			</form:form>
+	</form:form>
 	<c:import url="/WEB-INF/views/footer.jsp"/>
 </body>
 </html>

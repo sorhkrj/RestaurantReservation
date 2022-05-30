@@ -17,6 +17,9 @@ public interface HomeMapper {
 	@Select("select * from Member where id=#{id}")
 	MemberVO selectMember(String id);
 	
+	@Select("select nickname from Member where id=#{id}")
+	String selectNickname(String id);
+	
 	//검색 결과 예약 페이지
 	@Select("select * from store where storeName like '%'||#{search}||'%'")
 	List<StoreVO> selectStore(String search);

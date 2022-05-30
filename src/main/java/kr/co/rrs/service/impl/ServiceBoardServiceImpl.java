@@ -18,8 +18,7 @@ public class ServiceBoardServiceImpl implements ServiceBoardService {
 	ServiceBoardMapper serviceBoardMapper;
 
 	@Override
-	public void insert(ServiceBoardVO serviceBoardVO, HttpSession session) {
-		String id = (String) session.getAttribute("id");
+	public void insert(ServiceBoardVO serviceBoardVO, HttpSession session, String id) {
 		String nickName = (String) session.getAttribute("nickName");
 		serviceBoardVO.setId(id); // 아이디
 		serviceBoardVO.setNickName(nickName); // 닉네임
