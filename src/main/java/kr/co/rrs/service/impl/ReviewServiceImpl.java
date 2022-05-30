@@ -1,10 +1,15 @@
 package kr.co.rrs.service.impl;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.co.rrs.mapper.ReviewMapper;
 import kr.co.rrs.service.ReviewService;
+import kr.co.rrs.vo.MemberVO;
+import kr.co.rrs.vo.ReviewCommentVO;
+import kr.co.rrs.vo.ReviewJoinMemberVO;
 import kr.co.rrs.vo.ReviewVO;
 import kr.co.rrs.vo.StoreVO;
 @Service
@@ -15,7 +20,6 @@ public class ReviewServiceImpl implements ReviewService {
 	// 지점 번호 지점 정보 가져오기
 	@Override
 	public StoreVO selectOne(int storeNo) {
-
 		return reviewMapper.selectOne(storeNo);
 	}
 	
@@ -48,5 +52,30 @@ public class ReviewServiceImpl implements ReviewService {
 	public void insertReview(ReviewVO reviewVO) {
 		reviewMapper.insertReview(reviewVO);
 	}
+
+	// 리뷰 전체 검색
+	@Override
+	public ArrayList<ReviewVO> selectReviewALL(int storeNo) {
+		return reviewMapper.selectReviewALL(storeNo);
+	}
+
+	// 리뷰 조인 검색
+	@Override
+	public ArrayList<ReviewJoinMemberVO> selectReviewJoinMember(int storeNo) {
+		return reviewMapper.selectReviewJoinMember(storeNo);
+	}
+
+	// 리뷰 삭제
+	@Override
+	public void deleteReview(int storeNo, int reviewNo) {
+		reviewMapper.deleteReview(storeNo, reviewNo);
+	}
+
+	// 리뷰 댓글 삽입
+	@Override
+	public void insertReviewComment(ReviewCommentVO reviewCommentVO) {
+		reviewMapper.insertReviewComment(reviewCommentVO);
+	}
+
 	
 }

@@ -1,9 +1,9 @@
 package kr.co.rrs.vo;
 
-public class ReviewVO {
+public class ReviewJoinMemberVO {
 	private int reviewNo;
 	private double rating;
-	private String id;
+	private String nickName;
 	private int storeNo;
 	private String reviewPhoto;
 	private String reviewContent;
@@ -22,11 +22,11 @@ public class ReviewVO {
 	public void setRating(double rating) {
 		this.rating = rating;
 	}
-	public String getId() {
-		return id;
+	public String getNickName() {
+		return nickName;
 	}
-	public void setId(String id) {
-		this.id = id;
+	public void setNickName(String nickName) {
+		this.nickName = nickName;
 	}
 	public int getStoreNo() {
 		return storeNo;

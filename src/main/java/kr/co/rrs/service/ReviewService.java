@@ -1,10 +1,15 @@
 package kr.co.rrs.service;
 
+import java.util.ArrayList;
+
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
+import kr.co.rrs.vo.MemberVO;
+import kr.co.rrs.vo.ReviewCommentVO;
+import kr.co.rrs.vo.ReviewJoinMemberVO;
 import kr.co.rrs.vo.ReviewVO;
 import kr.co.rrs.vo.StoreVO;
 
@@ -27,4 +32,17 @@ public interface ReviewService {
 	
 	// 리뷰 insert
 	void insertReview(ReviewVO reviewVO);
+	
+	// 리뷰 전체 검색
+	ArrayList<ReviewVO> selectReviewALL(int storeNo);
+	
+	// 리뷰 조인 검색
+	ArrayList<ReviewJoinMemberVO> selectReviewJoinMember(int storeNo);
+	
+	// 리뷰 삭제
+	@Delete("delete from review where storeNo = #{storeNo} and reviewNo = #{reviewNo}")
+	void deleteReview(int storeNo, int reviewNo);
+	
+	// 리뷰 댓글 삽입
+	void insertReviewComment(ReviewCommentVO reviewCommentVO);
 }
