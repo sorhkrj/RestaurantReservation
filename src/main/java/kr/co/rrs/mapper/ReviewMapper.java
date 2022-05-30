@@ -1,10 +1,15 @@
 package kr.co.rrs.mapper;
 
+import java.util.ArrayList;
+
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
+import kr.co.rrs.vo.MemberVO;
+import kr.co.rrs.vo.ReviewCommentVO;
+import kr.co.rrs.vo.ReviewJoinMemberVO;
 import kr.co.rrs.vo.ReviewVO;
 import kr.co.rrs.vo.StoreVO;
 
@@ -31,6 +36,22 @@ public interface ReviewMapper {
 	
 	// ------------------------------------------------------------------------------------
 	// 리뷰 insert
-	@Insert("insert into review values(reviewNo_SEQ.nextVal, #{rating}, #{reviewNickName}, #{storeNo}, #{reviewPhoto}, #{reviewContent}, to_date(sysdate, yyyy-mm-dd hh-mm-ss))")
+	@Insert("insert into review values(reviewNo_SEQ.nextVal, #{rating}, #{id}, #{storeNo}, #{reviewPhoto}, #{reviewContent}, sysdate)")
 	void insertReview(ReviewVO reviewVO);
+	
+	// 리뷰 전체 검색
+	@Select("select * from review where storeNo = #{storeNo} order by reviewNo")
+	ArrayList<ReviewVO> selectReviewALL(@Param("storeNo") int storeNo);
+	
+	// 리뷰 조인 검색
+	@Select("select reviewNo, rating, nickname, storeno, reviewphoto, reviewcontent, reviewrdate from review r join member m on r.id = m.id where storeNo = #{storeNo} order by reviewNo")
+	ArrayList<ReviewJoinMemberVO> selectReviewJoinMember(@Param("storeNo") int storeNo);
+	
+	// 리뷰 삭제
+	@Delete("delete from review where storeNo = #{storeNo} and reviewNo = #{reviewNo}")
+	void deleteReview(@Param("storeNo") int storeNo, @Param("reviewNo") int reviewNo);
+	
+	// 리뷰 댓글 삽입
+	@Insert("insert into reviewComment values(reviewComment_SEQ.nextVal, #{reviewCommentNo}, #{reviewNo}, #{id}, #{reviewCommentContent}, sysdate)")
+	void insertReviewComment(ReviewCommentVO reviewCommentVO);
 }
