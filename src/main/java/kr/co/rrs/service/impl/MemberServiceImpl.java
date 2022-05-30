@@ -20,6 +20,7 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public void insert(MemberVO memberVO) {
+		memberVO.setPassword(encoder.encode((memberVO.getPassword())));
 		memberMapper.insert(memberVO);
 	}
 

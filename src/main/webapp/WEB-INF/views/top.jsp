@@ -19,7 +19,7 @@
 			<div class="w3-button w3-gray">${sessionScope.nickName}</div>
 				<div class="w3-dropdown-content w3-bar-block w3-border">
 				<sec:authorize access="isAnonymous()">
-						<a href="loginForm" class="w3-bar-item w3-button">로그인</a> <!-- 회원, 기업, 관리자 -->
+						<a href="${pageContext.request.contextPath}/loginForm" class="w3-bar-item w3-button">로그인</a> <!-- 회원, 기업, 관리자 -->
 				</sec:authorize>
 				<sec:authorize access="isAuthenticated()">
 						<form:form action="logout" method="POST">
@@ -27,13 +27,13 @@
 						</form:form> <!-- 회원, 기업, 관리자 -->
 				</sec:authorize>
 				
-					<a href="memberSelect" class="w3-bar-item w3-button">내정보</a> <!-- 회원, 관리자 -->
-					<a href="myReservationList" class="w3-bar-item w3-button">예약정보</a> <!-- 회원 -->
+					<a href="${pageContext.request.contextPath}/member/memberSelect" class="w3-bar-item w3-button">내정보</a> <!-- 회원, 관리자 -->
+					<a href="${pageContext.request.contextPath}/reservation/myReservationList" class="w3-bar-item w3-button">예약정보</a> <!-- 회원 -->
 					<a href="${pageContext.request.contextPath}/store/myStore" class="w3-bar-item w3-button">지점관리</a> <!-- 기업 -->
 					<a href="${pageContext.request.contextPath}/store/storeAnalysis" class="w3-bar-item w3-button">분석현황</a> <!-- 기업 -->
-					<a href="serviceBoardMain" class="w3-bar-item w3-button">고객센터</a> <!-- 회원, 기업, 관리자 -->
-					<a href="searchMember" class="w3-bar-item w3-button">전체회원관리</a> <!-- 관리자 -->
-					<a href="searchStore" class="w3-bar-item w3-button">전체지점관리</a> <!-- 관리자 -->
+					<a href="${pageContext.request.contextPath}/serviceBoard/serviceBoardMain" class="w3-bar-item w3-button">고객센터</a> <!-- 회원, 기업, 관리자 -->
+					<a href="${pageContext.request.contextPath}/member/searchMember" class="w3-bar-item w3-button">전체회원관리</a> <!-- 관리자 -->
+					<a href="${pageContext.request.contextPath}/member/searchStore" class="w3-bar-item w3-button">전체지점관리</a> <!-- 관리자 -->
 					<a href="${pageContext.request.contextPath}/store/menuDetail" class="w3-bar-item w3-button">테스트용</a> <!-- 관리자 -->
 				</div>
 			</div>

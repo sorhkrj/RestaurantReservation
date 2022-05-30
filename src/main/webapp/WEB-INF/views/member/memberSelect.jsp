@@ -45,10 +45,6 @@
        &nbsp; ${memberVO.id}
     </div>
     <div class="input-group mb-3">
-      <span  class="input-group-text col-3 text-center">비밀번호</span>
-     &nbsp; ${memberVO.password}
-    </div>
-    <div class="input-group mb-3">
       <span class="input-group-text col-3 text-center">이름</span>
     &nbsp; ${memberVO.name}
     </div>

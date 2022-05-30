@@ -27,8 +27,8 @@
   			</c:if>
 		</form:form>
 		<form method="get" class="w3-container">
-			<input type="submit" value="일반 회원가입" formaction="memberInsert" class="w3-button w3-white w3-border w3-border-blue w3-round-large"/>
-			<input type="submit" value="기업 회원가입" formaction="memberInsertEnterprise" class="w3-button w3-white w3-border w3-border-blue w3-round-large"/>
+			<input type="submit" value="일반 회원가입" formaction="${pageContext.request.contextPath}/member/memberInsert" class="w3-button w3-white w3-border w3-border-blue w3-round-large"/>
+			<input type="submit" value="기업 회원가입" formaction="${pageContext.request.contextPath}/member/memberInsertEnterprise" class="w3-button w3-white w3-border w3-border-blue w3-round-large"/>
 		</form>
 		<c:import url="/WEB-INF/views/footer.jsp"/>
 	</div>
