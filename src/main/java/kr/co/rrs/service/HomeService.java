@@ -13,6 +13,9 @@ public interface HomeService {
 	//로그인 확인
 	MemberVO loginCheck(String id, String password);
 	
+	//닉네임 할당
+	String selectNickname(String id);
+	
 	//검색 결과 예약 페이지
 	List<StoreVO> searchResultList(String search);
 }

@@ -14,11 +14,8 @@ import kr.co.rrs.vo.ReservePossibleVO;
 import kr.co.rrs.vo.StoreVO;
 
 @Controller
+@RequestMapping("/store")
 public class StoreReservationController {
-	/*	지점 정보관리 기능
-	 *  
-	 * 	
-	 */
 	
 	@Autowired
 	private StoreReservationService reservationService;

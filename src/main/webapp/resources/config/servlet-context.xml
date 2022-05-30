@@ -18,46 +18,12 @@
 	<mvc:resources location="/resources/" mapping="/**"/>
 	
 	<!-- context -->
-	<context:property-placeholder
-		location="/resources/properties/db.properties"/>
 	<context:component-scan base-package="kr.co.rrs.controller"/>
 	<context:component-scan base-package="kr.co.rrs.service"/>
 	
 	<!-- mybatis -->
 	<mybatis-spring:scan base-package="kr.co.rrs.mapper"/>
 		
-	<!-- bean -->
-	<bean
-		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="prefix" value="/WEB-INF/views/"></property>
-		<property name="suffix" value=".jsp"></property>
-	</bean>
-	<bean id="basic_datasource"
-		class="org.apache.commons.dbcp2.BasicDataSource">
-		<property name="driverClassName"
-			value="${db.classname}">
-		</property>
-		<property name="url"
-			value="${db.url}">
-		</property>
-		<property name="username" value="${db.username}"></property>
-		<property name="password" value="${db.password}"></property>
-	</bean>
-	<bean id="sqlSession"
-		class="org.mybatis.spring.SqlSessionFactoryBean">
-		<property name="dataSource" ref="basic_datasource"></property>
-		<property name="mapperLocations"
-			value="/resources/mapper/*.xml">
-		</property>
-		<property name="configLocation"
-			value="/resources/config/mybatis-config.xml">
-		</property>
-	</bean>
-	<bean id="sqlSessionTemplate"
-		class="org.mybatis.spring.SqlSessionTemplate">
-	<constructor-arg index="0" ref="sqlSession"></constructor-arg>
-	</bean>
-	
 	<!-- aop -->
 	<aop:aspectj-autoproxy/>
 	<context:component-scan base-package="kr.co.rrs.advisor"/>
@@ -93,4 +59,6 @@
 			id="txPointcut" />
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="txPointcut" />
 	</aop:config>
+	<!-- 업로드 관련 빈 -->
+	<bean id = "multipartResolver" class = "org.springframework.web.multipart.support.StandardServletMultipartResolver"></bean>
 </beans>

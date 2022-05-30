@@ -5,17 +5,28 @@
 <html>
 <head>
 <meta charset="UTF-8">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<script	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <title>index</title>
 </head>
 <body>
 <c:import url="/WEB-INF/views/top.jsp"/>
 
 	<form action = "storeAnalysisPro" method = "get">
-		날짜 선택<br><br>
-		<input type = "hidden" name = "storeNo" value = ${storeNo }>
-		시작 <input type="date" name = "firstDay"><br>
-		종료 <input type="date" name = "lastDay"><br>
-		<input type="submit" value="선택완료">
+		<h2>날짜 선택</h2>
+		<table class="table table-striped">
+			<tr>
+				<td>시작</td>
+				<td><input type="date" name = "firstDay"></td>
+			</tr>
+			<tr>
+				<td>종료</td>
+				<td><input type="date" name = "lastDay"></td>
+			</tr>
+			<tr>
+				<td colspan = "2"><input type="submit" value="선택완료"><td>
+			</tr>
+		</table>
 	</form>
 
 

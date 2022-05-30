@@ -6,29 +6,15 @@
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <meta charset="UTF-8">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<script	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <title>index</title>
 <script type="text/javascript">
-$(document).ready(function() {
-	$("button").click(function() {
-		$.ajax({
-			url : "ddd",
-			type : "get", // 타입은 뭘 쓸거니?
-			datatype : "json",
-			data : "id=nigael",
-			success : function(result){
-				alert(result.storename);
-				alert(result.id);
-				alert(result.storeNo);
-				alert(result.holyday);
-			}
-		});
-	});
-});
 </script>
 </head>
 <body>
 	<c:import url="/WEB-INF/views/top.jsp" />
-	<table>
+	<table class="table table-striped">
 		<tr>
 			<td>순번</td>
 			<td>이름</td>
@@ -56,9 +42,6 @@ $(document).ready(function() {
 			</tr>
 		</c:forEach>
 	</table>
-	<p id="demo"></p><br>
-	<button type="button">클릭</button>
-	
 	<c:import url="/WEB-INF/views/footer.jsp" />
 </body>
 </html>

@@ -1,19 +1,32 @@
 package kr.co.rrs.controller;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.UUID;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import kr.co.rrs.service.MemberService;
 import kr.co.rrs.vo.EnterpriseVO;
 import kr.co.rrs.vo.MemberVO;
 
 @Controller
+@PropertySource("/resources/properties/cm.properties")
 public class MemberController {
-
+	
+	@Value("${file.path}")
+	private String filePath;
+	
 	private final MemberService memberService;
 	
 	@Autowired
@@ -44,10 +57,15 @@ public class MemberController {
 	public String memberInsertEnterprise() {
 		return "member/memberInsertEnterprise";
 	}
-	@GetMapping("/memberInsertEnterprisePro")
-	public String memberInsertEnterprisePro(EnterpriseVO enterpriseVO) {
+	@PostMapping("/memberInsertEnterprisePro")
+	public String memberInsertEnterprisePro(EnterpriseVO enterpriseVO, @RequestParam("file") MultipartFile file) throws IOException {
+		System.out.println(filePath);
+		String uuid = UUID.randomUUID().toString() + file.getOriginalFilename();
+		File converFile = new File(filePath, uuid);
+		file.transferTo(converFile);
+		enterpriseVO.setPhoto(uuid);
 		memberService.insertEnterprise(enterpriseVO);
-		return "forward:/";
+		return "redirect:/";
 	}
 	//회원검색결과
 	@GetMapping("/resultMember")
