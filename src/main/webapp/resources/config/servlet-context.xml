@@ -59,6 +59,16 @@
 			id="txPointcut" />
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="txPointcut" />
 	</aop:config>
-	<!-- 업로드 관련 빈 -->
-	<bean id = "multipartResolver" class = "org.springframework.web.multipart.support.StandardServletMultipartResolver"></bean>
+	<!-- 파일업로드 관련 Mulitipart 설정 -->
+    <bean id="multipartResolver"
+                class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!-- 
+        	setting maximum upload size
+            최대 크기 설정
+            <beans:property name="maxUploadSize" value="-1"/>
+        -->
+        <property name="maxUploadSize" value="209715200"/> <!-- 20MB --> <!-- max size of file in memory (in bytes) -->
+        <property name="maxInMemorySize" value="10485760"/> <!-- 10MB -->
+    </bean>
+
 </beans>
