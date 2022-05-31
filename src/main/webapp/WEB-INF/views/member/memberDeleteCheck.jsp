@@ -12,24 +12,7 @@
 	rel="stylesheet">
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-<style>
-html, body {
-	height: 100%; /*높이 조절*/
-}
 
-body {
-	display: flex;
-	align-items: center;
-	padding-top: 40px;
-	padding-bottom: 40px;
-	background-color: #f5f5f5;
-}
-
-#form {
-	width: 500px; /*가로 조절*/
-	border: 1px solid black;
-}
-</style>
 <script type="text/javascript">
         // 비밀번호 미입력시 경고창
        <c:if test="${msg == false}">

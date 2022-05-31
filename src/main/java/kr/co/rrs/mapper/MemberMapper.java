@@ -26,8 +26,8 @@ public interface MemberMapper {
 	MemberVO selectOne(String id);
 
 	// 회원탈퇴
-	@Delete("delete from member where id=#{id} and password = #{password}")
-	void delete(@Param("id") String id, @Param("password") String password);
+	@Delete("delete from member where id=#{id}")
+	void delete(String id);
 
 	// 회원수정
 	@Update("UPdate member set name=#{name}, phone=#{phone}, password=#{password},nickname=#{nickname} where id=#{id}")
