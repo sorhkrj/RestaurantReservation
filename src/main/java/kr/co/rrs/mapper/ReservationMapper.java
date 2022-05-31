@@ -1,9 +1,13 @@
 package kr.co.rrs.mapper;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Result;
+import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
@@ -11,6 +15,7 @@ import kr.co.rrs.vo.ReservationVO;
 import kr.co.rrs.vo.ReservePossibleVO;
 import kr.co.rrs.vo.StoreVO;
 import kr.co.rrs.vo.MemberVO;
+
 
 public interface ReservationMapper  {
 	
@@ -42,7 +47,7 @@ public interface ReservationMapper  {
 	
 	//예약가능날짜시간좌석
 	@Select("select * from reservepossible where storeNo=#{storeNo}")
-	ArrayList<ReservePossibleVO> mapperPossibility(int storeNo);
+	ArrayList<ReservePossibleVO> mapperPossibility(ReservationVO rvo);
 	
 	//음식점
 	@Select("select * from store where storeNo=#{storeNo}")
@@ -52,9 +57,26 @@ public interface ReservationMapper  {
 	@Select("select day, time from reservepossible where storeNo = #{storeNo}")
 	ArrayList<ReservePossibleVO> mapperStorePossibility(StoreVO svo);
 
-	//테스트
-	@Select("select time from reservepossible where day = #{day}")
-	ReservePossibleVO mappertest(String day);
+	//////////////////////////Ajar/////////////////////////	
+		
+	//음식점예약시간
+	@Select("select time, capacity from reservepossible where storeno = #{storeNo} and day = #{visitDay}")
+	ReservePossibleVO mapperReservationStoreTime(ReservationVO rvo);	
+
+	//test
+	//예약시간
+		@Select("select visittime, count(*) sumTime from reservation where storeno = #{storeNo} and visitday = #{visitDay} group by visittime")
+		ArrayList<ReservationVO> mapperReservationTime( ReservationVO rvo);	
+	
+	
+	
+	
+	
+//	
+//	//예약시간
+//	@Select("select visittime as time, count(*) as total from reservation where storeno = #{storeNo} and visitday = #{visitDay} group by visittime")
+//	//@ResultMap(value = "select")
+//	ArrayList<ReservationCheckVO> mapperReservationTime(ReservationVO rvo);	
 	
 //		@Select("select * from reservepossible where storeNo=${storeNo} and capacity > "
 //				+ " (select count(*) from reservation where storeNo = #{storeNo} and "

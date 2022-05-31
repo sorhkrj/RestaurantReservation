@@ -1,6 +1,7 @@
 package kr.co.rrs.service.impl;
 
 import java.util.ArrayList;
+import java.util.StringTokenizer;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -54,12 +55,13 @@ public class ReservationServiceImpl implements ReservationService {
 		return mapper.mapperMember(id);
 	}
 	
-	//예약가능날짜시간
-	@Override
-	public ArrayList<ReservePossibleVO> checkPossibility(int storeNo ) {
-		return mapper.mapperPossibility(storeNo);
-	}
+	// 예약가능날짜시간
+		@Override
+		public ArrayList<ReservePossibleVO> checkPossibility(ReservationVO rvo) {
+			return mapper.mapperPossibility(rvo);
+		}
 	
+		
 	//음식점이름
 	@Override
 	public StoreVO checkStore(int storeNo) {
@@ -71,11 +73,42 @@ public class ReservationServiceImpl implements ReservationService {
 		return mapper.mapperStorePossibility(storevo);
 	}
 	
-	//test
+	// 예약시간체크
 	@Override
-	public ReservePossibleVO test(String day) {
-			return mapper.mappertest(day);
+	public ArrayList<String> reservationTimeCheck(ReservationVO rvo) {
+
+		ReservePossibleVO rpvo = mapper.mapperReservationStoreTime(rvo);
+		ArrayList<String> listResult = new ArrayList<String>();
+		ArrayList<ReservationVO> rList = mapper.mapperReservationTime(rvo);
+
+
+		//가게 예약시간을 쪼갠것
+		StringTokenizer st = new StringTokenizer(rpvo.getTime(), ",");
+		String[] storeSetting = new String[st.countTokens()];
+
+		int count = st.countTokens();
+		
+		for(int i = 0 ; i < count ; i++)
+		{
+			storeSetting[i] = st.nextToken();
+			listResult.add(storeSetting[i]);
+		}
+	
+		for(int i = 0 ; i < count ; i++) {
+			
+			for(int j = 0; j < rList.size() ; j++)
+ 		    {
+					 if(storeSetting[i].equals(rList.get(j).getVisitTime())) {
+						  if(Integer.valueOf(rpvo.getCapacity()) <= Integer.valueOf(rList.get(j).getSumTime())) 
+						  {
+						  	listResult.remove(storeSetting[i]);
+						  } 
+					 }				
+			}
+ 		}
+		return listResult;
 	}
+}
 	
 	
 	
@@ -85,5 +118,3 @@ public class ReservationServiceImpl implements ReservationService {
 	
 	
 	
-	
-}	
