@@ -7,11 +7,17 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta id="_csrf" name="_csrf" content="${_csrf.token}"/>
+<meta id="_csrf_header" name="_csrf_header" content="${_csrf.headerName}"/>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"	rel="stylesheet">
 <script	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
 <script type="text/javascript">
+var token = $("meta[name='_csrf']").attr("content");
+var header = $("meta[name='_csrf_header']").attr("content");
+alert(token);
+alert(header);
 function deleteMenu(menu){
 	var check = confirm(menu + "를 삭제하시겠습니까?");
 	if(!check) return false;
@@ -22,10 +28,11 @@ function deleteMenu(menu){
 			data :  "menuName="+menu,			
 			success : function(result) {
 				alert("삭제되었습니다.");
-				location.reload();
 			}, error:function(jqXHR, textStatus, errorThrown) {
        	  		alert("실패");
 	        }
+		}).done(function(){
+			location.reload();
 		});
 }
 function insertMenu(){
@@ -35,6 +42,10 @@ function insertMenu(){
 		type : "post",
 		datatype : "text",
 		contentType: "application/json",
+		async : false,
+		beforeSend : function(xhr){
+			xhr.setRequestHeader(header, token);
+		},
 		data :  JSON.stringify({
 			"menuName" : $("#menuName_input").val(),
 			"menuPhoto" : $("#menuPhoto_input").val(),
@@ -43,31 +54,39 @@ function insertMenu(){
 			"id" : id
 			}),
 		success : function(result) {
-			alert("성공");
-			location.reload();
+			alert("등록되었습니다.");
 		}, error:function(jqXHR, textStatus, errorThrown) {
    	  		alert("실패");
         }
+	}).done(function(){
+		location.reload();
 	});
 }
+
 function updateMenu(menu){
 	$.ajax({
 		url : "${pageContext.request.contextPath}/store/menuUpdate",
 		type : "post",
 		datatype : "text",
 		contentType: "application/json",
+		async : false,
+		beforeSend : function(xhr){
+			xhr.setRequestHeader(header, token);
+		},
 		data :  JSON.stringify({
-			"menuName" : $("#menuName_"+menu).val(),
+			"menuName" : menu,
+			"nameModified" : $("#menuName_"+menu).val(),
 			"menuPhoto" : $("#menuPhoto_"+menu).val(),
 			"price" : $("#price_"+menu).val(),
 			"menuInfo" : $("#menuInfo_"+menu).val(),
 			}),
 		success : function(result) {
 			alert("수정되었습니다.");
-			location.reload();
 		}, error:function(jqXHR, textStatus, errorThrown) {
    	  		alert("실패");
         }
+	}).done(function(){
+		location.reload();
 	});
 }
 </script>
@@ -80,22 +99,26 @@ function updateMenu(menu){
 		<table class="table table-striped">
 			<tr>
 				<th>번호</th>
-				<th>메뉴명</th>
-				<th>사진</th>
-				<th>가격</th>
-				<th>설명</th>
-				<th>관리</th>
+				<th colspan = "2">메뉴명</th>
+				<th colspan = "2">사진</th>
+				<th colspan = "2">가격</th>
+				<th colspan = "2">설명</th>
+				<th colspan = "2">관리</th>
 			</tr>
 			<form:form>
 		<c:forEach var="i" items="${menuList }" varStatus="no">
 			<tr>
 				<td>${no.count}</td>
-				<td><input type = "text"  id = "menuName_${i.menuName}" value = "${i.menuName}"></td>
-				<td><input type = "text"  id = "menuPhoto_${i.menuName}" value = "${i.menuPhoto}"></td>
-				<td><input type = "number"  id = "price_${i.menuName}" value = "${i.price}"></td>
-				<td><input type = "text"  id = "menuInfo_${i.menuName}" value = "${i.menuInfo}"></td>
-				<td><button onclick = "javascript:updateMenu(${i.menuName});">수정</button>
-					<button onclick = "javascript:deleteMenu(${i.menuName});">삭제</button></td>
+				<td>${i.menuName}</td>
+				<td><input type = "text"  id = "menuName_${i.menuName}" value = ""></td>
+				<td>${i.menuPhoto}</td>
+				<td><input type = "text"  id = "menuPhoto_${i.menuName}" value = ""></td>
+				<td>${i.price}</td>
+				<td><input type = "number"  id = "price_${i.menuName}" value = ""></td>
+				<td>${i.menuInfo}</td>
+				<td><input type = "text"  id = "menuInfo_${i.menuName}" value = ""></td>
+				<td><button onclick = "updateMenu('${i.menuName}');">수정</button>
+					<button onclick = "deleteMenu('${i.menuName}');">삭제</button></td>
 			</tr>
 		</c:forEach>
 			</form:form>

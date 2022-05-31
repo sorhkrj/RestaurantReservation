@@ -19,6 +19,6 @@ public interface MenuMapper {
 	@Delete("delete from menu where menuName = #{menuName}")
 	void deleteMenu(String menuName);
 
-	@Update("update menu set menuname = #{menuName}, price = #{price}, menuInfo = #{menuInfo}, menuphoto = #{menuPhoto} where menuname=#{menuName}")
+	@Update("update menu set menuname = #{nameModified}, price = #{price}, menuInfo = #{menuInfo}, menuphoto = #{menuPhoto} where menuname=#{menuName}")
 	void UpdateMenu(MenuVO menuVO);
 }
