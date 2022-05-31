@@ -9,7 +9,7 @@
 <body>
 	<c:import url="/WEB-INF/views/top.jsp"/>
 	<h2 class="text-center">지점장회원가입</h2>
-	<form action="memberInsertEnterprisePro" method="Post">
+	<form action="memberInsertEnterprisePro" method="Post" enctype="multipart/form-data">
 		<table border="1">
 			<tr>
 				<td>아이디</td>

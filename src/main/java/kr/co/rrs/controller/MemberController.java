@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.security.Principal;
 import java.util.UUID;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -65,11 +66,14 @@ public class MemberController {
 	}
 
 	@PostMapping("/memberInsertEnterprisePro")
-	public String memberInsertEnterprisePro(EnterpriseVO enterpriseVO, @RequestParam("file") MultipartFile file)
+	public String memberInsertEnterprisePro(EnterpriseVO enterpriseVO, @RequestParam("file") MultipartFile file, HttpServletRequest request)
 			throws IOException {
-		System.out.println(filePath);
+		String path = "resources/images"; // 파일 저장하고 싶은 위치
+		String savePath = request.getServletContext().getRealPath(path); // 실제 파일 저장 경로
+		System.out.println(savePath);
+		
 		String uuid = UUID.randomUUID().toString() + file.getOriginalFilename();
-		File converFile = new File(filePath, uuid);
+		File converFile = new File(savePath, uuid);
 		file.transferTo(converFile);
 		enterpriseVO.setPhoto(uuid);
 		memberService.insertEnterprise(enterpriseVO);
