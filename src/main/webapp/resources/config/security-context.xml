@@ -11,7 +11,7 @@
 	<sc:http pattern="/resources/**" security="none"/>
 	
 	<sc:http use-expressions="true">
-		<sc:csrf disabled="false"/>
+		<sc:csrf disabled="true"/>
 		<sc:intercept-url pattern="/store/**" access="hasRole('MANAGER')"/>
 		<sc:intercept-url pattern="/serviceBoardMain" access="hasAnyRole('USER, MANAGER')"/>
  		<sc:intercept-url pattern="/**" access="permitAll"/>
