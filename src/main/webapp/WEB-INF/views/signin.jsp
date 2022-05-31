@@ -47,12 +47,12 @@
 			</tr>
 			<tr>
 				<td>
-					<input type="submit" value="일반 회원가입" onclick="memberInsert"/>
+					<a href = "member/memberInsert"> 일반 회원가입</a>
 				</td>
 			</tr>
 			<tr>
 				<td>
-					<input type="submit" value="기업 회원가입" onclick="memberInsertEnterprise"/>
+					<a href = "member/memberInsertEnterprise"> 기업 회원가입</a>
 				</td>
 			</tr>
 		</table>
