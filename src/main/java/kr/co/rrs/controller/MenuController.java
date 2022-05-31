@@ -30,16 +30,15 @@ public class MenuController {
 	}
 	@PostMapping("/menuInsert")
 	@ResponseBody
-	public Object menuInsert(@RequestBody MenuVO menuVO) {
+	public MenuVO menuInsert(@RequestBody MenuVO menuVO) {
 		menuService.insertMenu(menuVO);
 		return menuVO;
 	}
 
 	@PostMapping("/menuUpdate")
 	@ResponseBody
-	public Object menuUpdate(@RequestBody MenuVO menuVO) {
+	public void menuUpdate(@RequestBody MenuVO menuVO) {
 		menuService.updateMenu(menuVO);
-		return menuVO;
 	}
 
 	@GetMapping("/menuDelete")

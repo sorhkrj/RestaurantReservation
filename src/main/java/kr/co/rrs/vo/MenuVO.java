@@ -2,6 +2,7 @@ package kr.co.rrs.vo;
 
 public class MenuVO {
 	private String menuName;
+	private String nameModified;
 	private String storeNo;
 	private String id;
 	private String price;
@@ -15,6 +16,14 @@ public class MenuVO {
 
 	public void setMenuName(String menuName) {
 		this.menuName = menuName;
+	}
+	
+	public String getNameModified() {
+		return nameModified;
+	}
+
+	public void setNameModified(String nameModified) {
+		this.nameModified = nameModified;
 	}
 
 	public String getStoreNo() {
