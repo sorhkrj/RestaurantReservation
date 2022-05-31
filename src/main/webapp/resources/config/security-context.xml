@@ -8,19 +8,20 @@
 	<!-- password Encoder -->
 	<bean id = "bcryptPasswordEncoder" class = "org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
 	
-	<sc:http pattern="/resources/**" security="none" />
+	<sc:http pattern="/resources/**" security="none"/>
 	
 	<sc:http use-expressions="true">
-		<sc:csrf disabled="true"/>
+		<sc:csrf disabled="false"/>
 		<sc:intercept-url pattern="/store/**" access="hasRole('MANAGER')"/>
 		<sc:intercept-url pattern="/serviceBoardMain" access="hasAnyRole('USER, MANAGER')"/>
  		<sc:intercept-url pattern="/**" access="permitAll"/>
 		
-		<sc:form-login	login-page="/loginForm"
+		<sc:form-login	login-page="/signin"
 						default-target-url="/" 
 					 	username-parameter="id"
-						password-parameter="password" />
+						password-parameter="password"/>
 		<sc:logout	logout-url = "/logout"
+					invalidate-session="true"
 					logout-success-url="/"/>
 	</sc:http>
 	
@@ -33,8 +34,8 @@
         
         <sc:password-encoder ref="bcryptPasswordEncoder"/>
         <sc:jdbc-user-service data-source-ref="basic_datasource"
-        	users-by-username-query="Select id, password, enabled from member where id = ?"
-        	authorities-by-username-query="select id, authority from member where id =?"/>
+        	users-by-username-query="Select id,password,enabled from member where id=?"
+        	authorities-by-username-query="select id,authority from member where id=?"/>
         </sc:authentication-provider>
 	</sc:authentication-manager>
 </beans>

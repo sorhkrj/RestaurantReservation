@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,33 +15,60 @@
 </head>
 <body>
 	<div class="container">
-		<div class="w3-dropdown-hover">
-			<div class="w3-button w3-gray">${sessionScope.nickName}</div>
-				<div class="w3-dropdown-content w3-bar-block w3-border">
-				<sec:authorize access="isAnonymous()">
-						<a href="${pageContext.request.contextPath}/loginForm" class="w3-bar-item w3-button">로그인</a> <!-- 회원, 기업, 관리자 -->
-				</sec:authorize>
-				<sec:authorize access="isAuthenticated()">
-						<form:form action="logout" method="POST">
-    						<input type="submit" value="로그아웃" />
-						</form:form> <!-- 회원, 기업, 관리자 -->
-				</sec:authorize>
-				
-					<a href="${pageContext.request.contextPath}/member/memberSelect" class="w3-bar-item w3-button">내정보</a> <!-- 회원, 관리자 -->
-					<a href="${pageContext.request.contextPath}/reservation/myReservationList" class="w3-bar-item w3-button">예약정보</a> <!-- 회원 -->
-					<a href="${pageContext.request.contextPath}/store/myStore" class="w3-bar-item w3-button">지점관리</a> <!-- 기업 -->
-					<a href="${pageContext.request.contextPath}/store/storeAnalysis" class="w3-bar-item w3-button">분석현황</a> <!-- 기업 -->
-					<a href="${pageContext.request.contextPath}/serviceBoard/serviceBoardMain" class="w3-bar-item w3-button">고객센터</a> <!-- 회원, 기업, 관리자 -->
-					<a href="${pageContext.request.contextPath}/member/searchMember" class="w3-bar-item w3-button">전체회원관리</a> <!-- 관리자 -->
-					<a href="${pageContext.request.contextPath}/member/searchStore" class="w3-bar-item w3-button">전체지점관리</a> <!-- 관리자 -->
-					<a href="${pageContext.request.contextPath}/store/menuDetail" class="w3-bar-item w3-button">테스트용</a> <!-- 관리자 -->
-				</div>
-			</div>
-			<form action="searchResult" method="get">
-				<input type="text" name="search" placeholder="검색할 내용" class="w3-input w3-border"/>
-				<input type="submit" value="검색" class="w3-input w3-border"/>
-			</form>
-			<a href="/RestaurantReservation" class="w3-button w3-gray">홈</a>
+		<table class="table table-striped">
+			<tr>
+				<td>
+					<div class="dropdown">
+						<button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">
+  							${sessionScope.nickName}
+  						</button>
+						<ul class="dropdown-menu">
+							<sec:authorize access="isAnonymous()">
+								<li><a href="${pageContext.request.contextPath}/signin">로그인</a></li> <!-- 회원, 기업, 관리자 -->
+							</sec:authorize>
+							<sec:authorize access="isAuthenticated()">
+								<form:form action="logout" method="POST">
+		    						<li><input type="submit" value="로그아웃"/></li>
+								</form:form> <!-- 회원, 기업, 관리자 -->
+							</sec:authorize>
+							<sec:authorize access="hasRole('ROLE_USER')">
+								<li><a href="${pageContext.request.contextPath}/member/memberSelect">내정보</a></li> <!-- 회원 -->
+							</sec:authorize>
+							<sec:authorize access="hasRole('ROLE_USER')">
+							<li><a href="${pageContext.request.contextPath}/reservation/myReservationList">예약정보</a></li> <!-- 회원 -->
+							</sec:authorize>
+							<sec:authorize access="hasRole('ROLE_MANAGER')">
+							<li><a href="${pageContext.request.contextPath}/store/myStore">지점관리</a></li> <!-- 기업 -->
+							</sec:authorize>
+							<sec:authorize access="hasRole('ROLE_MANAGER')">
+							<li><a href="${pageContext.request.contextPath}/store/storeAnalysis">분석현황</a></li> <!-- 기업 -->
+							</sec:authorize>
+							<sec:authorize access="isAnonymous()">
+							<li><a href="${pageContext.request.contextPath}/serviceBoard/serviceBoardMain">고객센터</a></li> <!-- 회원, 기업, 관리자 -->
+							</sec:authorize>
+							<sec:authorize access="hasRole('ROLE_ADMIN')">
+							<li><a href="${pageContext.request.contextPath}/member/searchMember">전체회원관리</a></li> <!-- 관리자 -->
+							</sec:authorize>
+							<sec:authorize access="hasRole('ROLE_ADMIN')">
+							<li><a href="${pageContext.request.contextPath}/member/searchStore">전체지점관리</a></li> <!-- 관리자 -->
+							</sec:authorize>
+							<sec:authorize access="hasRole('ROLE_ADMIN')">
+							<li><a href="${pageContext.request.contextPath}/store/menuDetail">테스트용</a></li> <!-- 관리자 -->
+							</sec:authorize>
+						</ul>
+					</div>
+				</td>
+				<td>
+					<form action="searchResult" method="get">
+						<input type="text" name="search" placeholder="검색할 내용"/>
+						<input type="submit" value="검색"/>
+					</form>
+				</td>
+				<td>
+					<a href="/RestaurantReservation">홈</a>
+				</td>
+			</tr>
+		</table>
 	</div>
 </body>
 </html>

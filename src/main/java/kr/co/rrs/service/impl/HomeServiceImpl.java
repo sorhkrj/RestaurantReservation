@@ -30,12 +30,15 @@ public class HomeServiceImpl implements HomeService {
 	@Override
 	public MemberVO loginCheck(String id, String password) {
 		MemberVO member = mapper.selectMember(id);
-		if (password.equals(member.getPassword())) {
-			return member;
+		if (member != null) {
+			if (password.equals(member.getPassword())) {
+				return member;
+			}
 		}
 		return null;
 	}
 	
+	// 닉네임 검색
 	@Override
 	public String selectNickname(String id) {
 		return mapper.selectNickname(id);
