@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.co.rrs.service.HomeService;
 import kr.co.rrs.vo.MemberVO;
@@ -46,39 +47,21 @@ public class HomeController {
 		}
 		return "index";
 	}
-
-	// security의 login과 겹쳐서 loginForm으로 수정(2022-05-26, 류성찬)
-	@GetMapping("/loginForm")
-	public String login() {
-		return "loginForm";
+	
+	@GetMapping("/signin")
+	public String signin() {
+		return "signin";
 	}
-//	
-//	//security에서 처리
-//	@PostMapping("/loginPro")
-//	public String loginPro(HttpServletRequest request, Model model) {
-//		String id = request.getParameter("id");
-//		String password = request.getParameter("password");
-//		
-//		MemberVO member = service.loginCheck(id, password);
-//		if (member == null) {
-//			return "redirect:login?loginFail=1";
-//		}
-//		
-//		HttpSession session = request.getSession();
-//		session.setAttribute("id", member.getId());
-//		session.setAttribute("nickName", member.getNickname());
-//		session.setAttribute("memberLevel", member.getMemberLevel());
-//		session.setMaxInactiveInterval(300);
-//		
-//		return "redirect:/";
-//	} 
-//	
-//	@GetMapping("/logout")
-//	public String logout(HttpServletRequest request) {
-//		request.getSession().invalidate();
-//		return "redirect:/";
-//	}
-
+	
+	@GetMapping("/Test")
+	@ResponseBody
+	public String Test(String id) {
+		System.out.println("id: " + id);
+		String name = service.selectNickname(id);
+		System.out.println("name: " + name);
+		return name;
+	}
+	
 	@GetMapping("/searchResult")
 	public String searchResult(HttpServletRequest request, Model model) {
 		String search = request.getParameter("search");
