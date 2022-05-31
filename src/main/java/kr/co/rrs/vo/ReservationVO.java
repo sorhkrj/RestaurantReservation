@@ -11,7 +11,12 @@ public class ReservationVO {
 	private String visitTime;
 	private String visitName;
 	private String visitPhone;
+	private String sumTime;
 	private String regDate;
+
+	
+	
+	
 
 	
 	
@@ -87,6 +92,14 @@ public class ReservationVO {
 		this.visitPhone = visitPhone;
 	}
 
+	public String getSumTime() {
+		return sumTime;
+	}
+
+	public void setSumTime(String sumTime) {
+		this.sumTime = sumTime;
+	}
+	
 	public String getRegDate() {
 		return regDate;
 	}

@@ -2,6 +2,7 @@ package kr.co.rrs.controller;
 
 import java.security.Principal;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -38,7 +39,7 @@ public class ReservationController {
 		MemberVO mvo = service.checkMember(id);
 		
 		model.addAttribute("mvo", mvo);
-		ArrayList<ReservePossibleVO> list = service.checkPossibility(storeNo);
+		ArrayList<ReservePossibleVO> list = service.storeCheckPossibility(storevo);
 		model.addAttribute("list", list);
 		model.addAttribute("storevo", storevo);
 		return "reservation/reservationInsert";
@@ -67,8 +68,7 @@ public class ReservationController {
 	@PostMapping("/reservationUpdate")
 	public String updateReservation(ReservationVO rvo, Principal principal, Model model) {
 		
-		int storeNo = rvo.getStoreNo();
-		ArrayList<ReservePossibleVO> list = service.checkPossibility(storeNo);
+		ArrayList<ReservePossibleVO> list = service.checkPossibility(rvo);
 		model.addAttribute("list", list);
 		
 		String id = principal.getName();
@@ -125,16 +125,12 @@ public class ReservationController {
 		return "redirect:myReservationList";
 	}
 	
-	//////////////////////ajax실습////////////////////////
+	//////////////////////Ajar////////////////////////
 	
-	@RequestMapping("/aaaa")
+	@RequestMapping("/reservationTime")
 	@ResponseBody
-	public Object deleteReservation(String day) {
-		System.out.println(day);
-		System.out.println(day.getClass().getName());
-		ReservePossibleVO rpvo = service.test(day);
-		System.out.println(rpvo);
-		
-		return rpvo;
+	public Object reservationTime(ReservationVO rvo) {
+		ArrayList<String> listResult = service.reservationTimeCheck(rvo);
+		return listResult;
 	}
 }

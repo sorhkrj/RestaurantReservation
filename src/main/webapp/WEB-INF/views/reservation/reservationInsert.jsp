@@ -10,12 +10,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <script	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script> <!-- js cdn -->
 
 
 
 <style>
 html, body {
-	height: 100%; /*높이 조절*/
+
 }
 
 body {
@@ -28,12 +29,12 @@ body {
 }
 
 #form {
-	width: 600px; /*가로 조절*/
+	
 	border: 1px solid black;
 }
 
 #mytable {
-	width: 1000px; /*가로 조절*/
+	
 	border: 1px solid black;
 }
 
@@ -59,8 +60,8 @@ body {
 						</div>
 						
 						<div class="input-group mb-3">
-							<span class="input-group-text col-3 text-center">예약인원</span> 
-							<input type="text" class="form-control" name="people">
+							<span class="input-group-text col-3 text-center" >예약인원</span> 
+							<input type="text" class="form-control" name="people"  required>
 						</div>
 						
 						
@@ -80,7 +81,7 @@ body {
 									<tbody>
 										<c:forEach var="reservation" items="${list}"> 
 											<tr>	
-													<td><input type = "date" name = "visitDay" mindate ="0"></td>
+													<td>${reservation.day }</td>
 													<td>${reservation.time}</td>
 													<td>${reservation.capacity}</td>
 											</tr> 
@@ -92,31 +93,30 @@ body {
 											
 												
 						<div class="input-group mb-3">
-							<span class="input-group-text col-3 text-center">방문일자</span> 
-							<input type="date" class="form-control" name="visitDay">
+							<span class="input-group-text col-3 text-center" >방문일자</span> 
+							<input type="date" class="form-control" name="visitDay" id="visitDay" oninput="visit()" value="" required>
 						</div>
 						
-						<div class="input-group mb-3">
-							<span class="input-group-text col-3 text-center">방문시간</span> 
-							<input type="number" class="form-control" name="visitTime">
-						</div>
-		
+					<div class="input-group mb-3">
+						<span class="input-group-text col-3 text-center">방문시간</span> 
+						<div id="time"></div>
+					</div> 
 		
 						<h2 class="text-center">방문인정보</h2>
 											    					
     					<div class="form-check mb-3 text-center">
       						<label class="form-check-label">
-        					<input class="form-check-input" type="checkbox" name="memberCheckbox"> 주문자와 동일인</label>
+        					<input class="form-check-input" type="checkbox" name="memberCheckbox" id="memberCheckbox"  > 주문자와 동일인</label>
     					</div>
     					
 						<div class="input-group mb-3">
 							<span class="input-group-text col-3 text-center">방문인이름</span> 
-							<input type="text" class="form-control" id="visitName" name="visitName" value="">
+							<input type="text" class="form-control" id="visitName" name="visitName"  value=""  required>
 						</div>
 						
 						<div class="input-group mb-3">
 							<span class="input-group-text col-3 text-center">방문인 전화번호</span> 
-							<input type="text" class="form-control" id="visitPhone" name="visitPhone" value="">
+							<input type="text" class="form-control" id="visitPhone" name="visitPhone" value=""  required>
 						</div>
 					
 						<div class="row text-center">
@@ -146,12 +146,41 @@ body {
         }
       })
     </script>
-	
+    
+    <script type="text/javascript">
 
+function visit(){
 	
 	
-	
-	
+   	$('#visitDay').change(function(){
+	$('#time').empty();
+
+	alert("test");
+   	  <!-- ReservationTime -->
+		$.ajax({
+			url:'reservationTime',
+			data : {'visitDay': $("#visitDay").val(), 'storeNo' : ${storevo.storeNo }},
+			type:'get',
+			async: false,
+			dataType:'json',
+			timeout: 3000,
+			success:function(listResult){
+				for(let i = 0 ; i < listResult.length ; i++){
+				console.log(listResult[i]);
+		
+				$('#time').append("<input type='radio' class='btn-check' id='" + listResult[i] + "' name='visitTime' value ='"+ listResult[i] +"' required> <label class='btn btn-primary' for='" + listResult[i] + "'>" + listResult[i] + "</label>");
+				
+				}
+			},error:function(errer){
+			}
+		});
+	    <!-- ReservationTimeEnd -->
+   	});
+   	
+ 
+}	
+
+</script>
 	
 </body>
 </html>

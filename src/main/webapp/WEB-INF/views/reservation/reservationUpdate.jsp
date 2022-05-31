@@ -31,7 +31,7 @@
 					
 					<div class="input-group mb-3">
 						<span class="input-group-text col-3 text-center">예약인원</span> 
-						<input type="text" class="form-control" name="people" value="${rvo.people}">
+						<input type="text" class="form-control" name="people" value="${rvo.people}"  required>
 					</div>
 					
 					<div class="container" id="mytable">
@@ -60,27 +60,31 @@
 					
 					<div class="input-group mb-3">
 						<span class="input-group-text col-3 text-center">방문일자</span> 
-						<input type="date" class="form-control" name="visitDay" id="visitDay" onchange="visit()" value="${rvo.visitDay}">
+						<input type="date" class="form-control" name="visitDay" id="visitDay" oninput="visit()" value=""  required>
 					</div>
 					<div class="input-group mb-3">
 						<span class="input-group-text col-3 text-center">방문시간</span> 
-						<input type="number" class="form-control" name="visitTime" id="visitTime" value="${rvo.visitTime}">
-					</div>
+						<div id="time"></div>
+					</div> 
+					
+					
+					
 	
 					<h2 class="text-center">방문인정보</h2>
    					<div class="form-check mb-3 text-center">
      						<label class="form-check-label">
-       					<input class="form-check-input" type="checkbox" id="memberCheckbox" onclick=""> 주문자와 동일인</label>
+       					<input class="form-check-input" type="checkbox" id="memberCheckbox" > 주문자와 동일인</label>
    					</div>
 					<div class="input-group mb-3">
 						<span class="input-group-text col-3 text-center">방문인이름</span> 
-						<input type="text" class="form-control" id="visitName" name="visitName" value="" >
+						<input type="text" class="form-control" id="visitName" name="visitName" value=""  required>
 					</div>
 					<div class="input-group mb-3">
 						<span class="input-group-text col-3 text-center">방문인 전화번호</span> 
-						<input type="text" class="form-control" id="visitPhone" name="visitPhone" value="">
+						<input type="text" class="form-control" id="visitPhone" name="visitPhone" value="" required>
 					</div>
 						<input type="hidden" class="form-control" name="reserveNo" value="${rvo.reserveNo}" >
+						<input type="hidden" class="form-control" name="storeNo" value="${rvo.storeNo}" >
 				</div>
 				<div class="row text-center">
 					<div class="container mt-3">
@@ -112,41 +116,35 @@
 <script type="text/javascript">
 
 function visit(){
-
-
-	let splitTime=0;
 	
    	$('#visitDay').change(function(){
+	$('#time').empty();
 
+   	  <!-- ReservationTime -->
 		$.ajax({
-			url:'aaaa',
-			data : {'day': $("#visitDay").val()},
+			url:'reservationTime',
+			data : {'visitDay': $("#visitDay").val(), 'storeNo' : ${rvo.storeNo}},
 			type:'get',
 			async: false,
 			dataType:'json',
-		    timeout: 3000,
-			success:function(rpvo){
-			
-				splitTime = rpvo.time.split(',');
-				console.log(splitTime);
-				return false;
-			},error:function(a,b,c){
-				alert('error');
+			timeout: 3000,
+			success:function(listResult){
+				for(let i = 0 ; i < listResult.length ; i++){
+				console.log(listResult[i]);
+		
+				$('#time').append("<input type='radio' class='btn-check' id='" + listResult[i] + "' name='visitTime' value ='"+ listResult[i] +"' required> <label class='btn btn-primary' for='" + listResult[i] + "'>" + listResult[i] + "</label>");
+				
+				}
+			},error:function(errer){
 			}
 		});
-	    <!-- AAAA -->
+	    <!-- ReservationTimeEnd -->
    	});
-   
-
+   	
+ 
 }	
 
 </script>
-	
-	
-	
-	
-	
-	
 	
 </body>
 </html>
