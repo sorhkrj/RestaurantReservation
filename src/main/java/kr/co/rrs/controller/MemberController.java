@@ -26,28 +26,30 @@ import kr.co.rrs.vo.MemberVO;
 @RequestMapping("/member")
 @PropertySource("/resources/properties/cm.properties")
 public class MemberController {
-	
+
 	@Value("${file.path}")
 	private String filePath;
-	
+
 	private final MemberService memberService;
-	
+
 	@Autowired
 	public MemberController(MemberService memberService) {
 		this.memberService = memberService;
 	}
-	
-	//회원가입
-	@GetMapping("/memberInsert") 
+
+	// 회원가입
+	@GetMapping("/memberInsert")
 	public String memberInsert() {
 		return "member/memberInsert";
 	}
+
 	@GetMapping("/memberInsertPro")
 	public String memberInsertPro(MemberVO memberVO) {
 		memberService.insert(memberVO);
 		return "forward:/";
 	}
-	//내정보
+
+	// 내정보
 	@GetMapping("/memberSelect")
 	public String memberSelect(Model model, Principal principal) {
 		String id = principal.getName();
@@ -55,13 +57,16 @@ public class MemberController {
 		model.addAttribute("memberVO", memberVO);
 		return "member/memberSelect";
 	}
-	//지점장 회원가입
+
+	// 지점장 회원가입
 	@GetMapping("/memberInsertEnterprise")
 	public String memberInsertEnterprise() {
 		return "member/memberInsertEnterprise";
 	}
+
 	@PostMapping("/memberInsertEnterprisePro")
-	public String memberInsertEnterprisePro(EnterpriseVO enterpriseVO, @RequestParam("file") MultipartFile file) throws IOException {
+	public String memberInsertEnterprisePro(EnterpriseVO enterpriseVO, @RequestParam("file") MultipartFile file)
+			throws IOException {
 		System.out.println(filePath);
 		String uuid = UUID.randomUUID().toString() + file.getOriginalFilename();
 		File converFile = new File(filePath, uuid);
@@ -70,47 +75,56 @@ public class MemberController {
 		memberService.insertEnterprise(enterpriseVO);
 		return "redirect:/";
 	}
-	//회원검색결과
+
+	// 회원검색결과
 	@GetMapping("/resultMember")
 	public String resultMember() {
 		return "member/resultMember";
 	}
-	//지점검색결과
+
+	// 지점검색결과
 	@GetMapping("/resultStore")
 	public String resultStore() {
 		return "member/resultStore";
 	}
-	//회원검색
+
+	// 회원검색
 	@GetMapping("/searchMember")
 	public String seachMember() {
 		return "member/searchMember";
 	}
-	//지점검색
+
+	// 지점검색
 	@GetMapping("/searchStore")
 	public String searchStore() {
 		return "member/searchStore";
 	}
-	//회원탈퇴
+
+	// 회원탈퇴
 	@GetMapping("/memberDeleteCheck")
 	public String memberDeleteCheck() {
 		return "member/memberDeleteCheck";
 	}
-	
+
 	@GetMapping("/memberDelete")
 	public String memberDelete(Principal principal, String password) {
 		String id = principal.getName();
-		System.out.println(id);
-		memberService.delete(id, password);		
-		return "redirect:/";
+		String result = memberService.delete(id, password);
+		if (result.equals("a")) {
+			return "redirect:/";
+		} else {
+			return "member/Deletecheckview";
+		}
 	}
-	
-	//회원수정
+
+	// 회원수정
 	@GetMapping("/memberUpdateCheck")
 	public String memberUpdateCheck(String id, Model model) {//
 		MemberVO membervo = memberService.selectOne(id);
 		model.addAttribute("memberVO", membervo);
 		return "member/memberUpdateCheck";
 	}
+
 	@GetMapping("memberUpdateCheckPro")
 	public String memberUpdateCheckPro(MemberVO membervo) {//
 		memberService.Update(membervo);
