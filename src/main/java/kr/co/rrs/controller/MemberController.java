@@ -44,10 +44,10 @@ public class MemberController {
 		return "member/memberInsert";
 	}
 
-	@GetMapping("/memberInsertPro")
+	@PostMapping("/memberInsertPro")
 	public String memberInsertPro(MemberVO memberVO) {
 		memberService.insert(memberVO);
-		return "forward:/";
+		return "redirect:/";
 	}
 
 	// 내정보

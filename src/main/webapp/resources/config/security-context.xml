@@ -2,15 +2,18 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:sc="http://www.springframework.org/schema/security"
+	xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd
-		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 		
 	<!-- password Encoder -->
-	<bean id = "bcryptPasswordEncoder" class = "org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
+	<bean id = "bcryptPasswordEncoder"
+		class = "org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
 	
 	<sc:http pattern="/resources/**" security="none"/>
 	
-	<sc:http use-expressions="true">
+	<sc:http auto-config="true" use-expressions="true">
 		<sc:csrf disabled="true"/>
 		<sc:intercept-url pattern="/store/**" access="hasRole('MANAGER')"/>
 		<sc:intercept-url pattern="/serviceBoardMain" access="hasAnyRole('USER, MANAGER')"/>
@@ -27,15 +30,11 @@
 	
 	<sc:authentication-manager>
         <sc:authentication-provider>
-     		<!-- <sc:user-service>
-				<sc:user name="user" password="{noop}1234" authorities="ROLE_USER" />
-				<sc:user name="admin" password="{noop}1234" authorities="ROLE_ADMIN" />
-		  	</sc:user-service> -->
-        
         <sc:password-encoder ref="bcryptPasswordEncoder"/>
         <sc:jdbc-user-service data-source-ref="basic_datasource"
         	users-by-username-query="Select id,password,enabled from member where id=?"
         	authorities-by-username-query="select id,authority from member where id=?"/>
         </sc:authentication-provider>
 	</sc:authentication-manager>
+	
 </beans>
