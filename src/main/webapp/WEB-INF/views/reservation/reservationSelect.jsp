@@ -28,17 +28,7 @@ body {
 }
 </style>
 
- <script>
-    function drop() 
-    {
-	 	if (confirm("삭제하시겠습니까?")) {
-	    	location.href="reservationDelete?reserveNo=${reservation.reserveNo}";    
-	    } else {
-	    	location.href="myReservationList";    
-	    }
-    }
-  </script>
-
+ 
 <title>예약상세정보</title>
 </head>
 <body>
@@ -50,7 +40,7 @@ body {
 					<h2 class="text-center">예약상세정보</h2>
 					<div class="input-group mb-3">
 						<span class="input-group-text col-3 text-center">음식점이름</span> 
-						<input type="text" class="form-control" name="storeNo" value="${reservation.storeNo }" readonly>
+						<input type="text" class="form-control" name="storeNo" value="${reservation.storeName }" readonly>
 					</div>
 					<div class="input-group mb-3">
 						<span class="input-group-text col-3 text-center">예약인원</span> 
@@ -77,7 +67,6 @@ body {
 				<div class="row text-center">
 					<div class="container mt-3">
 						<input type="submit" class="btn btn-primary" value="수정"> 
-						<a type="button" class="btn btn-primary" onclick="drop()">삭제</a> 
 						<a href="javascript:window.history.go(-1);" type="button" class="btn btn-primary">취소</a> 
 	     			</div>
 				</div>
