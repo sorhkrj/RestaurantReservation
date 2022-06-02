@@ -9,11 +9,6 @@
 	<context:property-placeholder location="/resources/properties/db.properties"/>
 
 	<!-- bean -->
-	<bean
-		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="prefix" value="/WEB-INF/views/"></property>
-		<property name="suffix" value=".jsp"></property>
-	</bean>
 	<bean id="basic_datasource"
 		class="org.apache.commons.dbcp2.BasicDataSource">
 		<property name="driverClassName"
@@ -24,19 +19,5 @@
 		</property>
 		<property name="username" value="${db.username}"></property>
 		<property name="password" value="${db.password}"></property>
-	</bean>
-	<bean id="sqlSession"
-		class="org.mybatis.spring.SqlSessionFactoryBean">
-		<property name="dataSource" ref="basic_datasource"></property>
-		<property name="mapperLocations"
-			value="/resources/mapper/*.xml">
-		</property>
-		<property name="configLocation"
-			value="/resources/config/mybatis-config.xml">
-		</property>
-	</bean>
-	<bean id="sqlSessionTemplate"
-		class="org.mybatis.spring.SqlSessionTemplate">
-	<constructor-arg index="0" ref="sqlSession"></constructor-arg>
 	</bean>
 </beans>

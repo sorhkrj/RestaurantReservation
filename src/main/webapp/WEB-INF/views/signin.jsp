@@ -20,7 +20,7 @@
 		<table class="table table-striped">
 			<tr>
 				<td>
-					<form:form action="login" method="post">
+					<form action="login" method="post">
 						<table class="table table-striped">
 							<tr>
 								<td>
@@ -42,17 +42,21 @@
 								</td>
 							</tr>
 						</table>
-					</form:form>
+					</form>
 				</td>
 			</tr>
 			<tr>
 				<td>
-					<a href = "member/memberInsert"> 일반 회원가입</a>
+					<form action="member/memberInsert" method="get">
+						<input type="submit" value="일반 회원가입"/>
+					</form>
 				</td>
 			</tr>
 			<tr>
 				<td>
-					<a href = "member/memberInsertEnterprise"> 기업 회원가입</a>
+					<form action="member/memberInsertEnterprise" method="get">
+						<input type="submit" value="기업 회원가입"/>
+					</form>
 				</td>
 			</tr>
 		</table>
