@@ -1,7 +1,10 @@
 package kr.co.rrs.service.impl;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.annotations.Param;
@@ -60,7 +63,18 @@ public class ServiceBoardServiceImpl implements ServiceBoardService {
 	public int selectServiceBoardTotal() {
 		return serviceBoardMapper.selectServiceBoardTotal();
 	}
-
 	
+	//-------------------------------------------------------------
+	public void serviceBoardUpdateCheck(HttpServletResponse response) {
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = null;
+		try {
+			out = response.getWriter();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		out.println("<script>alert('비밀번호가 틀립니다. 수정할 수 없습니다.'); </script>");
+		out.flush();
+	}
 
 }

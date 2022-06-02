@@ -43,6 +43,9 @@ public interface ReviewService {
 	@Delete("delete from review where storeNo = #{storeNo} and reviewNo = #{reviewNo}")
 	void deleteReview(int storeNo, int reviewNo);
 	
+	// 리뷰 댓글 전체 검색
+	ArrayList<ReviewCommentVO> selectReviewCommentAll();
+	
 	// 리뷰 댓글 삽입
 	void insertReviewComment(ReviewCommentVO reviewCommentVO);
 }

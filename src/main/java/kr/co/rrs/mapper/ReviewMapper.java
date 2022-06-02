@@ -51,7 +51,13 @@ public interface ReviewMapper {
 	@Delete("delete from review where storeNo = #{storeNo} and reviewNo = #{reviewNo}")
 	void deleteReview(@Param("storeNo") int storeNo, @Param("reviewNo") int reviewNo);
 	
+	// 리뷰 댓글 전체 검색
+	@Select("select * from reviewComment")
+	ArrayList<ReviewCommentVO> selectReviewCommentAll();
+	
 	// 리뷰 댓글 삽입
-	@Insert("insert into reviewComment values(reviewComment_SEQ.nextVal, #{reviewCommentNo}, #{reviewNo}, #{id}, #{reviewCommentContent}, sysdate)")
+	@Insert("insert into reviewComment values(reviewCommentNo_SEQ.nextVal, #{reviewNo}, #{id}, #{reviewCommentContent}, sysdate)")
 	void insertReviewComment(ReviewCommentVO reviewCommentVO);
+	
+
 }

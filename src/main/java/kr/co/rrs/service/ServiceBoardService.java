@@ -2,6 +2,7 @@ package kr.co.rrs.service;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.annotations.Param;
@@ -34,4 +35,7 @@ public interface ServiceBoardService {
 	
 	// 문의글 전체 개수
 	int selectServiceBoardTotal();
+	
+	// ------------------------------------------------------------------------
+	void serviceBoardUpdateCheck(HttpServletResponse response);
 }
