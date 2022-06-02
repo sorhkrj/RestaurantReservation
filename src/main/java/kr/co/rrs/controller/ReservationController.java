@@ -117,12 +117,13 @@ public class ReservationController {
 		
 		String id = principal.getName();
 		String password = request.getParameter("password");
-		MemberVO mvo = service.checkMember(id);
-		if(mvo.getPassword().equals(password))
-		{
-			service.deleteRes(rvo.getReserveNo());
+		String result = service.deleteRes(rvo.getReserveNo(), id, password);
+		
+		if(result == "a") {		
+			return "redirect:myReservationList";
+		} else {
+			return "";
 		}
-		return "redirect:myReservationList";
 	}
 	
 	//////////////////////Ajar////////////////////////

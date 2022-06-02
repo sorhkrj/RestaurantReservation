@@ -21,9 +21,7 @@
 <body>
 	
 	<div class="container">
-	<div class="bg-primary">
 		<c:import url="/WEB-INF/views/top.jsp"/>
-	</div>
 		<form action="reservationUpdateCheck" method="post" id="form">
 			<div class="container p-3" >
 				<div class="row">

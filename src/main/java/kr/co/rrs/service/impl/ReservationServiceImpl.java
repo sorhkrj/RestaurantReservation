@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.StringTokenizer;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import kr.co.rrs.mapper.ReservationMapper;
@@ -15,6 +16,9 @@ import kr.co.rrs.vo.StoreVO;
 
 @Service
 public class ReservationServiceImpl implements ReservationService {
+	
+	@Autowired
+	BCryptPasswordEncoder encoder;
 	
 	@Autowired
 	ReservationMapper mapper;
@@ -33,8 +37,15 @@ public class ReservationServiceImpl implements ReservationService {
 	
     //예약취소
 	@Override
-	public void deleteRes(int rno) {
-		mapper.mapperdeleteRes(rno);
+	public String deleteRes(int rno, String id, String password) {
+		
+		if(encoder.matches(password, password)) {
+			mapper.mapperdeleteRes(rno);
+			return "a";	
+		} else {
+		    return "b";
+		}
+			
 	}
 	
 	//나의예약리스트
@@ -56,11 +67,11 @@ public class ReservationServiceImpl implements ReservationService {
 	}
 	
 	// 예약가능날짜시간
-		@Override
-		public ArrayList<ReservePossibleVO> checkPossibility(ReservationVO rvo) {
-			return mapper.mapperPossibility(rvo);
-		}
-	
+	@Override
+	public ArrayList<ReservePossibleVO> checkPossibility(ReservationVO rvo) {
+		return mapper.mapperPossibility(rvo);
+	}
+
 		
 	//음식점이름
 	@Override
