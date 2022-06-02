@@ -71,11 +71,19 @@ public class ReviewServiceImpl implements ReviewService {
 		reviewMapper.deleteReview(storeNo, reviewNo);
 	}
 
+	// 리뷰 댓글 전체 검색
+	@Override
+	public ArrayList<ReviewCommentVO> selectReviewCommentAll() {
+		return reviewMapper.selectReviewCommentAll();
+	}
+		
 	// 리뷰 댓글 삽입
 	@Override
 	public void insertReviewComment(ReviewCommentVO reviewCommentVO) {
 		reviewMapper.insertReviewComment(reviewCommentVO);
 	}
+	
+	
 
 	
 }

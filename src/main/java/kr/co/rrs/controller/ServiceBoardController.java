@@ -179,15 +179,7 @@ public class ServiceBoardController {
 			return "serviceBoard/serviceBoardUpdate";
 		}
 		else { // 패스워드가 틀릴 경우
-			response.setContentType("text/html; charset=UTF-8");
-			PrintWriter out = null;
-			try {
-				out = response.getWriter();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-			out.println("<script>alert('비밀번호가 틀립니다. 수정할 수 없습니다.'); </script>");
-			out.flush();
+			serviceBoardService.serviceBoardUpdateCheck(response);
 			
 			return "forward:serviceBoardUpdateCheck?serviceNo=" + serviceBoardVO.getServiceNo();
 		}

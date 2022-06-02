@@ -13,6 +13,9 @@
 	table{
 		border: 1px solid black;
 	}
+	#comment{
+		height: 50px;
+	}
 </style>
 </head>
 <body>
@@ -79,7 +82,7 @@
 					<option value="5" selected>★5</option>
 				</select>
 			</td>
-			<td>${sessionScope.nickName }<input type="hidden" name="id" value="${sessionScope.id }"/></td>
+			<td>${sessionScope.nickName }</td>
 			<td><input type="file" name="file"/></td>
 			<td colspan="3">
 				<textarea rows="3" cols="20" maxlength="30" required name="reviewContent"></textarea>
@@ -101,25 +104,58 @@
 				<th>사진</th>
 				<th>내용</th>
 				<th>작성일</th>
+				<th>댓글</th>
 			</tr>
 			<c:if test="${reviewList.size() != 0 }">
 				<c:forEach var="i" begin="0" end="${reviewList.size()-1 }">
-				<tr>
-					<td>${reviewListNick.get(i).nickName }</td>
-					<td>${reviewListNick.get(i).rating }</td>
-					<td width="200" height="100">
-						<c:if test="${reviewList.get(i).reviewPhoto != null }">
-							<img alt="d" src="imgUpload/${reviewList.get(i).reviewPhoto }" width="200" height="100">
-						</c:if>	
-					</td>
-					<td>${reviewList.get(i).reviewContent }</td>
-					<td>
-						${reviewList.get(i).reviewRDate }
-						<c:if test="${reviewList.get(i).id == sessionScope.id }">
-							<input type="button" value="지우기" onclick="location.href='reviewDeletePro?storeNo=${reviewList.get(i).storeNo }&reviewNo=${reviewList.get(i).reviewNo}'"/>
-						</c:if>
-					</td>
-				</tr>
+					<tr>
+						<td>${reviewListNick.get(i).nickName }</td>
+						<td>${reviewListNick.get(i).rating }</td>
+						<td width="200" height="100">
+							<c:if test="${reviewList.get(i).reviewPhoto != null }">
+								<img alt="d" src="images/${reviewList.get(i).reviewPhoto }" width="200" height="100">
+							</c:if>	
+						</td>
+						<td>${reviewList.get(i).reviewContent }</td>
+						<td>
+							${reviewList.get(i).reviewRDate }
+							<c:if test="${reviewList.get(i).id == sessionScope.id }">
+								<input type="button" value="지우기" onclick="location.href='reviewDeletePro?storeNo=${reviewList.get(i).storeNo }&reviewNo=${reviewList.get(i).reviewNo}'"/>
+							</c:if>
+						</td>
+						<td>
+							<form action="reviewCommentInsertPro">
+								<textarea rows="3" cols="20" maxlength="30" required name="reviewCommentContent"></textarea>
+								<input type="hidden" name="storeNo" value="${reviewList.get(i).storeNo}">
+								<input type="hidden" name="reviewNo" value="${reviewList.get(i).reviewNo}"> 
+								<input type="submit" value="리뷰댓글">
+							</form>
+						</td>
+					</tr>
+					<c:if test="${reviewCommentList.size() != 0 }">
+						<c:forEach var="j" begin="0" end="${reviewCommentList.size()-1 }">
+							<c:if test="${reviewList.get(i).reviewNo == reviewCommentList.get(j).reviewNo }">
+								<tr id="comment">
+									<td>[re]</td>
+									<td>
+										${reviewCommentList.get(j).reviewCommentNo }
+									</td>
+									<td>
+										${reviewCommentList.get(j).reviewNo }
+									</td>
+									<td>
+										${reviewCommentList.get(j).id }
+									</td>
+									<td>
+										${reviewCommentList.get(j).reviewCommentContent }
+									</td>
+									<td>
+										${reviewCommentList.get(j).reviewCommentRDate }
+									</td>
+								</tr>
+							</c:if>
+						</c:forEach>
+					</c:if>
 				</c:forEach>
 			</c:if>
 		</table>
