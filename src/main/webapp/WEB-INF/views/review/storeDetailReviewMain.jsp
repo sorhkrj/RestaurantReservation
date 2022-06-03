@@ -35,6 +35,10 @@
 		<a href = "storeUpdate">수정하기</a><br>
 		<a href = "storeReservation?storeNo=${storeVO.storeNo }">예약현황</a><br>
 		<a href = "storeCapacitySelect?storeNo=${storeVO.storeNo }">예약가능시간 확인</a><br>
+		
+		<br>
+		<br>
+		<a href = "${pageContext.request.contextPath}/reservation/reservationInsert?storeNo=${storeVO.storeNo }"> 예약하기 </a>
 <hr>
 <h4>리뷰정보</h4>
 <table class="table table-striped">
@@ -85,19 +89,26 @@
 						<td>${reviewList.get(i).reviewContent }</td>
 						<td>
 							${reviewList.get(i).reviewRDate }
+							<sec:authorize access="isAuthenticated()">
 								<sec:authentication property="principal" var="check"/>
 									<c:if test="${check.username eq reviewList.get(i).id}">
-										<input type="button" value="지우기" onclick="location.href='reviewDeletePro?storeNo=${reviewList.get(i).storeNo }&reviewNo=${reviewList.get(i).reviewNo}'"/>
+										<input type="button" value="지우기" onclick="location.href='reviewDelet3ePro?storeNo=${reviewList.get(i).storeNo }&reviewNo=${reviewList.get(i).reviewNo}'"/>
 									</c:if>
+							</sec:authorize>
 						</td>
-						<td>
-							<form action="reviewCommentInsertPro">
-								<textarea rows="3" cols="20" maxlength="30" required name="reviewCommentContent"></textarea>
-								<input type="hidden" name="storeNo" value="${reviewList.get(i).storeNo}">
-								<input type="hidden" name="reviewNo" value="${reviewList.get(i).reviewNo}"> 
-								<input type="submit" value="리뷰댓글">
-							</form>
-						</td>
+						
+						<sec:authorize access="isAuthenticated()">
+							<td>
+								<form action="reviewCommentInsertPro">
+									<textarea rows="3" cols="20" maxlength="30" required name="reviewCommentContent"></textarea>
+									<input type="hidden" name="storeNo" value="${reviewList.get(i).storeNo}">
+									<input type="hidden" name="reviewNo" value="${reviewList.get(i).reviewNo}"> 
+									<input type="submit" value="리뷰댓글">
+								</form>
+							</td>
+						</sec:authorize>
+						
+						
 					</tr>
 					<c:if test="${reviewCommentList.size() != 0 }">
 						<c:forEach var="j" begin="0" end="${reviewCommentList.size()-1 }">
@@ -127,6 +138,7 @@
 			</c:if>
 		</table>
 	</form>
+	<sec:authorize access="isAuthenticated()">
 	<hr>
 	<h4>리뷰작성</h4>
 	<form action="reviewInsertPro" method="post" enctype="multipart/form-data">
@@ -162,8 +174,8 @@
 		</tr>
 		</table>
 	</form>
+	</sec:authorize>
 	
-	<a href = "${pageContext.request.contextPath}/reservation/reservationInsert?storeNo=${storeVO.storeNo }"> 예약하기 </a>
 <c:import url="/WEB-INF/views/footer.jsp"/>
 </div>
 </body>

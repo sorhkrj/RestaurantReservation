@@ -33,10 +33,10 @@ public class ReviewController {
 	@RequestMapping("/storeDetailReviewMain")
 	public String storeDetailReviewMain(StoreVO storeVO, ReviewLikeVO reviewLikeVO, ReviewCommentVO reviewCommentVO, Principal principal, Model model, HttpSession session) {
 		storeVO = reviewService.selectOne(storeVO.getStoreNo()); // 지점 정보 검색
-		String id = principal.getName(); // 로그인 id 검색
 		
 		// ----------------------------------------------------------------------좋아요 기능
-		if(id != null) {
+		if(principal != null) {
+			String id = principal.getName(); // 로그인 id 검색
 			int likeStatus = reviewService.selectReviewLikeStatus(storeVO.getStoreNo(), id); // 내가 좋아요 했는지 안했는지 확인
 			
 			if(likeStatus == 1) {
@@ -56,9 +56,6 @@ public class ReviewController {
 				reviewLikeVO.setLikeStatus(likeStatus);								// 내가 좋아요 추가 기억
 			}
 			
-		}
-		else {
-			return "login";
 		}
 		
 		reviewLikeVO.setReviewLikeCnt(reviewService.selectReviewLikeCnt(storeVO.getStoreNo())); // 지점 좋아요 수

@@ -16,7 +16,9 @@
 	<sc:http auto-config="true" use-expressions="true">
 		<sc:csrf disabled="true"/>
 		<sc:intercept-url pattern="/store/**" access="hasRole('MANAGER')"/>
-		<sc:intercept-url pattern="/serviceBoardMain" access="hasAnyRole('USER, MANAGER')"/>
+		<sc:intercept-url pattern="/member/signUp/**" access="permitAll"/>
+		<sc:intercept-url pattern="/member/**" access="hasAnyRole('MEMBER, MANAGER')"/>
+		<sc:intercept-url pattern="/serviceBoardMain" access="hasAnyRole('MEMBER, MANAGER')"/>
  		<sc:intercept-url pattern="/**" access="permitAll"/>
 		
 		<sc:form-login	login-page="/signin"

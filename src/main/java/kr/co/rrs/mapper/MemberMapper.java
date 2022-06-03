@@ -11,7 +11,7 @@ import kr.co.rrs.vo.MemberVO;
 
 public interface MemberMapper {
 	// 회원가입
-	@Insert("insert into member values(#{id}, #{name}, #{phone}, #{password},#{nickname}, 'ROLE_USER', 1, SYSDATE)")
+	@Insert("insert into member values(#{id}, #{name}, #{phone}, #{password},#{nickname}, 'ROLE_MEMBER', 1, SYSDATE)")
 	void insert(MemberVO memberVO);
 
 	@Insert("insert into member values(#{id}, #{name}, #{phone}, #{password},#{nickname}, 'ROLE_MANAGER', 1, SYSDATE)")
