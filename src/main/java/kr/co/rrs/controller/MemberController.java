@@ -39,12 +39,12 @@ public class MemberController {
 	}
 
 	// 회원가입
-	@GetMapping("/memberInsert")
+	@GetMapping("/signup/memberInsert")
 	public String memberInsert() {
-		return "member/memberInsert";
+		return "member/signup/memberInsert";
 	}
 
-	@PostMapping("/memberInsertPro")
+	@PostMapping("/signup/memberInsertPro")
 	public String memberInsertPro(MemberVO memberVO) {
 		memberService.insert(memberVO);
 		return "redirect:/";
@@ -60,12 +60,12 @@ public class MemberController {
 	}
 
 	// 지점장 회원가입
-	@GetMapping("/memberInsertEnterprise")
+	@GetMapping("/signup/memberInsertEnterprise")
 	public String memberInsertEnterprise() {
-		return "member/memberInsertEnterprise";
+		return "member/signup/memberInsertEnterprise";
 	}
 
-	@PostMapping("/memberInsertEnterprisePro")
+	@PostMapping("/signup/memberInsertEnterprisePro")
 	public String memberInsertEnterprisePro(EnterpriseVO enterpriseVO, @RequestParam("file") MultipartFile file, HttpServletRequest request)
 			throws IOException {
 		String path = "resources/images"; // 파일 저장하고 싶은 위치

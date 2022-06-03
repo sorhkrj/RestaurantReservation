@@ -38,7 +38,9 @@
 		
 		<br>
 		<br>
-		<a href = "${pageContext.request.contextPath}/reservation/reservationInsert?storeNo=${storeVO.storeNo }"> 예약하기 </a>
+		<sec:authorize access="isAuthenticated()">
+			<a href = "${pageContext.request.contextPath}/reservation/reservationInsert?storeNo=${storeVO.storeNo }"> 예약하기 </a>
+		</sec:authorize>
 <hr>
 <h4>리뷰정보</h4>
 <table class="table table-striped">
@@ -48,6 +50,7 @@
 	<tr>
 		<td colspan="2">좋아요♥ 개수: ${reviewLikeVO.reviewLikeCnt }</td>
 		<td colspan="2">평점: ${avg }</td>
+		<sec:authorize access="isAuthenticated()">
 		<td colspan="2">
 			<form action="storeDetailReviewMain" method="post">
 				<c:if test="${reviewLikeVO.likeStatus == 0 }">
@@ -62,6 +65,7 @@
 				</c:if>
 			</form>
 		</td>
+		</sec:authorize>
 	</tr>
 	</table>
 	<hr>
