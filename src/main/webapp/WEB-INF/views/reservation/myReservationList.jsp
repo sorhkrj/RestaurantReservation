@@ -66,7 +66,7 @@ body {
 			 
 					<c:forEach var="reservation" items="${list}"> 
 						<tr>	
-								<td><a href="reservationSelect?reserveNo=${reservation.reserveNo}">${reservation.id}</a></td>
+								<td><a href="reservationSelect?reserveNo=${reservation.reserveNo}&storeName=${reservation.storeName}">${reservation.id}</a></td>
 								<td>${reservation.storeName}</td>
 								<td>${reservation.people}</td>
 								<td>${reservation.visitDay}</td>

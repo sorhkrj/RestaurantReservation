@@ -38,8 +38,7 @@ public class ReservationServiceImpl implements ReservationService {
     //예약취소
 	@Override
 	public String deleteRes(int rno, String id, String password) {
-		
-		if(encoder.matches(password, password)) {
+		if(encoder.matches(password, mapper.mapperMember(id).getPassword())) {
 			mapper.mapperdeleteRes(rno);
 			return "a";	
 		} else {
@@ -117,6 +116,7 @@ public class ReservationServiceImpl implements ReservationService {
 					 }				
 			}
  		}
+		listResult.add(String.valueOf(rpvo.getSeat()));
 		return listResult;
 	}
 }

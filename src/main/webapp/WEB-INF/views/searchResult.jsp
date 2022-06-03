@@ -24,9 +24,7 @@
 							<c:forEach var="store" items="${storeList}">
 								${store.storeName}
 								${store.introduce}
-								<c:if test="${not empty sessionScope.id}">
 									<a href="review/storeDetailReviewMain?storeNo=${store.storeNo}" type="button"class="w3-button w3-white w3-border w3-border-blue w3-round-large">지점보기</a>
-								</c:if>
 							</c:forEach>
 						</c:otherwise>
 					</c:choose>

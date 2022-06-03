@@ -40,7 +40,7 @@ body {
 					<h2 class="text-center">예약상세정보</h2>
 					<div class="input-group mb-3">
 						<span class="input-group-text col-3 text-center">음식점이름</span> 
-						<input type="text" class="form-control" name="storeNo" value="${reservation.storeName }" readonly>
+						<input type="text" class="form-control" name="storeName" value="${reservation.storeName }" readonly>
 					</div>
 					<div class="input-group mb-3">
 						<span class="input-group-text col-3 text-center">예약인원</span> 
@@ -63,6 +63,7 @@ body {
 						<input type="text" class="form-control" name="visitPhone" value="${reservation.visitPhone }" readonly>
 					</div>
 						<input type="hidden" class="form-control" name="reserveNo" value="${reservation.reserveNo }" readonly>
+						<input type="hidden" class="form-control" name="storeNo" value="${reservation.storeNo }" readonly>
 				</div>
 				<div class="row text-center">
 					<div class="container mt-3">

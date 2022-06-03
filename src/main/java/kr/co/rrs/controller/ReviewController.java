@@ -122,14 +122,14 @@ public class ReviewController {
 		
 		reviewService.insertReview(reviewVO); // 리뷰 등록
 		
-		return "redirect:/storeDetailReviewMain?storeNo=" + reviewVO.getStoreNo();
+		return "redirect:storeDetailReviewMain?storeNo=" + reviewVO.getStoreNo();
 	}
 	
 	@RequestMapping("/reviewDeletePro")
 	public String reviewDeletePro(ReviewVO reviewVO) {
 		reviewService.deleteReview(reviewVO.getStoreNo(), reviewVO.getReviewNo());
 		
-		return "redirect:/storeDetailReviewMain?storeNo=" + reviewVO.getStoreNo();
+		return "redirect:storeDetailReviewMain?storeNo=" + reviewVO.getStoreNo();
 	}
 	
 	@RequestMapping("/reviewCommentInsertPro")
@@ -141,6 +141,6 @@ public class ReviewController {
 		
 		reviewService.insertReviewComment(reviewCommentVO);
 		
-		return "redirect:/storeDetailReviewMain?storeNo=" + storeNo;
+		return "redirect:storeDetailReviewMain?storeNo=" + storeNo;
 	}
 }

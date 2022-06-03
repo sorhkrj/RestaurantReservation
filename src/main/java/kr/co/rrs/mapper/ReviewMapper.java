@@ -40,11 +40,11 @@ public interface ReviewMapper {
 	void insertReview(ReviewVO reviewVO);
 	
 	// 리뷰 전체 검색
-	@Select("select * from review where storeNo = #{storeNo} order by reviewNo")
+	@Select("select * from review where storeNo = #{storeNo} order by reviewNo desc")
 	ArrayList<ReviewVO> selectReviewALL(@Param("storeNo") int storeNo);
 	
 	// 리뷰 조인 검색
-	@Select("select reviewNo, rating, nickname, storeno, reviewphoto, reviewcontent, reviewrdate from review r join member m on r.id = m.id where storeNo = #{storeNo} order by reviewNo")
+	@Select("select reviewNo, rating, nickname, storeno, reviewphoto, reviewcontent, reviewrdate from review r join member m on r.id = m.id where storeNo = #{storeNo} order by reviewNo desc")
 	ArrayList<ReviewJoinMemberVO> selectReviewJoinMember(@Param("storeNo") int storeNo);
 	
 	// 리뷰 삭제

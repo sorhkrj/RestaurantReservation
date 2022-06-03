@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix='form' uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri = "http://java.sun.com/jsp/jstl/core" %> 
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -60,41 +61,6 @@
 	</tr>
 	</table>
 	<hr>
-	<h4>리뷰작성</h4>
-	<form action="reviewInsertPro" method="post" enctype="multipart/form-data">
-		<table class="table table-striped">
-		<tr>
-			<th>평점</th>
-			<th>닉네임</th>
-			<th>파일</th>
-			<th>리뷰내용</th>
-			<th></th>
-			<th></th>
-			<th></th>
-		</tr>
-		<tr>
-			<td>
-				<select name="rating">
-					<option value="1">★1</option>
-					<option value="2">★2</option>
-					<option value="3">★3</option>
-					<option value="4">★4</option>
-					<option value="5" selected>★5</option>
-				</select>
-			</td>
-			<td>${sessionScope.nickName }</td>
-			<td><input type="file" name="file"/></td>
-			<td colspan="3">
-				<textarea rows="3" cols="20" maxlength="30" required name="reviewContent"></textarea>
-			</td>
-			<td>
-				<input type="hidden" name="storeNo" value="${storeVO.storeNo }"/>
-				<input type="submit" value="리뷰쓰기"/>
-			</td>
-		</tr>
-		</table>
-	</form>
-	<hr>
 	<h4>리뷰목록</h4>
 	<form action="reviewCommentInsertPro" method="post">
 		<table class="table table-striped">
@@ -119,9 +85,10 @@
 						<td>${reviewList.get(i).reviewContent }</td>
 						<td>
 							${reviewList.get(i).reviewRDate }
-							<c:if test="${reviewList.get(i).id == sessionScope.id }">
-								<input type="button" value="지우기" onclick="location.href='reviewDeletePro?storeNo=${reviewList.get(i).storeNo }&reviewNo=${reviewList.get(i).reviewNo}'"/>
-							</c:if>
+								<sec:authentication property="principal" var="check"/>
+									<c:if test="${check.username eq reviewList.get(i).id}">
+										<input type="button" value="지우기" onclick="location.href='reviewDeletePro?storeNo=${reviewList.get(i).storeNo }&reviewNo=${reviewList.get(i).reviewNo}'"/>
+									</c:if>
 						</td>
 						<td>
 							<form action="reviewCommentInsertPro">
@@ -160,6 +127,43 @@
 			</c:if>
 		</table>
 	</form>
+	<hr>
+	<h4>리뷰작성</h4>
+	<form action="reviewInsertPro" method="post" enctype="multipart/form-data">
+		<table class="table table-striped">
+		<tr>
+			<th>평점</th>
+			<th>닉네임</th>
+			<th>파일</th>
+			<th>리뷰내용</th>
+			<th></th>
+			<th></th>
+			<th></th>
+		</tr>
+		<tr>
+			<td>
+				<select name="rating">
+					<option value="1">★1</option>
+					<option value="2">★2</option>
+					<option value="3">★3</option>
+					<option value="4">★4</option>
+					<option value="5" selected>★5</option>
+				</select>
+			</td>
+			<td>${sessionScope.nickName }</td>
+			<td><input type="file" name="file"/></td>
+			<td colspan="3">
+				<textarea rows="3" cols="20" maxlength="30" required name="reviewContent"></textarea>
+			</td>
+			<td>
+				<input type="hidden" name="storeNo" value="${storeVO.storeNo }"/>
+				<input type="submit" value="리뷰쓰기"/>
+			</td>
+		</tr>
+		</table>
+	</form>
+	
+	<a href = "${pageContext.request.contextPath}/reservation/reservationInsert?storeNo=${storeVO.storeNo }"> 예약하기 </a>
 <c:import url="/WEB-INF/views/footer.jsp"/>
 </div>
 </body>

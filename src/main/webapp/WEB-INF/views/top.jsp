@@ -53,7 +53,7 @@
 								<li><a href="${pageContext.request.contextPath}/signin">로그인</a></li> <!-- 회원, 기업, 관리자 -->
 							</sec:authorize>
 							<sec:authorize access="isAuthenticated()">
-								<form:form action="logout" method="POST">
+								<form:form action="${pageContext.request.contextPath}/logout" method="POST">
 		    						<li><input type="submit" value="로그아웃"/></li>
 								</form:form> <!-- 회원, 기업, 관리자 -->
 							</sec:authorize>
@@ -85,7 +85,7 @@
 					</div>
 				</td>
 				<td>
-					<form action="searchResult" method="get">
+					<form action="${pageContext.request.contextPath}/searchResult" method="get">
 						<input type="text" name="search" placeholder="검색할 내용"/>
 						<input type="submit" value="검색"/>
 					</form>

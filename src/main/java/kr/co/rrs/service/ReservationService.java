@@ -21,5 +21,4 @@ public interface ReservationService {
 	public ArrayList<ReservePossibleVO> storeCheckPossibility(StoreVO storevo);
 	public ArrayList<String> reservationTimeCheck(ReservationVO rvo);
 	
-	
 }
