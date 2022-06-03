@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import kr.co.rrs.mapper.ReviewMapper;
 import kr.co.rrs.service.ReviewService;
-import kr.co.rrs.vo.MemberVO;
 import kr.co.rrs.vo.ReviewCommentVO;
 import kr.co.rrs.vo.ReviewJoinMemberVO;
 import kr.co.rrs.vo.ReviewVO;
@@ -81,6 +80,12 @@ public class ReviewServiceImpl implements ReviewService {
 	@Override
 	public void insertReviewComment(ReviewCommentVO reviewCommentVO) {
 		reviewMapper.insertReviewComment(reviewCommentVO);
+	}
+
+	// 리뷰 댓글 삭제
+	@Override
+	public void deleteReviewComment(ReviewCommentVO reviewCommentVO) {
+		reviewMapper.deleteReviewComment(reviewCommentVO);
 	}
 	
 	

@@ -16,31 +16,6 @@
 </head>
 <body>
 	<div class="container">
-	<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="javascript:void(0)">Logo</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="mynavbar">
-      <ul class="navbar-nav me-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="javascript:void(0)">Link</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="javascript:void(0)">Link</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="javascript:void(0)">Link</a>
-        </li>
-      </ul>
-      <form class="d-flex">
-        <input class="form-control me-2" type="text" placeholder="Search">
-        <button class="btn btn-primary" type="button">Search</button>
-      </form>
-    </div>
-  </div>
-</nav>
 		<table class="table table-striped">
 			<tr>
 				<td>
@@ -57,10 +32,10 @@
 		    						<li><input type="submit" value="로그아웃"/></li>
 								</form:form> <!-- 회원, 기업, 관리자 -->
 							</sec:authorize>
-							<sec:authorize access="hasRole('ROLE_USER')">
+							<sec:authorize access="hasAnyRole('MEMBER, MANAGER, ADMIN')">
 								<li><a href="${pageContext.request.contextPath}/member/memberSelect">내정보</a></li> <!-- 회원 -->
 							</sec:authorize>
-							<sec:authorize access="hasRole('ROLE_USER')">
+							<sec:authorize access="hasRole('ROLE_MEMBER')">
 							<li><a href="${pageContext.request.contextPath}/reservation/myReservationList">예약정보</a></li> <!-- 회원 -->
 							</sec:authorize>
 							<sec:authorize access="hasRole('ROLE_MANAGER')">
@@ -69,7 +44,7 @@
 							<sec:authorize access="hasRole('ROLE_MANAGER')">
 							<li><a href="${pageContext.request.contextPath}/store/storeAnalysis">분석현황</a></li> <!-- 기업 -->
 							</sec:authorize>
-							<sec:authorize access="isAnonymous()">
+							<sec:authorize access="hasAnyRole('MEMBER, MANAGER, ADMIN')">
 							<li><a href="${pageContext.request.contextPath}/serviceBoard/serviceBoardMain">고객센터</a></li> <!-- 회원, 기업, 관리자 -->
 							</sec:authorize>
 							<sec:authorize access="hasRole('ROLE_ADMIN')">

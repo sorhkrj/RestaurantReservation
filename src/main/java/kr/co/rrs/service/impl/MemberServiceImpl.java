@@ -4,8 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import kr.co.rrs.controller.MemberController;
-import kr.co.rrs.controller.MenuController;
 import kr.co.rrs.mapper.MemberMapper;
 import kr.co.rrs.service.MemberService;
 import kr.co.rrs.vo.EnterpriseVO;
@@ -33,13 +31,15 @@ public class MemberServiceImpl implements MemberService {
 	}
 	//회원탈퇴
 	@Override
-	public String delete(String id, String password) {
-		if(encoder.matches(password, password)) {
+	public Boolean delete(String id, String password) {
+		String originalPw = memberMapper.selectOne(id).getPassword();
+		if(encoder.matches(password, originalPw)) {
+			memberMapper.deleteEnterprise(id);
 			memberMapper.delete(id);
-			return "a";	
-		}else
-			System.out.println("실패");
-		return "b";
+			return true;	
+		}else{
+			return false;
+		}
 	}
 	//회원수정
 	@Override

@@ -13,15 +13,13 @@
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script> <!-- js cdn -->
 
 
-
-
 <title>예약수정${rvo.storeNo}</title>
 </head>
 
 <body>
 	
-	<div class="container">
 		<c:import url="/WEB-INF/views/top.jsp"/>
+	<div class="container">
 		<form action="reservationUpdateCheck" method="post" id="form">
 			<div class="container p-3" >
 				<div class="row">
@@ -58,16 +56,17 @@
 						<input type="hidden" class="form-control" name="reserveNo" value="${rvo.reserveNo}" >
 						<input type="hidden" class="form-control" name="storeNo" value="${rvo.storeNo}" >
 				</div>
+				
 				<div class="row text-center">
 					<div class="container mt-3">
 						<input type="submit" class="btn btn-primary" value="확인"> 
 						<a href="myReservationList" type="button" class="btn btn-primary">취소</a>
 					</div>
 				</div>
-			</div>
-		</form>
+				
+			</form>
+		</div>
 		<c:import url="/WEB-INF/views/footer.jsp"/>
-	</div>	
 		
 	<script type="text/javascript">
  	  let name = '${rvo.visitName}';

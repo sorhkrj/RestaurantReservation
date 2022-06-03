@@ -6,7 +6,6 @@ import java.security.Principal;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -113,9 +112,9 @@ public class MemberController {
 	@GetMapping("/memberDelete")
 	public String memberDelete(Principal principal, String password) {
 		String id = principal.getName();
-		String result = memberService.delete(id, password);
-		if (result.equals("a")) {
-			return "redirect:/";
+		Boolean result = memberService.delete(id, password);
+		if (result) {
+			return "redirect:/logout";
 		} else {
 			return "member/Deletecheckview";
 		}

@@ -54,20 +54,22 @@
 				<input type="button" value="문의글 쓰기" onclick="location.href='serviceBoardInsert'"/>
 			</td>
 		</tr>
-		<tr>
-			<td colspan="6">
-				<input type="button" value="리뷰페이지" onclick="location.href='${pageContext.request.contextPath}/review/storeDetailReviewMain?storeNo=12'"/>
-			</td>
-		</tr>
 	</table>
 	<hr>
 	<table class="table table-striped">
 		<tr>
-			<td><a href="serviceBoardMain?nowPage=${i-10 }">이전</a></td>
+			<td><a href="serviceBoardMain?nowPage=${nowPage-10 }">이전</a></td>
 				<c:forEach var="i" begin="${startPage }" end="${endPage }">
-					<td width="50" align="center"><a href="serviceBoardMain?nowPage=${i }">${i }</a></td>
+					<td width="50" align="center">
+						<c:if test="${nowPage == i }">
+							<a href="serviceBoardMain?nowPage=${i }" style="color: red;">${i }</a>
+						</c:if>
+						<c:if test="${nowPage != i }">
+							<a href="serviceBoardMain?nowPage=${i }">${i }</a>
+						</c:if>
+					</td>
 				</c:forEach>
-			<td><a href="serviceBoardMain?nowPage=${i+10 }">다음</a></td>
+			<td><a href="serviceBoardMain?nowPage=${nowPage+10 }">다음</a></td>
 		</tr>
 	</table>
 <c:import url="/WEB-INF/views/footer.jsp"/>

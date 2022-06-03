@@ -7,7 +7,6 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
-import kr.co.rrs.vo.MemberVO;
 import kr.co.rrs.vo.ReviewCommentVO;
 import kr.co.rrs.vo.ReviewJoinMemberVO;
 import kr.co.rrs.vo.ReviewVO;
@@ -59,5 +58,8 @@ public interface ReviewMapper {
 	@Insert("insert into reviewComment values(reviewCommentNo_SEQ.nextVal, #{reviewNo}, #{id}, #{reviewCommentContent}, sysdate)")
 	void insertReviewComment(ReviewCommentVO reviewCommentVO);
 	
+	// 리뷰 댓글 삭제
+	@Delete("delete from reviewComment where reviewCommentNo = #{reviewCommentNo}")
+	void deleteReviewComment(ReviewCommentVO reviewCommentVO);
 
 }

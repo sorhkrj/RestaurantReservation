@@ -29,8 +29,9 @@
 		<sc:logout	logout-url = "/logout"
 					invalidate-session="true"
 					logout-success-url="/"/>
+		<sc:access-denied-handler error-page="/errorForbidden" />
 	</sc:http>
-	
+
 	<sc:authentication-manager>
         <sc:authentication-provider>
         <sc:password-encoder ref="bcryptPasswordEncoder"/>

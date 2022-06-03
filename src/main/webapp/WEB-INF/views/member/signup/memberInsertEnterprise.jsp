@@ -81,19 +81,19 @@
 				<td >음식점휴일</td>
 				<td>
 					<input type="radio" name="holyday" value="월"  checked="checked" > 
-					<label for="월"><h4>월</h4></label>
+					<h4><label for="월">월</label></h4>
 			
 					<input type="radio" name="holyday"  value="화"  checked="checked" > 
-					<label for="화"><h4>화</h4></label>
+					<h4><label for="화">화</label></h4>
 			
 					<input type="radio" name="holyday"  value="수"  checked="checked" > 
-					<label for="수"><h4>수</h4></label>
+					<h4><label for="수">수</label></h4>
 		
 					<input type="radio" name="holyday"  value="목"  checked="checked" > 
-					<label for="목"><h4>목</h4></label>
+					<h4><label for="목">목</label></h4>
 			
 					<input type="radio" name="holyday"  value="금"  checked="checked" > 
-					<label for="금"><h4>금</h4></label>
+					<h4><label for="금">금</label></h4>
 				</td>
 			</tr>
 			<tr>

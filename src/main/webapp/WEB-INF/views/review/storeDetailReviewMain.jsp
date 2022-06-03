@@ -23,54 +23,76 @@
 <div class="container">
 <c:import url="/WEB-INF/views/top.jsp"/>
 	
-	사진 : ${storeVO.photo }<br>
-	위치 : ${storeVO.location }<br>
-	분류 : ${storeVO.category}	<br>
-	전화번호 : ${storeVO.store_phone}<br>
-	주차장 : ${storeVO.parking}<br>
-	휴무일 : ${storeVO.holyday}<br>
-	소개 : ${storeVO.introduce}<br>
-	공지사항 : ${storeVO.notice}<br>
-
-		<a href = "storeUpdate">수정하기</a><br>
-		<a href = "storeReservation?storeNo=${storeVO.storeNo }">예약현황</a><br>
-		<a href = "storeCapacitySelect?storeNo=${storeVO.storeNo }">예약가능시간 확인</a><br>
-		
-		<br>
-		<br>
+	<table class="table table-striped">
+		<tr>
+			<td>가게명</td>
+			<td>${storeVO.storeName }</td>
+		</tr>	
+		<tr>
+			<td>사진</td>
+			<td><img src = "${pageContext.request.contextPath}/images/${storeVO.photo }"></td>
+		</tr>	
+		<tr>
+			<td>위치</td>
+			<td>${storeVO.location }</td>
+		</tr>	
+		<tr>
+			<td>분류</td>
+			<td>${storeVO.category }</td>
+		</tr>	
+		<tr>
+			<td>전화번호</td>
+			<td>${storeVO.store_phone }</td>
+		</tr>	
+		<tr>
+			<td>주차장</td>
+			<td>${storeVO.parking }</td>
+		</tr>	
+		<tr>
+			<td>휴무일</td>
+			<td>${storeVO.holyday }</td>
+		</tr>	
+		<tr>
+			<td>소개</td>
+			<td>${storeVO.introduce }</td>
+		</tr>	
+		<tr>
+			<td>공지사항</td>
+			<td>${storeVO.notice }</td>
+		</tr>	
+	</table>
 		<sec:authorize access="isAuthenticated()">
 			<a href = "${pageContext.request.contextPath}/reservation/reservationInsert?storeNo=${storeVO.storeNo }"> 예약하기 </a>
 		</sec:authorize>
 <hr>
 <h4>리뷰정보</h4>
-<table class="table table-striped">
-	<tr>
-		<th colspan="6">리뷰</th>
-	</tr>
-	<tr>
-		<td colspan="2">좋아요♥ 개수: ${reviewLikeVO.reviewLikeCnt }</td>
-		<td colspan="2">평점: ${avg }</td>
-		<sec:authorize access="isAuthenticated()">
-		<td colspan="2">
-			<form action="storeDetailReviewMain" method="post">
-				<c:if test="${reviewLikeVO.likeStatus == 0 }">
-					<input type="hidden" name="sw" value="2"/>
-					<input type="hidden" name="storeNo" value="${storeVO.storeNo }"/>
-					<input type="submit" value="좋아요"/>
-				</c:if>
-				<c:if test="${reviewLikeVO.likeStatus == 1 }">
-					<input type="hidden" name="sw" value="1"/>
-					<input type="hidden" name="storeNo" value="${storeVO.storeNo }"/>
-					<input type="submit" value="좋아요 취소"/>
-				</c:if>
-			</form>
-		</td>
-		</sec:authorize>
-	</tr>
+	<table class="table table-striped">
+		<tr>
+			<th colspan="6">리뷰</th>
+		</tr>
+		<tr>
+			<td colspan="2">좋아요♥ 개수: ${reviewLikeVO.reviewLikeCnt }</td>
+			<td colspan="2">평점: ${avg }</td>
+			<sec:authorize access="isAuthenticated()">
+			<td colspan="2">
+				<form action="storeDetailReviewMain" method="post">
+					<c:if test="${reviewLikeVO.likeStatus == 0 }">
+						<input type="hidden" name="sw" value="2"/>
+						<input type="hidden" name="storeNo" value="${storeVO.storeNo }"/>
+						<input type="submit" value="좋아요"/>
+					</c:if>
+					<c:if test="${reviewLikeVO.likeStatus == 1 }">
+						<input type="hidden" name="sw" value="1"/>
+						<input type="hidden" name="storeNo" value="${storeVO.storeNo }"/>
+						<input type="submit" value="좋아요 취소"/>
+					</c:if>
+				</form>
+			</td>
+			</sec:authorize>
+		</tr>
 	</table>
 	<hr>
 	<h4>리뷰목록</h4>
-	<form action="reviewCommentInsertPro" method="post">
 		<table class="table table-striped">
 			<tr>
 				<th>작성자</th>
@@ -96,14 +118,14 @@
 							<sec:authorize access="isAuthenticated()">
 								<sec:authentication property="principal" var="check"/>
 									<c:if test="${check.username eq reviewList.get(i).id}">
-										<input type="button" value="지우기" onclick="location.href='reviewDelet3ePro?storeNo=${reviewList.get(i).storeNo }&reviewNo=${reviewList.get(i).reviewNo}'"/>
+										<input type="button" value="지우기" onclick="location.href='reviewDeletePro?storeNo=${reviewList.get(i).storeNo }&reviewNo=${reviewList.get(i).reviewNo}'"/>
 									</c:if>
 							</sec:authorize>
 						</td>
-						
+						<!-- 로그인 되어 있는 상태 -->
 						<sec:authorize access="isAuthenticated()">
 							<td>
-								<form action="reviewCommentInsertPro">
+								<form action="reviewCommentInsertPro" method = "post">
 									<textarea rows="3" cols="20" maxlength="30" required name="reviewCommentContent"></textarea>
 									<input type="hidden" name="storeNo" value="${reviewList.get(i).storeNo}">
 									<input type="hidden" name="reviewNo" value="${reviewList.get(i).reviewNo}"> 
@@ -111,8 +133,6 @@
 								</form>
 							</td>
 						</sec:authorize>
-						
-						
 					</tr>
 					<c:if test="${reviewCommentList.size() != 0 }">
 						<c:forEach var="j" begin="0" end="${reviewCommentList.size()-1 }">
@@ -134,6 +154,17 @@
 									<td>
 										${reviewCommentList.get(j).reviewCommentRDate }
 									</td>
+									<sec:authorize access="isAuthenticated()">	
+										<c:if test="${check.username eq reviewCommentList.get(j).id }">
+										<td>
+											<form action="reviewCommentDeletePro" method = "post">
+												<input type="hidden" name="storeNo" value="${reviewList.get(i).storeNo}">
+												<input type="hidden" name="reviewCommentNo" value="${reviewCommentList.get(j).reviewCommentNo }">
+												<input type="submit" value="삭제">
+											</form>
+										</td>
+										</c:if>
+									</sec:authorize>
 								</tr>
 							</c:if>
 						</c:forEach>
@@ -141,7 +172,6 @@
 				</c:forEach>
 			</c:if>
 		</table>
-	</form>
 	<sec:authorize access="isAuthenticated()">
 	<hr>
 	<h4>리뷰작성</h4>
@@ -180,6 +210,7 @@
 	</form>
 	</sec:authorize>
 	
+
 <c:import url="/WEB-INF/views/footer.jsp"/>
 </div>
 </body>

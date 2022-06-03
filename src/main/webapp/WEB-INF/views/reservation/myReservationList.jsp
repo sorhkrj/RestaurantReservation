@@ -84,9 +84,6 @@ body {
 	</div>
 	<c:import url="/WEB-INF/views/footer.jsp"/>
 	</div>
-	
-
-
 
 <dialog id="myDialog">
   <div id="a">

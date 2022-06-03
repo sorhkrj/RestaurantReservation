@@ -44,7 +44,7 @@
 	    <div class="container mt-3">
 	      <input type = "hidden" class="form-control" name="id" value="${memberVO.id}">
 	      <input type = "submit" value="수정" class="btn btn-primary">
-	      <input type = "reset" value = "취소" class="btn btn-primary" onclick=javascript:window.location='memberSelect'>
+	      <input type = "reset" value = "취소" class="btn btn-primary" onclick="javascript:window.location='memberSelect';">
 	    </div>
 	  </div>
 	</div>

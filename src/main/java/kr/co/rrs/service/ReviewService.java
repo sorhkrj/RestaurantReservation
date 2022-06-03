@@ -3,11 +3,7 @@ package kr.co.rrs.service;
 import java.util.ArrayList;
 
 import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
 
-import kr.co.rrs.vo.MemberVO;
 import kr.co.rrs.vo.ReviewCommentVO;
 import kr.co.rrs.vo.ReviewJoinMemberVO;
 import kr.co.rrs.vo.ReviewVO;
@@ -48,4 +44,7 @@ public interface ReviewService {
 	
 	// 리뷰 댓글 삽입
 	void insertReviewComment(ReviewCommentVO reviewCommentVO);
+	
+	// 리뷰 댓글 삭제
+	void deleteReviewComment(ReviewCommentVO reviewCommentVO);
 }

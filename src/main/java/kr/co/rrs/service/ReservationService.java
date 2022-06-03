@@ -1,12 +1,11 @@
 package kr.co.rrs.service;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
+import kr.co.rrs.vo.MemberVO;
 import kr.co.rrs.vo.ReservationVO;
 import kr.co.rrs.vo.ReservePossibleVO;
 import kr.co.rrs.vo.StoreVO;
-import kr.co.rrs.vo.MemberVO;
 
 public interface ReservationService {
 
