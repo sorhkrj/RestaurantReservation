@@ -2,7 +2,6 @@ package kr.co.rrs.mapper;
 
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
@@ -11,7 +10,7 @@ import kr.co.rrs.vo.MemberVO;
 
 public interface MemberMapper {
 	// 회원가입
-	@Insert("insert into member values(#{id}, #{name}, #{phone}, #{password},#{nickname}, 'ROLE_USER', 1, SYSDATE)")
+	@Insert("insert into member values(#{id}, #{name}, #{phone}, #{password},#{nickname}, 'ROLE_MEMBER', 1, SYSDATE)")
 	void insert(MemberVO memberVO);
 
 	@Insert("insert into member values(#{id}, #{name}, #{phone}, #{password},#{nickname}, 'ROLE_MANAGER', 1, SYSDATE)")
@@ -28,6 +27,10 @@ public interface MemberMapper {
 	// 회원탈퇴
 	@Delete("delete from member where id=#{id}")
 	void delete(String id);
+	
+	// 엔터프라이즈 탙퇴
+	@Delete("delete from store where id=#{id}")
+	void deleteEnterprise(String id);
 
 	// 회원수정
 	@Update("UPdate member set name=#{name}, phone=#{phone}, password=#{password},nickname=#{nickname} where id=#{id}")

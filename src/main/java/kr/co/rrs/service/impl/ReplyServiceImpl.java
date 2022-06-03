@@ -1,18 +1,11 @@
 package kr.co.rrs.service.impl;
 
-import java.util.List;
-
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.co.rrs.mapper.ReplyMapper;
-import kr.co.rrs.mapper.ServiceBoardMapper;
 import kr.co.rrs.service.ReplyService;
-import kr.co.rrs.service.ServiceBoardService;
 import kr.co.rrs.vo.ReplyVO;
-import kr.co.rrs.vo.ServiceBoardVO;
 @Service
 public class ReplyServiceImpl implements ReplyService {
 	@Autowired

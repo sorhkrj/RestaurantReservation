@@ -10,11 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.co.rrs.service.HomeService;
-import kr.co.rrs.vo.MemberVO;
 import kr.co.rrs.vo.StoreVO;
 
 @Controller
@@ -53,15 +50,6 @@ public class HomeController {
 		return "signin";
 	}
 	
-	@GetMapping("/Test")
-	@ResponseBody
-	public String Test(String id) {
-		System.out.println("id: " + id);
-		String name = service.selectNickname(id);
-		System.out.println("name: " + name);
-		return name;
-	}
-	
 	@GetMapping("/searchResult")
 	public String searchResult(HttpServletRequest request, Model model) {
 		String search = request.getParameter("search");
@@ -71,5 +59,10 @@ public class HomeController {
 		model.addAttribute("storeList", storeList);
 
 		return "searchResult";
+	}
+	
+	@GetMapping("/errorForbidden")
+	public String errorForbidden() {
+		return "error/forbidden";
 	}
 }

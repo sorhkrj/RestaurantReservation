@@ -9,17 +9,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-
-     </style>
-<title>회원검색</title>
+<title>음식점검색</title>
 </head>
 <body>
 <c:import url="/WEB-INF/views/top.jsp"/>
-<h3>회원아이디: &nbsp;</h3>
-<form action="resultMember">
-	<input type="text" name="nigael" placeholder="회원아이디를 입력해주세요." >
+<h3>음식점: &nbsp;</h3>
+<form action="resultStore">
+	<input type="text" name="nigael" placeholder="음식점을 입력해주세요." >
 	<input type="submit" value="검색하기">
-	<h2 class="text-center">회원정보</h2>
+	
 </form>
 
 

@@ -2,10 +2,8 @@ package kr.co.rrs.controller;
 
 import java.security.Principal;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -37,12 +35,13 @@ public class ReservationController {
 		StoreVO storevo = service.checkStore(storeNo);
 		String id = principal.getName();
 		MemberVO mvo = service.checkMember(id);
-		
 		model.addAttribute("mvo", mvo);
 		ArrayList<ReservePossibleVO> list = service.storeCheckPossibility(storevo);
 		model.addAttribute("list", list);
 		model.addAttribute("storevo", storevo);
 		return "reservation/reservationInsert";
+		
+		//예약가능한 인원
 	}
 	
 	
@@ -56,9 +55,7 @@ public class ReservationController {
 	
 	@PostMapping("/reservationInsertPro")
 	public String insertReservation(ReservationVO rvo, Principal principal) {
-		
 		rvo.setId(principal.getName());
-				
 		service.insertRes(rvo);
 		return "redirect:myReservationList";
 	}
@@ -67,13 +64,8 @@ public class ReservationController {
 	
 	@PostMapping("/reservationUpdate")
 	public String updateReservation(ReservationVO rvo, Principal principal, Model model) {
-		
-		ArrayList<ReservePossibleVO> list = service.checkPossibility(rvo);
-		model.addAttribute("list", list);
-		
 		String id = principal.getName();
 		MemberVO mvo = service.checkMember(id);
-		
 		model.addAttribute("rvo",rvo);
 		model.addAttribute("mvo",mvo);
 		return "reservation/reservationUpdate";
@@ -95,7 +87,6 @@ public class ReservationController {
 	
 	@GetMapping("/myReservationList")
 	public String listmyReservation(Principal principal, Model model) {
-		
 		String id = principal.getName();
 		ArrayList<ReservationVO> list = service.listRes(id);
 		model.addAttribute("list", list);
@@ -106,6 +97,7 @@ public class ReservationController {
 	public String selectReservation(HttpServletRequest request, Model model) {
 		int rno = Integer.valueOf(request.getParameter("reserveNo"));
 		ReservationVO reservation = service.selectRes(rno);
+		reservation.setStoreName(request.getParameter("storeName"));
 		model.addAttribute("reservation", reservation);
 		return "reservation/reservationSelect";
 	}

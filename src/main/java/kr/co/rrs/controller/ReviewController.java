@@ -9,7 +9,6 @@ import java.util.UUID;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,10 +32,10 @@ public class ReviewController {
 	@RequestMapping("/storeDetailReviewMain")
 	public String storeDetailReviewMain(StoreVO storeVO, ReviewLikeVO reviewLikeVO, ReviewCommentVO reviewCommentVO, Principal principal, Model model, HttpSession session) {
 		storeVO = reviewService.selectOne(storeVO.getStoreNo()); // 지점 정보 검색
-		String id = principal.getName(); // 로그인 id 검색
 		
 		// ----------------------------------------------------------------------좋아요 기능
-		if(id != null) {
+		if(principal != null) {
+			String id = principal.getName(); // 로그인 id 검색
 			int likeStatus = reviewService.selectReviewLikeStatus(storeVO.getStoreNo(), id); // 내가 좋아요 했는지 안했는지 확인
 			
 			if(likeStatus == 1) {
@@ -56,9 +55,6 @@ public class ReviewController {
 				reviewLikeVO.setLikeStatus(likeStatus);								// 내가 좋아요 추가 기억
 			}
 			
-		}
-		else {
-			return "login";
 		}
 		
 		reviewLikeVO.setReviewLikeCnt(reviewService.selectReviewLikeCnt(storeVO.getStoreNo())); // 지점 좋아요 수
@@ -122,14 +118,14 @@ public class ReviewController {
 		
 		reviewService.insertReview(reviewVO); // 리뷰 등록
 		
-		return "redirect:/storeDetailReviewMain?storeNo=" + reviewVO.getStoreNo();
+		return "redirect:storeDetailReviewMain?storeNo=" + reviewVO.getStoreNo();
 	}
 	
 	@RequestMapping("/reviewDeletePro")
 	public String reviewDeletePro(ReviewVO reviewVO) {
 		reviewService.deleteReview(reviewVO.getStoreNo(), reviewVO.getReviewNo());
 		
-		return "redirect:/storeDetailReviewMain?storeNo=" + reviewVO.getStoreNo();
+		return "redirect:storeDetailReviewMain?storeNo=" + reviewVO.getStoreNo();
 	}
 	
 	@RequestMapping("/reviewCommentInsertPro")
@@ -141,6 +137,13 @@ public class ReviewController {
 		
 		reviewService.insertReviewComment(reviewCommentVO);
 		
-		return "redirect:/storeDetailReviewMain?storeNo=" + storeNo;
+		return "redirect:storeDetailReviewMain?storeNo=" + storeNo;
+	}
+	
+	@RequestMapping("/reviewCommentDeletePro")
+	public String reviewCommentDeletePro(ReviewCommentVO reviewCommentVO, @RequestParam("storeNo") int storeNo) {
+		reviewService.deleteReviewComment(reviewCommentVO);
+		
+		return "redirect:storeDetailReviewMain?storeNo=" + storeNo;
 	}
 }

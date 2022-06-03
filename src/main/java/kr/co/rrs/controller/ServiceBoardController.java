@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,6 +33,8 @@ public class ServiceBoardController {
 	ServiceBoardService serviceBoardService;
 	@Autowired
 	MemberService memberService;
+	@Autowired
+	BCryptPasswordEncoder encoder;
 	
 	// 고객센터 목록 리스트
 	@GetMapping("/serviceBoardMain")
@@ -63,14 +66,14 @@ public class ServiceBoardController {
 		int startBoard = 1 + ((nowPage-1)*10); // 목록 10개씩
 		int endBoard = startBoard + 9;
 
-//		System.out.println(total);
-//		System.out.println(totalPage);
-//		System.out.println(nowPage);
-//		System.out.println(index);
-//		System.out.println(startPage);
-//		System.out.println(endPage);
-//		System.out.println(startBoard);
-//		System.out.println(endBoard);
+		System.out.println("total" + total);
+		System.out.println("totalPage" + totalPage);
+		System.out.println("nowPage" + nowPage);
+		System.out.println("index" + index);
+		System.out.println("startPage" + startPage);
+		System.out.println("endPage" + endPage);
+		System.out.println("startBoard" + startBoard);
+		System.out.println("endBoard" + endBoard);
 		
 		String id = principal.getName();
 		
@@ -100,6 +103,7 @@ public class ServiceBoardController {
 		model.addAttribute("replyList", list2);
 		model.addAttribute("total", total);
 		model.addAttribute("totalPage", totalPage);
+		model.addAttribute("nowPage", nowPage);
 		model.addAttribute("startPage", startPage);
 		model.addAttribute("endPage", endPage);
 		
@@ -174,7 +178,7 @@ public class ServiceBoardController {
 	public String serviceBoardUpdate(ServiceBoardVO serviceBoardVO, @RequestParam("password") String password, HttpServletResponse response, Model model) {
 		serviceBoardVO = serviceBoardService.selectDetail(serviceBoardVO.getServiceNo());
 		MemberVO memberVO = memberService.selectOne(serviceBoardVO.getId());
-		if(password.equals(memberVO.getPassword())) { // 문의글 번호에 대한 아이디로 회원 정보 검색 후 패스워드 비교하여 패스워드가 같을때
+		if(encoder.matches(password, memberVO.getPassword())) {
 			model.addAttribute("serviceBoardVO", serviceBoardVO);
 			return "serviceBoard/serviceBoardUpdate";
 		}
@@ -225,7 +229,7 @@ public class ServiceBoardController {
 		ServiceBoardVO serviceBoardVO = serviceBoardService.selectDetail(serviceNo);
 		MemberVO memberVO = memberService.selectOne(serviceBoardVO.getId());
 		
-		if(password.equals(memberVO.getPassword())) { // 문의글 번호에 대한 아이디로 회원 정보 검색 후 패스워드 비교하여 패스워드가 같을때
+		if(encoder.matches(password, memberVO.getPassword())) { // 문의글 번호에 대한 아이디로 회원 정보 검색 후 패스워드 비교하여 패스워드가 같을때
 			serviceBoardService.delete(serviceNo);
 			
 			return "redirect:serviceBoardMain";

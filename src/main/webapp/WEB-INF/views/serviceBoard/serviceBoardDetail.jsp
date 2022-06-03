@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -54,16 +55,19 @@
 		</tr>
 		<tr>
 			<td colspan="4">
-				<c:if test="${!(memberVO.memberLevel == 3) && memberVO.id == serviceBoardVO.id}">
-					<a href="serviceBoardUpdateCheck?serviceNo=${serviceBoardVO.serviceNo }">수정하기</a>
-					<a href="serviceBoardDeleteCheck?serviceNo=${serviceBoardVO.serviceNo }">삭제하기</a>
-				</c:if>
-				<a href="serviceBoardMain">뒤로가기</a>
+				<sec:authorize access="hasAnyRole('MEMBER', 'MANAGER')">
+					<c:if test="${memberVO.id == serviceBoardVO.id}">
+						<a href="serviceBoardUpdateCheck?serviceNo=${serviceBoardVO.serviceNo }">수정하기</a>
+						<a href="serviceBoardDeleteCheck?serviceNo=${serviceBoardVO.serviceNo }">삭제하기</a>
+					</c:if>
+					<a href="serviceBoardMain">뒤로가기</a>
+				</sec:authorize>
 			</td>
 		</tr>
 	</table>
 	<hr>
-	<c:if test="${memberVO.memberLevel == 3 && replyVO == null}">
+	<sec:authorize access="hasRole('ADMIN')"> 
+	<c:if test="${replyVO == null}">
 		<form action="replyInsertPro" method="post">
 			<table class="table table-striped">
 				<tr>
@@ -84,22 +88,21 @@
 			</table>
 		</form>
 	</c:if>
+	</sec:authorize>
 	<c:if test="${replyVO != null}">
 		<form action="replyUpdatePro" method="post">
 			<table class="table table-striped">
 				<tr>
-					<th colspan="2">관리자 답변</th>
+					<th>답변</th>
+					<th>${replyVO.nickName }</th>
 				</tr>
 				<tr>
-					<th>${replyVO.nickName }</th>
-					<c:if test="${memberVO.memberLevel != 3 }">
-						<td>${replyVO.answer }</td>
-					</c:if>
-					<c:if test="${memberVO.memberLevel == 3 }">
-						<td><textarea name="answer" cols="32" rows="5" required autofocus>${replyVO.answer }</textarea></td>
-					</c:if>
+					<td colspan="2">${replyVO.answer }</td>
 				</tr>
-				<c:if test="${memberVO.memberLevel == 3 }">
+				<sec:authorize access="hasRole('ADMIN')"> 
+					<tr>
+						<td colspan="2"><textarea name="answer" cols="32" rows="5" required autofocus>${replyVO.answer }</textarea></td>
+					</tr>
 					<tr>
 						<td colspan="2">
 							<input type="hidden" name="replyNo" value="${replyVO.replyNo }"/>
@@ -108,7 +111,8 @@
 							<input type="submit" formaction="replyDeletePro" value="답변삭제"/>
 						</td>
 					</tr>
-				</c:if>
+				</sec:authorize>
+
 			</table>
 		</form>
 	</c:if>

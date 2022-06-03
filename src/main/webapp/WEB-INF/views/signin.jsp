@@ -47,14 +47,14 @@
 			</tr>
 			<tr>
 				<td>
-					<form action="member/memberInsert" method="get">
+					<form action="member/signup/memberInsert" method="get">
 						<input type="submit" value="일반 회원가입"/>
 					</form>
 				</td>
 			</tr>
 			<tr>
 				<td>
-					<form action="member/memberInsertEnterprise" method="get">
+					<form action="member/signup/memberInsertEnterprise" method="get">
 						<input type="submit" value="기업 회원가입"/>
 					</form>
 				</td>

@@ -1,20 +1,16 @@
 package kr.co.rrs.mapper;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Result;
-import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
+import kr.co.rrs.vo.MemberVO;
 import kr.co.rrs.vo.ReservationVO;
 import kr.co.rrs.vo.ReservePossibleVO;
 import kr.co.rrs.vo.StoreVO;
-import kr.co.rrs.vo.MemberVO;
 
 
 public interface ReservationMapper  {
@@ -60,7 +56,7 @@ public interface ReservationMapper  {
 	//////////////////////////Ajar/////////////////////////	
 		
 	//음식점예약시간
-	@Select("select time, capacity from reservepossible where storeno = #{storeNo} and day = #{visitDay}")
+	@Select("select time, capacity, seat from reservepossible where storeno = #{storeNo} and day = #{visitDay}")
 	ReservePossibleVO mapperReservationStoreTime(ReservationVO rvo);	
 
 	//test
