@@ -7,22 +7,17 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<meta id="_csrf" name="_csrf" content="${_csrf.token}"/>
-<meta id="_csrf_header" name="_csrf_header" content="${_csrf.headerName}"/>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"	rel="stylesheet">
 <script	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
 <script type="text/javascript">
-var token = $("meta[name='_csrf']").attr("content");
-var header = $("meta[name='_csrf_header']").attr("content");
-alert(token);
-alert(header);
 function deleteMenu(menu){
 	var check = confirm(menu + "를 삭제하시겠습니까?");
 	if(!check) return false;
 		$.ajax({
 			url : "${pageContext.request.contextPath}/store/menuDelete",
+			async : false,
 			type : "get",
 			datatype : "json",
 			data :  "menuName="+menu,			
@@ -39,13 +34,10 @@ function insertMenu(){
 	var id = '<sec:authentication property="principal.username"/>';
 	$.ajax({
 		url : "${pageContext.request.contextPath}/store/menuInsert",
+		async : false,
 		type : "post",
 		datatype : "text",
 		contentType: "application/json",
-		async : false,
-		beforeSend : function(xhr){
-			xhr.setRequestHeader(header, token);
-		},
 		data :  JSON.stringify({
 			"menuName" : $("#menuName_input").val(),
 			"menuPhoto" : $("#menuPhoto_input").val(),
@@ -66,13 +58,11 @@ function insertMenu(){
 function updateMenu(menu){
 	$.ajax({
 		url : "${pageContext.request.contextPath}/store/menuUpdate",
+		async : false,
 		type : "post",
 		datatype : "text",
 		contentType: "application/json",
 		async : false,
-		beforeSend : function(xhr){
-			xhr.setRequestHeader(header, token);
-		},
 		data :  JSON.stringify({
 			"menuName" : menu,
 			"nameModified" : $("#menuName_"+menu).val(),
@@ -99,11 +89,11 @@ function updateMenu(menu){
 		<table class="table table-striped">
 			<tr>
 				<th>번호</th>
-				<th colspan = "2">메뉴명</th>
-				<th colspan = "2">사진</th>
-				<th colspan = "2">가격</th>
-				<th colspan = "2">설명</th>
-				<th colspan = "2">관리</th>
+				<th colspan=2>메뉴명</th>
+				<th colspan=2>사진</th>
+				<th colspan=2>가격</th>
+				<th colspan=2>설명</th>
+				<th colspan=2>관리</th>
 			</tr>
 			<form:form>
 		<c:forEach var="i" items="${menuList }" varStatus="no">

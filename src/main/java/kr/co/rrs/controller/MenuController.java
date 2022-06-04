@@ -37,6 +37,7 @@ public class MenuController {
 	@PostMapping("/menuUpdate")
 	@ResponseBody
 	public void menuUpdate(@RequestBody MenuVO menuVO) {
+		System.out.println(menuVO.toString());
 		menuService.updateMenu(menuVO);
 	}
 
