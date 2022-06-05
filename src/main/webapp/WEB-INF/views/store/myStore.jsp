@@ -13,17 +13,15 @@
 </head>
 <body>
 <div class="container">
-
 <c:import url="/WEB-INF/views/top.jsp"/>
 	
 	<table class="table table-striped">
 		<tr>
-			<td>가게명</td>
-			<td>${storeVO.storeName }</td>
+			<td colspan = 2><img src = "${pageContext.request.contextPath}/images/${storeVO.photo }"></td>
 		</tr>	
 		<tr>
-			<td>사진</td>
-			<td><img src = "${pageContext.request.contextPath}/images/${storeVO.photo }"></td>
+			<td>가게명</td>
+			<td>${storeVO.storeName }</td>
 		</tr>	
 		<tr>
 			<td>위치</td>
@@ -53,26 +51,30 @@
 			<td>공지사항</td>
 			<td>${storeVO.notice }</td>
 		</tr>	
+	</table>
+	
+	<table class="table table-striped">
 		<tr>
-			<td colspan = "2">
+			<td>
 				<form action ="storeUpdate" method = "get">
-					<input type = "submit" value = "수정하기">
+					<input type = "submit" value = "음식점 정보 수정하기">
 				</form>
 			</td>
-		</tr>
-		<tr>
-			<td colspan = "2">
+			<td>
 				<form action ="storeReservation" method = "get">
 					<input type = "hidden" name = "storeNo" value = "${storeVO.storeNo }">
-					<input type = "submit" value = "예약현황">
+					<input type = "submit" value = "음식점 예약현황">
 				</form>
 			</td>
-		</tr>
-		<tr>
-			<td colspan = "2">
+			<td>
 				<form action ="storeCapacitySelect" method = "get">
 					<input type = "hidden" name = "storeNo" value = "${storeVO.storeNo }">
 					<input type = "submit" value = "음식점 예약 시간 관리">
+				</form>
+			</td>
+			<td>
+				<form action ="menuDetail" method = "get">
+					<input type = "submit" value = "음식점 메뉴관리">
 				</form>
 			</td>
 		</tr>

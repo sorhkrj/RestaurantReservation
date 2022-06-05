@@ -12,13 +12,9 @@
 <body>
 <div class="container">
 <c:import url="/WEB-INF/views/top.jsp"/>
-	<form action = "storeCapacityInsertPro" method = "get">
+	<form action = "storeCapacityMonthPro" method = "get">
 		<input type = "hidden" name = "storeNo" value = "${storeNo }">
 		<table class="table table-striped">
-		<tr>
-			<td>날짜</td>
-			<td><input class = "form-control"  type = 'date' name = 'day'></td>
-		</tr>
 		<tr>
 			<td>예약가능한 시간 설정</td>
 			<td>

@@ -13,6 +13,7 @@
 </script>
 </head>
 <body>
+<div class="container">
 	<c:import url="/WEB-INF/views/top.jsp" />
 	<table class="table table-striped">
 		<tr>
@@ -43,5 +44,6 @@
 		</c:forEach>
 	</table>
 	<c:import url="/WEB-INF/views/footer.jsp" />
+</div>
 </body>
 </html>

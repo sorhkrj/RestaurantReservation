@@ -11,6 +11,7 @@
 <title>index</title>
 </head>
 <body>
+<div class="container">
 <c:import url="/WEB-INF/views/top.jsp"/>	
 	<form:form modelAttribute = "reservePossibleVO" action ="storeCapacityUpdatePro" method = "get">
 		<table class="table table-striped">
@@ -35,5 +36,6 @@
 		</table>
 	</form:form>
 	<c:import url="/WEB-INF/views/footer.jsp"/>
+</div>
 </body>
 </html>

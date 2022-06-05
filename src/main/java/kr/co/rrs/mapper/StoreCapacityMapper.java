@@ -26,4 +26,6 @@ public interface StoreCapacityMapper {
 
 	@Delete("delete from reservepossible where storeNo = #{storeNo} and day = TO_DATE(#{day}, 'YYYY-MM-DD HH24:MI:SS')")
 	void delete(@Param("storeNo")int storeNo, @Param("day")String day);
+	
+	void insertMonth(@Param("rvoList") List<ReservePossibleVO> rvoList);
 }

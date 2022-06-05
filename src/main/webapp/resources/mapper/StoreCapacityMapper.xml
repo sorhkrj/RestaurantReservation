@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.co.rrs.mapper.StoreCapacityMapper">
+	<update id="insertMonth" parameterType="java.util.List">
+		<foreach collection="rvoList" item="item" open="INSERT ALL" close="SELECT * FROM DUAL" separator=" ">
+			into reservepossible values (#{item.storeNo}, #{item.day}, #{item.time}, #{item.capacity}, #{item.seat})
+		</foreach>
+	</update>
+</mapper>

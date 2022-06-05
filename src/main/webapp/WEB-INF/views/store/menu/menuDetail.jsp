@@ -86,27 +86,25 @@ function updateMenu(menu){
 		<c:import url="/WEB-INF/views/top.jsp" />
 		<table class="table table-striped">
 			<tr>
-				<th>번호</th>
-				<th colspan=2>메뉴명</th>
-				<th colspan=2>사진</th>
-				<th colspan=2>가격</th>
-				<th colspan=2>설명</th>
-				<th colspan=2>관리</th>
+				<th>메뉴명</th>
+				<th>사진</th>
+				<th>가격</th>
+				<th>설명</th>
+				<th>관리</th>
 			</tr>
 		<form:form id = "menuUpdatePro">
 		<c:forEach var="i" items="${menuList }" varStatus="no">
 			<tr>
-				<td>${no.count}</td>
-				<td>${i.menuName}</td>
-				<td><input type = "text"  id = "menuName_${i.menuName}"></td>
-				<td><img src = "${pageContext.request.contextPath}/images/${i.menuPhoto}"></td>
-				<td><input type = "file"  id = "menuPhoto_${i.menuName}"></td>
-				<td>${i.price}</td>
-				<td><input type = "number"  id = "price_${i.menuName}" ></td>
-				<td>${i.menuInfo}</td>
-				<td><input type = "text"  id = "menuInfo_${i.menuName}"></td>
-				<td><button onclick = "updateMenu('${i.menuName}');">수정</button>
-					<button onclick = "deleteMenu('${i.menuName}');">삭제</button></td>
+				<td>${i.menuName}
+				<br><input type = "text"  id = "menuName_${i.menuName}"  style='width:100px;' required></td>
+				<td><img src = "${pageContext.request.contextPath}/images/${i.menuPhoto}" style='width:200px; height:100px;'>
+				<br><input type = "file"  id = "menuPhoto_${i.menuName}" required></td>
+				<td>${i.price}
+				<br><input type = "number"  id = "price_${i.menuName}" style='width:100px;' required></td>
+				<td>${i.menuInfo}
+				<br><input type = "text"  id = "menuInfo_${i.menuName}" required></td>
+				<td><button onclick = "deleteMenu('${i.menuName}');">삭제</button>
+					<button onclick = "updateMenu('${i.menuName}');">수정</button></td>
 			</tr>
 		</c:forEach>
 		</form:form>

@@ -71,4 +71,16 @@ public class StoreCapacityController {
 		return "redirect:storeCapacitySelect";
 	}
 
+	@GetMapping("/storeCapacityMonth")
+	public String storeCapacityMonth(int storeNo, Model model) {
+		model.addAttribute("storeNo", storeNo);
+		return "/store/storeCapacityMonth";
+	}
+
+	@GetMapping("/storeCapacityMonthPro")
+	public String storeCapacityMonthPro(ReservePossibleVO reservePossibleVO, Model model) {
+		storeCapacityService.insertMonth(reservePossibleVO);
+		model.addAttribute("storeNo", reservePossibleVO.getStoreNo());
+		return "forward:storeCapacitySelect";
+	}
 }
