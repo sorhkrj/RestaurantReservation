@@ -1,16 +1,25 @@
 package kr.co.rrs.controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.security.Principal;
 import java.util.List;
+import java.util.UUID;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import kr.co.rrs.service.MenuService;
 import kr.co.rrs.vo.MenuVO;
@@ -29,16 +38,30 @@ public class MenuController {
 	}
 	@PostMapping("/menuInsert")
 	@ResponseBody
-	public MenuVO menuInsert(@RequestBody MenuVO menuVO) {
+	public MenuVO menuInsert(MenuVO menuVO, @RequestPart MultipartFile file, HttpServletRequest request) throws IOException {
+		System.out.println("aa");
+		String path = "resources/images"; // 파일 저장하고 싶은 위치
+		String savePath = request.getServletContext().getRealPath(path); // 실제 파일 저장 경로
+		String uuid = UUID.randomUUID().toString() + file.getOriginalFilename();
+		File converFile = new File(savePath, uuid);
+		file.transferTo(converFile);
+		menuVO.setMenuPhoto(uuid);
 		menuService.insertMenu(menuVO);
 		return menuVO;
 	}
 
 	@PostMapping("/menuUpdate")
 	@ResponseBody
-	public void menuUpdate(@RequestBody MenuVO menuVO) {
-		System.out.println(menuVO.toString());
+	public MenuVO menuUpdate(MenuVO menuVO, @RequestPart MultipartFile file, HttpServletRequest request) throws IOException {
+		System.out.println("bb");
+		String path = "resources/images"; // 파일 저장하고 싶은 위치
+		String savePath = request.getServletContext().getRealPath(path); // 실제 파일 저장 경로
+		String uuid = UUID.randomUUID().toString() + file.getOriginalFilename();
+		File converFile = new File(savePath, uuid);
+		file.transferTo(converFile);
+		menuVO.setMenuPhoto(uuid);
 		menuService.updateMenu(menuVO);
+		return menuVO;
 	}
 
 	@GetMapping("/menuDelete")

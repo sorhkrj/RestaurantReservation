@@ -31,20 +31,16 @@ function deleteMenu(menu){
 		});
 }
 function insertMenu(){
-	var id = '<sec:authentication property="principal.username"/>';
+	var formData = new FormData($('#menuInsertPro')[0]);
+	alert(formData);
 	$.ajax({
 		url : "${pageContext.request.contextPath}/store/menuInsert",
 		async : false,
-		type : "post",
-		datatype : "text",
-		contentType: "application/json",
-		data :  JSON.stringify({
-			"menuName" : $("#menuName_input").val(),
-			"menuPhoto" : $("#menuPhoto_input").val(),
-			"price" : $("#price_input").val(),
-			"menuInfo" : $("#menuInfo_input").val(),
-			"id" : id
-			}),
+		type : "POST",
+		data :  formData,
+		contentType: false,
+		processData : false,
+		cache: false,
 		success : function(result) {
 			alert("등록되었습니다.");
 		}, error:function(jqXHR, textStatus, errorThrown) {
@@ -56,20 +52,22 @@ function insertMenu(){
 }
 
 function updateMenu(menu){
+	var formData = new FormData();
+	formData.append('menuName', menu);
+	formData.append('nameModified', $('#menuName_'+menu).val());
+	formData.append('price', $('#price_'+menu).val());
+	formData.append('menuInfo', $('#menuInfo_'+menu).val());
+	formData.append('file', $('#menuPhoto_'+menu)[0].files[0]);
+	alert(formData);
 	$.ajax({
 		url : "${pageContext.request.contextPath}/store/menuUpdate",
 		async : false,
 		type : "post",
 		datatype : "text",
-		contentType: "application/json",
-		async : false,
-		data :  JSON.stringify({
-			"menuName" : menu,
-			"nameModified" : $("#menuName_"+menu).val(),
-			"menuPhoto" : $("#menuPhoto_"+menu).val(),
-			"price" : $("#price_"+menu).val(),
-			"menuInfo" : $("#menuInfo_"+menu).val(),
-			}),
+		contentType: false,
+		processData : false,
+		cache: false,
+		data : formData,
 		success : function(result) {
 			alert("수정되었습니다.");
 		}, error:function(jqXHR, textStatus, errorThrown) {
@@ -95,23 +93,23 @@ function updateMenu(menu){
 				<th colspan=2>설명</th>
 				<th colspan=2>관리</th>
 			</tr>
-			<form:form>
+		<form:form id = "menuUpdatePro">
 		<c:forEach var="i" items="${menuList }" varStatus="no">
 			<tr>
 				<td>${no.count}</td>
 				<td>${i.menuName}</td>
-				<td><input type = "text"  id = "menuName_${i.menuName}" value = ""></td>
-				<td>${i.menuPhoto}</td>
-				<td><input type = "text"  id = "menuPhoto_${i.menuName}" value = ""></td>
+				<td><input type = "text"  id = "menuName_${i.menuName}"></td>
+				<td><img src = "${pageContext.request.contextPath}/images/${i.menuPhoto}"></td>
+				<td><input type = "file"  id = "menuPhoto_${i.menuName}"></td>
 				<td>${i.price}</td>
-				<td><input type = "number"  id = "price_${i.menuName}" value = ""></td>
+				<td><input type = "number"  id = "price_${i.menuName}" ></td>
 				<td>${i.menuInfo}</td>
-				<td><input type = "text"  id = "menuInfo_${i.menuName}" value = ""></td>
+				<td><input type = "text"  id = "menuInfo_${i.menuName}"></td>
 				<td><button onclick = "updateMenu('${i.menuName}');">수정</button>
 					<button onclick = "deleteMenu('${i.menuName}');">삭제</button></td>
 			</tr>
 		</c:forEach>
-			</form:form>
+		</form:form>
 			<!-- <tr>
 				<td>추가</td>
 				<td><input type = "text"  id = "menuName_input"></td>
@@ -127,7 +125,7 @@ function updateMenu(menu){
 				
 		<button onclick="addInsertForm()">메뉴 추가</button>
 
-		<form id="menuInsertPro" method="POST">
+		<form id="menuInsertPro" method="POST" enctype="multipart/form-data">
 			
 	<div id="addMenu"></div>
 		</form>
@@ -136,12 +134,14 @@ function updateMenu(menu){
 </body>
 <script>
 	var count = 0;
+	var id = '<sec:authentication property="principal.username"/>';
 	function addInsertForm() {
 		var addedFormDiv = document.getElementById("addMenu");
 		var str = '메뉴이름 : <input type = "text" name = "menuName" id = "menuName_input"><br>'
-				+ ' 사진 : <input type = "text" name = "menuPhoto" id = "menuPhoto_input"><br>'
+				+ ' 사진 : <input type = "file" name = "file" id = "file_input" multiple><br>'
 				+ ' 가격 : <input type = "number" name = "price" id = "price_input"><br>'
 				+ ' 설명 : <input type = "text" name = "menuInfo" id = "menuInfo_input"><br>'
+				+ '<input type = "hidden" name = "id" value = '+id+'>'
 				+ '<button onClick = "javascript:insertMenu();">추가</button>'
 				+ '<button onClick = "delFrom(' + count + ')">취소</button>';
 		var addedDiv = document.createElement("div");
