@@ -12,15 +12,14 @@
 <title>음식점검색</title>
 </head>
 <body>
+<div class="container">
 <c:import url="/WEB-INF/views/top.jsp"/>
-<h3>음식점: &nbsp;</h3>
-<form action="resultStore">
-	<input type="text" name="nigael" placeholder="음식점을 입력해주세요." >
-	<input type="submit" value="검색하기">
-	
-</form>
-
-
+<h3>음식점 이름 : &nbsp;</h3>
+	<form action="resultStore" method="get">
+		<input type="text" name="storeName" placeholder="검색할 음식점을 입력해주세요."/>
+		<input type="submit" value="검색"/>
+	</form>
 <c:import url="/WEB-INF/views/footer.jsp"/>
+</div>
 </body>
 </html>

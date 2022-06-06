@@ -79,30 +79,6 @@ public class MemberController {
 		return "redirect:/";
 	}
 
-	// 회원검색결과
-	@GetMapping("/resultMember")
-	public String resultMember() {
-		return "member/resultMember";
-	}
-
-	// 지점검색결과
-	@GetMapping("/resultStore")
-	public String resultStore() {
-		return "member/resultStore";
-	}
-
-	// 회원검색
-	@GetMapping("/searchMember")
-	public String seachMember() {
-		return "member/searchMember";
-	}
-
-	// 지점검색
-	@GetMapping("/searchStore")
-	public String searchStore() {
-		return "member/searchStore";
-	}
-
 	// 회원탈퇴
 	@GetMapping("/memberDeleteCheck")
 	public String memberDeleteCheck() {
