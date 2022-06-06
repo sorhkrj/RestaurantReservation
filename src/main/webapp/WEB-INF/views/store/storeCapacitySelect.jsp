@@ -12,6 +12,7 @@
 <title>index</title>
 </head>
 <body>
+<div class="container">
 <c:import url="/WEB-INF/views/top.jsp"/>
 	<table class="table table-striped">
 		<tr>
@@ -78,9 +79,10 @@
 		</c:forEach> 
 	</table>	
 	<br>
-				<a href="storeCapacityInsert?storeNo=${storeNo}">새로운 예약가능시간 설정 등록하기</a>
+				<a href="storeCapacityInsert?storeNo=${storeNo}">예약가능시간 설정</a>
 				<br>
-				<a href = >일괄 등록(미구현)</a>
+				<a href ="storeCapacityMonth?storeNo=${storeNo}">예약가능시간 일괄 설정(한달)</a>
 	<c:import url="/WEB-INF/views/footer.jsp"/>
+</div>
 </body>
 </html>

@@ -11,7 +11,7 @@
 </head>
 <body>
 <c:import url="/WEB-INF/views/top.jsp"/>
-
+<div class="container">
 	<form action = "storeAnalysisPro" method = "get">
 		<h2>날짜 선택</h2>
 		<table class="table table-striped">
@@ -28,8 +28,7 @@
 			</tr>
 		</table>
 	</form>
-
-
+</div>
 <c:import url="/WEB-INF/views/footer.jsp"/>
 </body>
 </html>

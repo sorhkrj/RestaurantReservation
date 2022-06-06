@@ -12,20 +12,62 @@
 <title>index</title>
 </head>
 <body>
+<div class="container">
 <c:import url="/WEB-INF/views/top.jsp"/>
-	<form:form modelAttribute = "storeVO" action ="storeUpdatePro">
-		음식점 : <td><form:input path = "storeName" /></td><br>
-		사  진 : <td><form:input path = "photo" /></td><br>
-		위  치 : <td><form:input path = "location" /></td><br>
-		분  류 : <td><form:input path = "category" /></td><br>
-		연락처 : <td><form:input path = "store_phone" /></td><br>
-		주차장 : <td><form:input path = "parking" /></td><br>
-		휴무일 : <td><form:input path = "holyday" /></td><br>
-		소  개 : <td><form:input path = "introduce" /></td><br>
-		공  지 : <td><form:input path = "notice" /></td><br><br>
-		<form:button>수정하기</form:button>
-		<input type ="reset" value ="취소">
+	<form:form modelAttribute = "storeVO" action ="storeUpdatePro"  method="Post" enctype="multipart/form-data">
+		<table class="table table-striped">
+			<tr>
+				<td>음식점</td>
+				<td><form:input path = "storeName" /></td>
+			</tr>
+			<tr>			
+				<td>사  진</td>
+				<td><input type="file" name="file" ></td>
+			</tr>
+			<tr>
+				<td>위  치 </td>
+				<td><form:input path = "location" /></td>
+			</tr>
+			<tr>
+				<td>분  류 </td>
+				<td><form:input path = "category" /></td>
+			</tr>
+			<tr>
+				<td>연락처</td>
+				<td><form:input path = "store_phone" /></td>
+			</tr>
+			<tr>
+				<td>주차장</td>
+				<td><form:input path = "parking" /></td>
+			</tr>
+			<tr>
+				<td>휴무일</td>
+				<td>
+					<input type="radio" name="holyday" value="월"  checked="checked" > 
+					<label for="월">월</label>
+					<input type="radio" name="holyday"  value="화"  checked="checked" > 
+					<label for="화">화</label>
+					<input type="radio" name="holyday"  value="수"  checked="checked" > 
+					<label for="수">수</label>
+					<input type="radio" name="holyday"  value="목"  checked="checked" > 
+					<label for="목">목</label>
+					<input type="radio" name="holyday"  value="금"  checked="checked" > 
+					<label for="금">금</label>
+				</td>
+			</tr>
+			<tr>
+				<td>소  개</td>
+				<td><form:input path = "introduce" /></td>
+			</tr>
+			<tr>
+				<td>공  지</td>
+				<td><form:input path = "notice" /></td>
+			</tr>
+		</table>
+	<form:button>수정하기</form:button>
+	<input type ="reset" value ="취소">
 	</form:form>
-	<c:import url="/WEB-INF/views/footer.jsp"/>
+<c:import url="/WEB-INF/views/footer.jsp"/>
+</div>
 </body>
 </html>

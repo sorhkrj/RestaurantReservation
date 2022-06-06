@@ -1,9 +1,12 @@
 package kr.co.rrs.service.impl;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.StringTokenizer;
 
+import org.apache.ibatis.reflection.SystemMetaObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -43,6 +46,34 @@ public class StoreCapacityServiceImpl implements StoreCapacityService {
 	@Override
 	public void update(ReservePossibleVO reservePossibleVO) {
 		storeCapacityMapper.update(reservePossibleVO);
+	}
+
+	public void insertMonth(ReservePossibleVO reservePossibleVO) {
+		ArrayList<ReservePossibleVO> rvoList = new ArrayList<ReservePossibleVO>();
+		Calendar cal = Calendar.getInstance();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		String date;
+		
+		for (int i = 0; i < 30; i++) {
+			cal.add(Calendar.DATE, +1);
+			date = sdf.format(cal.getTime());
+			ReservePossibleVO rvo = new ReservePossibleVO();
+			rvo.setStoreNo(reservePossibleVO.getStoreNo());
+			rvo.setDay(date);
+			rvo.setTime(reservePossibleVO.getTime());
+			rvo.setCapacity(reservePossibleVO.getCapacity());
+			rvo.setSeat(reservePossibleVO.getSeat());
+			rvoList.add(rvo);
+		}
+		
+		for(ReservePossibleVO a : rvoList ) {
+			System.out.print(a.getStoreNo() + "  ");
+			System.out.print(a.getDay()  + "  ");
+			System.out.print(a.getSeat()  + "  ");
+			System.out.println(a.getTime());
+		}
+		
+		storeCapacityMapper.insertMonth(rvoList);
 	}
 
 	@Override
