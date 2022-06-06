@@ -19,7 +19,16 @@
 			<div class="container-fluid">
 				<ul class="navbar-nav">
 						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown">${sessionScope.nickName}</a>
+							<a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown">
+								<c:choose>
+									<c:when test="${empty sessionScope.nickName}">
+										로그인 해주세요.
+									</c:when>
+									<c:otherwise>
+										${sessionScope.nickName}님 환영합니다.
+									</c:otherwise>
+								</c:choose>
+							</a>
 							<ul class="dropdown-menu">
 								<sec:authorize access="isAnonymous()">
 									<li class="nav-item">
