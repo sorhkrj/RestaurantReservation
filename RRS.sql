@@ -2,12 +2,23 @@ CREATE TABLE MEMBER(
     ID VARCHAR2(30) PRIMARY KEY,
     NAME VARCHAR2(10),
     PHONE VARCHAR2(20),
-    PASSWORD VARCHAR2(20),
+    PASSWORD VARCHAR2(60),
     NICKNAME VARCHAR2(20),
-    MEMBERLEVEL NUMBER,
+    AUTHORITY VARCHAR2(50),
+    ENABLED NUMBER(1, 0),
     REGDATE DATE
 );
 
+CREATE TABLE MENU(
+   MENUNAME VARCHAR2(50) PRIMARY KEY, 
+   STORENO NUMBER, 
+   PRICE NUMBER, 
+   MENUINFO VARCHAR2(100), 
+   MENUPHOTO VARCHAR2(500), 
+   ORDERNO NUMBER, 
+    FOREIGN KEY(STORENO) REFERENCES STORE(STORENO)
+);
+  
 CREATE TABLE STORE(
     STORENO NUMBER PRIMARY KEY,
     ID VARCHAR2(30),
@@ -32,6 +43,26 @@ CREATE TABLE RESERVEPOSSIBLE(
     FOREIGN KEY (STORENO) REFERENCES STORE(STORENO)
 );
 
+create table reviewLike(
+    reviewLikeNo number primary key,
+    storeNo int not null,
+    id varChar2(30) not null,
+    
+    CONSTRAINT reviewLikeNo  FOREIGN key(storeNo) references store(storeNo) on delete cascade,
+    FOREIGN KEY(ID) REFERENCES MEMBER(ID)
+);
+
+create table review(
+    reviewNo number primary key,
+    rating number(1,2) not null,
+    reviewNickName varChar2(20) not null,
+    storeNo number not null,
+    reviewPhoto varChar(50),
+    reviewContent varChar(100) not null,
+    reviewRDate date not null,
+    
+    CONSTRAINT reviewNo FOREIGN key(storeNo) references store(storeNo) on delete cascade
+);
 CREATE TABLE RESERVATION(
     RESERVENO NUMBER PRIMARY KEY,
     ID VARCHAR2(30),
@@ -66,6 +97,14 @@ CREATE TABLE REPLY (
     FOREIGN KEY (SERVICENO) REFERENCES SERVICEBOARD(SERVICENO)
 );
 
+CREATE SEQUENCE reviewNo_SEQ
+    START WITH 1
+    INCREMENT BY 1
+    MINVALUE 1
+    MAXVALUE 100000
+    NOCYCLE
+    NOCACHE;
+    
 CREATE SEQUENCE STORENO_SEQ
     START WITH 1
     INCREMENT BY 1
