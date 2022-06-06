@@ -19,7 +19,7 @@
 		<sc:intercept-url pattern="/signin" access="isAnonymous()"/>
 		<sc:intercept-url pattern="/serviceBoard/**" access="permitAll"/>
 		<sc:intercept-url pattern="/member/signup/**" access="isAnonymous()"/>
-		<sc:intercept-url pattern="/member/**" access="hasAnyRole('MEMBER, MANAGER')"/>
+		<sc:intercept-url pattern="/member/**" access="hasAnyRole('MEMBER, MANAGER, ADMIN')"/>
  		<sc:intercept-url pattern="/**" access="permitAll"/>
 		
 		<sc:form-login	login-page="/signin"
