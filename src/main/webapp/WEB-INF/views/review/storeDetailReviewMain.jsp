@@ -101,6 +101,7 @@
 										</c:if>
 								</sec:authorize>
 							</td>
+						</sec:authorize>
 							<!-- 로그인 되어 있는 상태 -->
 							<sec:authorize access="isAuthenticated()">
 								<td>
