@@ -34,8 +34,8 @@ body {
 <title>예약확인</title>
 </head>
 <body>
-<div class="container">
-	<c:import url="/WEB-INF/views/top.jsp"/>
+<c:import url="/WEB-INF/views/top.jsp"/>
+	<div class="container">
 		<form class="container" action="reservationInsertPro" method="post">
 			<div class="container mt-3 p-3" id="form">
 				<div class="row">
@@ -77,7 +77,7 @@ body {
 				</div>
 			</div>
 		</form>
-	<c:import url="/WEB-INF/views/footer.jsp"/>
-</div>
+	</div>
+<c:import url="/WEB-INF/views/footer.jsp"/>
 </body>
 </html>

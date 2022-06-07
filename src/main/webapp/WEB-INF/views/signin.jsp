@@ -15,28 +15,31 @@
 <title>signin</title>
 </head>
 <body>
-	<c:import url="/WEB-INF/views/top.jsp"/>
-	<div class="container">
-		<div class="d-grid gap-3">
-			<form action="login" method="post">
-				<div class="mb-3 mt-3">
-					<label class="form-label">ID:</label>
+<c:import url="/WEB-INF/views/top.jsp"/>
+<div class="container">
+	<form action="login" method="post">
+		<div class="mt-3">
+			<div class="row">
+				<div class="mb-3">
+					<label class="col-sm-12 btn btn-outline-dark disabled me-2" style="font-size: 20pt; font-weight: bold;">로그인</label>
+				</div>
+		 		<div class="input-group mb-3">
+		 			<label class="btn btn-outline-dark disabled me-2" style="width: 150px">ID</label>
 					<input type="text" name="id" placeholder="아이디 입력" autofocus required class="form-control">
 				</div>
-				<div class="mb-3">
-					<label class="form-label">Password:</label>
+		 		<div class="input-group mb-3">
+		 			<label class="btn btn-outline-dark disabled me-2" style="width: 150px">Password</label>
 					<input type="password" name="password" placeholder="패스워드 입력" required class="form-control">
 				</div>
-				<input type="submit" value="로그인" class="form-control input-sm btn btn-primary"/>
-			</form>
-			<form action="member/signup/memberInsert" method="get">
-				<input type="submit" value="일반 회원가입" class="form-control input-sm btn btn-secondary"/>
-			</form>
-			<form action="member/signup/memberInsertEnterprise" method="get">
-				<input type="submit" value="기업 회원가입" class="form-control input-sm btn btn-secondary mb-3"/>
-			</form>
+				<div class="mt-3">
+					<input type="submit" value="로그인" class="form-control input-sm btn btn-primary mb-3"/>
+					<a href="member/signup/memberInsert" class="form-control input-sm btn btn-outline-primary mb-3">일반 회원가입</a>
+					<a href="member/signup/memberInsertEnterprise" class="form-control input-sm btn btn-outline-primary mb-3">기업 회원가입</a>
+				</div>
+			</div>
 		</div>
-	</div>
-	<c:import url="/WEB-INF/views/footer.jsp"/>
+	</form>
+</div>
+<c:import url="/WEB-INF/views/footer.jsp"/>
 </body>
 </html>

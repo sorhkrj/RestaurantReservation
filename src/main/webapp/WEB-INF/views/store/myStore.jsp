@@ -12,8 +12,8 @@
 <title>index</title>
 </head>
 <body>
-<div class="container">
 <c:import url="/WEB-INF/views/top.jsp"/>
+<div class="container">
 	
 	<table class="table table-striped">
 		<tr>
@@ -79,7 +79,7 @@
 			</td>
 		</tr>
 	</table>
-<c:import url="/WEB-INF/views/footer.jsp"/>
 </div>
+<c:import url="/WEB-INF/views/footer.jsp"/>
 </body>
 </html>

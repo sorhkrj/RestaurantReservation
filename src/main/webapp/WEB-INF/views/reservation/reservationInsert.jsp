@@ -44,9 +44,8 @@ body {
 <title>예약</title>
 </head>
 <body>
-
-	 <div class="container">
-		<c:import url="/WEB-INF/views/top.jsp"/>
+<c:import url="/WEB-INF/views/top.jsp"/>
+	<div class="container">
 			<form class="container" action="reservationInsertCheck" method="post">
 				<div class="container p-3" id="form">
 					<div class="row">
@@ -100,8 +99,9 @@ body {
 	    			</div>	
 				</div>
 			</form>
-		<c:import url="/WEB-INF/views/footer.jsp"/>
 	</div>
+<c:import url="/WEB-INF/views/footer.jsp"/>
+	
 	
 	<script type="text/javascript">
  	  let name = '${mvo.name}';

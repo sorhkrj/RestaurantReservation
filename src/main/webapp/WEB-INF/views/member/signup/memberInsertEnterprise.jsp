@@ -7,111 +7,95 @@
 <head>
 <meta charset="UTF-8">
 <body>
-	<c:import url="/WEB-INF/views/top.jsp"/>
-	<h2 class="text-center">지점장회원가입</h2>
+<c:import url="/WEB-INF/views/top.jsp"/>
+<div class="container">
 	<form action="memberInsertEnterprisePro" method="Post" enctype="multipart/form-data">
-		<table border="1">
-			<tr>
-				<td>아이디</td>
-				<td>
-					<input type="text" name="id" class="form-control">
-				</td>
-			</tr>
-			<tr>
-				<td>비밀번호</td>
-				<td>
-					<input type="password" name="password" class="form-control">
-				</td>
-			</tr>
-			<tr>
-				<td >이름</td>
-				<td >
-					<input type="text" name="name" class="form-control">
-				</td>
-			</tr>
-			<tr>
-				<td >전화번호</td>
-				<td >
-					<input type="text" name="phone" class="form-control">
-				</td>
-			</tr>
-			<tr>
-				<td >별명</td>
-				<td >
-					<input type="text" name="nickname" class="form-control">
-				</td>
-			</tr>
-			<tr>
-				<td >음식점사진</td>
-				<td >
-					<input type="file" name="file" class="form-control">
-				</td>
-			</tr>
-			<tr>
-				<td >음식점이름</td>
-				<td >
-					<input type="text" name="storeName" class="form-control">
-				</td>
-			</tr>
-			<tr>
-				<td >음식점위치</td>
-				<td >
-					<input type="text" name="location" class="form-control">
-				</td>
-			</tr>
-			<tr>
-				<td >음식점분류</td>
-				<td >
-					<input type="text" name="category" class="form-control">
-				</td>
-			</tr>
-			<tr>
-				<td >음식점전화번호</td>
-				<td >
-					<input type="text" name="store_phone" class="form-control">
-				</td>
-			</tr>
-			<tr>
-				<td >음식점주차여부</td>
-				<td >
-					<input type="text" name="parking" class="form-control">
-				</td>
-			</tr>
-			<tr>
-				<td >음식점휴일</td>
-				<td>
-					<input type="radio" name="holyday" value="월"  checked="checked" > 
-					<h4><label for="월">월</label></h4>
-			
-					<input type="radio" name="holyday"  value="화"  checked="checked" > 
-					<h4><label for="화">화</label></h4>
-			
-					<input type="radio" name="holyday"  value="수"  checked="checked" > 
-					<h4><label for="수">수</label></h4>
-		
-					<input type="radio" name="holyday"  value="목"  checked="checked" > 
-					<h4><label for="목">목</label></h4>
-			
-					<input type="radio" name="holyday"  value="금"  checked="checked" > 
-					<h4><label for="금">금</label></h4>
-				</td>
-			</tr>
-			<tr>
-				<td >음식점소개</td>
-				<td >
-					<input type="text" name="introduce" class="form-control">
-				</td>
-			</tr>
-			<tr>
-				<td >음식점공지사항</td>
-				<td >
-					<input type="text" name="notice" class="form-control">
-					<input type = "submit" value="확인" class="btn btn-primary">
-				</td>
-			</tr>
-		</table>
+		<div class="mt-3">
+			<div class="row">
+				<div class="mb-3">
+					<label class="col-sm-12 btn btn-outline-dark disabled me-2" style="font-size: 20pt; font-weight: bold;">지점장 회원가입</label>
+				</div>
+				<div class="input-group mb-3">
+					<label class="btn btn-outline-dark disabled me-2" style="width: 150px">ID</label>
+					<input type="text" name="id" class="form-control"/>
+				</div>
+				<div class="input-group mb-3">
+					<label class="btn btn-outline-dark disabled me-2" style="width: 150px">Password</label>
+					<input type="password" name="password" class="form-control"/>
+				</div>
+				<div class="input-group mb-3">
+					<label class="btn btn-outline-dark disabled me-2" style="width: 150px">Name</label>
+					<input type="text" name="name" class="form-control"/>
+				</div>
+				<div class="input-group mb-3">
+					<label class="btn btn-outline-dark disabled me-2" style="width: 150px">Phone</label>
+					<input type="text" name="phone" class="form-control"/>
+				</div>
+				<div class="input-group mb-3">
+					<label class="btn btn-outline-dark disabled me-2" style="width: 150px">Nick Name</label>
+					<input type="text" name="nickname" class="form-control"/>
+				</div>
+				<div class="input-group mb-3">
+					<label class="btn btn-outline-dark disabled me-2" style="width: 150px">Store Photo</label>
+					<input type="file" name="file" class="form-control"/>
+				</div>
+				<div class="input-group mb-3">
+					<label class="btn btn-outline-dark disabled me-2" style="width: 150px">Store Name</label>
+					<input type="text" name="storeName" class="form-control"/>
+				</div>
+				<div class="input-group mb-3">
+					<label class="btn btn-outline-dark disabled me-2" style="width: 150px">Store Location</label>
+					<input type="text" name="location" class="form-control"/>
+				</div>
+				<div class="input-group mb-3">
+					<label class="btn btn-outline-dark disabled me-2" style="width: 150px">Store Category</label>
+					<input type="text" name="category" class="form-control"/>
+				</div>
+				<div class="input-group mb-3">
+					<label class="btn btn-outline-dark disabled me-2" style="width: 150px">Store Phone</label>
+					<input type="text" name="store_phone" class="form-control"/>
+				</div>
+				<div class="input-group mb-3">
+					<label class="btn btn-outline-dark disabled me-2" style="width: 150px">Store Parking</label>
+					<input type="text" name="parking" class="form-control"/>
+				</div>
+					
+				<div class="input-group mb-3">
+					<label class="btn btn-outline-dark disabled me-2" style="width: 150px">Store Holyday</label>
+					<div class="form-check me-3 mt-2">
+						<input type="radio" name="holyday" value="월" checked class="form-check-input">월
+					</div>
+					<div class="form-check me-3 mt-2">
+						<input type="radio" name="holyday" value="화" class="form-check-input">화
+					</div>
+					<div class="form-check me-3 mt-2">
+						<input type="radio" name="holyday" value="수" class="form-check-input">수
+					</div>
+					<div class="form-check me-3 mt-2">
+						<input type="radio" name="holyday" value="목" class="form-check-input">목
+					</div>
+					<div class="form-check me-3 mt-2">
+						<input type="radio" name="holyday" value="금" class="form-check-input">금
+					</div>
+				</div>
+				<div class="input-group mb-3">
+					<label class="btn btn-outline-dark disabled me-2" style="width: 150px">Store Introduce</label>
+					<input type="text" name="introduce" class="form-control"/>
+				</div>
+				<div class="input-group mb-3">
+					<label class="btn btn-outline-dark disabled me-2" style="width: 150px">Store Notice</label>
+					<input type="text" name="notice" class="form-control"/>
+				</div>
+				<div class="mt-3">
+					<input type="submit" value="회원 가입" class="form-control input-sm btn btn-primary mb-3">
+					<input type="reset" value="취소" class="form-control input-sm btn btn-outline-danger mb-3">
+					<a href="${pageContext.request.contextPath}/signin" class="form-control input-sm btn btn-outline-primary mb-3">돌아가기</a>
+				</div>
+			</div>
+		</div>
 	</form>
-	<c:import url="/WEB-INF/views/footer.jsp"/>
+</div>
+<c:import url="/WEB-INF/views/footer.jsp"/>
 </body>
 
 

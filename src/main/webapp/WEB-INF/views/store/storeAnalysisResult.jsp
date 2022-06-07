@@ -10,8 +10,8 @@
 <title>index</title>
 </head>
 <body>
-<div class="container">
 <c:import url="/WEB-INF/views/top.jsp"/>
+<div class="container">
 	<h1>${firstDay } 부터 ${lastDay }까지의 음식점 예약 분석 결과입니다.</h1>
 	<table class="table table-striped">
 		<tr>
@@ -26,7 +26,7 @@
 			<td> ${storeAnalysis.dayAvg } 건</td>
 		</tr>
 	</table>
-<c:import url="/WEB-INF/views/footer.jsp"/>
 </div>
+<c:import url="/WEB-INF/views/footer.jsp"/>
 </body>
 </html>

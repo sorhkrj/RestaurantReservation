@@ -17,8 +17,7 @@
 </head>
 
 <body>
-	
-		<c:import url="/WEB-INF/views/top.jsp"/>
+<c:import url="/WEB-INF/views/top.jsp"/>
 	<div class="container">
 		<form action="reservationUpdateCheck" method="post" id="form">
 			<div class="container p-3" >
@@ -65,8 +64,8 @@
 				</div>
 				
 			</form>
-		</div>
-		<c:import url="/WEB-INF/views/footer.jsp"/>
+	</div>
+<c:import url="/WEB-INF/views/footer.jsp"/>
 		
 	<script type="text/javascript">
  	  let name = '${rvo.visitName}';

@@ -34,48 +34,48 @@ body {
 <title>예약확인</title>
 </head>
 <body>
-<div class="container">
 <c:import url="/WEB-INF/views/top.jsp"/>
-	<form class="container" action="reservationUpdatePro" method="post">
-		<div class="container mt-3 p-3" id="form">
-			<div class="row">
-				<h2 class="text-center">예약확인</h2>
-				<div class="input-group mb-3">
-					<span class="input-group-text col-3 text-center">음식점이름</span> 
-					<input type="text" class="form-control" name="storeNo" value="${rvo.storeNo}" readonly>
+	<div class="container">
+		<form class="container" action="reservationUpdatePro" method="post">
+			<div class="container mt-3 p-3" id="form">
+				<div class="row">
+					<h2 class="text-center">예약확인</h2>
+					<div class="input-group mb-3">
+						<span class="input-group-text col-3 text-center">음식점이름</span> 
+						<input type="text" class="form-control" name="storeNo" value="${rvo.storeNo}" readonly>
+					</div>
+					<div class="input-group mb-3">
+						<span class="input-group-text col-3 text-center">예약인원</span> 
+						<input type="text" class="form-control" name="people" value="${rvo.people}" readonly>
+					</div>
+					<div class="input-group mb-3">
+						<span class="input-group-text col-3 text-center">방문일자</span> 
+						<input type="text" class="form-control" name="visitDay" value="${rvo.visitDay}" readonly>
+					</div>
+					<div class="input-group mb-3">
+						<span class="input-group-text col-3 text-center">방문시간</span> 
+						<input type="number" class="form-control" name="visitTime" value="${rvo.visitTime}" readonly>
+					</div>
+					<div class="input-group mb-3">
+						<span class="input-group-text col-3 text-center">방문인이름</span> 
+						<input type="text" class="form-control" name="visitName" value="${rvo.visitName}" readonly>
+					</div>
+					<div class="input-group mb-3">
+						<span class="input-group-text col-3 text-center">방문인 전화번호</span> 
+						<input type="text" class="form-control" name="visitPhone" value="${rvo.visitPhone}" readonly>
+					</div>
+						<input type="hidden" class="form-control" name="reserveNo" value="${rvo.reserveNo}" readonly>
 				</div>
-				<div class="input-group mb-3">
-					<span class="input-group-text col-3 text-center">예약인원</span> 
-					<input type="text" class="form-control" name="people" value="${rvo.people}" readonly>
+				<h3 class="text-center">위 내용으로 예약합니다</h3>
+				<div class="row text-center">
+					<div class="container mt-3">
+						<input type="submit" class="btn btn-primary" value="확인">
+						<a href="javascript:window.history.go(-1);" type="button" class="btn btn-primary">취소</a>
+					</div>
 				</div>
-				<div class="input-group mb-3">
-					<span class="input-group-text col-3 text-center">방문일자</span> 
-					<input type="text" class="form-control" name="visitDay" value="${rvo.visitDay}" readonly>
-				</div>
-				<div class="input-group mb-3">
-					<span class="input-group-text col-3 text-center">방문시간</span> 
-					<input type="number" class="form-control" name="visitTime" value="${rvo.visitTime}" readonly>
-				</div>
-				<div class="input-group mb-3">
-					<span class="input-group-text col-3 text-center">방문인이름</span> 
-					<input type="text" class="form-control" name="visitName" value="${rvo.visitName}" readonly>
-				</div>
-				<div class="input-group mb-3">
-					<span class="input-group-text col-3 text-center">방문인 전화번호</span> 
-					<input type="text" class="form-control" name="visitPhone" value="${rvo.visitPhone}" readonly>
-				</div>
-					<input type="hidden" class="form-control" name="reserveNo" value="${rvo.reserveNo}" readonly>
 			</div>
-			<h3 class="text-center">위 내용으로 예약합니다</h3>
-			<div class="row text-center">
-				<div class="container mt-3">
-					<input type="submit" class="btn btn-primary" value="확인">
-					<a href="javascript:window.history.go(-1);" type="button" class="btn btn-primary">취소</a>
-				</div>
-			</div>
-		</div>
-	</form>
-	<c:import url="/WEB-INF/views/footer.jsp"/>
+		</form>
 	</div>
+<c:import url="/WEB-INF/views/footer.jsp"/>
 </body>
 </html>

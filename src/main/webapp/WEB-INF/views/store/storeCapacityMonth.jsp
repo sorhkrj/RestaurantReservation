@@ -10,8 +10,8 @@
 <title>index</title>
 </head>
 <body>
-<div class="container">
 <c:import url="/WEB-INF/views/top.jsp"/>
+<div class="container">
 	<form action = "storeCapacityMonthPro" method = "get">
 		<input type = "hidden" name = "storeNo" value = "${storeNo }">
 		<table class="table table-striped">
@@ -36,7 +36,7 @@
 		<input type ="submit" value = "등록하기">
 		<input type = "reset" value = "취소">
 	</form>
-<c:import url="/WEB-INF/views/footer.jsp"/>	
 </div>
+<c:import url="/WEB-INF/views/footer.jsp"/>	
 </body>
 </html>

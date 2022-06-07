@@ -65,7 +65,6 @@
 						</div>
 					</div>
 			    </div>
-			<!-- 최신 리뷰 출력-->
 				<c:forEach var = "r" items ="${reviewList }">
 					<div class="container mt-3 shadow p-4 mb-4 bg-light" style="width:220px;" >
 						<div class="card">
@@ -78,9 +77,6 @@
 					</div>
 			    </c:forEach>    
 					        		</div>
-			
-			
-			
 		<c:import url="/WEB-INF/views/footer.jsp"/>
 </div>
 </body>
