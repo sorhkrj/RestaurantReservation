@@ -109,7 +109,7 @@
 						<td>${reviewListNick.get(i).rating }</td>
 						<td width="200" height="100">
 							<c:if test="${reviewList.get(i).reviewPhoto != null }">
-								<img alt="d" src="images/${reviewList.get(i).reviewPhoto }" width="200" height="100">
+								<img alt="d" src="${pageContext.request.contextPath}/images/${reviewList.get(i).reviewPhoto }" width="200" height="100">
 							</c:if>	
 						</td>
 						<td>${reviewList.get(i).reviewContent }</td>

@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import kr.co.rrs.service.HomeService;
+import kr.co.rrs.vo.ReviewVO;
 import kr.co.rrs.vo.StoreVO;
 
 @Controller
@@ -35,7 +36,7 @@ public class HomeController {
 	HomeService service; // Service
 
 	@GetMapping("/")
-	public String home(HttpSession session, Principal principal) {
+	public String home(HttpSession session, Principal principal, Model model) {
 		if (principal != null) {
 			String nickName = service.selectNickname(principal.getName());
 			session.setAttribute("nickName", nickName);
@@ -44,6 +45,10 @@ public class HomeController {
 			session.setAttribute("nickName", null);
 			session.setMaxInactiveInterval(0);
 		}
+		
+		//리뷰 로딩
+		List<ReviewVO> rlist = service.selectReview();
+		model.addAttribute("reviewList", rlist);
 		return "index";
 	}
 	

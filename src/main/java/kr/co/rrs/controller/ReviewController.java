@@ -110,7 +110,7 @@ public class ReviewController {
 		if(!file.isEmpty()) {
 			System.out.println(filename); // 파일 실제 이름 찍어보기
 			file.transferTo(new File(savePath, filename)); // 파일저장
-			reviewVO.setReviewPhoto(file.getOriginalFilename()); // db에 파일 이름 등록
+			reviewVO.setReviewPhoto(filename); // db에 파일 이름 등록
 		}
 		else {
 			reviewVO.setReviewPhoto("");
