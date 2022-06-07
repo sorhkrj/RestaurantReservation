@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import kr.co.rrs.service.AdminService;
-import kr.co.rrs.service.HomeService;
 
 @Controller
 @RequestMapping("/admin")

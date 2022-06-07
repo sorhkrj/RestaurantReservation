@@ -15,8 +15,9 @@
   <title>내정보</title>
 </head>
 <body>
-<form action="memberSelect" method="get">
+<div class="container">
 <c:import url="/WEB-INF/views/top.jsp"/>
+<form action="memberSelect" method="get">
   <div class="container mt-3 p-3" id="form">
   <div class="row">
    <h2 class="text-center">내정보</h2>
@@ -45,6 +46,7 @@
     </div>
   </div>
 </div>
-<c:import url="/WEB-INF/views/footer.jsp"/>
 </form>
+<c:import url="/WEB-INF/views/footer.jsp"/>
+</div>
 </body>

@@ -47,20 +47,6 @@
 	
 	<!-- aop -->
 	<aop:aspectj-autoproxy/>
-	<context:component-scan base-package="kr.co.rrs.advisor"/>
-	<bean id="log" class="kr.co.rrs.advisor.HomeAdvisor"/>
-	<aop:config>
-		<aop:pointcut id="allPointcut"
-			expression="execution(* kr.co.rrs.service.impl.*.*(..))" />
-		<aop:aspect ref="log">
-			<aop:before method="printLogBefore"
-				pointcut-ref="allPointcut" />
-		</aop:aspect>
-		<aop:aspect ref="log">
-			<aop:after method="printLogAfter"
-				pointcut-ref="allPointcut" />
-		</aop:aspect>
-	</aop:config>
 	
 	<!-- transcation -->
 	<tx:annotation-driven />

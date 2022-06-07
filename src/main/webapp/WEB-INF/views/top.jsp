@@ -73,17 +73,12 @@
 					</sec:authorize>
 					<sec:authorize access="hasRole('ROLE_ADMIN')">
 						<li class="nav-item">
-							<a href="${pageContext.request.contextPath}/member/searchMember" class="nav-link active">전체회원관리</a>
+							<a href="${pageContext.request.contextPath}/admin/searchMember" class="nav-link active">전체회원관리</a>
 						</li> <!-- 관리자 -->
 					</sec:authorize>
 					<sec:authorize access="hasRole('ROLE_ADMIN')">
 						<li class="nav-item">
-							<a href="${pageContext.request.contextPath}/member/searchStore" class="nav-link active">전체지점관리</a>
-						</li> <!-- 관리자 -->
-					</sec:authorize>
-					<sec:authorize access="hasRole('ROLE_ADMIN')">
-						<li class="nav-item">
-							<a href="${pageContext.request.contextPath}/store/menuDetail" class="nav-link active">테스트용</a>
+							<a href="${pageContext.request.contextPath}/admin/searchStore" class="nav-link active">전체지점관리</a>
 						</li> <!-- 관리자 -->
 					</sec:authorize>
 				</ul>

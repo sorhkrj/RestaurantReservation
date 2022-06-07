@@ -11,7 +11,9 @@
 <title>Index</title>
 </head>
 <body>
-	<c:import url="/WEB-INF/views/top.jsp"/>
-	<c:import url="/WEB-INF/views/footer.jsp"/>
+	<div class="container">
+		<c:import url="/WEB-INF/views/top.jsp"/>
+		<c:import url="/WEB-INF/views/footer.jsp"/>
+	</div>
 </body>
 </html>

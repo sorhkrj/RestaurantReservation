@@ -66,30 +66,15 @@ public class ServiceBoardController {
 		int startBoard = 1 + ((nowPage-1)*10); // 목록 10개씩
 		int endBoard = startBoard + 9;
 
-		System.out.println("total" + total);
-		System.out.println("totalPage" + totalPage);
-		System.out.println("nowPage" + nowPage);
-		System.out.println("index" + index);
-		System.out.println("startPage" + startPage);
-		System.out.println("endPage" + endPage);
-		System.out.println("startBoard" + startBoard);
-		System.out.println("endBoard" + endBoard);
-		
-		String id = principal.getName();
-		
-		if(id == null) {
-			response.setContentType("text/html; charset=UTF-8");
-			PrintWriter out = null;
-			try {
-				out = response.getWriter();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-			out.println("<script>alert('로그인 해주세요.'); </script>");
-			out.flush();
-			return "login";
-		}
-		
+//		System.out.println("total" + total);
+//		System.out.println("totalPage" + totalPage);
+//		System.out.println("nowPage" + nowPage);
+//		System.out.println("index" + index);
+//		System.out.println("startPage" + startPage);
+//		System.out.println("endPage" + endPage);
+//		System.out.println("startBoard" + startBoard);
+//		System.out.println("endBoard" + endBoard);
+			
 		List<ServiceBoardVO> list = serviceBoardService.selectList(startBoard, endBoard);
 		List<ReplyVO> list2 = null;
 		if(list != null) {
