@@ -70,49 +70,28 @@
 			<tr>
 				<th colspan="6">리뷰</th>
 			</tr>
-			<tr>
-				<td colspan="2">좋아요♥ 개수: ${reviewLikeVO.reviewLikeCnt }</td>
-				<td colspan="2">평점: ${avg }</td>
-				<sec:authorize access="isAuthenticated()">
-				<td colspan="2">
-					<form action="storeDetailReviewMain" method="post">
-						<c:if test="${reviewLikeVO.likeStatus == 0 }">
-							<input type="hidden" name="sw" value="2"/>
-							<input type="hidden" name="storeNo" value="${storeVO.storeNo }"/>
-							<input type="submit" value="좋아요"/>
-						</c:if>
-						<c:if test="${reviewLikeVO.likeStatus == 1 }">
-							<input type="hidden" name="sw" value="1"/>
-							<input type="hidden" name="storeNo" value="${storeVO.storeNo }"/>
-							<input type="submit" value="좋아요 취소"/>
-						</c:if>
-					</form>
-				</td>
-				</sec:authorize>
-			</tr>
-		</table>
-		<hr>
-		<h4>리뷰목록</h4>
-			<table class="table table-striped">
-				<tr>
-					<th>작성자</th>
-					<th>평점</th>
-					<th>사진</th>
-					<th>내용</th>
-					<th>작성일</th>
-					<th>댓글</th>
-				</tr>
-				<c:if test="${reviewList.size() != 0 }">
-					<c:forEach var="i" begin="0" end="${reviewList.size()-1 }">
-						<tr>
-							<td>${reviewListNick.get(i).nickName }</td>
-							<td>${reviewListNick.get(i).rating }</td>
-							<td width="200" height="100">
-								<c:if test="${reviewList.get(i).reviewPhoto != null }">
-									<img alt="d" src="images/${reviewList.get(i).reviewPhoto }" width="200" height="100">
-								</c:if>	
-							</td>
-							<td>${reviewList.get(i).reviewContent }</td>
+			<c:if test="${reviewList.size() != 0 }">
+				<c:forEach var="i" begin="0" end="${reviewList.size()-1 }">
+					<tr>
+						<td>${reviewListNick.get(i).nickName }</td>
+						<td>${reviewListNick.get(i).rating }</td>
+						<td width="200" height="100">
+							<c:if test="${reviewList.get(i).reviewPhoto != null }">
+								<img alt="d" src="${pageContext.request.contextPath}/images/${reviewList.get(i).reviewPhoto }" width="200" height="100">
+							</c:if>	
+						</td>
+						<td>${reviewList.get(i).reviewContent }</td>
+						<td>
+							${reviewList.get(i).reviewRDate }
+							<sec:authorize access="isAuthenticated()">
+								<sec:authentication property="principal" var="check"/>
+									<c:if test="${check.username eq reviewList.get(i).id}">
+										<input type="button" value="지우기" onclick="location.href='reviewDeletePro?storeNo=${reviewList.get(i).storeNo }&reviewNo=${reviewList.get(i).reviewNo}'"/>
+									</c:if>
+							</sec:authorize>
+						</td>
+						<!-- 로그인 되어 있는 상태 -->
+						<sec:authorize access="isAuthenticated()">
 							<td>
 								${reviewList.get(i).reviewRDate }
 								<sec:authorize access="isAuthenticated()">

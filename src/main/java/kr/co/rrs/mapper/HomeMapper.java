@@ -2,7 +2,10 @@ package kr.co.rrs.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Select;
+
 import kr.co.rrs.vo.MemberVO;
+import kr.co.rrs.vo.ReviewVO;
 import kr.co.rrs.vo.StoreVO;
 
 public interface HomeMapper {
@@ -19,4 +22,7 @@ public interface HomeMapper {
 	
 	// 검색 결과 예약 페이지
 	List<StoreVO> selectStore(String search);
+	
+	@Select("select r.*, s.storeName from review r, store s where r.storeno = s.storeno and rownum < 4 order by reviewrdate desc")
+	List<ReviewVO> selectReview();
 }
