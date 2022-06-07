@@ -11,14 +11,13 @@
 </head>
 <body>
 	<div class="container">
-		<table class="table table-striped">
-			<tr>
-				<td align="center">
-					rrs.co.kr<br>
-					Copyright 2022. rrs all rights reserved.
-				</td>
-			</tr>
-		</table>
+		<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+			<div class="container-fluid">
+				<span class="navbar-text">
+					Copyright 2022. rrs.co.kr all rights reserved.
+				</span>
+			</div>
+		</nav>
 	</div>
 </body>
 </html>
