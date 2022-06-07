@@ -39,8 +39,10 @@ public class HomeController {
 		if (principal != null) {
 			String nickName = service.selectNickname(principal.getName());
 			session.setAttribute("nickName", nickName);
+			session.setMaxInactiveInterval(60*60);
 		} else {
-			session.setAttribute("nickName", "메뉴");
+			session.setAttribute("nickName", null);
+			session.setMaxInactiveInterval(0);
 		}
 		return "index";
 	}
