@@ -17,64 +17,69 @@
 	<div class="container">
 		<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 			<div class="container-fluid">
-				<ul class="navbar-nav">
-					<c:if test="${not empty sessionScope.nickName}">
-						<li>
-							<div class="nav-item">
-								<div class="nav-link active">${sessionScope.nickName}님</div>
-							</div>
-						</li>
-					</c:if>
-					<sec:authorize access="isAnonymous()">
-						<li class="nav-item">
-							<form:form action="${pageContext.request.contextPath}/signin" method="get">
-								<input type="submit" value="로그인" class="btn nav-link active"/>
-							</form:form>
-						</li> <!-- 회원, 기업, 관리자 -->
-					</sec:authorize>
-					<sec:authorize access="isAuthenticated()">
-						<form:form action="${pageContext.request.contextPath}/logout" method="post">
-							<li class="nav-item">
-								<input type="submit" value="로그아웃" class="btn nav-link active"/>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="collapsibleNavbar">
+					<ul class="navbar-nav">
+						<c:if test="${not empty sessionScope.nickName}">
+							<li>
+								<div class="nav-item">
+									<div class="nav-link active">${sessionScope.nickName}님</div>
+								</div>
 							</li>
-						</form:form> <!-- 회원, 기업, 관리자 -->
-					</sec:authorize>
-					<sec:authorize access="isAuthenticated()">
-						<li class="nav-item">
-							<a href="${pageContext.request.contextPath}/member/memberSelect" class="nav-link active">내 정보</a>
-						</li> <!-- 회원 -->
-					</sec:authorize>
-					<sec:authorize access="hasRole('ROLE_MEMBER')">
-						<li class="nav-item">
-							<a href="${pageContext.request.contextPath}/reservation/myReservationList" class="nav-link active">예약 정보</a>
-						</li> <!-- 회원 -->
-					</sec:authorize>
-					<sec:authorize access="hasRole('ROLE_MANAGER')">
-						<li class="nav-item">
-							<a href="${pageContext.request.contextPath}/store/myStore" class="nav-link active">지점 관리</a>
-						</li> <!-- 기업 -->
-					</sec:authorize>
-					<sec:authorize access="hasRole('ROLE_MANAGER')">
-						<li class="nav-item">
-							<a href="${pageContext.request.contextPath}/store/storeAnalysis" class="nav-link active">분석 현황</a>
-						</li> <!-- 기업 -->
-					</sec:authorize>
-					<sec:authorize access="permitAll()">
-						<li class="nav-item">
-							<a href="${pageContext.request.contextPath}/serviceBoard/serviceBoardMain" class="nav-link active">고객 센터</a>
-						</li> <!-- 회원, 기업, 관리자 -->
-					</sec:authorize>
-					<sec:authorize access="hasRole('ROLE_ADMIN')">
-						<li class="nav-item">
-							<a href="${pageContext.request.contextPath}/admin/searchMember" class="nav-link active">전체 회원관리</a>
-						</li> <!-- 관리자 -->
-					</sec:authorize>
-					<sec:authorize access="hasRole('ROLE_ADMIN')">
-						<li class="nav-item">
-							<a href="${pageContext.request.contextPath}/admin/searchStore" class="nav-link active">전체 지점관리</a>
-						</li> <!-- 관리자 -->
-					</sec:authorize>
-				</ul>
+						</c:if>
+						<sec:authorize access="isAnonymous()">
+							<li class="nav-item">
+								<form:form action="${pageContext.request.contextPath}/signin" method="get">
+									<input type="submit" value="로그인" class="btn nav-link active"/>
+								</form:form>
+							</li> <!-- 회원, 기업, 관리자 -->
+						</sec:authorize>
+						<sec:authorize access="isAuthenticated()">
+							<form:form action="${pageContext.request.contextPath}/logout" method="post">
+								<li class="nav-item">
+									<input type="submit" value="로그아웃" class="btn nav-link active"/>
+								</li>
+							</form:form> <!-- 회원, 기업, 관리자 -->
+						</sec:authorize>
+						<sec:authorize access="isAuthenticated()">
+							<li class="nav-item">
+								<a href="${pageContext.request.contextPath}/member/memberSelect" class="nav-link active">내 정보</a>
+							</li> <!-- 회원 -->
+						</sec:authorize>
+						<sec:authorize access="hasRole('ROLE_MEMBER')">
+							<li class="nav-item">
+								<a href="${pageContext.request.contextPath}/reservation/myReservationList" class="nav-link active">예약 정보</a>
+							</li> <!-- 회원 -->
+						</sec:authorize>
+						<sec:authorize access="hasRole('ROLE_MANAGER')">
+							<li class="nav-item">
+								<a href="${pageContext.request.contextPath}/store/myStore" class="nav-link active">지점 관리</a>
+							</li> <!-- 기업 -->
+						</sec:authorize>
+						<sec:authorize access="hasRole('ROLE_MANAGER')">
+							<li class="nav-item">
+								<a href="${pageContext.request.contextPath}/store/storeAnalysis" class="nav-link active">분석 현황</a>
+							</li> <!-- 기업 -->
+						</sec:authorize>
+						<sec:authorize access="permitAll()">
+							<li class="nav-item">
+								<a href="${pageContext.request.contextPath}/serviceBoard/serviceBoardMain" class="nav-link active">고객 센터</a>
+							</li> <!-- 회원, 기업, 관리자 -->
+						</sec:authorize>
+						<sec:authorize access="hasRole('ROLE_ADMIN')">
+							<li class="nav-item">
+								<a href="${pageContext.request.contextPath}/admin/searchMember" class="nav-link active">전체 회원관리</a>
+							</li> <!-- 관리자 -->
+						</sec:authorize>
+						<sec:authorize access="hasRole('ROLE_ADMIN')">
+							<li class="nav-item">
+								<a href="${pageContext.request.contextPath}/admin/searchStore" class="nav-link active">전체 지점관리</a>
+							</li> <!-- 관리자 -->
+						</sec:authorize>
+					</ul>
+				</div>
 				<a href="/RestaurantReservation" class="navbar-brand">RRS</a>
 			</div>
 		</nav>
