@@ -17,7 +17,7 @@
 	<label class="col-sm-12 btn btn-outline-dark disabled mt-3" style="font-size: 20pt; font-weight: bold;">나의 예약 목록</label>
 		<div class="container" id="mytable">
 			<div class="row mt-3">
-				<table class="table table-bordered">
+				<table class="table">
 					<thead>
 						<tr>
 							<th class="col">이름</th>
@@ -43,7 +43,7 @@
 									<td>${reservation.visitName}</td>
 									<td>${reservation.visitPhone}</td>
 									<td>${reservation.regDate}</td>
-									<td><button class="btn btn-primary btn-sm" onclick="myFunction(`${reservation.reserveNo}`,`${reservation.visitTime}`,`${reservation.visitDay}`,`${reservation.visitTime}`)">삭제</button></td>
+									<td><button class="btn btn-outline-dark" onclick="myFunction(`${reservation.reserveNo}`,`${reservation.visitTime}`,`${reservation.visitDay}`,`${reservation.visitTime}`)">삭제</button></td>
 							</tr> 
 						</c:forEach>
 	

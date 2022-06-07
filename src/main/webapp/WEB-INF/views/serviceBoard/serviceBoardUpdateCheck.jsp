@@ -18,25 +18,24 @@
 <c:import url="/WEB-INF/views/top.jsp"/>
 <div class="container">
 	<form action="serviceBoardUpdate" method="post">
-		<table class="table table-striped">
-			<tr>
-				<th colspan="2">비밀번호를 입력</th>
-			</tr>
-			<tr>
-				<th>비밀번호</th>
-				<td><input type="password" name="password" required="required"/></td>
-			</tr>
-			<tr>
-				<td colspan="2">
+		<div class="mt-3">
+			<div class="row">
+				<div class="mb-3">
+					<label class="col-sm-12 btn btn-outline-dark disabled me-2" style="font-size: 20pt; font-weight: bold;">비밀번호</label>
+				</div>
+				<div class="input-group mb-3">
+					<label class="btn btn-outline-dark disabled me-2" style="width: 150px">Password</label>
+					<input type="password" name="password" required="required" class="form-control"/>
+				</div>
+				<div class="mt-3">
 					<input type="hidden" name="serviceNo" value="${serviceNo}"/>
-					<input type="submit" value="확인"/>
-					<input type="reset" value="취소"/> 
-					<input type="button" value="돌아가기" onclick="location.href='serviceBoardDetail?serviceNo=${serviceNo}'"/>
-				</td>
-			</tr>
-		</table>
+					<input type="submit" value="확인" class="form-control input-sm btn btn-primary mb-3">
+					<input type="reset" value="취소" class="form-control input-sm btn btn-outline-danger mb-3">
+					<a href="${pageContext.request.contextPath}/serviceBoard/serviceBoardDetail?serviceNo=${serviceNo}" class="form-control input-sm btn btn-outline-danger mb-3">돌아가기</a>
+				</div>
+			</div>
+		</div>
 	</form>
-	<hr>
 </div>
 <c:import url="/WEB-INF/views/footer.jsp"/>
 </body>
