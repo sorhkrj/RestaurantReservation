@@ -16,8 +16,8 @@
 </style>
 </head>
 <body>
-<div class="container">
 <c:import url="/WEB-INF/views/top.jsp"/>
+	<div class="container">
 	<table class="table table-striped">
 		<tr>
 			<th colspan="4">상세 보기</th>
@@ -116,7 +116,7 @@
 			</table>
 		</form>
 	</c:if>
+	</div>
 <c:import url="/WEB-INF/views/footer.jsp"/>
-</div>
 </body>
 </html>

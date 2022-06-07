@@ -12,8 +12,8 @@
 <title>index</title>
 </head>
 <body>
-<div class="container">
 <c:import url="/WEB-INF/views/top.jsp"/>
+<div class="container">
 	<form:form modelAttribute = "storeVO" action ="storeUpdatePro"  method="Post" enctype="multipart/form-data">
 		<table class="table table-striped">
 			<tr>
@@ -67,7 +67,7 @@
 	<form:button>수정하기</form:button>
 	<input type ="reset" value ="취소">
 	</form:form>
-<c:import url="/WEB-INF/views/footer.jsp"/>
 </div>
+<c:import url="/WEB-INF/views/footer.jsp"/>
 </body>
 </html>

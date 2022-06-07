@@ -8,5 +8,9 @@
   <title>회원가입</title>
 </head>
 <body>
-비밀번호 확인해주세요
+<c:import url="/WEB-INF/views/top.jsp"/>
+	<div class="container">
+		비밀번호 확인해주세요
+	</div>
+<c:import url="/WEB-INF/views/footer.jsp"/>
 </body>

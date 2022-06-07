@@ -16,8 +16,8 @@
 </style>
 </head>
 <body>
-<div class="container">
 <c:import url="/WEB-INF/views/top.jsp"/>
+<div class="container">
 	<form:form action="serviceBoardInsertPro" modelAttribute="serviceBoardVO">
 		<table class="table table-striped">
 			<tr>
@@ -44,7 +44,7 @@
 			</tr>
 		</table>
 	</form:form>
-<c:import url="/WEB-INF/views/footer.jsp"/>
 </div>
+<c:import url="/WEB-INF/views/footer.jsp"/>
 </body>
 </html>

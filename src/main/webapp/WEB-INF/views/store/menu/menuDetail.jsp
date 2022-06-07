@@ -82,8 +82,8 @@ function updateMenu(menu){
 <title>index</title>
 </head>
 <body>
+<c:import url="/WEB-INF/views/top.jsp" />
 	<div class="container">
-		<c:import url="/WEB-INF/views/top.jsp" />
 		<table class="table table-striped">
 			<tr>
 				<th>메뉴명</th>
@@ -127,8 +127,8 @@ function updateMenu(menu){
 			
 	<div id="addMenu"></div>
 		</form>
-		<c:import url="/WEB-INF/views/footer.jsp" />
 	</div>
+<c:import url="/WEB-INF/views/footer.jsp" />
 </body>
 <script>
 	var count = 0;

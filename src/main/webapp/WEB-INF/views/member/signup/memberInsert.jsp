@@ -9,46 +9,41 @@
 </head>
 <body>
 <c:import url="/WEB-INF/views/top.jsp"/>
-	<h2 class="text-center">회원가입</h2>
+	<div class="container">
 		<form action="memberInsertPro" method ="post">
-			<table border="1">
-				<tr>
-					<td>
-						아이디
-						<input type="text" class="form-control" name="id">
-					</td>
-				</tr>
-				<tr>
-					<td>
-						비밀번호
-						<input type="password" class="form-control" name="password">
-					</td>
-				</tr>
-				<tr>
-					<td>
-						이름
-						<input type="text" class="form-control" name="name">
-					</td>
-				</tr>
-				<tr>
-					<td>
-						전화번호
-						<input type="text" class="form-control" name="phone">
-					</td>
-				</tr>
-				<tr>
-					<td>
-						별명
-						<input type="text" class="form-control" name="nickname">
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<input type = "submit" value="확인" class="btn btn-primary">
-						<input type = "reset" value = "취소" class="btn btn-primary">
-					</td>
-				</tr>
-			</table>
+			<div class="mt-3">
+				<div class="row">
+					<div class="mb-3">
+						<label class="col-sm-12 btn btn-outline-dark disabled me-2" style="font-size: 20pt; font-weight: bold;">회원 가입</label>
+					</div>
+					<div class="input-group mb-3">
+						<label class="btn btn-outline-dark disabled me-2" style="width: 150px">ID</label>
+						<input type="text" name="id" class="form-control"/>
+					</div>
+					<div class="input-group mb-3">
+						<label class="btn btn-outline-dark disabled me-2" style="width: 150px">Password</label>
+						<input type="password" name="password" class="form-control"/>
+					</div>
+					<div class="input-group mb-3">
+						<label class="btn btn-outline-dark disabled me-2" style="width: 150px">Name</label>
+						<input type="text" name="name" class="form-control"/>
+					</div>
+					<div class="input-group mb-3">
+						<label class="btn btn-outline-dark disabled me-2" style="width: 150px">Phone</label>
+						<input type="text" name="phone" class="form-control"/>
+					</div>
+					<div class="input-group mb-3">
+						<label class="btn btn-outline-dark disabled me-2" style="width: 150px">NickName</label>
+						<input type="text" name="nickname" class="form-control"/>
+					</div>
+					<div class="mt-3">
+						<a href="memberUpdateCheck?id=${memberVO.id}" class="form-control input-sm btn btn-primary mb-3">회원 가입</a>
+						<input type="reset" value="취소" class="form-control input-sm btn btn-outline-danger mb-3">
+						<a href="${pageContext.request.contextPath}/signin" class="form-control input-sm btn btn-outline-primary mb-3">돌아가기</a>
+					</div>
+				</div>
+			</div>
 		</form>
+	</div>
 <c:import url="/WEB-INF/views/footer.jsp"/>
 </body>

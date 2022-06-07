@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri = "http://java.sun.com/jsp/jstl/core" %>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,80 +9,50 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-
-
-
-<style>
-html, body {
-	height: 100%; /*높이 조절*/
-}
-
-body {
-	display: flex;
-	align-items: center;
-	padding-top: 40px;
-	padding-bottom: 40px;
-	background-color: #f5f5f5;
-}
-
-#mytable {
-	width: 1000px; /*가로 조절*/
-	border: 1px solid black;
-}
-
-#myDialog {
-	border: 1px solid black;
-}	
-
-</style>
-
 <title>나의 예약 목록</title>
-
 </head>
 <body>
-<div class="container">
 <c:import url="/WEB-INF/views/top.jsp"/>
-
-	<div class="container" id="mytable">
-		<h2 class="text-center">나의 예약 목록</h2>
-		<div class="row">
-			<table class="table table-striped">
-				<thead>
-					<tr>
-						<th class="col">이름</th>
-						<th class="col">음식점명</th>
-						<th class="col">방문인원</th>
-						<th class="col">방문일자</th>
-						<th class="col">방문시간</th>
-						<th class="col">방문자이름</th>
-						<th class="col">방문자전화번호</th>
-						<th class="col">등록시간</th>
-						<th class="col">삭제</th>
-						
-					</tr>
-				</thead>
-				<tbody>
-			 
-					<c:forEach var="reservation" items="${list}"> 
-						<tr>	
-								<td><a href="reservationSelect?reserveNo=${reservation.reserveNo}&storeName=${reservation.storeName}">${reservation.id}</a></td>
-								<td>${reservation.storeName}</td>
-								<td>${reservation.people}</td>
-								<td>${reservation.visitDay}</td>
-								<td>${reservation.visitTime}</td>
-								<td>${reservation.visitName}</td>
-								<td>${reservation.visitPhone}</td>
-								<td>${reservation.regDate}</td>
-								<td><button class="btn btn-primary btn-sm" onclick="myFunction(`${reservation.reserveNo}`,`${reservation.visitTime}`,`${reservation.visitDay}`,`${reservation.visitTime}`)">삭제</button></td>
-						</tr> 
-					</c:forEach>
-
-				</tbody>
-			</table>
+	<div class="container">	
+	<label class="col-sm-12 btn btn-outline-dark disabled mt-3" style="font-size: 20pt; font-weight: bold;">나의 예약 목록</label>
+		<div class="container" id="mytable">
+			<div class="row mt-3">
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th class="col">이름</th>
+							<th class="col">음식점명</th>
+							<th class="col">방문인원</th>
+							<th class="col">방문일자</th>
+							<th class="col">방문시간</th>
+							<th class="col">방문자이름</th>
+							<th class="col">방문자전화번호</th>
+							<th class="col">등록시간</th>
+							<th class="col">삭제</th>
+						</tr>
+					</thead>
+					<tbody>
+				 
+						<c:forEach var="reservation" items="${list}"> 
+							<tr>	
+									<td><a href="reservationSelect?reserveNo=${reservation.reserveNo}&storeName=${reservation.storeName}">${reservation.id}</a></td>
+									<td>${reservation.storeName}</td>
+									<td>${reservation.people}</td>
+									<td>${reservation.visitDay}</td>
+									<td>${reservation.visitTime}</td>
+									<td>${reservation.visitName}</td>
+									<td>${reservation.visitPhone}</td>
+									<td>${reservation.regDate}</td>
+									<td><button class="btn btn-primary btn-sm" onclick="myFunction(`${reservation.reserveNo}`,`${reservation.visitTime}`,`${reservation.visitDay}`,`${reservation.visitTime}`)">삭제</button></td>
+							</tr> 
+						</c:forEach>
+	
+					</tbody>
+				</table>
+			</div>
 		</div>
 	</div>
-	<c:import url="/WEB-INF/views/footer.jsp"/>
-	</div>
+<c:import url="/WEB-INF/views/footer.jsp"/>
 
 <dialog id="myDialog">
   <div id="a">

@@ -15,38 +15,40 @@
   <title>내정보</title>
 </head>
 <body>
-<div class="container">
 <c:import url="/WEB-INF/views/top.jsp"/>
-<form action="memberSelect" method="get">
-  <div class="container mt-3 p-3" id="form">
-  <div class="row">
-   <h2 class="text-center">내정보</h2>
-    <div class="input-group mb-3">
-      <span class="input-group-text col-3 text-center">아이디</span>
-       &nbsp; ${memberVO.id}
-    </div>
-    <div class="input-group mb-3">
-      <span class="input-group-text col-3 text-center">이름</span>
-    &nbsp; ${memberVO.name}
-    </div>
-    <div class="input-group mb-3">
-      <span class="input-group-text col-3 text-center">전화번호</span>
-   &nbsp; ${memberVO.phone}
-    </div>
-    <div class="input-group mb-3">
-      <span class="input-group-text col-3 text-center">별명</span>
-    &nbsp; ${memberVO.nickname}
-    </div>
-  </div>
-  <div class="row text-center">
-    <div class="container mt-3">
-      <a href="memberUpdateCheck?id=${memberVO.id}"   type="button" class="btn btn-primary">수정하기</a>
-      <a href="memberDeleteCheck?id=${memberVO.id}" type="button" class="btn btn-primary">회원탈퇴</a>
-       <a href="/RestaurantReservation" type="button" class="btn btn-primary">돌아가기</a>
-    </div>
-  </div>
-</div>
-</form>
+	<div class="container">
+		<form action="memberSelect" method="get">
+			<div class="container mt-3 p-3" id="form">
+				<div class="row">
+			 		<div class="mb-3">
+			 		 <label class="col-sm-12 btn btn-outline-dark disabled me-2" style="font-size: 20pt; font-weight: bold;">내 정보</label>
+					</div>
+			 		<div class="input-group mb-3">
+			 			<label class="btn btn-outline-dark disabled me-2" style="width: 150px">ID</label>
+						<span class="form-control">${memberVO.id}</span>
+					</div>
+			 		<div class="input-group mb-3">
+			 			<label class="btn btn-outline-dark disabled me-2" style="width: 150px">이름</label>
+						<span class="form-control">${memberVO.name}</span>
+					</div>
+			 		<div class="input-group mb-3">
+			 			<label class="btn btn-outline-dark disabled me-2" style="width: 150px">전화번호</label>
+						<span class="form-control">${memberVO.phone}</span>
+					</div>
+			 		<div class="input-group mb-3">
+			 			<label class="btn btn-outline-dark disabled me-2" style="width: 150px">별명</label>
+						<span class="form-control">${memberVO.nickname}</span>
+					</div>
+			   </div>
+			   <div class="row text-center">
+				   <div class="container mt-3">
+				      <a href="memberUpdateCheck?id=${memberVO.id}" class="form-control input-sm btn btn-primary mb-3">수정 하기</a>
+				      <a href="memberDeleteCheck?id=${memberVO.id}" class="form-control input-sm btn btn-outline-danger mb-3">회원 탈퇴</a>
+				       <a href="/RestaurantReservation" class="form-control input-sm btn btn-outline-primary mb-3">돌아가기</a>
+				   </div>
+			   </div>
+			</div>
+		</form>
+	</div>
 <c:import url="/WEB-INF/views/footer.jsp"/>
-</div>
 </body>

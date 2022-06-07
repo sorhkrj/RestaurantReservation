@@ -18,67 +18,60 @@
 		<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 			<div class="container-fluid">
 				<ul class="navbar-nav">
-						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown">
-								<c:choose>
-									<c:when test="${empty sessionScope.nickName}">
-										로그인 해주세요.
-									</c:when>
-									<c:otherwise>
-										${sessionScope.nickName}님 환영합니다.
-									</c:otherwise>
-								</c:choose>
-							</a>
-							<ul class="dropdown-menu">
-								<sec:authorize access="isAnonymous()">
-									<li class="nav-item">
-										<form:form action="${pageContext.request.contextPath}/signin" method="get">
-											<input type="submit" value="로그인" class="dropdown-item"/>
-										</form:form>
-									</li> <!-- 회원, 기업, 관리자 -->
-								</sec:authorize>
-								<sec:authorize access="isAuthenticated()">
-									<form:form action="${pageContext.request.contextPath}/logout" method="post">
-										<li class="nav-item">
-											<input type="submit" value="로그아웃" class="dropdown-item"/>
-										</li>
-									</form:form> <!-- 회원, 기업, 관리자 -->
-								</sec:authorize>
-							</ul>
+					<c:if test="${not empty sessionScope.nickName}">
+						<li>
+							<div class="nav-item">
+								<div class="nav-link active">${sessionScope.nickName}님</div>
+							</div>
 						</li>
+					</c:if>
+					<sec:authorize access="isAnonymous()">
+						<li class="nav-item">
+							<form:form action="${pageContext.request.contextPath}/signin" method="get">
+								<input type="submit" value="로그인" class="btn nav-link active"/>
+							</form:form>
+						</li> <!-- 회원, 기업, 관리자 -->
+					</sec:authorize>
+					<sec:authorize access="isAuthenticated()">
+						<form:form action="${pageContext.request.contextPath}/logout" method="post">
+							<li class="nav-item">
+								<input type="submit" value="로그아웃" class="btn nav-link active"/>
+							</li>
+						</form:form> <!-- 회원, 기업, 관리자 -->
+					</sec:authorize>
 					<sec:authorize access="isAuthenticated()">
 						<li class="nav-item">
-							<a href="${pageContext.request.contextPath}/member/memberSelect" class="nav-link active">내정보</a>
+							<a href="${pageContext.request.contextPath}/member/memberSelect" class="nav-link active">내 정보</a>
 						</li> <!-- 회원 -->
 					</sec:authorize>
 					<sec:authorize access="hasRole('ROLE_MEMBER')">
 						<li class="nav-item">
-							<a href="${pageContext.request.contextPath}/reservation/myReservationList" class="nav-link active">예약정보</a>
+							<a href="${pageContext.request.contextPath}/reservation/myReservationList" class="nav-link active">예약 정보</a>
 						</li> <!-- 회원 -->
 					</sec:authorize>
 					<sec:authorize access="hasRole('ROLE_MANAGER')">
 						<li class="nav-item">
-							<a href="${pageContext.request.contextPath}/store/myStore" class="nav-link active">지점관리</a>
+							<a href="${pageContext.request.contextPath}/store/myStore" class="nav-link active">지점 관리</a>
 						</li> <!-- 기업 -->
 					</sec:authorize>
 					<sec:authorize access="hasRole('ROLE_MANAGER')">
 						<li class="nav-item">
-							<a href="${pageContext.request.contextPath}/store/storeAnalysis" class="nav-link active">분석현황</a>
+							<a href="${pageContext.request.contextPath}/store/storeAnalysis" class="nav-link active">분석 현황</a>
 						</li> <!-- 기업 -->
 					</sec:authorize>
 					<sec:authorize access="permitAll()">
 						<li class="nav-item">
-							<a href="${pageContext.request.contextPath}/serviceBoard/serviceBoardMain" class="nav-link active">고객센터</a>
+							<a href="${pageContext.request.contextPath}/serviceBoard/serviceBoardMain" class="nav-link active">고객 센터</a>
 						</li> <!-- 회원, 기업, 관리자 -->
 					</sec:authorize>
 					<sec:authorize access="hasRole('ROLE_ADMIN')">
 						<li class="nav-item">
-							<a href="${pageContext.request.contextPath}/admin/searchMember" class="nav-link active">전체회원관리</a>
+							<a href="${pageContext.request.contextPath}/admin/searchMember" class="nav-link active">전체 회원관리</a>
 						</li> <!-- 관리자 -->
 					</sec:authorize>
 					<sec:authorize access="hasRole('ROLE_ADMIN')">
 						<li class="nav-item">
-							<a href="${pageContext.request.contextPath}/admin/searchStore" class="nav-link active">전체지점관리</a>
+							<a href="${pageContext.request.contextPath}/admin/searchStore" class="nav-link active">전체 지점관리</a>
 						</li> <!-- 관리자 -->
 					</sec:authorize>
 				</ul>
@@ -88,7 +81,7 @@
 		<div class="mt-2 mb-2">
 		<form action="${pageContext.request.contextPath}/searchResult" method="get" class="d-flex">
 			<input type="text" name="search" placeholder="검색할 내용" class="form-control me-2"/>
-			<input type="submit" value="검색" class="btn btn-dark"/>
+			<input type="submit" value="검색" class="btn btn-outline-dark"/>
 		</form>
 		</div>
 	</div>

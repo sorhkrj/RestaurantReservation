@@ -12,16 +12,15 @@
 <title>회원검색</title>
 </head>
 <body>
-<div class="container">
 <c:import url="/WEB-INF/views/top.jsp"/>
-<h3>회원아이디: &nbsp;</h3>
-<form action="resultMember">
-	<input type="text" name="id" placeholder="회원아이디를 입력해주세요." >
-	<input type="submit" value="검색하기">
-	<h2 class="text-center">회원정보</h2>
-</form>
-
-<table class="table table-striped">
+	<div class="container">
+		<h3>회원아이디: &nbsp;</h3>
+		<form action="resultMember">
+			<input type="text" name="id" placeholder="회원아이디를 입력해주세요." >
+			<input type="submit" value="검색하기">
+			<h2 class="text-center">회원정보</h2>
+		</form>
+		<table class="table table-striped">
 			<c:choose>
 				<c:when test="${empty memberList}">
 					'${id}' 검색 결과를 찾을 수 없습니다.
@@ -40,8 +39,7 @@
 				</c:otherwise>
 			</c:choose>
 		</table>
-
+	</div>
 <c:import url="/WEB-INF/views/footer.jsp"/>
-</div>
 </body>
 </html>

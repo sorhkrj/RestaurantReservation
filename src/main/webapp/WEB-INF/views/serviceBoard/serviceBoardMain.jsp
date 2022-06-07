@@ -14,8 +14,8 @@
 </style>
 </head>
 <body>
-<div class="container">
 <c:import url="/WEB-INF/views/top.jsp"/>
+<div class="container">
 	<table class="table table-striped">
 		<tr>
 			<th colspan="7">문의글 전체 목록 / 문의글 개수: ${total }</th>
@@ -72,7 +72,7 @@
 			<td><a href="serviceBoardMain?nowPage=${nowPage+10 }">다음</a></td>
 		</tr>
 	</table>
-<c:import url="/WEB-INF/views/footer.jsp"/>
 </div>
+<c:import url="/WEB-INF/views/footer.jsp"/>
 </body>
 </html>

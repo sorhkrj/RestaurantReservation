@@ -12,14 +12,14 @@
 <title>회원검색</title>
 </head>
 <body>
-<div class="container">
 <c:import url="/WEB-INF/views/top.jsp"/>
-<h3>회원아이디: &nbsp;</h3>
-	<form action="resultMember" method="get">
-		<input type="text" name="id" placeholder="검색할 아이디를 입력해주세요."/>
-		<input type="submit" value="검색"/>
-	</form>
+	<div class="container">
+	<h3>회원아이디: &nbsp;</h3>
+		<form action="resultMember" method="get">
+			<input type="text" name="id" placeholder="검색할 아이디를 입력해주세요."/>
+			<input type="submit" value="검색"/>
+		</form>
+	</div>
 <c:import url="/WEB-INF/views/footer.jsp"/>
-</div>
 </body>
 </html>

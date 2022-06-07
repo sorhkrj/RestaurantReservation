@@ -13,8 +13,8 @@
 </script>
 </head>
 <body>
+<c:import url="/WEB-INF/views/top.jsp" />
 <div class="container">
-	<c:import url="/WEB-INF/views/top.jsp" />
 	<table class="table table-striped">
 		<tr>
 			<td>순번</td>
@@ -43,7 +43,7 @@
 			</tr>
 		</c:forEach>
 	</table>
-	<c:import url="/WEB-INF/views/footer.jsp" />
 </div>
+<c:import url="/WEB-INF/views/footer.jsp" />
 </body>
 </html>
