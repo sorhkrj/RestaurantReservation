@@ -1,9 +1,11 @@
 package kr.co.rrs.service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.ibatis.annotations.Delete;
 
+import kr.co.rrs.vo.MenuVO;
 import kr.co.rrs.vo.ReviewCommentVO;
 import kr.co.rrs.vo.ReviewJoinMemberVO;
 import kr.co.rrs.vo.ReviewVO;
@@ -47,4 +49,7 @@ public interface ReviewService {
 	
 	// 리뷰 댓글 삭제
 	void deleteReviewComment(ReviewCommentVO reviewCommentVO);
+
+	// 메뉴 리스트 검색
+	List<MenuVO> selectMenu(int storeNo);
 }

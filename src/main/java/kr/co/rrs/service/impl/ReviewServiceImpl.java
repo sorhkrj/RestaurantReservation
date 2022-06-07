@@ -1,12 +1,14 @@
 package kr.co.rrs.service.impl;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.co.rrs.mapper.ReviewMapper;
 import kr.co.rrs.service.ReviewService;
+import kr.co.rrs.vo.MenuVO;
 import kr.co.rrs.vo.ReviewCommentVO;
 import kr.co.rrs.vo.ReviewJoinMemberVO;
 import kr.co.rrs.vo.ReviewVO;
@@ -88,6 +90,12 @@ public class ReviewServiceImpl implements ReviewService {
 		reviewMapper.deleteReviewComment(reviewCommentVO);
 	}
 	
+	//
+	
+	public List<MenuVO> selectMenu(int storeNo){
+		List<MenuVO> lmvo = reviewMapper.selectMenu(storeNo);
+		return lmvo;
+	}
 	
 
 	

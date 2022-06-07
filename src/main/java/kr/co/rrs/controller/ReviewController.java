@@ -4,6 +4,7 @@ import java.io.File;
 import java.security.Principal;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import kr.co.rrs.service.ReviewService;
+import kr.co.rrs.vo.MenuVO;
 import kr.co.rrs.vo.ReviewCommentVO;
 import kr.co.rrs.vo.ReviewJoinMemberVO;
 import kr.co.rrs.vo.ReviewLikeVO;
@@ -93,6 +95,10 @@ public class ReviewController {
 		}
 		// 리뷰 댓글 전체 검색 끝
 		
+		
+		// 메뉴 전체 검색
+		List<MenuVO> menuList= reviewService.selectMenu(storeVO.getStoreNo());
+		model.addAttribute("menuList", menuList);
 		model.addAttribute("storeVO", storeVO);
 		model.addAttribute("reviewLikeVO", reviewLikeVO);
 		
@@ -146,4 +152,5 @@ public class ReviewController {
 		
 		return "redirect:storeDetailReviewMain?storeNo=" + storeNo;
 	}
+	
 }

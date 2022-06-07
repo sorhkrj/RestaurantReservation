@@ -10,27 +10,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <script	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-
-<style>
-html, body {
-	height: 100%; /*높이 조절*/
-}
-
-body {
-	display: flex;
-	align-items: center;
-	padding-top: 40px;
-	padding-bottom: 40px;
-	background-color: #f5f5f5;
-}
-
-#form {
-	width: 600px; /*가로 조절*/
-	border: 1px solid black;
-}
-</style>
-
-
 <title>예약확인</title>
 </head>
 <body>

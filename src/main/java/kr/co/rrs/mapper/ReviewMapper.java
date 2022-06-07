@@ -1,12 +1,14 @@
 package kr.co.rrs.mapper;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
+import kr.co.rrs.vo.MenuVO;
 import kr.co.rrs.vo.ReviewCommentVO;
 import kr.co.rrs.vo.ReviewJoinMemberVO;
 import kr.co.rrs.vo.ReviewVO;
@@ -62,4 +64,8 @@ public interface ReviewMapper {
 	@Delete("delete from reviewComment where reviewCommentNo = #{reviewCommentNo}")
 	void deleteReviewComment(ReviewCommentVO reviewCommentVO);
 
+	// 메뉴 리스트 검색
+	@Select("select * from menu where storeno = #{storeNo}")
+	List<MenuVO> selectMenu(int storeNo);
+		
 }
