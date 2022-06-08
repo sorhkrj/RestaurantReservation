@@ -34,7 +34,6 @@ public class MemberServiceImpl implements MemberService {
 	public Boolean delete(String id, String password) {
 		String originalPw = memberMapper.selectOne(id).getPassword();
 		if(encoder.matches(password, originalPw)) {
-			memberMapper.deleteEnterprise(id);
 			memberMapper.delete(id);
 			return true;	
 		}else{

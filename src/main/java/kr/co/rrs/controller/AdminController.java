@@ -1,5 +1,10 @@
 package kr.co.rrs.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import kr.co.rrs.service.AdminService;
+import kr.co.rrs.vo.MemberVO;
 
 @Controller
 @RequestMapping("/admin")
@@ -46,7 +52,9 @@ public class AdminController {
 
 	@GetMapping("/memberAdmin")
 	public String getMemberInfo(String id, Model model) {
-		model.addAttribute("memberVO", service.getMember(id));
+		MemberVO mvo = service.getMember(id);
+		System.out.println(mvo.getEnabled());
+		model.addAttribute("memberVO", mvo);
 		return "admin/memberAdmin";
 	}
 
@@ -56,10 +64,33 @@ public class AdminController {
 		return "admin/storeAdmin";
 	}
 	
-	@PostMapping("/memberDeleteAdmin")
-	public String memberDeleteAdmin(String id) {
-		service.memberDeleteAdmin(id);
-		return "/RestaurantReservation";
+	@PostMapping("/memberRecoveryAdmin")
+	public String memberRecoveryAdmin(HttpServletResponse response, String id) {
+		
+		if(service.memberRecoveryAdmin(id)) {
+				response.setContentType("text/html; charset=UTF-8");
+				PrintWriter out = null;
+				try {
+					out = response.getWriter();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				out.println("<script>alert('계정이 복구되었습니다.'); </script>");
+				out.flush();
+				return "/index";
+		}else{
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = null;
+			try {
+				out = response.getWriter();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			out.println("<script>alert('복구가 실패하였습니다.'); </script>");
+			out.flush();
+			return "";
+		}
+
 	}
 
 }

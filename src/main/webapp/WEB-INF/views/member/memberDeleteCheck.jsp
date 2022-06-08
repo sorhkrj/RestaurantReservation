@@ -30,15 +30,11 @@
 			<div class="row">
 				<h2 class="text-center">회원탈퇴</h2>
 				<div class="input-group mb-3">
-
 					<div class="input-group mb-3">
 						<span class="input-group-text col-3 text-center">비밀번호</span> <input
 							type="password" class="form-control" name="password"><input
 							type="hidden" class="form-control" name="id" value="${id}">
 					</div>
-
-
-
 				</div>
 				<div class="row text-center">
 					<div class="container mt-3">

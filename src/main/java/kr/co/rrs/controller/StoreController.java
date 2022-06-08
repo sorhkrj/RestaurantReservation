@@ -2,6 +2,7 @@ package kr.co.rrs.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Field;
 import java.security.Principal;
 import java.util.UUID;
 
@@ -41,8 +42,14 @@ public class StoreController {
 	}
 
 	@RequestMapping("/storeUpdatePro")
-	public String storeUpdatePro(@ModelAttribute StoreVO storeVO, @RequestPart MultipartFile file, HttpServletRequest request) throws IllegalStateException, IOException {
+	public String storeUpdatePro(@ModelAttribute StoreVO storeVO, @RequestPart MultipartFile file,	HttpServletRequest request) throws IllegalStateException, IOException {
 		String path = "resources/images"; // 파일 저장하고 싶은 위치
+		String originalPath = request.getServletContext().getRealPath(path)+"/"+ storeService.select(storeVO.getId()).getPhoto();
+		File originalFile = new File(originalPath);
+		if (originalFile.exists()) {
+			originalFile.delete();
+		}
+		
 		String savePath = request.getServletContext().getRealPath(path); // 실제 파일 저장 경로
 		String uuid = UUID.randomUUID().toString() + file.getOriginalFilename();
 		File converFile = new File(savePath, uuid);

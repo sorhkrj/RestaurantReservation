@@ -39,7 +39,12 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-	public void memberDeleteAdmin(String id) {
-		mapper.memberDeleteAdmin(id);
+	public boolean memberRecoveryAdmin(String id) {
+		if (mapper.memberRecoveryAdmin(id) == 1) {
+			return true;
+		}else {
+			return false;
+		}
+		
 	}
 }
