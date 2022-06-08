@@ -35,4 +35,9 @@ public interface MemberMapper {
 	// 회원수정
 	@Update("UPdate member set name=#{name}, phone=#{phone}, password=#{password},nickname=#{nickname} where id=#{id}")
 	void Update(MemberVO memberVO);
+	
+	/* 박재호 */
+	// 아이디 출력
+	@Select("SELECT ID FROM MEMBER WHERE ID=#{id}")
+	String selectId(String id);
 }

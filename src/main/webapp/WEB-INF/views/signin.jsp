@@ -12,33 +12,65 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script> <!-- JS CDN -->
+<script>
+	function loginCheck() {
+  		$.ajax({
+			url : "loginCheck",
+			type : "get",
+			contentType: 'application/json',
+			datatype : "json",
+			data : {
+				"id" : $("#id").val(),
+				"password" : $("#password").val()
+			},
+		}).done(function(result) {
+			var alert = document.getElementById("alert");
+			if (!result) {
+				alert.style.display ="block";
+			} else {
+				login();
+			}
+		});
+	}
+	
+	function login() {
+		var form = document.getElementById("login");
+		form.submit();
+	}
+</script>
 <title>signin</title>
 </head>
 <body>
 <c:import url="/WEB-INF/views/top.jsp"/>
 <div class="container">
-	<form action="login" method="post">
-		<div class="mt-3">
-			<div class="row">
-				<div class="mb-3">
-					<label class="col-sm-12 btn btn-outline-dark disabled me-2" style="font-size: 20pt; font-weight: bold;">로그인</label>
+	<div class="mt-3">
+		<div class="row">
+			<div class="mb-3">
+				<label class="col-sm-12 btn btn-outline-dark disabled me-2" style="font-size: 20pt; font-weight: bold;">로그인</label>
+			</div>
+			<div id="alert" class="container" style="display: none">
+				<div class="alert alert-warning">
+					<strong>로그인 실패</strong> 아이디 또는 비밀번호를 잘못 입력했습니다.
 				</div>
+			</div>
+			<form action="login" method="post" id="login">
 		 		<div class="input-group mb-3">
 		 			<label class="btn btn-outline-dark disabled me-2" style="width: 150px">ID</label>
-					<input type="text" name="id" placeholder="아이디 입력" autofocus required class="form-control">
+					<input type="text" id="id" name="id" placeholder="아이디 입력" autofocus required class="form-control">
 				</div>
 		 		<div class="input-group mb-3">
 		 			<label class="btn btn-outline-dark disabled me-2" style="width: 150px">Password</label>
-					<input type="password" name="password" placeholder="패스워드 입력" required class="form-control">
+					<input type="password" id="password" name="password" placeholder="패스워드 입력" required class="form-control">
 				</div>
 				<div class="mt-3">
-					<input type="submit" value="로그인" class="form-control input-sm btn btn-primary mb-3"/>
+					<button type="button" onclick="loginCheck()" class="form-control input-sm btn btn-primary mb-3">로그인</button>
 					<a href="member/signup/memberInsert" class="form-control input-sm btn btn-outline-primary mb-3">일반 회원가입</a>
 					<a href="member/signup/memberInsertEnterprise" class="form-control input-sm btn btn-outline-primary mb-3">기업 회원가입</a>
 				</div>
-			</div>
+			</form>
 		</div>
-	</form>
+	</div>
 </div>
 <c:import url="/WEB-INF/views/footer.jsp"/>
 </body>

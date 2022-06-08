@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.co.rrs.service.HomeService;
 import kr.co.rrs.vo.ReviewVO;
@@ -71,5 +73,12 @@ public class HomeController {
 	@GetMapping("/errorForbidden")
 	public String errorForbidden() {
 		return "error/forbidden";
+	}
+	
+	@GetMapping("/loginCheck")
+	@ResponseBody
+	public Boolean loginCheck(String id, String password) {
+		Boolean result = service.loginCheck(id, password);
+		return result;
 	}
 }

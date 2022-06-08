@@ -54,6 +54,12 @@ public class MemberServiceImpl implements MemberService {
 		memberMapper.insert2(enterpriseVO);
 		memberMapper.insertEnterprise(enterpriseVO);
 	}
-
-
+	/* 박재호 */
+	// 중복 아이디 확인
+	@Override
+	public Boolean memberIdCheck(String id) {
+		if (id.isEmpty()) return false;
+		Boolean result = (memberMapper.selectId(id) == null) ? true : false;
+		return result;
+	}
 }
