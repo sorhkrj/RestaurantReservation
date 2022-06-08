@@ -14,10 +14,18 @@
 <body>
 <c:import url="/WEB-INF/views/top.jsp"/>
 	<div class="container">
-	<h3>음식점 이름&nbsp;</h3>
 		<form action="resultStore" method="get">
-			<input type="text" name="storeName" placeholder="검색할 음식점을 입력해주세요."/>
-			<input type="submit" value="검색"/>
+			<div class="mt-3">
+				<div class="row">
+					<div class="mb-3">
+						<label class="col-sm-12 btn btn-outline-dark disabled me-2" style="font-size: 20pt; font-weight: bold;">음식점 이름</label>
+					</div>
+					<div class="input-group mb-3">
+						<input type="text" name="storeName" placeholder="검색할 음식점을 입력해주세요." class="form-control me-2"/>
+						<input type="submit" value="검색" class="btn btn-outline-dark"/>
+					</div>
+				</div>
+			</div>
 		</form>
 	</div>	
 <c:import url="/WEB-INF/views/footer.jsp"/>

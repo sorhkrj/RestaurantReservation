@@ -13,40 +13,44 @@
 </head>
 <body>
 	<c:import url="/WEB-INF/views/top.jsp"/>
-	<div class="container">	
-	<label class="col-sm-12 btn btn-outline-dark disabled mt-3" style="font-size: 20pt; font-weight: bold;">나의 예약 목록</label>
-		<div class="container" id="mytable">
-			<div class="row mt-3">
-				<table class="table">
-					<thead>
-						<tr>
-							<th class="col">음식점명</th>
-							<th class="col">방문인원</th>
-							<th class="col">방문일자</th>
-							<th class="col">방문시간</th>
-							<th class="col">방문자이름</th>
-							<th class="col">방문자전화번호</th>
-							<th class="col">등록시간</th>
-							<th class="col">삭제</th>
-						</tr>
-					</thead>
-					<tbody>
-				 
-						<c:forEach var="reservation" items="${list}"> 
-							<tr>	
-									<td><a href="reservationSelect?reserveNo=${reservation.reserveNo}&storeName=${reservation.storeName}">${reservation.storeName}</a></td>
-									<td>${reservation.people}</td>
-									<td>${reservation.visitDay}</td>
-									<td>${reservation.visitTime}</td>
-									<td>${reservation.visitName}</td>
-									<td>${reservation.visitPhone}</td>
-									<td>${reservation.regDate}</td>
-									<td><button class="btn btn-outline-dark" onclick="myFunction(`${reservation.reserveNo}`,`${reservation.visitTime}`,`${reservation.visitDay}`,`${reservation.visitTime}`)">삭제</button></td>
-							</tr> 
-						</c:forEach>
-	
-					</tbody>
-				</table>
+	<div class="container">
+		<div class="mt-3">
+			<div class="mb-3">
+				<label class="col-sm-12 btn btn-outline-dark disabled me-2" style="font-size: 20pt; font-weight: bold;">나의 예약 목록</label>
+			</div>
+			<div class="container" id="mytable">
+				<div class="row">
+					<table class="table">
+						<thead>
+							<tr>
+								<th class="col">음식점명</th>
+								<th class="col">방문인원</th>
+								<th class="col">방문일자</th>
+								<th class="col">방문시간</th>
+								<th class="col">방문자이름</th>
+								<th class="col">방문자전화번호</th>
+								<th class="col">등록시간</th>
+								<th class="col">삭제</th>
+							</tr>
+						</thead>
+						<tbody>
+					 
+							<c:forEach var="reservation" items="${list}"> 
+								<tr>	
+										<td><a href="reservationSelect?reserveNo=${reservation.reserveNo}&storeName=${reservation.storeName}">${reservation.storeName}</a></td>
+										<td>${reservation.people}</td>
+										<td>${reservation.visitDay}</td>
+										<td>${reservation.visitTime}</td>
+										<td>${reservation.visitName}</td>
+										<td>${reservation.visitPhone}</td>
+										<td>${reservation.regDate}</td>
+										<td><button class="btn btn-outline-dark" onclick="myFunction(`${reservation.reserveNo}`,`${reservation.visitTime}`,`${reservation.visitDay}`,`${reservation.visitTime}`)">삭제</button></td>
+								</tr> 
+							</c:forEach>
+		
+						</tbody>
+					</table>
+				</div>
 			</div>
 		</div>
 	</div>

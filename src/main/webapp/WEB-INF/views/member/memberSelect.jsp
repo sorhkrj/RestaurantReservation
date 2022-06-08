@@ -17,8 +17,8 @@
 	<form action="memberSelect" method="get">
 		<div class="mt-3">
 			<div class="row">
-		 		<div class="mb-3">
-		 		 <label class="col-sm-12 btn btn-outline-dark disabled me-2" style="font-size: 20pt; font-weight: bold;">내 정보</label>
+				<div class="mb-3">
+					<label class="col-sm-12 btn btn-outline-dark disabled me-2" style="font-size: 20pt; font-weight: bold;">내 정보</label>
 				</div>
 		 		<div class="input-group mb-3">
 		 			<label class="btn btn-outline-dark disabled me-2" style="width: 150px">ID</label>
