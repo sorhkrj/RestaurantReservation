@@ -24,9 +24,13 @@ import kr.co.rrs.vo.MenuVO;
 @Controller
 @RequestMapping("/store")
 public class MenuController {
+	private final MenuService menuService;
+	
 	@Autowired
-	MenuService menuService;
-
+	public MenuController(MenuService menuService) {
+		this.menuService = menuService;
+	}
+	
 	@RequestMapping("/menuDetail")
 	public String menu(Principal principal, Model model) {
 		List<MenuVO> mvo= menuService.selectMenu(principal.getName());

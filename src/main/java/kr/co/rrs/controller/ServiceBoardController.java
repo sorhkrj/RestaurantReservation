@@ -29,6 +29,7 @@ import kr.co.rrs.vo.ServiceBoardVO;
 @Controller
 @RequestMapping("/serviceBoard")
 public class ServiceBoardController {
+	
 	@Autowired
 	ServiceBoardService serviceBoardService;
 	@Autowired

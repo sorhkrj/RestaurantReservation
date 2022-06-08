@@ -26,8 +26,13 @@ import kr.co.rrs.vo.StoreVO;
 @SessionAttributes("storeVO")
 public class StoreController {
 
+	private final  StoreService storeService;
+
 	@Autowired
-	private StoreService storeService;
+	public StoreController(StoreService storeService) {
+		super();
+		this.storeService = storeService;
+	}
 
 	@GetMapping("/storeUpdate")
 	public String storeUpdate(StoreVO storeVO, Model model, Principal principal) {

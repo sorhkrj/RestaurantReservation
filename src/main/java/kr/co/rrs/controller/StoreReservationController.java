@@ -12,8 +12,13 @@ import kr.co.rrs.service.StoreReservationService;
 @RequestMapping("/store")
 public class StoreReservationController {
 	
+	private final  StoreReservationService reservationService;
+		
 	@Autowired
-	private StoreReservationService reservationService;
+	public StoreReservationController(StoreReservationService reservationService) {
+		super();
+		this.reservationService = reservationService;
+	}
 
 	@GetMapping("/storeReservation")
 	public String storeReservation(int storeNo, Model model) {

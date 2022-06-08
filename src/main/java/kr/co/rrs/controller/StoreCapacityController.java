@@ -18,8 +18,12 @@ import kr.co.rrs.vo.ReservePossibleVO;
 @SessionAttributes("reservePossibleVO")
 public class StoreCapacityController {
 
+	private final StoreCapacityService storeCapacityService;
+
 	@Autowired
-	private StoreCapacityService storeCapacityService;
+	public StoreCapacityController(StoreCapacityService storeCapacityService) {
+		this.storeCapacityService = storeCapacityService;
+	}
 
 	@ModelAttribute("/reservePossibleVO")
 	public ReservePossibleVO initVO(ReservePossibleVO reservePossibleVO) {

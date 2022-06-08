@@ -19,9 +19,13 @@ import kr.co.rrs.vo.MemberVO;
 @RequestMapping("/admin")
 public class AdminController {
 
-	@Autowired // Singleton
-	AdminService service; // Service
+	private final AdminService service; // Service
 
+	@Autowired
+	public AdminController(AdminService service) {
+		this.service = service;
+	}
+	
 	// 회원검색결과
 	@GetMapping("/resultMember")
 	public String resultMember(String id, Model model) {
@@ -77,7 +81,7 @@ public class AdminController {
 				}
 				out.println("<script>alert('계정이 복구되었습니다.'); </script>");
 				out.flush();
-				return "/index";
+				return "forward:/";
 		}else{
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = null;

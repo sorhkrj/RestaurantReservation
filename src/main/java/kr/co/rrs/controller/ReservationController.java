@@ -23,9 +23,14 @@ import kr.co.rrs.vo.StoreVO;
 @RequestMapping("/reservation")
 public class ReservationController {
 	
-	@Autowired
-	ReservationService service;
+	private final ReservationService service;
 	
+	@Autowired
+	public ReservationController(ReservationService service) {
+		super();
+		this.service = service;
+	}
+
 	/////////////////////////insert//////////////////////////////
 	
 	@GetMapping("/reservationInsert")

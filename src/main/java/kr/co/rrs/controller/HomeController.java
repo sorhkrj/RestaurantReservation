@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.co.rrs.service.HomeService;
@@ -34,10 +35,14 @@ public class HomeController {
 	// 기존의 정보를 가지고 다음 화면을 띄우고 싶을 때: return "forward:/"
 	// }
 
-	@Autowired // Singleton
 	HomeService service; // Service
 
-	@GetMapping("/")
+	@Autowired // Singleton
+	public HomeController(HomeService service) {
+		this.service = service;
+	}
+
+	@RequestMapping("/")
 	public String home(HttpSession session, Principal principal, Model model) {
 		if (principal != null) {
 			String nickName = service.selectNickname(principal.getName());

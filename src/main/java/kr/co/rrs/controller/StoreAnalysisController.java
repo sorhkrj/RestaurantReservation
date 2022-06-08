@@ -14,8 +14,12 @@ import kr.co.rrs.service.StoreAnalysisService;
 @RequestMapping("/store")
 public class StoreAnalysisController {
 
+	private final  StoreAnalysisService storeAnalysisService;
+
 	@Autowired
-	private StoreAnalysisService storeAnalysisService;
+	public StoreAnalysisController(StoreAnalysisService storeAnalysisService) {
+		this.storeAnalysisService = storeAnalysisService;
+	}
 
 	@RequestMapping("/storeAnalysis")
 	public String storeAanlysis() {

@@ -11,9 +11,13 @@ import kr.co.rrs.vo.ReplyVO;
 @Controller
 @RequestMapping("/serviceBoard")
 public class ReplyController {
-	@Autowired
-	ReplyService replyService;
+	private final ReplyService replyService;
 	
+	@Autowired
+	public ReplyController(ReplyService replyService) {
+		this.replyService = replyService;
+	}
+
 	@PostMapping("/replyInsertPro")
 	public String replyInsertPro(ReplyVO replyVO) {
 		replyService.insertReply(replyVO);

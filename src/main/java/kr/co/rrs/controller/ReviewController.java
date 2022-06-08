@@ -28,9 +28,14 @@ import kr.co.rrs.vo.StoreVO;
 @Controller
 @RequestMapping("/review")
 public class ReviewController {
-	@Autowired
-	ReviewService reviewService;
 	
+	private final ReviewService reviewService;
+	
+	@Autowired
+	public ReviewController(ReviewService reviewService) {
+		this.reviewService = reviewService;
+	}
+
 	@RequestMapping("/storeDetailReviewMain")
 	public String storeDetailReviewMain(StoreVO storeVO, ReviewLikeVO reviewLikeVO, ReviewCommentVO reviewCommentVO, Principal principal, Model model, HttpSession session) {
 		storeVO = reviewService.selectOne(storeVO.getStoreNo()); // 지점 정보 검색
