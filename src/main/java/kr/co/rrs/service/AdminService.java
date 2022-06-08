@@ -9,4 +9,7 @@ public interface AdminService {
 	
 	List<MemberVO> searchMember(String id);
 	List<StoreVO> searchStore(String search);
+	StoreVO getStore(int storeNo);
+	MemberVO getMember(String id);
+	void memberDeleteAdmin(String id);
 }

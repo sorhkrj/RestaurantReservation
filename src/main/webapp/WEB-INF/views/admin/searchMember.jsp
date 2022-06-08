@@ -14,7 +14,7 @@
 <body>
 <c:import url="/WEB-INF/views/top.jsp"/>
 	<div class="container">
-	<h3>회원아이디: &nbsp;</h3>
+	<h3>회원아이디 &nbsp;</h3>
 		<form action="resultMember" method="get">
 			<input type="text" name="id" placeholder="검색할 아이디를 입력해주세요."/>
 			<input type="submit" value="검색"/>

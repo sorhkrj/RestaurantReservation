@@ -14,7 +14,7 @@
 <body>
 <c:import url="/WEB-INF/views/top.jsp"/>
 	<div class="container">
-	<h3>음식점 이름 : &nbsp;</h3>
+	<h3>음식점 이름&nbsp;</h3>
 		<form action="resultStore" method="get">
 			<input type="text" name="storeName" placeholder="검색할 음식점을 입력해주세요."/>
 			<input type="submit" value="검색"/>

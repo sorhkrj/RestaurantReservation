@@ -27,4 +27,19 @@ public class AdminServiceImpl implements AdminService {
 		List<StoreVO> StoreList = mapper.searchStore(search);
 		return StoreList;
 	}
+
+	@Override
+	public StoreVO getStore(int storeNo) {
+		return mapper.getStore(storeNo);
+	}
+
+	@Override
+	public MemberVO getMember(String id) {
+		return mapper.getMember(id);
+	}
+
+	@Override
+	public void memberDeleteAdmin(String id) {
+		mapper.memberDeleteAdmin(id);
+	}
 }

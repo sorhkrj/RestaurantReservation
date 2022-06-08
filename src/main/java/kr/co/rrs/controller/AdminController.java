@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import kr.co.rrs.service.AdminService;
@@ -12,10 +13,8 @@ import kr.co.rrs.service.AdminService;
 @RequestMapping("/admin")
 public class AdminController {
 
-	
 	@Autowired // Singleton
 	AdminService service; // Service
-
 
 	// 회원검색결과
 	@GetMapping("/resultMember")
@@ -44,4 +43,23 @@ public class AdminController {
 	public String searchStore() {
 		return "admin/searchStore";
 	}
+
+	@GetMapping("/memberAdmin")
+	public String getMemberInfo(String id, Model model) {
+		model.addAttribute("memberVO", service.getMember(id));
+		return "admin/memberAdmin";
+	}
+
+	@GetMapping("/storeAdmin")
+	public String getStoreInfo(int storeNo, Model model) {
+		model.addAttribute("storeVO", service.getStore(storeNo));
+		return "admin/storeAdmin";
+	}
+	
+	@PostMapping("/memberDeleteAdmin")
+	public String memberDeleteAdmin(String id) {
+		service.memberDeleteAdmin(id);
+		return "/RestaurantReservation";
+	}
+
 }

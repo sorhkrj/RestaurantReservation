@@ -12,8 +12,8 @@
 <title>음식점검색</title>
 </head>
 <body>
-<c:import url="/WEB-INF/views/top.jsp"/>
-	<div class="container">
+<div class="container">
+	<c:import url="/WEB-INF/views/top.jsp"/>
 		<h3>음식점: &nbsp;</h3>
 		<form action="resultStore" method="get">
 			<input type="text" name="storeName" placeholder="음식점을 입력해주세요." >
@@ -32,14 +32,14 @@
 								${store.introduce}
 							</td>
 							<td align="right">
-								<a href="" type="button"class="w3-button w3-white w3-border w3-border-blue w3-round-large">지점보기</a>
+								<a href="storeAdmin?storeNo=${store.storeNo }" type="button"class="w3-button w3-white w3-border w3-border-blue w3-round-large">지점보기</a>
 							</td>
 						</tr>
 					</c:forEach>
 				</c:otherwise>
 			</c:choose>
 		</table>
-	</div>
-<c:import url="/WEB-INF/views/footer.jsp"/>
+	<c:import url="/WEB-INF/views/footer.jsp"/>
+</div>
 </body>
 </html>

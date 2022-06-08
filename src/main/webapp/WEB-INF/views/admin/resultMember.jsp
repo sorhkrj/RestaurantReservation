@@ -12,8 +12,8 @@
 <title>회원검색</title>
 </head>
 <body>
-<c:import url="/WEB-INF/views/top.jsp"/>
-	<div class="container">
+<div class="container">
+	<c:import url="/WEB-INF/views/top.jsp"/>
 		<h3>회원아이디: &nbsp;</h3>
 		<form action="resultMember">
 			<input type="text" name="id" placeholder="회원아이디를 입력해주세요." >
@@ -32,14 +32,17 @@
 								${member.id}<br>
 							</td>
 							<td align="right">
-								<a href="" type="button" class="w3-button w3-white w3-border w3-border-blue w3-round-large">이동</a>
+								<form action = "memberAdmin" method ="get">
+									<input type="hidden" name = "id" value = "${member.id}">
+									<input class="btn btn-outline-dark" type="submit" value ="이동" >
+								</form>
 							</td>
 						</tr>
 					</c:forEach>
 				</c:otherwise>
 			</c:choose>
 		</table>
-	</div>
-<c:import url="/WEB-INF/views/footer.jsp"/>
+	<c:import url="/WEB-INF/views/footer.jsp"/>
+</div>
 </body>
 </html>
