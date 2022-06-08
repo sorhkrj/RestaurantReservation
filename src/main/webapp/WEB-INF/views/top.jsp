@@ -12,46 +12,34 @@
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 	<script>
-	function toggleAction() {
-		let expand = navbarAction();
-		console.log("check1: " + expand);
-		setTimeout(() => {
-			collapseAction(expand);
-		}, 1000);
-	}
-	
-	function navbarAction() {
+	function collapseAction() { // bootstrap 사용 시 navbar-collapse collapsing 후 navbar-collapse collapse show만 반환하여 작동을 못함
 		let toggler = document.getElementById("custom_toggler");
 		let collapse = document.getElementById("custom_collapse");
+		let expand;
 		
-		collapse.classList.value = "navbar-collapse collapsing";
+		// collapse.classList.value = "navbar-collapse collapsing"; // 부드러운 동작을 할 시 사용할 내용
 		
 		if (toggler.classList.value == "navbar-toggler collapsed") {
 			toggler.classList.value = "navbar-toggler";
-			toggler.ariaExpanded = true;
-			collapse.style="height: 202px";
+			toggler.ariaExpanded = true; // 적용은 되지만 무반응 버그
+			// collapse.style="height: 높이"; // 부드러운 동작을 할 시 사용할 내용
+			expand = true;
 		} else if(toggler.classList.value == "navbar-toggler") {
 			toggler.classList.value = "navbar-toggler collapsed";
-			toggler.ariaExpanded = false;
-			collapse.style="";
+			toggler.ariaExpanded = false; // 적용은 되지만 무반응 버그
+			// collapse.style=""; // 부드러운 동작을 할 시 사용할 내용
+			expand = false;
 		}
 		
-		return toggler.ariaExpanded;
-	}
-	
-	function collapseAction(expand) {
-		console.log("check2: " + expand);
-		let collapse = document.getElementById("custom_collapse");
-		// collapse.classList.value = (expand) ? "navbar-collapse collapse show" : "navbar-collapse collapse";
-		if (expand === "true") { // toggler.ariaExpanded == true : not working
-			console.log("check3");
+		/* 비동기 작업을 하면 collapse.style="height: 높이"를 주어서 부드러운 동작이 가능 */
+		
+		if (expand == true) { // (toggler.ariaExpanded == true) not working
 			collapse.classList.value = "navbar-collapse collapse show";
-		} else { // toggler.ariaExpanded == false : not working
-			console.log("check4");
+		} else if (expand == false) { // (toggler.ariaExpanded == false) not working
 			collapse.classList.value = "navbar-collapse collapse";
 		}
-		collapse.style="";
-	}
+		// collapse.style=""; // 부드러운 동작을 할 시 사용할 내용
+	};
 	</script>
 	<title>Top Border</title>
 </head>
@@ -59,7 +47,7 @@
 	<div class="container">
 		<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 			<div class="container-fluid">
-				<button id="custom_toggler" onclick="toggleAction()" class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" style="cursor:pointer">
+				<button id="custom_toggler" onclick="collapseAction()" class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" style="cursor:pointer">
 					<span class="navbar-toggler-icon"></span>
 				</button>
 				<div class="navbar-collapse collapse" id="custom_collapse">
