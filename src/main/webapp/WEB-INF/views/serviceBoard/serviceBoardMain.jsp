@@ -7,28 +7,23 @@
 <meta charset="UTF-8">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-<style type="text/css">
-	table{
-		border: 1px solid black;
-	}
-</style>
 </head>
 <body>
 <c:import url="/WEB-INF/views/top.jsp"/>
 <div class="container">
-	<table class="table table-striped">
-		<tr>
-			<th colspan="7">문의글 전체 목록 / 문의글 개수: ${total }</th>
-		</tr>
-		<tr>
-			<th>번호</th>
-			<th>작성자</th>
-			<th>제목</th>
-			<th>내용</th>
-			<th>조회수</th>
-			<th>작성일</th>
-			<th>답변여부</th>
-		</tr>
+	<label class="col-sm-12 btn btn-outline-dark disabled mt-3" style="font-size: 20pt; font-weight: bold;">문의글 전체 목록 / 문의글 개수: ${total }</label>
+	<table class="table mt-3">
+			<thead>
+			<tr>
+				<th>번호</th>
+				<th>작성자</th>
+				<th>제목</th>
+				<th>내용</th>
+				<th>조회수</th>
+				<th>작성일</th>
+				<th>답변여부</th>
+			</tr>
+		</thead>
 		<c:if test="${selectList.size() != 0}">
 			<c:forEach var="i" begin="0" end="${selectList.size()-1 }">
 				<tr>
@@ -49,18 +44,17 @@
 				</tr>			
 			</c:forEach>
 		</c:if>
-		<tr>
-			<td colspan="6">
-				<input type="button" value="문의글 쓰기" onclick="location.href='serviceBoardInsert'"/>
-			</td>
-		</tr>
 	</table>
-	<hr>
-	<table class="table table-striped">
+	<div class="row col text-center">
+	   <div class="container mt-3">
+	   	  <input type="button" value="문의글 쓰기" onclick="location.href='serviceBoardInsert'" class="form-control input-sm btn btn-primary mb-3"/>
+	   </div>
+	</div>
+	<table class="table" style="width: 100%; height: 40px;">
 		<tr>
-			<td><a href="serviceBoardMain?nowPage=${nowPage-10 }">이전</a></td>
+			<td width="50px" align="center"><a class="btn btn-outline-dark" href="serviceBoardMain?nowPage=${nowPage-10 }">이전</a></td>
 				<c:forEach var="i" begin="${startPage }" end="${endPage }">
-					<td width="50" align="center">
+					<td width="50px" align="center">
 						<c:if test="${nowPage == i }">
 							<a href="serviceBoardMain?nowPage=${i }" style="color: red;">${i }</a>
 						</c:if>
@@ -69,7 +63,7 @@
 						</c:if>
 					</td>
 				</c:forEach>
-			<td><a href="serviceBoardMain?nowPage=${nowPage+10 }">다음</a></td>
+			<td width="50px" align="center"><a class="btn btn-outline-dark" href="serviceBoardMain?nowPage=${nowPage+10 }">다음</a></td>
 		</tr>
 	</table>
 </div>

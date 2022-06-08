@@ -19,30 +19,30 @@
 <c:import url="/WEB-INF/views/top.jsp"/>
 <div class="container">
 	<form:form action="serviceBoardInsertPro" modelAttribute="serviceBoardVO">
-		<table class="table table-striped">
-			<tr>
-				<th colspan="2">문의글 입력</th>
-			</tr>
-			<tr>
-				<th>문의글 작성자</th><td>${sessionScope.nickName }</td>
-			</tr>
-			<tr>
-				<th>문의글 제목</th><td><form:input path="title" type="text" required="required" autofocus="autofocus"/></td>
-			</tr>
-			<tr>
-				<th colspan="2">문의글 내용</th>
-			</tr>
-			<tr>
-				<td colspan="2"><form:textarea path="content" cols="32" rows="5" required="required"/></td>
-			</tr>
-			<tr>
-				<td colspan="2">
-					<form:button>문의글 작성 완료</form:button>
-					<input type="reset" value="취소"/>
-					<input type="button" value="돌아가기" onclick="location.href='serviceBoardMain'"/>
-				</td>
-			</tr>
-		</table>
+		<label class="col-sm-12 btn btn-outline-dark disabled mt-3" style="font-size: 20pt; font-weight: bold;">문의글 등록</label>
+		<div class="mt-3">
+			<div class="row">
+		 		<div class="input-group mb-3">
+		 			<label class="btn btn-outline-dark disabled me-2" style="width: 150px">작성자</label>
+					<span class="form-control">${sessionScope.nickName }</span>
+				</div>
+				<div class="input-group mb-3">
+		 			<label class="btn btn-outline-dark disabled me-2" style="width: 150px">문의글 제목</label>
+					<span style="margin: 0; padding: 0;" class="form-control"><form:input path="title" type="text" required="required" autofocus="autofocus" style="height:100%; width: 100%;"/></span>
+				</div>
+			</div>
+			<label class="col-sm-12 btn btn-outline-dark disabled" style="font-size: 20pt; font-weight: bold;">문의글 내용</label>
+			<div class="input-group mt-3">
+				<span style="margin: 0; padding: 0; height: 100px;" class="form-control"><form:textarea path="content" required="required" rows="3" autofocus="autofocus" maxlength="160" style="height:100%; width: 100%;"></form:textarea></span>
+			</div>
+		</div>
+		<div class="row col text-center">
+		   <div class="container mt-3">
+		   	  <form:button class="form-control input-sm btn btn-primary mb-3">문의글 작성 완료</form:button>
+		      <input type="reset" value="취소" class="form-control input-sm btn btn-outline-danger mb-3"/>
+		      <a href="${pageContext.request.contextPath}/serviceBoard/serviceBoardMain" class="form-control input-sm btn btn-outline-primary mb-3">돌아가기</a>
+		   </div>
+		</div>
 	</form:form>
 </div>
 <c:import url="/WEB-INF/views/footer.jsp"/>

@@ -19,30 +19,32 @@
 <c:import url="/WEB-INF/views/top.jsp"/>
 <div class="container">
 	<form:form action="serviceBoardUpdatePro" modelAttribute="serviceBoardVO">
-		<table class="table table-striped">
-			<tr>
-				<th>제목</th><td><form:input path="title" required="required" autofocus="autofocus"/></td>
-			</tr>
-			<tr>
-				<th>작성자</th><td>${serviceBoardVO.nickName }</td>
-			</tr>
-			<tr>
-				<th colspan="2">내용</th>
-			</tr>
-			<tr>
-				<td colspan="2"><form:textarea path="content" cols="32" rows="5" required="required"/></td>
-			</tr>
-			<tr>
-				<td>
-					<form:hidden path="serviceNo" value="${serviceBoardVO.serviceNo }"/>
-					<form:button>작성완료</form:button>
-					<input type="reset" value="취소">
-					<input type="button" value="돌아가기" onclick="location.href='serviceBoardDetail?serviceNo=${serviceBoardVO.serviceNo}'">
-				</td>
-			</tr>
-		</table>
+		<div class="mt-3">
+			<div class="row">
+				<div class="mb-3">
+					<label class="col-sm-12 btn btn-outline-dark disabled me-2" style="font-size: 20pt; font-weight: bold;">문의글 수정</label>
+				</div>
+				<div class="input-group mb-3">
+					<label class="btn btn-outline-dark disabled me-2" style="width: 150px">제목</label>
+					<form:input path="title" required="required" autofocus="autofocus" class="form-control"/>
+				</div>
+				<div class="input-group mb-3">
+					<label class="btn btn-outline-dark disabled me-2" style="width: 150px">작성자</label>
+					<span class="form-control">${serviceBoardVO.nickName }</span>
+				</div>
+			</div>
+			<label class="col-sm-12 btn btn-outline-dark disabled" style="font-size: 20pt; font-weight: bold;">문의글 내용</label>
+			<div class="input-group mt-3">
+				<span style="margin: 0; padding: 0; height: 100px;" class="form-control"><form:textarea path="content" required="required" rows="3" autofocus="autofocus" maxlength="160" style="height:100%; width: 100%;"></form:textarea></span>
+			</div>
+			<div class="mt-3">
+				<form:hidden path="serviceNo" value="${serviceBoardVO.serviceNo }"/>
+				<form:button class="form-control input-sm btn btn-primary mb-3">작성완료</form:button>
+				<input type="reset" value="취소" class="form-control input-sm btn btn-outline-danger mb-3">
+				<a href="${pageContext.request.contextPath}/serviceBoard/serviceBoardDetail?serviceNo=${serviceBoardVO.serviceNo}" class="form-control input-sm btn btn-outline-primary mb-3">돌아가기</a>
+			</div>
+		</div>
 	</form:form>
-	<hr>
 </div>
 <c:import url="/WEB-INF/views/footer.jsp"/>
 </body>
