@@ -6,21 +6,44 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-<title>Top Border</title>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+	<script>
+	function navbarAction() {
+		var toggler = document.getElementById("custom_toggler");
+		var collapse = document.getElementById("custom_collapse");
+		collapse.classList.value = "navbar-collapse collapsing";
+		
+		if (toggler.classList.value == "navbar-toggler collapsed") {
+			toggler.classList.value = "navbar-toggler";
+			toggler.ariaExpanded = true;
+			collapse.style="height: 202px";
+		} else if(toggler.classList.value == "navbar-toggler") {
+			toggler.classList.value = "navbar-toggler collapsed";
+			toggler.ariaExpanded = false;
+		}
+		
+		if (toggler.ariaExpanded == "true") { // toggler.ariaExpanded == true : not working
+				collapse.classList.value = "navbar-collapse collapse show";
+		} else if (toggler.ariaExpanded == "false") { // toggler.ariaExpanded == false : not working
+				collapse.classList.value = "navbar-collapse collapse";
+		}
+		collapse.style="";
+	}
+	</script>
+	<title>Top Border</title>
 </head>
 <body>
 	<div class="container">
 		<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 			<div class="container-fluid">
-				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+				<button id="custom_toggler" onclick="navbarAction()" class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" style="cursor:pointer">
 					<span class="navbar-toggler-icon"></span>
 				</button>
-				<div class="collapse navbar-collapse" id="collapsibleNavbar">
+				<div class="navbar-collapse collapse" id="custom_collapse">
 					<ul class="navbar-nav">
 						<c:if test="${not empty sessionScope.nickName}">
 							<li>
