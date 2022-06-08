@@ -25,13 +25,13 @@
 				"password" : $("#password").val()
 			},
 		}).done(function(result) {
-			var alert = document.getElementById("alert");
-			if (!result) {
-				alert.style.display ="block";
-			} else {
-				login();
-			}
+			(result) ? login() : alert();
 		});
+	}
+	
+	function alert() {
+		var alert = document.getElementById("alert");
+		alert.style.display ="block";
 	}
 	
 	function login() {
@@ -54,7 +54,7 @@
 					<strong>로그인 실패</strong> 아이디 또는 비밀번호를 잘못 입력했습니다.
 				</div>
 			</div>
-			<form action="login" method="post" id="login">
+			<form action="login" method="post" onsubmit="return false" id="login">
 		 		<div class="input-group mb-3">
 		 			<label class="btn btn-outline-dark disabled me-2" style="width: 150px">ID</label>
 					<input type="text" id="id" name="id" placeholder="아이디 입력" autofocus required class="form-control">
@@ -64,7 +64,7 @@
 					<input type="password" id="password" name="password" placeholder="패스워드 입력" required class="form-control">
 				</div>
 				<div class="mt-3">
-					<button type="button" onclick="loginCheck()" class="form-control input-sm btn btn-primary mb-3">로그인</button>
+					<input type="submit" value="로그인" onclick="loginCheck()" class="form-control input-sm btn btn-primary mb-3"/>
 					<a href="member/signup/memberInsert" class="form-control input-sm btn btn-outline-primary mb-3">일반 회원가입</a>
 					<a href="member/signup/memberInsertEnterprise" class="form-control input-sm btn btn-outline-primary mb-3">기업 회원가입</a>
 				</div>
