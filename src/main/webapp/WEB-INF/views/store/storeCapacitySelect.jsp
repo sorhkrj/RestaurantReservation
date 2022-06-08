@@ -14,7 +14,12 @@
 <body>
 <c:import url="/WEB-INF/views/top.jsp"/>
 <div class="container">
-	<table class="table table-striped">
+	<div class="mb-3">
+		<label class="col-sm-12 btn btn-outline-dark disabled me-2" style="font-size: 20pt; font-weight: bold;">지점 예약 시간 관리</label>
+	</div>
+	<a href="storeCapacityInsert?storeNo=${storeNo}" class="btn btn-outline-dark mb-3">예약가능시간 설정</a>
+	<a href ="storeCapacityMonth?storeNo=${storeNo}" class="btn btn-outline-dark mb-3">예약가능시간 일괄 설정(한달)</a>
+	<table class="table">
 		<tr>
 			<td>날짜</td>
 			<td>예약 가능시간</td>
@@ -26,7 +31,7 @@
 			<tr>
 				<td>${i.day } </td>
 				<td>
-				<table class="table table-bordered">
+				<table class="table">
 					<tr>
 						<td>오전</td>
 						<c:forEach varStatus="time" begin="1" end="12">
@@ -73,15 +78,11 @@
 				</td>
 				<td>${i.capacity}</td>
 				<td>${i.seat}</td>
-				<td><a href="storeCapacityUpdate?day=${i.day }&storeNo=${i.storeNo}">수정하기</a></td>
-				<td><a href="storeCapacityDeletePro?day=${i.day }&storeNo=${i.storeNo}">삭제하기</a></td>
+				<td><a href="storeCapacityUpdate?day=${i.day }&storeNo=${i.storeNo}" class="btn btn-outline-dark">수정하기</a></td>
+				<td><a href="storeCapacityDeletePro?day=${i.day }&storeNo=${i.storeNo}" class="btn btn-outline-dark">삭제하기</a></td>
 			</tr>
 		</c:forEach> 
 	</table>	
-	<br>
-				<a href="storeCapacityInsert?storeNo=${storeNo}">예약가능시간 설정</a>
-				<br>
-				<a href ="storeCapacityMonth?storeNo=${storeNo}">예약가능시간 일괄 설정(한달)</a>
 	</div>
 <c:import url="/WEB-INF/views/footer.jsp"/>
 </body>

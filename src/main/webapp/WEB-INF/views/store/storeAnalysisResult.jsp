@@ -12,8 +12,8 @@
 <body>
 <c:import url="/WEB-INF/views/top.jsp"/>
 <div class="container">
-	<h1>${firstDay } 부터 ${lastDay }까지의 음식점 예약 분석 결과입니다.</h1>
-	<table class="table table-striped">
+		<label class="col-sm-12 btn btn-outline-dark disabled mt-2" style="font-size: 20pt; font-weight: bold;">${firstDay } 부터 ${lastDay }까지의 음식점 예약 분석 결과입니다.</label>
+	<table class="table mt-3">
 		<tr>
 			<th>기간</th>
 			<th>총 예약건수 </th>
@@ -26,6 +26,9 @@
 			<td> ${storeAnalysis.dayAvg } 건</td>
 		</tr>
 	</table>
+	<div class="mt-3">
+		<a href="${pageContext.request.contextPath}/store/storeAnalysis" class="form-control input-sm btn btn-outline-danger mb-3">돌아가기</a>
+	</div>
 </div>
 <c:import url="/WEB-INF/views/footer.jsp"/>
 </body>

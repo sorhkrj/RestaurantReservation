@@ -15,12 +15,15 @@
 <body>
 <c:import url="/WEB-INF/views/top.jsp" />
 <div class="container">
-	<table class="table table-striped">
+	<div class="mb-3">
+		<label class="col-sm-12 btn btn-outline-dark disabled me-2" style="font-size: 20pt; font-weight: bold;">지점 예약 목록</label>
+	</div>
+	<table class="table">
 		<tr>
-			<td>순번</td>
+			<td>예약번호</td>
 			<td>이름</td>
-			<td>일자</td>
-			<td>시간</td>
+			<td>예약일</td>
+			<td>방문시간</td>
 			<td>전화번호</td>
 			<td>인원</td>
 			<td>삭제</td>
@@ -37,12 +40,17 @@
 					<form name = "dd" action = "storeReservationDeletePro" method = "get" onsubmit = "return confirm('해당 예약을 취소하시겠습니까?')">
 						<input type = "hidden" name = "reserveNo" value = "${i.reserveNo }">
 						<input type = "hidden" name = "storeNo" value = "${i.storeNo}">
-						<input type = "submit" value = "삭제하기">
+						<input type = "submit" value = "삭제하기" class="btn btn-outline-dark">
 					</form>
 				</td>
 			</tr>
 		</c:forEach>
 	</table>
+	<div class="row text-center">
+	   <div class="container mt-3">
+	      <a href="${pageContext.request.contextPath}/store/myStore" class="form-control input-sm btn btn-outline-danger mb-3">돌아가기</a>
+	   </div>
+   </div>
 </div>
 <c:import url="/WEB-INF/views/footer.jsp" />
 </body>

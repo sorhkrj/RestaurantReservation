@@ -89,7 +89,7 @@
 				<div class="mt-3">
 					<input type="submit" value="회원 가입" class="form-control input-sm btn btn-primary mb-3">
 					<input type="reset" value="취소" class="form-control input-sm btn btn-outline-danger mb-3">
-					<a href="${pageContext.request.contextPath}/signin" class="form-control input-sm btn btn-outline-primary mb-3">돌아가기</a>
+					<a href="${pageContext.request.contextPath}/signin" class="form-control input-sm btn btn-outline-danger mb-3">돌아가기</a>
 				</div>
 			</div>
 		</div>

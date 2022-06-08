@@ -14,37 +14,13 @@
 
 
 
-<style>
-html, body {
 
-}
-
-body {
-	display: flex;
-	align-items: center;
-	padding-top: 40px;
-	padding-bottom: 40px;
-	background-color:#f5f5f5;
-	
-}
-
-#form {
-	
-	border: 1px solid black;
-}
-
-#mytable {
-	
-	border: 1px solid black;
-}
-
-</style>
 
 
 <title>예약</title>
 </head>
 <body>
-<c:import url="/WEB-INF/views/top.jsp"/>
+	<c:import url="/WEB-INF/views/top.jsp"/>
 	<div class="container">
 			<form class="container" action="reservationInsertCheck" method="post">
 				<div class="container p-3" id="form">
