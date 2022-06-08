@@ -44,7 +44,7 @@
 			   <div class="container mt-3">
 			      <a href="memberUpdateCheck?id=${memberVO.id}" class="form-control input-sm btn btn-primary mb-3">수정 하기</a>
 			      <a href="memberDeleteCheck?id=${memberVO.id}" class="form-control input-sm btn btn-outline-danger mb-3">회원 탈퇴</a>
-			       <a href="/RestaurantReservation" class="form-control input-sm btn btn-outline-primary mb-3">돌아가기</a>
+			       <a href="/RestaurantReservation" class="form-control input-sm btn btn-outline-danger mb-3">돌아가기</a>
 			   </div>
 		   </div>
 		</div>

@@ -14,71 +14,68 @@
 <body>
 <c:import url="/WEB-INF/views/top.jsp"/>
 <div class="container">
-	
-	<table class="table table-striped">
-		<tr>
-			<td colspan = 2><img src = "${pageContext.request.contextPath}/images/${storeVO.photo }"></td>
-		</tr>	
-		<tr>
-			<td>가게명</td>
-			<td>${storeVO.storeName }</td>
-		</tr>	
-		<tr>
-			<td>위치</td>
-			<td>${storeVO.location }</td>
-		</tr>	
-		<tr>
-			<td>분류</td>
-			<td>${storeVO.category }</td>
-		</tr>	
-		<tr>
-			<td>전화번호</td>
-			<td>${storeVO.store_phone }</td>
-		</tr>	
-		<tr>
-			<td>주차장</td>
-			<td>${storeVO.parking }</td>
-		</tr>	
-		<tr>
-			<td>휴무일</td>
-			<td>${storeVO.holyday }</td>
-		</tr>	
-		<tr>
-			<td>소개</td>
-			<td>${storeVO.introduce }</td>
-		</tr>	
-		<tr>
-			<td>공지사항</td>
-			<td>${storeVO.notice }</td>
-		</tr>	
-	</table>
-	
-	<table class="table table-striped">
-		<tr>
-			<td>
-				<form action ="storeUpdate" method = "get">
-					<input type = "submit" value = "음식점 정보 수정하기">
-				</form>
-			</td>
-			<td>
-				<form action ="storeReservation" method = "get">
-					<input type = "hidden" name = "storeNo" value = "${storeVO.storeNo }">
-					<input type = "submit" value = "음식점 예약현황">
-				</form>
-			</td>
-			<td>
-				<form action ="storeCapacitySelect" method = "get">
-					<input type = "hidden" name = "storeNo" value = "${storeVO.storeNo }">
-					<input type = "submit" value = "음식점 예약 시간 관리">
-				</form>
-			</td>
-			<td>
-				<form action ="menuDetail" method = "get">
-					<input type = "submit" value = "음식점 메뉴관리">
-				</form>
-			</td>
-		</tr>
-	</table>
+	<div class="mt-3">
+		<div class="row">
+	 		<div class="mb-3">
+	 		 <label class="col-sm-12 btn btn-outline-dark disabled me-2" style="font-size: 20pt; font-weight: bold;">지점 관리</label>
+			</div>
+	 		<div class="input-group mb-3" style="height: 300px;">
+	 			<label class="btn btn-outline-dark disabled me-2" style="width: 150px">지점 사진</label>
+				<span class="form-control" style="height: 300px;"><img src = "${pageContext.request.contextPath}/images/${storeVO.photo }" style="width: 70%; height: 100%;"></span>
+			</div>
+	 		<div class="input-group mb-3">
+	 			<label class="btn btn-outline-dark disabled me-2" style="width: 150px">가게명</label>
+				<span class="form-control">${storeVO.storeName }</span>
+			</div>
+	 		<div class="input-group mb-3">
+	 			<label class="btn btn-outline-dark disabled me-2" style="width: 150px">위치</label>
+				<span class="form-control">${storeVO.location }</span>
+			</div>
+	 		<div class="input-group mb-3">
+	 			<label class="btn btn-outline-dark disabled me-2" style="width: 150px">분류</label>
+				<span class="form-control">${storeVO.category }</span>
+			</div>
+			<div class="input-group mb-3">
+	 			<label class="btn btn-outline-dark disabled me-2" style="width: 150px">지점 번호</label>
+				<span class="form-control">${storeVO.store_phone }</span>
+			</div>
+			<div class="input-group mb-3">
+	 			<label class="btn btn-outline-dark disabled me-2" style="width: 150px">주차장</label>
+				<span class="form-control">${storeVO.parking }</span>
+			</div>
+			<div class="input-group mb-3">
+	 			<label class="btn btn-outline-dark disabled me-2" style="width: 150px">휴무일</label>
+				<span class="form-control">${storeVO.holyday }</span>
+			</div>
+			<div class="input-group mb-3">
+	 			<label class="btn btn-outline-dark disabled me-2" style="width: 150px">소개</label>
+				<span class="form-control">${storeVO.introduce }</span>
+			</div>
+			<div class="input-group mb-3">
+	 			<label class="btn btn-outline-dark disabled me-2" style="width: 150px">공지사항</label>
+				<span class="form-control">${storeVO.notice }</span>
+			</div>
+	   </div>
+	   <div class="row text-center">
+		   <div class="container mt-3">
+		      <form action ="storeUpdate" method = "get">
+				<input type = "submit" value = "지점 정보 수정" class="form-control input-sm btn btn-primary mb-3">
+			  </form>
+		      <form action ="storeReservation" method = "get">
+				<input type = "hidden" name = "storeNo" value = "${storeVO.storeNo }">
+				<input type = "submit" value = "지점 예약현황" class="form-control input-sm btn btn-primary mb-3">
+			  </form>
+			  <form action ="storeCapacitySelect" method = "get">
+				<input type = "hidden" name = "storeNo" value = "${storeVO.storeNo }">
+				<input type = "submit" value = "지점 예약 시간 관리" class="form-control input-sm btn btn-primary mb-3">
+			  </form>
+			  <form action ="menuDetail" method = "get">
+				<input type = "submit" value = "지점 메뉴관리" class="form-control input-sm btn btn-primary mb-3">
+			  </form>
+		       <a href="/RestaurantReservation" class="form-control input-sm btn btn-outline-danger mb-3">돌아가기</a>
+		   </div>
+	   </div>
+	</div>
 </div>
 <c:import url="/WEB-INF/views/footer.jsp"/>
 </body>

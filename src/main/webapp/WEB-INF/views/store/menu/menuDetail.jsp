@@ -84,50 +84,55 @@ function updateMenu(menu){
 <body>
 <c:import url="/WEB-INF/views/top.jsp" />
 	<div class="container">
-		<table class="table table-striped">
-			<tr>
-				<th>메뉴명</th>
-				<th>사진</th>
-				<th>가격</th>
-				<th>설명</th>
-				<th>관리</th>
-			</tr>
 		<form:form id = "menuUpdatePro">
-		<c:forEach var="i" items="${menuList }" varStatus="no">
-			<tr>
-				<td>${i.menuName}
-				<br><input type = "text"  id = "menuName_${i.menuName}"  style='width:100px;' required></td>
-				<td><img src = "${pageContext.request.contextPath}/images/${i.menuPhoto}" style='width:200px; height:100px;'>
-				<br><input type = "file"  id = "menuPhoto_${i.menuName}" required></td>
-				<td>${i.price}
-				<br><input type = "number"  id = "price_${i.menuName}" style='width:100px;' required></td>
-				<td>${i.menuInfo}
-				<br><input type = "text"  id = "menuInfo_${i.menuName}" required></td>
-				<td><button onclick = "deleteMenu('${i.menuName}');">삭제</button>
-					<button onclick = "updateMenu('${i.menuName}');">수정</button></td>
-			</tr>
-		</c:forEach>
+			<div class="mt-3">
+				<div class="row">
+					<div class="mb-3">
+			 		 <label class="col-sm-12 btn btn-outline-dark disabled me-2" style="font-size: 20pt; font-weight: bold;">지점 메뉴 관리</label>
+					</div>
+					<div class="mb-3">
+			 			<button onclick="addInsertForm()" style="width: 25%;" class="btn btn-outline-dark">메뉴 추가</button>
+						<form id="menuInsertPro" method="POST" enctype="multipart/form-data">
+						<div id="addMenu"></div>
+							</form>
+						</div>
+					</div>
+				<c:forEach var="i" items="${menuList }" varStatus="no">
+					<div class="input-group mb-3">
+			 			<label class="btn btn-outline-dark disabled me-2" style="width: 150px">메뉴명</label>
+			 			<span class="form-control">${i.menuName}</span>
+						<span class="form-control" style="margin: 0; padding: 0;"><input type = "text"  id = "menuName_${i.menuName}" required style='width:100%;' class="form-control"></span>
+						
+					</div>
+					<div class="input-group mb-3">
+						<label class="btn btn-outline-dark disabled me-2" style="width: 150px">메뉴 사진</label>
+			 			<span class="form-control" style='margin: 0; padding: 0; width:400px;'><img src = "${pageContext.request.contextPath}/images/${i.menuPhoto}" style='width:400px; height:100px;' align="middle"></span>
+			 			<span class="form-control" style='margin: 0; padding: 0; width:400px;'><input type = "file"  id = "menuPhoto_${i.menuName}" required class="form-control"></span>
+					</div>
+					<div class="input-group mb-3">
+						<label class="btn btn-outline-dark disabled me-2" style="width: 150px">가격</label>
+						<span class="form-control">${i.price}</span>
+						<span class="form-control" style='margin: 0; padding: 0;'><input type = "number"  id = "price_${i.menuName}" required style='width:100%;' class="form-control"></span>
+					</div>
+					<div class="input-group mb-3">
+						<label class="btn btn-outline-dark disabled me-2" style="width: 150px">메뉴 정보</label>
+						<span class="form-control">${i.menuInfo}</span>
+						<span class="form-control" style='margin: 0; padding: 0;'><input type = "text"  id = "menuInfo_${i.menuName}" required style='width:100%;' class="form-control"></span>
+					</div>
+				</div>
+				  <div class="container mt-3">
+				      <div class="row text-center">
+						  <button onclick = "updateMenu('${i.menuName}');" class="form-control input-sm btn btn-primary mb-3" style="width: 50%;">수정</button>
+					      <button onclick = "deleteMenu('${i.menuName}');" class="form-control input-sm btn btn-outline-danger mb-3" style="width: 50%;">삭제</button>
+					  </div>
+			 	  </div>
+		 	  </c:forEach>
+		 	  <a href="${pageContext.request.contextPath}/store/myStore" class="form-control input-sm btn btn-outline-danger mb-3">돌아가기</a>
+			</div>
 		</form:form>
-			<!-- <tr>
-				<td>추가</td>
-				<td><input type = "text"  id = "menuName_input"></td>
-				<td><input type = "text" id = "menuPhoto_input"></td>
-				<td><input type = "number" id = "price_input"></td>
-				<td><input type = "text" id = "menuInfo_input"></td>
-				<td><button onclick = "javascript:insertMenu();">추가</button></td>
-			</tr> -->
-		</table>
-		<br> <br>
-				
-				
-				
-		<button onclick="addInsertForm()">메뉴 추가</button>
+		
 
-		<form id="menuInsertPro" method="POST" enctype="multipart/form-data">
-			
-	<div id="addMenu"></div>
-		</form>
-	</div>
+	
 <c:import url="/WEB-INF/views/footer.jsp" />
 </body>
 <script>
@@ -135,13 +140,13 @@ function updateMenu(menu){
 	var id = '<sec:authentication property="principal.username"/>';
 	function addInsertForm() {
 		var addedFormDiv = document.getElementById("addMenu");
-		var str = '메뉴이름 : <input type = "text" name = "menuName" id = "menuName_input"><br>'
-				+ ' 사진 : <input type = "file" name = "file" id = "file_input" multiple><br>'
-				+ ' 가격 : <input type = "number" name = "price" id = "price_input"><br>'
-				+ ' 설명 : <input type = "text" name = "menuInfo" id = "menuInfo_input"><br>'
+		var str = '<div class="row mt-3"><label class="btn btn-outline-dark  mx-3" style="margin: 0; padding: 0; width:200px;"> 메뉴이름 </label> <input type = "text" name = "menuName" id = "menuName_input" style="margin: 0; padding: 0; width:400px;"></div><br>'
+				+ ' <div class="row"><label class="btn btn-outline-dark  mx-3" style="margin: 0; padding: 0; width:200px;">사진    </label> <input type = "file" name = "file" id = "file_input" style="margin: 0; padding: 0; width:400px;" multiple></div><br>'
+				+ ' <div class="row"><label class="btn btn-outline-dark  mx-3" style="margin: 0; padding: 0; width:200px;"> 가격   </label> <input type = "number" name = "price" id = "price_input" style="margin: 0; padding: 0; width:400px;"></div><br>'
+				+ ' <div class="row"><label class="btn btn-outline-dark  mx-3" style="margin: 0; padding: 0; width:200px;"> 설명   </label> <input type = "text" name = "menuInfo" id = "menuInfo_input" style="margin: 0; padding: 0; width:400px;"></div><br>'
 				+ '<input type = "hidden" name = "id" value = '+id+'>'
-				+ '<button onClick = "javascript:insertMenu();">추가</button>'
-				+ '<button onClick = "delFrom(' + count + ')">취소</button>';
+				+ '<button class="btn btn-outline-dark me-3" onClick = "javascript:insertMenu();">추가</button>'
+				+ '<button class="btn btn-outline-dark" onClick = "delFrom(' + count + ')">취소</button>';
 		var addedDiv = document.createElement("div");
 		if (count < 1) {
 			addedDiv.setAttribute("id", "insert_frm" + count);

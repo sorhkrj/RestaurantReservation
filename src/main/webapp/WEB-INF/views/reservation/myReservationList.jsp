@@ -12,7 +12,7 @@
 <title>나의 예약 목록</title>
 </head>
 <body>
-<c:import url="/WEB-INF/views/top.jsp"/>
+	<c:import url="/WEB-INF/views/top.jsp"/>
 	<div class="container">	
 	<label class="col-sm-12 btn btn-outline-dark disabled mt-3" style="font-size: 20pt; font-weight: bold;">나의 예약 목록</label>
 		<div class="container" id="mytable">
@@ -20,7 +20,6 @@
 				<table class="table">
 					<thead>
 						<tr>
-							<th class="col">이름</th>
 							<th class="col">음식점명</th>
 							<th class="col">방문인원</th>
 							<th class="col">방문일자</th>
@@ -35,8 +34,7 @@
 				 
 						<c:forEach var="reservation" items="${list}"> 
 							<tr>	
-									<td><a href="reservationSelect?reserveNo=${reservation.reserveNo}&storeName=${reservation.storeName}">${reservation.id}</a></td>
-									<td>${reservation.storeName}</td>
+									<td><a href="reservationSelect?reserveNo=${reservation.reserveNo}&storeName=${reservation.storeName}">${reservation.storeName}</a></td>
 									<td>${reservation.people}</td>
 									<td>${reservation.visitDay}</td>
 									<td>${reservation.visitTime}</td>
@@ -52,7 +50,7 @@
 			</div>
 		</div>
 	</div>
-<c:import url="/WEB-INF/views/footer.jsp"/>
+		<c:import url="/WEB-INF/views/footer.jsp"/>
 
 <dialog id="myDialog">
   <div id="a">

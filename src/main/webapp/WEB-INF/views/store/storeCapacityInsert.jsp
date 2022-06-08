@@ -13,32 +13,42 @@
 <c:import url="/WEB-INF/views/top.jsp"/>
 <div class="container">
 	<form action = "storeCapacityInsertPro" method = "get">
-		<input type = "hidden" name = "storeNo" value = "${storeNo }">
-		<table class="table table-striped">
-		<tr>
-			<td>날짜</td>
-			<td><input class = "form-control"  type = 'date' name = 'day'></td>
-		</tr>
-		<tr>
-			<td>예약가능한 시간 설정</td>
-			<td>
-				<c:forEach begin="1"  end="24" varStatus="no">
-					<input type = "checkbox" name = "time" value="${no.count }"> ${no.count}시
-					<c:if test="${no.count=='12'}"><br></c:if>
-				</c:forEach>
-			</td>
-		</tr>
-		<tr>
-			<td>시간당 예약 건수</td>
-			<td><input type = "number" name = "capacity"></td>
-		</tr>
-		<tr>
-			<td>예약당 좌석 수</td>
-			<td><input type = "number" name = "seat"></td>
-		</tr>
-		</table>
-		<input type ="submit" value = "등록하기">
-		<input type = "reset" value = "취소">
+		<div class="mt-3">
+			<div class="row">
+		 		<div class="mb-3">
+		 		 <label class="col-sm-12 btn btn-outline-dark disabled me-2" style="font-size: 20pt; font-weight: bold;">지점 예약 시간 설정</label>
+				</div>
+				<div class="input-group mb-3">
+		 			<label class="btn btn-outline-dark disabled me-2" style="width: 150px">날짜</label>
+					<span class="form-control" style="margin: 0; padding: 0;"><input type = 'date' name = 'day' class = "form-control"></span>
+				</div>
+		 		<div class="input-group mb-3">
+		 			<label class="btn btn-outline-dark disabled me-2" style="width: 150px">예약 가능 시간 설정</label>
+					<span class="form-control">
+						<c:forEach begin="1"  end="24" varStatus="no">
+							<input type = "checkbox" name = "time" value="${no.count }"> ${no.count}시
+							<c:if test="${no.count=='12'}"><br></c:if>
+						</c:forEach>
+					</span>
+				</div>
+				<div class="input-group mb-3">
+		 			<label class="btn btn-outline-dark disabled me-2" style="width: 150px">시간당 예약 건수</label>
+					<span class="form-control" style="margin: 0; padding: 0;"><input type = "number" name = "capacity" class = "form-control"></span>
+				</div>
+				<div class="input-group mb-3">
+		 			<label class="btn btn-outline-dark disabled me-2" style="width: 150px">예약당 좌석 수</label>
+					<span class="form-control" style="margin: 0; padding: 0;"><input type = "number" name = "seat" class = "form-control"></span>
+				</div>
+			</div>
+			<div class="row text-center">
+			   <div class="container mt-3">
+				  <input type = "hidden" name = "storeNo" value = "${storeNo }">
+			      <input type ="submit" value = "등록하기" class="form-control input-sm btn btn-primary mb-3">
+			      <input type ="reset" value ="취소" class="form-control input-sm btn btn-outline-danger mb-3">
+			      <a href="${pageContext.request.contextPath}/store/storeCapacitySelect?storeNo=${storeNo}" class="form-control input-sm btn btn-outline-danger mb-3">돌아가기</a>
+			   </div>
+		   </div>
+		</div>	
 	</form>
 </div>
 <c:import url="/WEB-INF/views/footer.jsp"/>	

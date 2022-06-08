@@ -14,26 +14,36 @@
 <c:import url="/WEB-INF/views/top.jsp"/>	
 <div class="container">
 	<form:form modelAttribute = "reservePossibleVO" action ="storeCapacityUpdatePro" method = "get">
-		<table class="table table-striped">
-	 		<tr>
-	 			<td>날짜</td>
-				<td>${reservePossibleVO.day} </td>
-			</tr>		
-			<tr>
-				<td>시간</td>
-				<td><form:checkboxes items="${timeCheck}" path = "timeList" title="time"/></td>
-			</tr>
-			<tr>
-				<td>시간당 예약건 수</td>
-				<td><form:input path = "capacity" /></td>
-			</tr>
-			<tr>
-				<td>좌석 수 (예약인원)</td>
-				<td><form:input path = "seat" /></td>
-			</tr>
-			<tr>
-				<td colspan = "2"><form:button>수정하기</form:button></td>
-		</table>
+		<div class="mt-3">
+			<div class="row">
+		 		<div class="mb-3">
+		 		 <label class="col-sm-12 btn btn-outline-dark disabled me-2" style="font-size: 20pt; font-weight: bold;">지점 예약 시간 수정</label>
+				</div>
+				<div class="input-group mb-3">
+		 			<label class="btn btn-outline-dark disabled me-2" style="width: 150px">날짜</label>
+					<span class="form-control">${reservePossibleVO.day}</span>
+				</div>
+		 		<div class="input-group mb-3">
+		 			<label class="btn btn-outline-dark disabled me-2" style="width: 150px">시간</label>
+					<span class="form-control"><form:checkboxes items="${timeCheck}" path = "timeList" title="time"></form:checkboxes></span>
+				</div>
+				<div class="input-group mb-3">
+		 			<label class="btn btn-outline-dark disabled me-2" style="width: 150px">시간당 예약건 수</label>
+					<span class="form-control" style="margin: 0; padding: 0;"><form:input path = "capacity" class="form-control"/></span>
+				</div>
+				<div class="input-group mb-3">
+		 			<label class="btn btn-outline-dark disabled me-2" style="width: 150px">좌석 수(인원수)</label>
+					<span class="form-control" style="margin: 0; padding: 0;"><form:input path = "seat" class="form-control"/></span>
+				</div>
+			</div>
+			<div class="row text-center">
+			   <div class="container mt-3">
+			      <form:button class="form-control input-sm btn btn-primary mb-3">수정하기</form:button>
+			      <input type ="reset" value ="취소" class="form-control input-sm btn btn-outline-danger mb-3">
+			      <a href="${pageContext.request.contextPath}/store/storeCapacitySelect?storeNo=${reservePossibleVO.storeNo}" class="form-control input-sm btn btn-outline-danger mb-3">돌아가기</a>
+			   </div>
+		   </div>
+		</div>
 	</form:form>
 </div>
 <c:import url="/WEB-INF/views/footer.jsp"/>

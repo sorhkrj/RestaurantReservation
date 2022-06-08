@@ -15,57 +15,70 @@
 <c:import url="/WEB-INF/views/top.jsp"/>
 <div class="container">
 	<form:form modelAttribute = "storeVO" action ="storeUpdatePro"  method="Post" enctype="multipart/form-data">
-		<table class="table table-striped">
-			<tr>
-				<td>음식점</td>
-				<td><form:input path = "storeName" /></td>
-			</tr>
-			<tr>			
-				<td>사  진</td>
-				<td><input type="file" name="file" ></td>
-			</tr>
-			<tr>
-				<td>위  치 </td>
-				<td><form:input path = "location" /></td>
-			</tr>
-			<tr>
-				<td>분  류 </td>
-				<td><form:input path = "category" /></td>
-			</tr>
-			<tr>
-				<td>연락처</td>
-				<td><form:input path = "store_phone" /></td>
-			</tr>
-			<tr>
-				<td>주차장</td>
-				<td><form:input path = "parking" /></td>
-			</tr>
-			<tr>
-				<td>휴무일</td>
-				<td>
-					<input type="radio" name="holyday" value="월"  checked="checked" > 
-					<label for="월">월</label>
-					<input type="radio" name="holyday"  value="화"  checked="checked" > 
-					<label for="화">화</label>
-					<input type="radio" name="holyday"  value="수"  checked="checked" > 
-					<label for="수">수</label>
-					<input type="radio" name="holyday"  value="목"  checked="checked" > 
-					<label for="목">목</label>
-					<input type="radio" name="holyday"  value="금"  checked="checked" > 
-					<label for="금">금</label>
-				</td>
-			</tr>
-			<tr>
-				<td>소  개</td>
-				<td><form:input path = "introduce" /></td>
-			</tr>
-			<tr>
-				<td>공  지</td>
-				<td><form:input path = "notice" /></td>
-			</tr>
-		</table>
-	<form:button>수정하기</form:button>
-	<input type ="reset" value ="취소">
+		<div class="mt-3">
+			<div class="row">
+		 		<div class="mb-3">
+		 		 <label class="col-sm-12 btn btn-outline-dark disabled me-2" style="font-size: 20pt; font-weight: bold;">지점 정보 수정</label>
+				</div>
+		 		<div class="input-group mb-3">
+		 			<label class="btn btn-outline-dark disabled me-2" style="width: 150px">지점명</label>
+					<span class="form-control" style="margin: 0; padding: 0;"><form:input path = "storeName" class="form-control"/></span>
+				</div>
+		 		<div class="input-group mb-3">
+		 			<label class="btn btn-outline-dark disabled me-2" style="width: 150px">지점 사진</label>
+					<span class="form-control" style="margin: 0; padding: 0;"><input type="file" name="file" class="form-control"></span>
+				</div>
+				<div class="input-group mb-3">
+		 			<label class="btn btn-outline-dark disabled me-2" style="width: 150px">지점 위치</label>
+					<span class="form-control" style="margin: 0; padding: 0;"><form:input path = "location" class="form-control"/></span>
+				</div>
+				<div class="input-group mb-3">
+		 			<label class="btn btn-outline-dark disabled me-2" style="width: 150px">분류</label>
+					<span class="form-control" style="margin: 0; padding: 0;"><form:input path = "category" class="form-control"/></span>
+				</div>
+				<div class="input-group mb-3">
+		 			<label class="btn btn-outline-dark disabled me-2" style="width: 150px">연락처</label>
+					<span class="form-control" style="margin: 0; padding: 0;"><form:input path = "store_phone" class="form-control"/></span>
+				</div>
+				<div class="input-group mb-3">
+		 			<label class="btn btn-outline-dark disabled me-2" style="width: 150px">주차장</label>
+					<span class="form-control" style="margin: 0; padding: 0;"><form:input path = "parking" class="form-control"/></span>
+				</div>
+				<div class="input-group mb-3">
+					<label class="btn btn-outline-dark disabled me-2" style="width: 150px">휴무일</label>
+					<div class="form-check me-3 mt-2">
+						<input type="radio" name="holyday" value="월" checked class="form-check-input">월
+					</div>
+					<div class="form-check me-3 mt-2">
+						<input type="radio" name="holyday" value="화" class="form-check-input">화
+					</div>
+					<div class="form-check me-3 mt-2">
+						<input type="radio" name="holyday" value="수" class="form-check-input">수
+					</div>
+					<div class="form-check me-3 mt-2">
+						<input type="radio" name="holyday" value="목" class="form-check-input">목
+					</div>
+					<div class="form-check me-3 mt-2">
+						<input type="radio" name="holyday" value="금" class="form-check-input">금
+					</div>
+				</div>
+				<div class="input-group mb-3">
+		 			<label class="btn btn-outline-dark disabled me-2" style="width: 150px">소개</label>
+					<span class="form-control" style="margin: 0; padding: 0;"><form:input path = "introduce" class="form-control"/></span>
+				</div>
+				<div class="input-group mb-3">
+		 			<label class="btn btn-outline-dark disabled me-2" style="width: 150px">공지</label>
+					<span class="form-control" style="margin: 0; padding: 0;"><form:input path = "notice" class="form-control"/></span>
+				</div>
+		   </div>
+		   <div class="row text-center">
+			   <div class="container mt-3">
+			      <form:button class="form-control input-sm btn btn-primary mb-3">수정하기</form:button>
+			      <input type ="reset" value ="취소" class="form-control input-sm btn btn-outline-danger mb-3">
+			      <a href="${pageContext.request.contextPath}/store/myStore" class="form-control input-sm btn btn-outline-danger mb-3">돌아가기</a>
+			   </div>
+		   </div>
+		</div>
 	</form:form>
 </div>
 <c:import url="/WEB-INF/views/footer.jsp"/>
