@@ -3,6 +3,7 @@ package kr.co.rrs.controller;
 import java.io.File;
 import java.io.IOException;
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import kr.co.rrs.service.MemberService;
@@ -108,5 +110,12 @@ public class MemberController {
 	public String memberUpdateCheckPro(MemberVO membervo) {//
 		memberService.Update(membervo);
 		return "redirect:memberSelect";
+	}
+	
+	@GetMapping("/signup/memberIdCheck")
+	@ResponseBody
+	public Boolean memberIdCheck(String id) {
+		Boolean result = memberService.memberIdCheck(id);
+		return result;
 	}
 }

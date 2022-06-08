@@ -113,11 +113,12 @@ public class ServiceBoardController {
 	@RequestMapping(value = "/serviceBoardDetail", method = {RequestMethod.GET, RequestMethod.POST})
 	public String serviceBoardDetail(@RequestParam("serviceNo") int serviceNo,Principal principal, HttpSession session, Model model) {
 		// 상세보기할때 조회수 증가하기
+		if(principal!=null) {
 		String id = principal.getName();
 		MemberVO memberVO = memberService.selectOne(id);
-
 		serviceBoardService.updateViews(serviceNo, id);
-				
+		model.addAttribute("memberVO", memberVO);
+		}
 		// 문의글 상세 보기 서비스 실행
 		ServiceBoardVO serviceBoardVO = serviceBoardService.selectDetail(serviceNo);
 		ReplyVO replyVO = serviceBoardService.selectReply(serviceNo);
@@ -125,7 +126,6 @@ public class ServiceBoardController {
 		// Detail jsp에서 데이터 표시를 위한 코드
 		model.addAttribute("serviceBoardVO", serviceBoardVO);
 		model.addAttribute("replyVO", replyVO);
-		model.addAttribute("memberVO", memberVO);
 			
 		return "serviceBoard/serviceBoardDetail";
 	}

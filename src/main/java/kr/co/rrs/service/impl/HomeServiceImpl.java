@@ -3,6 +3,7 @@ package kr.co.rrs.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import kr.co.rrs.mapper.HomeMapper;
@@ -13,20 +14,23 @@ import kr.co.rrs.vo.StoreVO;
 
 @Service
 public class HomeServiceImpl implements HomeService {
-
+	
+	@Autowired
+	BCryptPasswordEncoder encoder;
+	
 	@Autowired
 	HomeMapper mapper;
 
 	//로그인 확인
 	@Override
-	public MemberVO loginCheck(String id, String password) {
+	public Boolean loginCheck(String id, String password) {
 		MemberVO member = mapper.selectMember(id);
 		if (member != null) {
-			if (password.equals(member.getPassword())) {
-				return member;
+			if (encoder.matches(password, member.getPassword())) {
+				return true;
 			}
 		}
-		return null;
+		return false;
 	}
 	
 	// 닉네임 검색

@@ -14,7 +14,7 @@ public interface MemberService {
 	void Update(MemberVO memberVO);
 	//엔터프라이즈 가입
 	void insertEnterprise(EnterpriseVO enterpriseVO);
-	//회원검색
-
-	
+	/* 박재호 */
+	//중복 아이디 확인
+	Boolean memberIdCheck(String id);
 }

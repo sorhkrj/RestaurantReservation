@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -45,11 +46,13 @@
 			</c:forEach>
 		</c:if>
 	</table>
-	<div class="row col text-center">
-	   <div class="container mt-3">
-	   	  <input type="button" value="문의글 쓰기" onclick="location.href='serviceBoardInsert'" class="form-control input-sm btn btn-primary mb-3"/>
-	   </div>
-	</div>
+	<sec:authorize access="hasAnyRole('MEMBER', 'MANAGER', 'ADMIN')">
+		<div class="row col text-center">
+		   <div class="container mt-3">
+		   	  <input type="button" value="문의글 쓰기" onclick="location.href='serviceBoardInsert'" class="form-control input-sm btn btn-primary mb-3"/>
+		   </div>
+		</div>
+	</sec:authorize>
 	<table class="table" style="width: 100%; height: 40px;">
 		<tr>
 			<td width="50px" align="center"><a class="btn btn-outline-dark" href="serviceBoardMain?nowPage=${nowPage-10 }">이전</a></td>

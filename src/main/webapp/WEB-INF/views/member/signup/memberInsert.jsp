@@ -1,10 +1,33 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script> <!-- JS CDN -->
+  <script>
+  	function memberIdCheck() {
+  		$.ajax({
+			url : "memberIdCheck",
+			type : "get",
+			contentType: 'application/json',
+			datatype : "json",
+			data : {
+				"id" : $("#id").val()
+			}
+		}).done(function(result) {
+			var idCheck = document.getElementById("idCheck");
+			if (result) {
+				idCheck.classList.value="btn btn-outline-success";
+				idCheck.innerHTML = "사용 가능";
+			} else {
+				idCheck.classList.value="btn btn-outline-danger";
+				idCheck.innerHTML = "사용 불가능";
+			}
+		});
+  	}
+  </script>
   <title>회원가입</title>
 </head>
 <body>
@@ -18,7 +41,8 @@
 					</div>
 					<div class="input-group mb-3">
 						<label class="btn btn-outline-dark disabled me-2" style="width: 150px">ID</label>
-						<input type="text" name="id" class="form-control"/>
+						<input type="text" id="id" name="id" class="form-control"/>
+						<button type="button" id="idCheck" onclick="memberIdCheck()" class="btn btn-outline-danger">중복 확인</button>
 					</div>
 					<div class="input-group mb-3">
 						<label class="btn btn-outline-dark disabled me-2" style="width: 150px">Password</label>
