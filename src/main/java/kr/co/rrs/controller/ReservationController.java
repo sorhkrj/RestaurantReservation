@@ -47,7 +47,6 @@ public class ReservationController {
 	
 	@PostMapping("/reservationInsertCheck")
 	public String insertCheckReservation(ReservationVO rvo, Model model) {
-		
 		model.addAttribute("rvo",rvo);
 		
 		return "reservation/reservationInsertCheck";
@@ -56,6 +55,17 @@ public class ReservationController {
 	@PostMapping("/reservationInsertPro")
 	public String insertReservation(ReservationVO rvo, Principal principal) {
 		rvo.setId(principal.getName());
+		
+		System.out.println(rvo.getReserveNo());
+		System.out.println(rvo.getId());
+		System.out.println(rvo.getStoreNo());
+		System.out.println(rvo.getStoreName());
+		System.out.println(rvo.getPeople());
+		System.out.println(rvo.getVisitDay());
+		System.out.println(rvo.getVisitTime());
+		System.out.println(rvo.getVisitName());
+		System.out.println(rvo.getVisitPhone());
+		
 		service.insertRes(rvo);
 		return "redirect:myReservationList";
 	}
@@ -68,10 +78,11 @@ public class ReservationController {
 		MemberVO mvo = service.checkMember(id);
 		model.addAttribute("rvo",rvo);
 		model.addAttribute("mvo",mvo);
+		
 		return "reservation/reservationUpdate";
 	}
 	
-	@PostMapping("/reservationUpdateCheck")
+	@RequestMapping("/reservationUpdateCheck")
 	public String updateCheckReservation(ReservationVO rvo, Model model) {
 		model.addAttribute("rvo",rvo);
 		return "reservation/reservationUpdateCheck";
