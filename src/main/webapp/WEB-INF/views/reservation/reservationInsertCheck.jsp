@@ -10,71 +10,58 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <script	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-
-<style>
-html, body {
-	height: 100%; /*높이 조절*/
-}
-
-body {
-	display: flex;
-	align-items: center;
-	padding-top: 40px;
-	padding-bottom: 40px;
-	background-color: #f5f5f5;
-}
-
-#form {
-	width: 600px; /*가로 조절*/
-	border: 1px solid black;
-}
-</style>
-
-
 <title>예약확인</title>
 </head>
 <body>
 <c:import url="/WEB-INF/views/top.jsp"/>
 	<div class="container">
 		<form class="container" action="reservationInsertPro" method="post">
-			<div class="container mt-3 p-3" id="form">
+			<div class="mt-3">
 				<div class="row">
-					<h2 class="text-center">예약확인</h2>
-					
-					<input type="hidden" class="form-control" name="storeNo" value="${rvo.storeNo }">
-					
-					<div class="input-group mb-3">
-						<span class="input-group-text col-3 text-center">음식점이름</span> 
-						<input type="text" class="form-control" name="storeName"  value="${rvo.storeName}" readonly>
+			 		<div class="mb-3">
+			 		 <label class="col-sm-12 btn btn-outline-dark disabled me-2" style="font-size: 20pt; font-weight: bold;">예약 확인</label>
+					</div>
+			 		<div class="input-group mb-3">
+			 			<label class="btn btn-outline-dark disabled me-2" style="width: 150px">예약 음식점</label>
+						<span class="form-control">${rvo.storeName}</span>
 					</div>
 					<div class="input-group mb-3">
-						<span class="input-group-text col-3 text-center">예약인원</span> 
-						<input type="text" class="form-control" name="people" value="${rvo.people}" readonly>
+			 			<label class="btn btn-outline-dark disabled me-2" style="width: 150px">방문 일자</label>
+						<span class="form-control">${rvo.visitDay}</span>
 					</div>
 					<div class="input-group mb-3">
-						<span class="input-group-text col-3 text-center">방문일자</span> 
-						<input type="text" class="form-control" name="visitDay" value="${rvo.visitDay}" readonly>
+			 			<label class="btn btn-outline-dark disabled me-2" style="width: 150px">방문 시간</label>
+						<span class="form-control">${rvo.visitTime}</span>
+					</div>
+			 		<div class="input-group mb-3">
+			 			<label class="btn btn-outline-dark disabled me-2" style="width: 150px">예약 인원</label>
+						<span class="form-control">${rvo.people}</span>
 					</div>
 					<div class="input-group mb-3">
-						<span class="input-group-text col-3 text-center">방문시간</span> 
-						<input type="text" class="form-control" name="visitTime" value="${rvo.visitTime}" readonly>
+			 			<label class="btn btn-outline-dark disabled me-2" style="width: 150px">방문인 이름</label>
+						<span class="form-control">${rvo.visitName}</span>
 					</div>
 					<div class="input-group mb-3">
-						<span class="input-group-text col-3 text-center">방문인이름</span> 
-						<input type="text" class="form-control" name="visitName" value="${rvo.visitName}" readonly>
+			 			<label class="btn btn-outline-dark disabled me-2" style="width: 150px">방문인 전화번호</label>
+						<span class="form-control">${rvo.visitPhone}</span>
 					</div>
-					<div class="input-group mb-3">
-						<span class="input-group-text col-3 text-center">방문인 전화번호</span> 
-						<input type="text" class="form-control" name="visitPhone" value="${rvo.visitPhone}" readonly>
+					<div class="mb-3">
+			 		 <label class="col-sm-12 btn btn-outline-dark disabled me-2" style="font-size: 20pt; font-weight: bold;">위 내용으로 예약합니다</label>
 					</div>
-				</div>
-				<h3 class="text-center">위 내용으로 예약합니다</h3>
-				<div class="row text-center">
-					<div class="container mt-3">
-						<input type="submit" class="btn btn-primary" value="확인">
-						<a href="javascript:window.history.go(-1);" type="button" class="btn btn-primary">취소</a>
-					</div>
-				</div>
+			   </div>
+			   <div class="row text-center">
+				   <div class="container mt-3">
+				      <input type="hidden" class="form-control" name="storeNo" value="${rvo.storeNo }">
+				   	  <input type="hidden" class="form-control" name="storeName" value="${rvo.storeName }">
+				   	  <input type="hidden" class="form-control" name="visitDay" value="${rvo.visitDay }">
+				   	  <input type="hidden" class="form-control" name="visitTime" value="${rvo.visitTime }">
+				   	  <input type="hidden" class="form-control" name="people" value="${rvo.people }">
+				   	  <input type="hidden" class="form-control" name="visitName" value="${rvo.visitName }">
+				   	  <input type="hidden" class="form-control" name="visitPhone" value="${rvo.visitPhone }">
+				      <input type="submit" class="form-control input-sm btn btn-primary mb-3" value="확인">
+				      <a href="${pageContext.request.contextPath}/reservation/reservationInsert?storeNo=${rvo.storeNo }" class="form-control input-sm btn btn-outline-danger mb-3">돌아가기</a>
+				   </div>
+			   </div>
 			</div>
 		</form>
 	</div>

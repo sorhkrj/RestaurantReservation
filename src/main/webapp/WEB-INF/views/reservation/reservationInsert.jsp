@@ -11,70 +11,59 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <script	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script> <!-- js cdn -->
-
-
-
-
-
-
 <title>예약</title>
 </head>
 <body>
-	<c:import url="/WEB-INF/views/top.jsp"/>
+<c:import url="/WEB-INF/views/top.jsp"/>
 	<div class="container">
-			<form class="container" action="reservationInsertCheck" method="post">
-				<div class="container p-3" id="form">
-					<div class="row">
-						<h2 class="text-center">예약</h2>
-						
-						<input type="hidden" class="form-control" name="storeNo" value="${storevo.storeNo }">
-						
-						<div class="input-group mb-3">
-							<span class="input-group-text col-3 text-center">예약음식점</span> 
-							<input type="text" class="form-control" name="storeName" value="${storevo.storeName }" readonly>
-						</div>
-						
-						<div class="input-group mb-3">
-							<span class="input-group-text col-3 text-center" >예약인원</span> 
-							<input id ="setSeat" type="number" class="form-control" name="people" min="1" required>
-						</div>	
-												
-						<div class="input-group mb-3">
-							<span class="input-group-text col-3 text-center" >방문일자</span> 
-							<input type="date" class="form-control" name="visitDay" id="visitDay" oninput="visit()" value="" required>
-						</div>
-						
+		<form class="container" action="reservationInsertCheck" method="post">
+			<div class="mt-3">
+				<div class="row">
+			 		<div class="mb-3">
+			 		 <label class="col-sm-12 btn btn-outline-dark disabled me-2" style="font-size: 20pt; font-weight: bold;">예약 하기</label>
+					</div>
+			 		<div class="input-group mb-3">
+			 			<label class="btn btn-outline-dark disabled me-2" style="width: 150px">예약 음식점</label>
+						<span class="form-control">${storevo.storeName }</span>
+					</div>
 					<div class="input-group mb-3">
-						<span class="input-group-text col-3 text-center">방문시간</span> 
-						<div id="time"></div>
-					</div> 
-		
-						<h2 class="text-center">방문인정보</h2>
-											    					
-    					<div class="form-check mb-3 text-center">
-      						<label class="form-check-label">
-        					<input class="form-check-input" type="checkbox" name="memberCheckbox" id="memberCheckbox"  > 주문자와 동일인</label>
-    					</div>
-    					
-						<div class="input-group mb-3">
-							<span class="input-group-text col-3 text-center">방문인이름</span> 
-							<input type="text" class="form-control" id="visitName" name="visitName"  value=""  required>
-						</div>
-						
-						<div class="input-group mb-3">
-							<span class="input-group-text col-3 text-center">방문인 전화번호</span> 
-							<input type="text" class="form-control" id="visitPhone" name="visitPhone" value=""  required>
-						</div>
-					
-						<div class="row text-center">
-							<div class="container mt-3">
-								<input type="submit" class="btn btn-primary" value="확인"> 
-								<a href="myReservationList" type="button" class="btn btn-primary">취소</a>
-							</div>
-						</div>
-	    			</div>	
-				</div>
-			</form>
+			 			<label class="btn btn-outline-dark disabled me-2" style="width: 150px">방문 일자</label>
+						<span class="form-control" style="margin: 0; padding: 0;"><input type="date" class="form-control" name="visitDay" id="visitDay" oninput="visit()" value="" required></span>
+					</div>
+					<div class="input-group mb-3">
+			 			<label class="btn btn-outline-dark disabled me-2" style="width: 150px">방문 시간</label>
+						<span class="form-control" style="margin: 0; padding: 0;"><div id="time" class="form-control" style="height: 100%;"></div></span>
+					</div>
+			 		<div class="input-group mb-3">
+			 			<label class="btn btn-outline-dark disabled me-2" style="width: 150px">예약 인원</label>
+						<span class="form-control" style="margin: 0; padding: 0;"><input id ="setSeat" type="number" class="form-control" name="people" min="1" required class="form-control"></span>
+					</div>
+					<div class="mb-3">
+			 		 <label class="col-sm-12 btn btn-outline-dark disabled me-2" style="font-size: 20pt; font-weight: bold;">방문인 정보</label>
+					</div>
+			 		<div class="input-group mb-3">
+						<span class="form-control" style="text-align: center;"><input class="form-check-input me-2" type="checkbox" name="memberCheckbox" id="memberCheckbox">주문자와 동일인</span>
+					</div>
+					<div class="input-group mb-3">
+			 			<label class="btn btn-outline-dark disabled me-2" style="width: 150px">방문인 이름</label>
+						<span class="form-control" style="margin: 0; padding: 0;"><input type="text" class="form-control" id="visitName" name="visitName"  value=""  required></span>
+					</div>
+					<div class="input-group mb-3">
+			 			<label class="btn btn-outline-dark disabled me-2" style="width: 150px">방문인 전화번호</label>
+						<span class="form-control" style="margin: 0; padding: 0;"><input type="text" class="form-control" id="visitPhone" name="visitPhone" value=""  required></span>
+					</div>
+			   </div>
+			   <div class="row text-center">
+				   <div class="container mt-3">
+				   	  <input type="hidden" class="form-control" name="storeNo" value="${storevo.storeNo }">
+				   	  <input type="hidden" class="form-control" name="storeName" value="${storevo.storeName }">
+				      <input type="submit" class="form-control input-sm btn btn-primary mb-3" value="확인">
+				      <input type="reset" value="취소" class="form-control input-sm btn btn-outline-danger mb-3">
+				       <a href="${pageContext.request.contextPath}/review/storeDetailReviewMain?storeNo=${storevo.storeNo }" class="form-control input-sm btn btn-outline-danger mb-3">돌아가기</a>
+				   </div>
+			   </div>
+			</div>
+		</form>
 	</div>
 <c:import url="/WEB-INF/views/footer.jsp"/>
 	

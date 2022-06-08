@@ -9,68 +9,60 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-<style>
-html, body {
-	height: 100%; /*높이 조절*/
-}
-
-body {
-	display: flex;
-	align-items: center;
-	padding-top: 40px;
-	padding-bottom: 40px;
-	background-color: #f5f5f5;
-}
-
-#form {
-	width: 600px; /*가로 조절*/
-	border: 1px solid black;
-}
-</style>
-
- 
 <title>예약상세정보</title>
 </head>
 <body>
 <c:import url="/WEB-INF/views/top.jsp"/>
 	<div class="container">
 		<form class="container" action="reservationUpdate" method="post">
-			<div class="container mt-3 p-3" id="form">
+			<div class="mt-3">
 				<div class="row">
-					<h2 class="text-center">예약상세정보</h2>
-					<div class="input-group mb-3">
-						<span class="input-group-text col-3 text-center">음식점이름</span> 
-						<input type="text" class="form-control" name="storeName" value="${reservation.storeName }" readonly>
+			 		<div class="mb-3">
+			 		 <label class="col-sm-12 btn btn-outline-dark disabled me-2" style="font-size: 20pt; font-weight: bold;">예약 상세 정보</label>
+					</div>
+			 		<div class="input-group mb-3">
+			 			<label class="btn btn-outline-dark disabled me-2" style="width: 150px">음식점 이름</label>
+						<span class="form-control">${reservation.storeName }</span>
 					</div>
 					<div class="input-group mb-3">
-						<span class="input-group-text col-3 text-center">예약인원</span> 
-						<input type="text" class="form-control" name="people" value="${reservation.people }" readonly>
+			 			<label class="btn btn-outline-dark disabled me-2" style="width: 150px">방문 일자</label>
+						<span class="form-control">${reservation.visitDay }</span>
 					</div>
 					<div class="input-group mb-3">
-						<span class="input-group-text col-3 text-center">방문일자</span> 
-						<input type="text" class="form-control" name="visitDay" value="${reservation.visitDay }" readonly>
+			 			<label class="btn btn-outline-dark disabled me-2" style="width: 150px">방문 시간</label>
+						<span class="form-control">${reservation.visitTime }</span>
 					</div>
 					<div class="input-group mb-3">
-						<span class="input-group-text col-3 text-center">방문시간</span> 
-						<input type="text" class="form-control" name="visitTime" value="${reservation.visitTime }" readonly>
+			 			<label class="btn btn-outline-dark disabled me-2" style="width: 150px">예약 인원</label>
+						<span class="form-control">${reservation.people }</span>
 					</div>
 					<div class="input-group mb-3">
-						<span class="input-group-text col-3 text-center">방문인이름</span> 
-						<input type="text" class="form-control" name="visitName" value="${reservation.visitName }" readonly>
+			 			<label class="btn btn-outline-dark disabled me-2" style="width: 150px">방문인 이름</label>
+						<span class="form-control">${reservation.visitName }</span>
 					</div>
 					<div class="input-group mb-3">
-						<span class="input-group-text col-3 text-center">방문인 전화번호</span> 
-						<input type="text" class="form-control" name="visitPhone" value="${reservation.visitPhone }" readonly>
+			 			<label class="btn btn-outline-dark disabled me-2" style="width: 150px">방문인 전화번호</label>
+						<span class="form-control">${reservation.visitPhone }</span>
 					</div>
-						<input type="hidden" class="form-control" name="reserveNo" value="${reservation.reserveNo }" readonly>
-						<input type="hidden" class="form-control" name="storeNo" value="${reservation.storeNo }" readonly>
-				</div>
-				<div class="row text-center">
-					<div class="container mt-3">
-						<input type="submit" class="btn btn-primary" value="수정"> 
-						<a href="javascript:window.history.go(-1);" type="button" class="btn btn-primary">취소</a> 
-	     			</div>
-				</div>
+			   </div>
+			   <div class="row text-center">
+				   <div class="container mt-3">
+				   	  <input type="hidden" class="form-control" name="reserveNo" value="${reservation.reserveNo }">
+				   	  <input type="hidden" class="form-control" name="id" value="${reservation.id }">
+				   	  <input type="hidden" class="form-control" name="storeNo" value="${reservation.storeNo }">
+					  <input type="hidden" class="form-control" name="storeName" value="${reservation.storeName }">
+					  <input type="hidden" class="form-control" name="people" value="${reservation.people }">
+					  <input type="hidden" class="form-control" name="visitDay" value="${reservation.visitDay }">
+					  <input type="hidden" class="form-control" name="visitTime" value="${reservation.visitTime }">
+					  <input type="hidden" class="form-control" name="visitName" value="${reservation.visitName }">
+					  <input type="hidden" class="form-control" name="visitPhone" value="${reservation.visitPhone }">
+					  <input type="hidden" class="form-control" name="sumTime" value="${reservation.sumTime }">
+					  <input type="hidden" class="form-control" name="regDate" value="${reservation.regDate }">
+				      <input type="submit" class="form-control input-sm btn btn-primary mb-3" value="수정">
+				      <input type="reset" value="취소" class="form-control input-sm btn btn-outline-danger mb-3">
+				       <a href="${pageContext.request.contextPath}/reservation/myReservationList" class="form-control input-sm btn btn-outline-danger mb-3">돌아가기</a>
+				   </div>
+			   </div>
 			</div>
 		</form>
 	</div>
