@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
   <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script> <!-- JS CDN -->
   <script>
-  	function memberIdCheck() {
+  	function memberIdCheck(idCheck) {
   		$.ajax({
 			url : "memberIdCheck",
 			type : "get",
@@ -18,15 +18,19 @@
 				"id" : $("#id").val()
 			}
 		}).done(function(result) {
-			var idCheck = document.getElementById("idCheck");
 			if (result) {
 				idCheck.classList.value="btn btn-outline-success";
 				idCheck.innerHTML = "사용 가능";
 			} else {
 				idCheck.classList.value="btn btn-outline-danger";
-				idCheck.innerHTML = "중복 확인";
+				idCheck.innerHTML = "사용 불가능";
 			}
 		});
+  	}
+  	
+  	function textIdChange(idCheck) {
+		idCheck.classList.value="btn btn-outline-danger";
+		idCheck.innerHTML = "사용 불가능";
   	}
   </script>
 <body>
@@ -40,8 +44,8 @@
 				</div>
 				<div class="input-group mb-3">
 					<label class="btn btn-outline-dark disabled me-2" style="width: 150px">ID</label>
-					<input type="text" id="id" name="id" class="form-control"/>
-					<button type="button" id="idCheck" onclick="memberIdCheck()" class="btn btn-outline-danger">중복 확인</button>
+					<input type="text" id="id" name="id" onchange="textIdChange(idCheck)" class="form-control"/>
+					<button type="button" id="idCheck" onclick="memberIdCheck(this)" class="btn btn-outline-danger">중복 확인</button>
 				</div>
 				<div class="input-group mb-3">
 					<label class="btn btn-outline-dark disabled me-2" style="width: 150px">Password</label>
