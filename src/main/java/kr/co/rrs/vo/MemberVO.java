@@ -6,7 +6,7 @@ public class MemberVO {
 	private String phone;
 	private String password;
 	private String nickname;
-	private int memberLevel;
+	private int enabled;
 	private String regDate;
 
 	public String getId() {
@@ -28,7 +28,7 @@ public class MemberVO {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-
+	
 	public void setName(String name) {
 		this.name = name;
 	}
@@ -49,12 +49,12 @@ public class MemberVO {
 		this.nickname = nickname;
 	}
 
-	public int getMemberLevel() {
-		return memberLevel;
+	public int getEnabled() {
+		return enabled;
 	}
 
-	public void setMemberLevel(int memberLevel) {
-		this.memberLevel = memberLevel;
+	public void setEnabled(int enabled) {
+		this.enabled = enabled;
 	}
 
 	public String getRegDate() {

@@ -50,6 +50,12 @@ public class MenuController {
 	@ResponseBody
 	public MenuVO menuUpdate(MenuVO menuVO, @RequestPart MultipartFile file, HttpServletRequest request) throws IOException {
 		String path = "resources/images"; // 파일 저장하고 싶은 위치
+		String originalPath = request.getServletContext().getRealPath(path)+"/"+ menuService.selectMenuOne(menuVO.getMenuName()).getMenuPhoto();
+		System.out.println(originalPath);
+		File originalFile = new File(originalPath);
+		if (originalFile.exists()) {
+			originalFile.delete();
+		}
 		String savePath = request.getServletContext().getRealPath(path); // 실제 파일 저장 경로
 		String uuid = UUID.randomUUID().toString() + file.getOriginalFilename();
 		File converFile = new File(savePath, uuid);

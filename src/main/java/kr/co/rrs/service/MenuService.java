@@ -10,6 +10,8 @@ public interface MenuService {
 	void updateMenu(MenuVO menuVO);
 
 	List<MenuVO> selectMenu(String id);
+	
+	MenuVO selectMenuOne(String menuName);
 
 	void deleteMenu(String menuName);
 }

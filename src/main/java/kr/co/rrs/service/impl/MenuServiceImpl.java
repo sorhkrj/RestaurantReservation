@@ -21,7 +21,6 @@ public class MenuServiceImpl implements MenuService {
 
 	@Override
 	public void updateMenu(MenuVO menuVO) {
-		System.out.println(menuVO.toString());
 		menuMapper.UpdateMenu(menuVO);
 	}
 
@@ -32,8 +31,12 @@ public class MenuServiceImpl implements MenuService {
 
 	@Override
 	public void deleteMenu(String menuName) {
-		System.out.println(menuName);
 		menuMapper.deleteMenu(menuName);
+	}
+
+	@Override
+	public MenuVO selectMenuOne(String menuName) {
+		return menuMapper.selectMenuOne(menuName);
 	}
 
 }

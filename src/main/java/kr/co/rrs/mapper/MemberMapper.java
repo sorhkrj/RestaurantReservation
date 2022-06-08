@@ -25,7 +25,7 @@ public interface MemberMapper {
 	MemberVO selectOne(String id);
 
 	// 회원탈퇴
-	@Delete("delete from member where id=#{id}")
+	@Update("update member set enabled = 0 where id=#{id}")
 	void delete(String id);
 	
 	// 엔터프라이즈 탙퇴

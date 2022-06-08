@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import kr.co.rrs.vo.MemberVO;
 import kr.co.rrs.vo.StoreVO;
@@ -22,6 +23,6 @@ public interface AdminMapper {
 	@Select("select * from store where storeno= #{storeNo}")
 	StoreVO getStore(int storeNo);
 	
-	@Delete("delete member where id = #{id}")
-	void memberDeleteAdmin(String id);
+	@Update("update member set enabled = 1 where id = #{id}")
+	int memberRecoveryAdmin(String id);
 }

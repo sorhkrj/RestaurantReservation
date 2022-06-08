@@ -3,14 +3,11 @@ package kr.co.rrs.controller;
 import java.io.File;
 import java.io.IOException;
 import java.security.Principal;
-import java.util.ArrayList;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,11 +23,7 @@ import kr.co.rrs.vo.MemberVO;
 
 @Controller
 @RequestMapping("/member")
-@PropertySource("/resources/properties/cm.properties")
 public class MemberController {
-
-	@Value("${file.path}")
-	private String filePath;
 
 	private final MemberService memberService;
 

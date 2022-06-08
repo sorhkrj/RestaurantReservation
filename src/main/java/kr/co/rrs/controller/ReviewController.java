@@ -130,7 +130,6 @@ public class ReviewController {
 	@RequestMapping("/reviewDeletePro")
 	public String reviewDeletePro(ReviewVO reviewVO) {
 		reviewService.deleteReview(reviewVO.getStoreNo(), reviewVO.getReviewNo());
-		
 		return "redirect:storeDetailReviewMain?storeNo=" + reviewVO.getStoreNo();
 	}
 	
@@ -140,16 +139,13 @@ public class ReviewController {
 		System.out.println(reviewCommentVO.getReviewCommentContent());
 		System.out.println(principal.getName());
 		reviewCommentVO.setId(principal.getName());
-		
 		reviewService.insertReviewComment(reviewCommentVO);
-		
 		return "redirect:storeDetailReviewMain?storeNo=" + storeNo;
 	}
 	
 	@RequestMapping("/reviewCommentDeletePro")
 	public String reviewCommentDeletePro(ReviewCommentVO reviewCommentVO, @RequestParam("storeNo") int storeNo) {
 		reviewService.deleteReviewComment(reviewCommentVO);
-		
 		return "redirect:storeDetailReviewMain?storeNo=" + storeNo;
 	}
 	
