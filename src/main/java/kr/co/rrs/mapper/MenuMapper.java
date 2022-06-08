@@ -21,4 +21,7 @@ public interface MenuMapper {
 
 	@Update("update menu set menuname = #{nameModified}, price = #{price}, menuInfo = #{menuInfo}, menuphoto = #{menuPhoto} where menuname=#{menuName}")
 	void UpdateMenu(MenuVO menuVO);
+	
+	@Select("select * from menu where menuName = #{menuName}")
+	MenuVO selectMenuOne(String menuName);
 }

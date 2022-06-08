@@ -11,5 +11,5 @@ public interface AdminService {
 	List<StoreVO> searchStore(String search);
 	StoreVO getStore(int storeNo);
 	MemberVO getMember(String id);
-	void memberDeleteAdmin(String id);
+	boolean memberRecoveryAdmin(String id);
 }

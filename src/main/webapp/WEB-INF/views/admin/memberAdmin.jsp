@@ -39,10 +39,12 @@
 	   </div>
 	   <div class="row text-center">
 		   <div class="container mt-3">
-		      <form action = "memberDeleteAdmin" method= "post">
+		   	<c:if test="${memberVO.enabled eq 0}">
+		      <form action = "memberRecoveryAdmin" method= "post">
 		      	<input type = "hidden" name = "id" value = "${memberVO.id}">
-		      	<input class="form-control input-sm btn btn-outline-primary mb-3" type = "submit" value = "회원 삭제">
+		      	<input class="form-control input-sm btn btn-outline-primary mb-3" type = "submit" value = "회원 복구">
 		      </form>
+		    </c:if>
 		      <a href="/RestaurantReservation" class="form-control input-sm btn btn-outline-primary mb-3">돌아가기</a>
 		   </div>
 	   </div>

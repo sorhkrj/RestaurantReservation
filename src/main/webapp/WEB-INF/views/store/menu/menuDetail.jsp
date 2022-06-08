@@ -119,7 +119,6 @@ function updateMenu(menu){
 						<span class="form-control">${i.menuInfo}</span>
 						<span class="form-control" style='margin: 0; padding: 0;'><input type = "text"  id = "menuInfo_${i.menuName}" required style='width:100%;' class="form-control"></span>
 					</div>
-				</div>
 				  <div class="container mt-3">
 				      <div class="row text-center">
 						  <button onclick = "updateMenu('${i.menuName}');" class="form-control input-sm btn btn-primary mb-3" style="width: 50%;">수정</button>
@@ -127,9 +126,10 @@ function updateMenu(menu){
 					  </div>
 			 	  </div>
 		 	  </c:forEach>
+		 	  </div>
 		 	  <a href="${pageContext.request.contextPath}/store/myStore" class="form-control input-sm btn btn-outline-danger mb-3">돌아가기</a>
-			</div>
 		</form:form>
+		</div>
 		
 
 	

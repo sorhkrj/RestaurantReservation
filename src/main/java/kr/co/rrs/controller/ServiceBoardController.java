@@ -149,6 +149,7 @@ public class ServiceBoardController {
 			
 			return "forward:serviceBoardDetail?serviceNo="+serviceBoardVO.getServiceNo();
 		}
+		
 		model.addAttribute("serviceNo", serviceBoardVO.getServiceNo());
 		
 		// 디테일에서 아이디, 문의글 번호 받고, 로그인 한 session id 를 받아서 
