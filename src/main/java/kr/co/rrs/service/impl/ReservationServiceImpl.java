@@ -1,7 +1,11 @@
 package kr.co.rrs.service.impl;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
+
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -37,12 +41,22 @@ public class ReservationServiceImpl implements ReservationService {
 	
     //예약취소
 	@Override
-	public String deleteRes(int rno, String id, String password) {
+	public void deleteRes(int rno, String id, String password, HttpServletResponse response) {
+		
+		response.setContentType("text/html; charset=UTF-8");
 		if(encoder.matches(password, mapper.mapperMember(id).getPassword())) {
 			mapper.mapperdeleteRes(rno);
-			return "a";	
+			
 		} else {
-		    return "b";
+			PrintWriter out = null;
+			try {
+				out = response.getWriter();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			out.println("<script>alert('비밀번호가 일치하지 않습니다.'); </script>");
+			out.flush();
+		   
 		}
 			
 	}

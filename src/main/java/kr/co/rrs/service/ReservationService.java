@@ -2,6 +2,8 @@ package kr.co.rrs.service;
 
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpServletResponse;
+
 import kr.co.rrs.vo.MemberVO;
 import kr.co.rrs.vo.ReservationVO;
 import kr.co.rrs.vo.ReservePossibleVO;
@@ -11,7 +13,7 @@ public interface ReservationService {
 
 	public void insertRes(ReservationVO rvo);
 	public void updateRes(ReservationVO rvo);
-	public String deleteRes(int rno, String id, String password);
+	public void deleteRes(int rno, String id, String password, HttpServletResponse response);
 	public ArrayList<ReservationVO> listRes(String id);
 	public ReservationVO selectRes(int rno);
 	public MemberVO checkMember(String id);
