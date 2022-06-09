@@ -16,6 +16,7 @@
 	<!-- mvc -->
 	<mvc:annotation-driven/>
 	<mvc:resources location="/resources/" mapping="/**"/>
+    <mvc:resources location="/resources/script/" mapping="/script/**"/>
 	
 	<!-- context -->
 	<context:component-scan base-package="kr.co.rrs.controller"/>
@@ -78,5 +79,4 @@
         <property name="maxUploadSize" value="209715200"/> <!-- 20MB --> <!-- max size of file in memory (in bytes) -->
         <property name="maxInMemorySize" value="10485760"/> <!-- 10MB -->
     </bean>
-
 </beans>

@@ -11,58 +11,18 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-	<script>
-	function toggleAction() {
-		let expand = navbarAction();
-		console.log("check1: " + expand);
-		setTimeout(() => {
-			collapseAction(expand);
-		}, 1000);
-	}
-	
-	function navbarAction() {
-		let toggler = document.getElementById("custom_toggler");
-		let collapse = document.getElementById("custom_collapse");
-		
-		collapse.classList.value = "navbar-collapse collapsing";
-		
-		if (toggler.classList.value == "navbar-toggler collapsed") {
-			toggler.classList.value = "navbar-toggler";
-			toggler.ariaExpanded = true;
-			collapse.style="height: 202px";
-		} else if(toggler.classList.value == "navbar-toggler") {
-			toggler.classList.value = "navbar-toggler collapsed";
-			toggler.ariaExpanded = false;
-			collapse.style="";
-		}
-		
-		return toggler.ariaExpanded;
-	}
-	
-	function collapseAction(expand) {
-		console.log("check2: " + expand);
-		let collapse = document.getElementById("custom_collapse");
-		// collapse.classList.value = (expand) ? "navbar-collapse collapse show" : "navbar-collapse collapse";
-		if (expand === "true") { // toggler.ariaExpanded == true : not working
-			console.log("check3");
-			collapse.classList.value = "navbar-collapse collapse show";
-		} else { // toggler.ariaExpanded == false : not working
-			console.log("check4");
-			collapse.classList.value = "navbar-collapse collapse";
-		}
-		collapse.style="";
-	}
-	</script>
+	<script src="${pageContext.request.contextPath}/script/menubar.js"></script>
 	<title>Top Border</title>
 </head>
 <body>
 	<div class="container">
 		<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 			<div class="container-fluid">
-				<button id="custom_toggler" onclick="toggleAction()" class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" style="cursor:pointer">
+				<button id="custom_toggler" onclick="collapseAction()" class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" style="cursor:pointer">
 					<span class="navbar-toggler-icon"></span>
 				</button>
-				<div class="navbar-collapse collapse" id="custom_collapse">
+				<a href="/RestaurantReservation" class="navbar-brand">RRS</a>
+				<div class="navbar-collapse collapsing" id="custom_collapse">
 					<ul class="navbar-nav">
 						<c:if test="${not empty sessionScope.nickName}">
 							<li>
@@ -122,14 +82,13 @@
 						</sec:authorize>
 					</ul>
 				</div>
-				<a href="/RestaurantReservation" class="navbar-brand">RRS</a>
 			</div>
 		</nav>
 		<div class="mt-2 mb-2">
-		<form action="${pageContext.request.contextPath}/searchResult" method="get" class="d-flex">
-			<input type="text" name="search" placeholder="검색할 내용" class="form-control me-2"/>
-			<input type="submit" value="검색" class="btn btn-outline-dark"/>
-		</form>
+			<form action="${pageContext.request.contextPath}/searchResult" method="get" class="d-flex">
+				<input type="text" name="search" placeholder="검색할 내용" class="form-control me-2"/>
+				<input type="submit" value="검색" class="btn btn-outline-dark"/>
+			</form>
 		</div>
 	</div>
 </body>

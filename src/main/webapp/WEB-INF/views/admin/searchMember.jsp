@@ -14,10 +14,18 @@
 <body>
 <c:import url="/WEB-INF/views/top.jsp"/>
 	<div class="container">
-	<h3>회원아이디 &nbsp;</h3>
 		<form action="resultMember" method="get">
-			<input type="text" name="id" placeholder="검색할 아이디를 입력해주세요."/>
-			<input type="submit" value="검색"/>
+			<div class="mt-3">
+				<div class="row">
+					<div class="mb-3">
+						<label class="col-sm-12 btn btn-outline-dark disabled me-2" style="font-size: 20pt; font-weight: bold;">회원 아이디</label>
+					</div>
+					<div class="input-group mb-3">
+						<input type="text" name="id" placeholder="검색할 아이디를 입력해주세요." class="form-control me-2"/>
+						<input type="submit" value="검색" class="btn btn-outline-dark"/>
+					</div>
+				</div>
+			</div>
 		</form>
 	</div>
 <c:import url="/WEB-INF/views/footer.jsp"/>
