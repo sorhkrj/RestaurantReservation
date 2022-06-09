@@ -14,7 +14,12 @@
 	</select>
 	<select id="selectStore" resultType="store">
 		<![CDATA[
-			select * from store where storeName like '%'||#{search}||'%'
+			select * 
+			from store S 
+			inner join member M 
+			on S.id = M.id 
+			where S.storeName like '%'||#{search}||'%' 
+			and M.enabled = 0
 		]]>
 	</select>
 </mapper>
