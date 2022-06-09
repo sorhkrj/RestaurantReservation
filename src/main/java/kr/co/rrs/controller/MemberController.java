@@ -2,10 +2,12 @@ package kr.co.rrs.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.security.Principal;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -31,7 +33,7 @@ public class MemberController {
 	public MemberController(MemberService memberService) {
 		this.memberService = memberService;
 	}
-
+	
 	// 회원가입
 	@GetMapping("/signup/memberInsert")
 	public String memberInsert() {
@@ -80,23 +82,40 @@ public class MemberController {
 		return "member/memberDeleteCheck";
 	}
 
-	@GetMapping("/memberDelete")
-	public String memberDelete(Principal principal, String password) {
+	@PostMapping("/memberDelete")
+	public String memberDelete(Principal principal, String password, HttpServletResponse response) {
 		String id = principal.getName();
-		Boolean result = memberService.delete(id, password);
+		Boolean result = memberService.delete(id, password, response);
 		if (result) {
 			return "redirect:/logout";
 		} else {
-			return "member/Deletecheckview";
+			return "member/memberDeleteCheck";
 		}
 	}
 
-	// 회원수정
+	// 회원 체크
 	@GetMapping("/memberUpdateCheck")
 	public String memberUpdateCheck(String id, Model model) {//
 		MemberVO membervo = memberService.selectOne(id);
 		model.addAttribute("memberVO", membervo);
 		return "member/memberUpdateCheck";
+	}
+	
+	// 회원 수정
+	@PostMapping("/memberUpdate")
+	public String memberUpdate(String id, String password, Model model, HttpServletResponse response) {//
+		MemberVO membervo = memberService.selectOne(id);
+		
+		// true 비밀번호 OK, false 비밀번호 NG
+		boolean result = memberService.updateCheck(membervo, password, response);
+		if(result) {
+			model.addAttribute("memberVO", membervo);
+			return "member/memberUpdate";
+		}
+		else {
+			model.addAttribute("memberVO", membervo);
+			return "member/memberUpdateCheck";
+		}
 	}
 
 	@GetMapping("memberUpdateCheckPro")

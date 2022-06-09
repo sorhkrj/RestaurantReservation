@@ -16,8 +16,8 @@
 <script type="text/javascript">
         // 비밀번호 미입력시 경고창
        <c:if test="${msg == false}">
-					비밀번호가 맞지 않습니다.
-				</c:if>
+		  alert("비밀번호가 맞지 않습니다.");
+	   </c:if>
     </script>
 
 <title>회원탈퇴</title>
@@ -25,7 +25,7 @@
 <body>
 	<c:import url="/WEB-INF/views/top.jsp" />
 
-	<form action="memberDelete" method="get">
+	<form action="memberDelete" method="post">
 		<div class="container mt-3 p-3" id="form">
 			<div class="row">
 				<h2 class="text-center">회원탈퇴</h2>
