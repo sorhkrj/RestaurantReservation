@@ -17,7 +17,7 @@
 			<label class="col-sm-12 btn btn-outline-dark disabled me-2" style="font-size: 20pt; font-weight: bold;">문의글 전체 목록 / 문의글 개수: ${total }</label>
 		</div>
 		<table class="table">
-				<thead>
+			<thead>
 				<tr>
 					<th>번호</th>
 					<th>작성자</th>

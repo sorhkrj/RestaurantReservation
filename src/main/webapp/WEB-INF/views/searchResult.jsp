@@ -13,27 +13,45 @@
 <body>
 	<c:import url="/WEB-INF/views/top.jsp"/>
 	<div class="container">
-		<table class="table table-striped">
-			<c:choose>
-				<c:when test="${empty storeList}">
-					'${param.search}' 검색 결과를 찾을 수 없습니다.
-				</c:when>
-				<c:otherwise>
-					<c:forEach var="store" items="${storeList}">
-						<tr>
-							<td>
-								${store.storeName}<br>
-								${store.introduce}
-							</td>
-							<td align="right">
-								<a href="review/storeDetailReviewMain?storeNo=${store.storeNo}" type="button"class="w3-button w3-white w3-border w3-border-blue w3-round-large">지점보기</a>
-							</td>
-						</tr>
-					</c:forEach>
-				</c:otherwise>
-			</c:choose>
-		</table>
-	</div>
+		<div class="mt-3">
+			<div class="row">
+				<div class="mb-3">
+					<label class="col-sm-12 btn btn-outline-dark disabled me-2" style="font-size: 20pt; font-weight: bold;">검색 결과</label>
+				</div>
+					<div class="container">
+						<table class="table">
+							<thead>
+								<tr>
+									<th>지점명</th>
+									<th>위치</th>
+									<th>전화번호</th>
+									<th>소개글</th>
+									<th>선택</th>
+								</tr>
+							</thead>
+							<c:choose>
+								<c:when test="${empty storeList}">
+									'${param.search}' 검색 결과를 찾을 수 없습니다.
+								</c:when>
+								<c:otherwise>
+									<c:forEach var="store" items="${storeList}">
+										<tr>
+											<td>${store.storeName}</td>
+											<td>${store.location}</td>
+											<td>${store.store_phone}</td>
+											<td>${store.introduce}</td>
+											<td>
+												<a href="review/storeDetailReviewMain?storeNo=${store.storeNo}" type="button" class="btn btn-outline-dark">지점 보기</a>
+											</td>
+										</tr>
+									</c:forEach>
+								</c:otherwise>
+							</c:choose>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
 	<c:import url="/WEB-INF/views/footer.jsp"/>
 </body>
 </html>

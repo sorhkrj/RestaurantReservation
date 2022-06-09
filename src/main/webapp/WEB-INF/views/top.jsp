@@ -11,18 +11,17 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-	<script src="${pageContext.request.contextPath}/script/menubar.js"></script>
+	<script src="${pageContext.request.contextPath}/script/top.js"></script>
 	<title>Top Border</title>
 </head>
 <body>
 	<div class="container">
 		<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 			<div class="container-fluid">
-				<button id="custom_toggler" onclick="collapseAction()" class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" style="cursor:pointer">
+				<button id="custom_toggler" onclick="collapseAction()" class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse">
 					<span class="navbar-toggler-icon"></span>
 				</button>
-				<a href="/RestaurantReservation" class="navbar-brand">RRS</a>
-				<div class="navbar-collapse collapsing" id="custom_collapse">
+				<div class="navbar-collapse collapse" id="custom_collapse">
 					<ul class="navbar-nav">
 						<c:if test="${not empty sessionScope.nickName}">
 							<li>
@@ -82,6 +81,7 @@
 						</sec:authorize>
 					</ul>
 				</div>
+				<a href="/RestaurantReservation" class="navbar-brand">RRS</a>
 			</div>
 		</nav>
 		<div class="mt-2 mb-2">
