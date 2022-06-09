@@ -12,8 +12,8 @@
 <title>회원검색</title>
 </head>
 <body>
-<div class="container">
-	<c:import url="/WEB-INF/views/top.jsp"/>
+<c:import url="/WEB-INF/views/top.jsp"/>
+	<div class="container">
 		<h3>회원아이디: &nbsp;</h3>
 		<form action="resultMember">
 			<input type="text" name="id" placeholder="회원아이디를 입력해주세요." >
@@ -22,18 +22,18 @@
 		</form>
 		<table class="table table-striped">
 			<c:choose>
-				<c:when test="${empty memberList}">
+				<c:when test="">
 					'${id}' 검색 결과를 찾을 수 없습니다.
 				</c:when>
 				<c:otherwise>
-					<c:forEach var="member" items="${memberList}">
+					<c:forEach var="member" items="">
 						<tr>
 							<td>
 								${member.id}<br>
 							</td>
 							<td align="right">
 								<form action = "memberAdmin" method ="get">
-									<input type="hidden" name = "id" value = "${member.id}">
+									<input type="hidden" name = "id" value = "">
 									<input class="btn btn-outline-dark" type="submit" value ="이동" >
 								</form>
 							</td>
@@ -42,7 +42,7 @@
 				</c:otherwise>
 			</c:choose>
 		</table>
-	<c:import url="/WEB-INF/views/footer.jsp"/>
-</div>
+	</div>
+<c:import url="/WEB-INF/views/footer.jsp"/>
 </body>
 </html>
