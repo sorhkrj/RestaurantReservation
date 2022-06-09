@@ -25,7 +25,7 @@
 				</div>
 				<div class="input-group mb-3">
 					<label class="btn btn-outline-dark disabled me-2" style="width: 150px">Password</label>
-					<input type="password" name="password" required="required" class="form-control"/>
+					<input type="password" name="password" required="required" autofocus="autofocus" placeholder="비밀번호를 입력해주세요" class="form-control"/>
 				</div>
 				<div class="mt-3">
 					<input type="hidden" name="serviceNo" value="${serviceNo}"/>

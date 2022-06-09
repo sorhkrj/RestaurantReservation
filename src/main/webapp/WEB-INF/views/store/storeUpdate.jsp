@@ -22,27 +22,27 @@
 				</div>
 		 		<div class="input-group mb-3">
 		 			<label class="btn btn-outline-dark disabled me-2" style="width: 150px">지점명</label>
-					<span class="form-control" style="margin: 0; padding: 0;"><form:input path = "storeName" class="form-control"/></span>
+					<span class="form-control" style="margin: 0; padding: 0;"><form:input path = "storeName" class="form-control" required="required"/></span>
 				</div>
 		 		<div class="input-group mb-3">
 		 			<label class="btn btn-outline-dark disabled me-2" style="width: 150px">지점 사진</label>
-					<span class="form-control" style="margin: 0; padding: 0;"><input type="file" name="file" class="form-control"></span>
+					<span class="form-control" style="margin: 0; padding: 0;"><input type="file" name="file" class="form-control" required="required"></span>
 				</div>
 				<div class="input-group mb-3">
 		 			<label class="btn btn-outline-dark disabled me-2" style="width: 150px">지점 위치</label>
-					<span class="form-control" style="margin: 0; padding: 0;"><form:input path = "location" class="form-control"/></span>
+					<span class="form-control" style="margin: 0; padding: 0;"><form:input path = "location" class="form-control" required="required"/></span>
 				</div>
 				<div class="input-group mb-3">
 		 			<label class="btn btn-outline-dark disabled me-2" style="width: 150px">분류</label>
-					<span class="form-control" style="margin: 0; padding: 0;"><form:input path = "category" class="form-control"/></span>
+					<span class="form-control" style="margin: 0; padding: 0;"><form:input path = "category" class="form-control" required="required"/></span>
 				</div>
 				<div class="input-group mb-3">
 		 			<label class="btn btn-outline-dark disabled me-2" style="width: 150px">연락처</label>
-					<span class="form-control" style="margin: 0; padding: 0;"><form:input path = "store_phone" class="form-control"/></span>
+					<span class="form-control" style="margin: 0; padding: 0;"><form:input path = "store_phone" class="form-control" required="required"/></span>
 				</div>
 				<div class="input-group mb-3">
 		 			<label class="btn btn-outline-dark disabled me-2" style="width: 150px">주차장</label>
-					<span class="form-control" style="margin: 0; padding: 0;"><form:input path = "parking" class="form-control"/></span>
+					<span class="form-control" style="margin: 0; padding: 0;"><form:input path = "parking" class="form-control" required="required"/></span>
 				</div>
 				<div class="input-group mb-3">
 					<label class="btn btn-outline-dark disabled me-2" style="width: 150px">휴무일</label>
@@ -64,11 +64,11 @@
 				</div>
 				<div class="input-group mb-3">
 		 			<label class="btn btn-outline-dark disabled me-2" style="width: 150px">소개</label>
-					<span class="form-control" style="margin: 0; padding: 0;"><form:input path = "introduce" class="form-control"/></span>
+					<span class="form-control" style="margin: 0; padding: 0;"><form:input path = "introduce" class="form-control" required="required"/></span>
 				</div>
 				<div class="input-group mb-3">
 		 			<label class="btn btn-outline-dark disabled me-2" style="width: 150px">공지</label>
-					<span class="form-control" style="margin: 0; padding: 0;"><form:input path = "notice" class="form-control"/></span>
+					<span class="form-control" style="margin: 0; padding: 0;"><form:input path = "notice" class="form-control" required="required"/></span>
 				</div>
 		   </div>
 		   <div class="row text-center">

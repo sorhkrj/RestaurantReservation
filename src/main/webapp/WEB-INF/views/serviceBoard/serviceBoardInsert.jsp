@@ -28,12 +28,12 @@
 				</div>
 				<div class="input-group mb-3">
 		 			<label class="btn btn-outline-dark disabled me-2" style="width: 150px">문의글 제목</label>
-					<span style="margin: 0; padding: 0;" class="form-control"><form:input path="title" type="text" required="required" autofocus="autofocus" style="height:100%; width: 100%;"/></span>
+					<span style="margin: 0; padding: 0;" class="form-control"><form:input path="title" type="text" autofocus="autofocus" required="required" maxlength="6" placeholder="문의글 제목을 입력해주세요" style="height:100%; width: 100%;"/></span>
 				</div>
 			</div>
 			<label class="col-sm-12 btn btn-outline-dark disabled" style="font-size: 20pt; font-weight: bold;">문의글 내용</label>
 			<div class="input-group mt-3">
-				<span style="margin: 0; padding: 0; height: 100px;" class="form-control"><form:textarea path="content" required="required" rows="3" autofocus="autofocus" maxlength="160" style="height:100%; width: 100%;"></form:textarea></span>
+				<span style="margin: 0; padding: 0; height: 100px;" class="form-control"><form:textarea path="content" required="required" placeholder="문의글 내용을 입력해주세요" rows="3" maxlength="160" style="height:100%; width: 100%;"></form:textarea></span>
 			</div>
 		</div>
 		<div class="row col text-center">

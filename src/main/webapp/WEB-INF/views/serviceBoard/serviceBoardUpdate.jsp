@@ -26,7 +26,7 @@
 				</div>
 				<div class="input-group mb-3">
 					<label class="btn btn-outline-dark disabled me-2" style="width: 150px">제목</label>
-					<form:input path="title" required="required" autofocus="autofocus" class="form-control"/>
+					<form:input path="title" required="required" maxlength="6" autofocus="autofocus" class="form-control"/>
 				</div>
 				<div class="input-group mb-3">
 					<label class="btn btn-outline-dark disabled me-2" style="width: 150px">작성자</label>
