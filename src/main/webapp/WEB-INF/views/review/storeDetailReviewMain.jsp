@@ -147,35 +147,34 @@
 												<td class="col-6">${reviewList.get(i).reviewContent }</td>
 												<td class="col-3">${reviewList.get(i).reviewRDate }</td>
 												<td align="right" class="col-1">★ : ${reviewListNick.get(i).rating }</td>
-											<tr>
+											</tr>
 										</table>
 										<table class="table">
-											<tr>
 												<c:if test="${reviewCommentList.size() != 0 }">
 													<c:forEach var="j" begin="0" end="${reviewCommentList.size()-1 }">
 														<c:if test="${reviewList.get(i).reviewNo == reviewCommentList.get(j).reviewNo }">
-															<td>
-																<sec:authorize access="isAuthenticated()">
-																	<sec:authentication property="principal" var="check"/>
-																	<c:if test="${check.username eq reviewCommentList.get(j).id }">
-																		<form action="reviewCommentDeletePro" method = "post">
-																			<input type="hidden" name="storeNo" value="${reviewList.get(i).storeNo}">
-																			<input type="hidden" name="reviewCommentNo" value="${reviewCommentList.get(j).reviewCommentNo }">
-																			<input type="submit" value="삭제" class="btn btn-outline-danger">
-																		</form>
-																	</c:if>
-																</sec:authorize>
-															</td>
-															<td>
-																${reviewCommentList.get(j).id }
-																${reviewCommentList.get(j).reviewCommentContent }
-																${reviewCommentList.get(j).reviewCommentRDate }
-															</td>
+															<tr>
+																<td class="col-2">${reviewCommentList.get(j).id }</td>
+																<td class="col-6">${reviewCommentList.get(j).reviewCommentContent }</td>
+																<td class="col-3">${reviewCommentList.get(j).reviewCommentRDate }</td>
+																<td align="right" class="col-1">
+																	<sec:authorize access="isAuthenticated()">
+																		<sec:authentication property="principal" var="check"/>
+																		<c:if test="${check.username eq reviewCommentList.get(j).id }">
+																			<form action="reviewCommentDeletePro" method = "post">
+																				<input type="hidden" name="storeNo" value="${reviewList.get(i).storeNo}">
+																				<input type="hidden" name="reviewCommentNo" value="${reviewCommentList.get(j).reviewCommentNo }">
+																				<input type="submit" value="삭제" class="btn btn-outline-danger">
+																			</form>
+																		</c:if>
+																	</sec:authorize>
+																</td>
+															</tr>
 														</c:if>
 													</c:forEach>
 												</c:if>
 												<sec:authorize access="isAuthenticated()">
-													<td align="right">
+													<td align="right" colspan="4">
 														<form action="reviewCommentInsertPro" method = "post">
 															<textarea rows="4" maxlength="30" style="width: 100%" required name="reviewCommentContent"></textarea>
 															<input type="hidden" name="storeNo" value="${reviewList.get(i).storeNo}">
