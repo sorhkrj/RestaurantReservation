@@ -4,6 +4,7 @@ import java.security.Principal;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -61,16 +62,6 @@ public class ReservationController {
 	public String insertReservation(ReservationVO rvo, Principal principal) {
 		rvo.setId(principal.getName());
 		
-		System.out.println(rvo.getReserveNo());
-		System.out.println(rvo.getId());
-		System.out.println(rvo.getStoreNo());
-		System.out.println(rvo.getStoreName());
-		System.out.println(rvo.getPeople());
-		System.out.println(rvo.getVisitDay());
-		System.out.println(rvo.getVisitTime());
-		System.out.println(rvo.getVisitName());
-		System.out.println(rvo.getVisitPhone());
-		
 		service.insertRes(rvo);
 		return "redirect:myReservationList";
 	}
@@ -101,7 +92,7 @@ public class ReservationController {
 
 	////////////////////////////////List//////////////////////////////////
 	
-	@GetMapping("/myReservationList")
+	@RequestMapping("/myReservationList")
 	public String listmyReservation(Principal principal, Model model) {
 		String id = principal.getName();
 		ArrayList<ReservationVO> list = service.listRes(id);
@@ -121,17 +112,13 @@ public class ReservationController {
 	////////////////////////////////delete///////////////////////////////////////
 	
 	@PostMapping("/reservationDelete")
-	public String deleteReservation(ReservationVO rvo, HttpServletRequest request, Principal principal, Model model) {
+	public String deleteReservation(ReservationVO rvo, HttpServletRequest request, HttpServletResponse response, Principal principal, Model model) {
 		
 		String id = principal.getName();
 		String password = request.getParameter("password");
-		String result = service.deleteRes(rvo.getReserveNo(), id, password);
+		service.deleteRes(rvo.getReserveNo(), id, password, response);
+		return "forward:myReservationList";
 		
-		if(result == "a") {		
-			return "redirect:myReservationList";
-		} else {
-			return "";
-		}
 	}
 	
 	//////////////////////Ajar////////////////////////
