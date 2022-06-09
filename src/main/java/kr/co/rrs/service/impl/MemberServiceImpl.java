@@ -1,5 +1,10 @@
 package kr.co.rrs.service.impl;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -31,12 +36,23 @@ public class MemberServiceImpl implements MemberService {
 	}
 	//회원탈퇴
 	@Override
-	public Boolean delete(String id, String password) {
+	public Boolean delete(String id, String password, HttpServletResponse response) {
 		String originalPw = memberMapper.selectOne(id).getPassword();
 		if(encoder.matches(password, originalPw)) {
 			memberMapper.delete(id);
+			
 			return true;	
 		}else{
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = null;
+			try {
+				out = response.getWriter();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			out.println("<script>alert('비밀번호가 틀립니다.'); </script>");
+			out.flush();
+			
 			return false;
 		}
 	}
@@ -59,6 +75,31 @@ public class MemberServiceImpl implements MemberService {
 	public Boolean memberIdCheck(String id) {
 		if (id.isEmpty()) return false;
 		Boolean result = (memberMapper.selectId(id) == null) ? true : false;
+		return result;
+	}
+	
+	// 수정 전 패스워드 확인
+	@Override
+	public boolean updateCheck(MemberVO membervo, String password, HttpServletResponse response) {
+		boolean result = false;
+		
+		if(encoder.matches(password, membervo.getPassword())) {
+			result = true;
+		}
+		else {
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = null;
+			try {
+				out = response.getWriter();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			out.println("<script>alert('비밀번호가 틀립니다.'); </script>");
+			out.flush();
+			
+			result = false;
+		}
+		
 		return result;
 	}
 }
