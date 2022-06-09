@@ -19,7 +19,7 @@
 			inner join member M 
 			on S.id = M.id 
 			where S.storeName like '%'||#{search}||'%' 
-			and M.enabled = 0
+			and M.enabled = 1
 		]]>
 	</select>
 </mapper>

@@ -20,20 +20,20 @@
 				</div>
 					<div class="container">
 						<table class="table">
-							<thead>
-								<tr>
-									<th>지점명</th>
-									<th>위치</th>
-									<th>전화번호</th>
-									<th>소개글</th>
-									<th>선택</th>
-								</tr>
-							</thead>
 							<c:choose>
 								<c:when test="${empty storeList}">
 									'${param.search}' 검색 결과를 찾을 수 없습니다.
 								</c:when>
 								<c:otherwise>
+									<thead>
+										<tr>
+											<th>지점명</th>
+											<th>위치</th>
+											<th>전화번호</th>
+											<th>소개글</th>
+											<th>선택</th>
+										</tr>
+									</thead>
 									<c:forEach var="store" items="${storeList}">
 										<tr>
 											<td>${store.storeName}</td>

@@ -2,7 +2,6 @@ package kr.co.rrs.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -12,7 +11,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.co.rrs.service.AdminService;
 import kr.co.rrs.vo.MemberVO;
@@ -30,11 +28,10 @@ public class AdminController {
 	
 	// 회원검색결과
 	@GetMapping("/resultMember")
-	@ResponseBody
-	public List<MemberVO> resultMember(String search) {
-		List<MemberVO> memberList = service.searchMember(search);
-
-		return memberList;
+	public String resultMember(String id, Model model) {
+		model.addAttribute("id", id);
+		model.addAttribute("memberList", service.searchMember(id));
+		return "admin/resultMember";
 	}
 
 	// 지점검색결과

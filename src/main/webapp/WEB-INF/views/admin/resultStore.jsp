@@ -12,34 +12,41 @@
 <title>음식점검색</title>
 </head>
 <body>
-<div class="container">
 	<c:import url="/WEB-INF/views/top.jsp"/>
-		<h3>음식점: &nbsp;</h3>
-		<form action="resultStore" method="get">
-			<input type="text" name="storeName" placeholder="음식점을 입력해주세요." >
-			<input type="submit" value="검색하기"><br>
-		</form>
-		<h2 class="text-center">음식점정보</h2>
-		<table class="table table-striped">
-			<c:choose>
-				<c:when test="${empty storeList}">
-					'${storeName}' 검색 결과를 찾을 수 없습니다.
-				</c:when>
-				<c:otherwise>
-					<c:forEach var="store" items="${storeList}">
-						<tr>
-							<td>
-								${store.introduce}
-							</td>
-							<td align="right">
-								<a href="storeAdmin?storeNo=${store.storeNo }" type="button"class="w3-button w3-white w3-border w3-border-blue w3-round-large">지점보기</a>
-							</td>
-						</tr>
-					</c:forEach>
-				</c:otherwise>
-			</c:choose>
-		</table>
+		<div class="container">
+			<form action="resultStore" method="get">
+				<div class="mt-3">
+					<div class="row">
+						<div class="mb-3">
+							<label class="col-sm-12 btn btn-outline-dark disabled me-2" style="font-size: 20pt; font-weight: bold;">음식점 이름</label>
+						</div>
+						<div class="input-group mb-3">
+							<input type="text" name="storeName" placeholder="검색할 음식점을 입력해주세요." class="form-control me-2"/>
+							<input type="submit" value="검색" class="btn btn-outline-dark"/>
+						</div>
+					</div>
+				</div>
+			</form>
+			<table class="table">
+				<c:choose>
+					<c:when test="${empty storeList}">
+						'${storeName}' 검색 결과를 찾을 수 없습니다.
+					</c:when>
+					<c:otherwise>
+						<c:forEach var="store" items="${storeList}">
+							<tr>
+								<td>
+									${store.introduce}
+								</td>
+								<td align="right">
+									<a href="storeAdmin?storeNo=${store.storeNo }" type="button"class="btn btn-outline-dark">지점보기</a>
+								</td>
+							</tr>
+						</c:forEach>
+					</c:otherwise>
+				</c:choose>
+			</table>
+		</div>
 	<c:import url="/WEB-INF/views/footer.jsp"/>
-</div>
 </body>
 </html>

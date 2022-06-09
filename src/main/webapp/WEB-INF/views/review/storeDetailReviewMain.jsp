@@ -124,6 +124,18 @@
 							<c:if test="${reviewList.size() != 0 }">
 								<c:forEach var="i" begin="0" end="${reviewList.size()-1 }">
 									<div class="container mt-3 shadow p-4 mb-4 bg-light">
+										<sec:authorize access="isAuthenticated()">
+										<sec:authentication property="principal" var="check"/>
+											<c:if test="${check.username eq reviewList.get(i).id}">
+												<table>
+													<tr>
+														<td>
+															<input type="button" value="지우기" onclick="location.href='reviewDeletePro?storeNo=${reviewList.get(i).storeNo }&reviewNo=${reviewList.get(i).reviewNo}'" class="btn btn-outline-danger"/>
+														</td>
+													</tr>
+												</table>
+											</c:if>
+										</sec:authorize>
 										<table class="table table-hover">
 											<thead>
 												<tr>
@@ -141,12 +153,10 @@
 											<tr>
 												<c:if test="${reviewCommentList.size() != 0 }">
 													<c:forEach var="j" begin="0" end="${reviewCommentList.size()-1 }">
-														<td>
-															<c:if test="${reviewList.get(i).reviewNo == reviewCommentList.get(j).reviewNo }">
-																${reviewCommentList.get(j).id }
-																${reviewCommentList.get(j).reviewCommentContent }
-																${reviewCommentList.get(j).reviewCommentRDate }
+														<c:if test="${reviewList.get(i).reviewNo == reviewCommentList.get(j).reviewNo }">
+															<td>
 																<sec:authorize access="isAuthenticated()">
+																	<sec:authentication property="principal" var="check"/>
 																	<c:if test="${check.username eq reviewCommentList.get(j).id }">
 																		<form action="reviewCommentDeletePro" method = "post">
 																			<input type="hidden" name="storeNo" value="${reviewList.get(i).storeNo}">
@@ -155,12 +165,16 @@
 																		</form>
 																	</c:if>
 																</sec:authorize>
-															</c:if>
-														</td>
+															</td>
+															<td>
+																${reviewCommentList.get(j).id }
+																${reviewCommentList.get(j).reviewCommentContent }
+																${reviewCommentList.get(j).reviewCommentRDate }
+															</td>
+														</c:if>
 													</c:forEach>
 												</c:if>
 												<sec:authorize access="isAuthenticated()">
-													<sec:authentication property="principal" var="check"/>
 													<td align="right">
 														<form action="reviewCommentInsertPro" method = "post">
 															<textarea rows="4" maxlength="30" style="width: 100%" required name="reviewCommentContent"></textarea>
@@ -169,15 +183,6 @@
 															<input type="submit" value="리뷰댓글" class="btn btn-outline-primary">
 															<!-- 지우기 버튼 -->
 														</form>
-													</td>
-												</sec:authorize>
-											</tr>
-											<tr>
-												<sec:authorize access="hasRole('ROLE_MANAGER')">
-													<td>
-														<c:if test="${check.username eq reviewList.get(i).id}">
-															<input type="button" value="지우기" onclick="location.href='reviewDeletePro?storeNo=${reviewList.get(i).storeNo }&reviewNo=${reviewList.get(i).reviewNo}'" class="btn btn-outline-danger"/>
-														</c:if>
 													</td>
 												</sec:authorize>
 											</tr>
