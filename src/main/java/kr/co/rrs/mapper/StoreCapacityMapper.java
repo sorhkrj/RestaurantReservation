@@ -12,7 +12,7 @@ import kr.co.rrs.vo.ReservePossibleVO;
 
 public interface StoreCapacityMapper {
 
-	@Insert("MERGE INTO reservepossible r USING dual  ON (r.day = #{day}) WHEN MATCHED THEN UPDATE SET r.seat = 20 WHEN NOT MATCHED THEN  INSERT (r.storeno, r.day, r.time, r.capacity, r.seat) VALUES (#{storeNo},  #{day}, #{time}, #{capacity}, #{seat})")
+	@Insert("MERGE INTO reservepossible r USING dual  ON (r.day = #{day}) WHEN MATCHED THEN UPDATE SET r.storeNo = #{storeNo}, r.time = #{time}, r.capacity = #{capacity}, r.seat = #{seat} WHEN NOT MATCHED THEN  INSERT (r.storeno, r.day, r.time, r.capacity, r.seat) VALUES (#{storeNo},  #{day}, #{time}, #{capacity}, #{seat})")
 	void insert(ReservePossibleVO reservePossibleVO);
 
 	@Update("update reservepossible set time = #{time}, capacity = #{capacity}, seat = #{seat} where storeNo = #{storeNo} and day = substr(#{day}, 1, 10)")
