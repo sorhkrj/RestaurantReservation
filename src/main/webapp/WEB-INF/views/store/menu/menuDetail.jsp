@@ -32,7 +32,6 @@ function deleteMenu(menu){
 }
 function insertMenu(){
 	var formData = new FormData($('#menuInsertPro')[0]);
-	alert(formData);
 	$.ajax({
 		url : "${pageContext.request.contextPath}/store/menuInsert",
 		async : false,
@@ -58,7 +57,6 @@ function updateMenu(menu){
 	formData.append('price', $('#price_'+menu).val());
 	formData.append('menuInfo', $('#menuInfo_'+menu).val());
 	formData.append('file', $('#menuPhoto_'+menu)[0].files[0]);
-	alert(formData);
 	$.ajax({
 		url : "${pageContext.request.contextPath}/store/menuUpdate",
 		async : false,
@@ -84,19 +82,19 @@ function updateMenu(menu){
 <body>
 <c:import url="/WEB-INF/views/top.jsp" />
 	<div class="container">
-		<form:form id = "menuUpdatePro">
-			<div class="mt-3">
-				<div class="row">
-					<div class="mb-3">
-			 		 <label class="col-sm-12 btn btn-outline-dark disabled me-2" style="font-size: 20pt; font-weight: bold;">지점 메뉴 관리</label>
-					</div>
-					<div class="mb-3">
-			 			<button onclick="addInsertForm()" style="width: 25%;" class="btn btn-outline-dark">메뉴 추가</button>
-						<form id="menuInsertPro" method="POST" enctype="multipart/form-data">
-						<div id="addMenu"></div>
-							</form>
-						</div>
-					</div>
+		<div class="mt-3">
+			<div class="row">
+				<div class="mb-3">
+		 		 <label class="col-sm-12 btn btn-outline-dark disabled me-2" style="font-size: 20pt; font-weight: bold;">지점 메뉴 관리</label>
+				</div>
+				<div class="mb-3">
+		 			<button onclick="addInsertForm()" style="width: 25%;" class="btn btn-outline-dark">메뉴 추가</button>
+					<form id="menuInsertPro" method="POST" enctype="multipart/form-data">
+					<div id="addMenu"></div>
+						</form>
+				</div>
+			</div>
+			<form:form id = "menuUpdatePro">
 				<c:forEach var="i" items="${menuList }" varStatus="no">
 					<div class="input-group mb-3">
 			 			<label class="btn btn-outline-dark disabled me-2" style="width: 150px">메뉴명</label>
@@ -106,7 +104,7 @@ function updateMenu(menu){
 					</div>
 					<div class="input-group mb-3">
 						<label class="btn btn-outline-dark disabled me-2" style="width: 150px">메뉴 사진</label>
-			 			<span class="form-control" style='margin: 0; padding: 0; width:400px;'><img src = "${pageContext.request.contextPath}/images/${i.menuPhoto}" style='width:400px; height:100px;' align="middle"></span>
+			 			<span class="form-control" style='margin: 0; padding: 0; width:400px;'><img src = "${pageContext.request.contextPath}/images/${i.menuPhoto}" style='width:400px; height:300px;' align="middle"></span>
 			 			<span class="form-control" style='margin: 0; padding: 0; width:400px;'><input type = "file"  id = "menuPhoto_${i.menuName}" required class="form-control"></span>
 					</div>
 					<div class="input-group mb-3">
@@ -126,9 +124,9 @@ function updateMenu(menu){
 					  </div>
 			 	  </div>
 		 	  </c:forEach>
-		 	  </div>
-		 	  <a href="${pageContext.request.contextPath}/store/myStore" class="form-control input-sm btn btn-outline-danger mb-3">돌아가기</a>
-		</form:form>
+			</form:form>
+	 	  </div>
+	 	  <a href="${pageContext.request.contextPath}/store/myStore" class="form-control input-sm btn btn-outline-danger mb-3">돌아가기</a>
 		</div>
 		
 
