@@ -12,7 +12,7 @@ public interface StoreAnalysisMapper {
 	// 총 예약 건수
 	// 총 예약 인원
 	// 일 평균 예약 건수
-	@Select("select count(*) as count, sum(people) as people, count(*)/decode(count(distinct visitday), 0, null, count(distinct visitday)) as dayAvg from reservation where storeNo =  (select storeNo from store where id = #{id}) and visitday >= TO_DATE(#{firstDay}, 'YYYY-MM-DD HH24:MI:SS') and visitday <= TO_DATE(#{lastDay}, 'YYYY-MM-DD HH24:MI:SS')")
+	@Select("select count(*) as count, sum(people) as people, count(*)/(TRUNC(TO_DATE(#{lastDay}, 'YYYY-MM-DD HH24:MI:SS')) - TRUNC(TO_DATE(#{firstDay}, 'YYYY-MM-DD HH24:MI:SS')) + 1) AS dayAvg  from reservation where storeNo =  (select storeNo from store where id = #{id}) and visitday >= TO_DATE(#{firstDay}, 'YYYY-MM-DD HH24:MI:SS') and visitday <= TO_DATE(#{lastDay}, 'YYYY-MM-DD HH24:MI:SS')")
 	AnalysisVO countReservation(@Param("id") String id, @Param("firstDay") String firstDay, @Param("lastDay") String lastDay);
 
 

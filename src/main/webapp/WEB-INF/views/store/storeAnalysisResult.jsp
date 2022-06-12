@@ -15,7 +15,6 @@
 		<label class="col-sm-12 btn btn-outline-dark disabled mt-2" style="font-size: 20pt; font-weight: bold;">${firstDay } 부터 ${lastDay }까지의 음식점 예약 분석 결과입니다.</label>
 	<table class="table mt-3">
 		<tr>
-			<th>기간</th>
 			<th>총 예약건수 </th>
 			<th>총 예약인원 </th>
 			<th>일 평균 예약 건수 </th>
