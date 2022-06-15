@@ -17,11 +17,11 @@ public interface ReservationMapper  {
 	
 	//예약하기
 	@Insert("insert into reservation values(RESERVENO_SEQ.NEXTVAL, #{id}, #{storeNo}, #{people}, "
-			+ "#{visitDay}, #{visitTime}, #{visitName}, #{visitPhone}, SYSDATE ) ")
+			+ "TO_DATE(#{visitDay}, 'YYYY-MM-DD'), #{visitTime}, #{visitName}, #{visitPhone}, SYSDATE ) ")
 	void mapperInsertRes(ReservationVO rvo);
 	
 	//예약수정
-	@Update("update reservation set people=#{people}, visitDay=#{visitDay}, visitTime=#{visitTime}, visitName=#{visitName}, "
+	@Update("update reservation set people=#{people}, visitDay=TO_DATE(#{visitDay}, 'YYYY-MM-DD'), visitTime=#{visitTime}, visitName=#{visitName}, "
 			+ "visitPhone=#{visitPhone} where reserveNo=#{reserveNo}")
 	void mapperUpdateRes(ReservationVO rvo);
 		
@@ -56,12 +56,12 @@ public interface ReservationMapper  {
 	//////////////////////////Ajar/////////////////////////	
 		
 	//음식점예약시간
-	@Select("select time, capacity, seat from reservepossible where storeno = #{storeNo} and day = #{visitDay}")
+	@Select("select time, capacity, seat from reservepossible where storeno = #{storeNo} and day = TO_DATE(#{visitDay}, 'YYYY-MM-DD')")
 	ReservePossibleVO mapperReservationStoreTime(ReservationVO rvo);	
 
 	//test
 	//예약시간
-		@Select("select visittime, count(*) sumTime from reservation where storeno = #{storeNo} and visitday = #{visitDay} group by visittime")
+		@Select("select visittime, count(*) sumTime from reservation where storeno = #{storeNo} and visitday = TO_DATE(#{visitDay}, 'YYYY-MM-DD') group by visittime")
 		ArrayList<ReservationVO> mapperReservationTime( ReservationVO rvo);	
 	
 	
