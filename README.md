@@ -20,4 +20,4 @@
 <img src="https://user-images.githubusercontent.com/37442691/173721592-9cd3d06e-09a7-4bb2-b55e-d1a78a1e02de.jpg">
 
 ## 화면 관계도
-<img src="https://user-images.githubusercontent.com/37442691/173721596-223fae5c-2413-4abe-9dc0-ea0b54a28ef0.png">
+<img src="https://user-images.githubusercontent.com/37442691/173727851-1acf966f-302c-4716-a916-70c44ada454e.png">
