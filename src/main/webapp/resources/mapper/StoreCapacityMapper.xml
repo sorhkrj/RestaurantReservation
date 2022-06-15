@@ -5,7 +5,7 @@
 <mapper namespace="kr.co.rrs.mapper.StoreCapacityMapper">
 	<update id="insertMonth" parameterType="java.util.List">
 		<foreach collection="rvoList" item="item" open="INSERT ALL" close="SELECT * FROM DUAL" separator=" ">
-			into reservepossible values (#{item.storeNo}, #{item.day}, #{item.time}, #{item.capacity}, #{item.seat})
+			into reservepossible values (#{item.storeNo}, TO_DATE(#{item.day}, 'YYYY-MM-DD'), #{item.time}, #{item.capacity}, #{item.seat})
 		</foreach>
 	</update>
 </mapper>
