@@ -2,6 +2,7 @@
 참고한 사이트: [캐치테이블](https://app.catchtable.co.kr)<br>
 ---
 박재호: [AWS Linux2 주소](http://3.39.213.54:8080)<br>
+└[Spring Boot 기반 개인 프로젝트(진행중)](https://github.com/sorhkrj/RestaurantReservationService)<br>
 류성찬: [AWS Ubuntu 주소](http://13.209.121.223:8080/RestaurantReservation/)<br>
 ---
 ## 개발자: 류성찬, 박재형, 박재호, 윤성렬, 정민기
